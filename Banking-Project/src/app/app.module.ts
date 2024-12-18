@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/Admin/login/login.component';
@@ -14,11 +14,13 @@ import { RegistrationComponent } from './components/Employee/registration/regist
     LoginComponent,
     ManagerLoginComponent,
     RegistrationComponent,
+    RegistrationComponent  
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule  
   ],
   providers: [
     provideClientHydration()
