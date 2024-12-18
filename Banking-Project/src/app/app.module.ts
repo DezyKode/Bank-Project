@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/Admin/login/login.component';
 import { ManagerLoginComponent } from './components/Maneger/maneger-login/manager-login.component';
 import { RegistrationComponent } from './components/Employee/registration/registration.component';
+import { leadComponent } from './components/lead/LeadDashboard/lead.component';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { RegistrationComponent } from './components/Employee/registration/regist
     LoginComponent,
     ManagerLoginComponent,
     RegistrationComponent,
+    leadComponent
+
 
   ],
   imports: [
