@@ -10,7 +10,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="id">Employee ID:</label>
-            <input type="text" placeholder="Enter Employee ID" id="id" required>
+            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)">
           </div>
           <div class="form-group">
             <label for="name">Name:</label>
@@ -26,7 +26,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="mobile">Mobile:</label>
-            <input type="text" placeholder="Enter Mobile Number" id="mobile" required>
+            <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)">
           </div>
           <div class="form-group">
             <label for="gender">Gender:</label>
@@ -44,22 +44,46 @@
         </div>
 
         <!-- Third Row -->
-        <div class="form-row1">
+        <div class="form-row">
           <div class="form-group">
-            <label for="status">Status1:</label>
-            <select id="status" required>
-              <option value="">Select Status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-            </select>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required placeholder="Enter Password">
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Upload Photo:</label>
+            <input type="file" name="photo" id="photo" required >
           </div>
         </div>
 
+
+        <div class="form-row1">
+          <div class="form-group">
+            <label for="address">Temporary Address:</label>
+            <input type="text" name="address" id="address" placeholder="Temporary Address">  
+            <span id="note">Temporary address same as permanant address.</span>
+              <input type="checkbox" class="tick"  width="40px"/>
+           
+        
+          </div>
+
+          <div class="form-group">
+            <label for="p-address">Permanant Address:</label>
+            <input type="text" name="p-address" id="p-address" placeholder="Permanant Address">
+          </div>
+        </div>
+
+
         <!-- Buttons -->
         <div class="button-container">
-          <button type="button">Add</button>
-          <button type="button">Edit</button>
-          <button type="button">Cancel</button>
+          <button type="button" (click)="handleCancel()">Cancel</button>
+          <button type="button" (click)="handleEdit()">Edit</button>
+          <button type="button" (click)="handleAdd()">Add</button>
         </div>
       </form>
     </div>
