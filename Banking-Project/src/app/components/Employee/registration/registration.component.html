@@ -1,9 +1,18 @@
-
-
-<div class="Container">
-    <div class="register-text">
-      <p>Employee Registration</p>
+<div class="container-fluid py-2 px-5">
+  <div class="register-text d-flex">
+    <p class="text-start py-5">Employee Registration</p>
+    <div class="form-group ml-auto">
+      <label for="photo">Upload Photo:</label>
+      <div class="dropzone" #dropzone>
+        <p>Drag and drop your photo here</p>
+        <p class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></p>
+        <input type="file" name="photo" id="photo" #photo accept="image/*" required>
+      </div>
     </div>
+    
+    
+  </div>
+  
     <div class="form">
       <form>
         <!-- First Row -->
@@ -44,7 +53,7 @@
         </div>
 
         <!-- Third Row -->
-        <div class="form-row">
+        <div class="form-row3">
           <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required placeholder="Enter Password">
@@ -55,10 +64,7 @@
             <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">
           </div>
 
-          <div class="form-group">
-            <label for="photo">Upload Photo:</label>
-            <input type="file" name="photo" id="photo" required >
-          </div>
+        
         </div>
 
 
