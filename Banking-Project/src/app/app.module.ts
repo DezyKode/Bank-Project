@@ -7,6 +7,8 @@ import { LoginComponent } from './components/Admin/login/login.component';
 import { ManagerLoginComponent } from './components/Maneger/maneger-login/manager-login.component';
 import { RegistrationComponent } from './components/Employee/registration/registration.component';
 import { leadComponent } from './components/lead/LeadDashboard/lead.component';
+import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
+import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { leadComponent } from './components/lead/LeadDashboard/lead.component';
     ManagerLoginComponent,
     RegistrationComponent,
 
-    leadComponent
+    leadComponent,
+      CheckeligibilityComponent,
+      PersonalloanComponent
 
 
 
