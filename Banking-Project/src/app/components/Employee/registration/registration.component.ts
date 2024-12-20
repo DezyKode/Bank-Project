@@ -62,4 +62,24 @@ export class RegistrationComponent {
   handleEdit(): void {
     alert('Edit button clicked!');
   }
+
+
+  backgroundImage: string = '';
+
+  // Function to handle the image upload
+  upload(event: any): void {
+    const file = event.target.files[0]; // Get the uploaded file
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.backgroundImage = e.target.result; // Set the image as the background
+      };
+      reader.readAsDataURL(file); // Read the file as a data URL
+    }
+  }
+
+  // Function to reset the uploaded image
+  resetImage(): void {
+    this.backgroundImage = ''; // Clear the image
+  }
 }
