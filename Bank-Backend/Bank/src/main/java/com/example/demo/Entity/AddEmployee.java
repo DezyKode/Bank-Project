@@ -34,6 +34,21 @@ public class AddEmployee {
 	@Column(name="employee_role")
 	private String Role;
 
+	@Column(name="passward")
+	private String Passward;
+	
+	@Column(name="confirm_passward")
+	private String Confirm_Passward;
+	
+	@Column(name="upload_photo")
+	private String Upload_Photo;
+	
+	@Column(name="temporary_address")
+	private String Temporary_address;
+	
+	@Column(name="permanat_address")
+	private String Permanat_address;
+
 	public int getId() {
 		return id;
 	}
@@ -90,14 +105,53 @@ public class AddEmployee {
 		Role = role;
 	}
 
+	public String getPassward() {
+		return Passward;
+	}
+
+	public void setPassward(String passward) {
+		Passward = passward;
+	}
+
+	public String getConfirm_Passward() {
+		return Confirm_Passward;
+	}
+
+	public void setConfirm_Passward(String confirm_Passward) {
+		Confirm_Passward = confirm_Passward;
+	}
+
+	public String getUpload_Photo() {
+		return Upload_Photo;
+	}
+
+	public void setUpload_Photo(String upload_Photo) {
+		Upload_Photo = upload_Photo;
+	}
+
+	public String getTemporary_address() {
+		return Temporary_address;
+	}
+
+	public void setTemporary_address(String temporary_address) {
+		Temporary_address = temporary_address;
+	}
+
+	public String getPermanat_address() {
+		return Permanat_address;
+	}
+
+	public void setPermanat_address(String permanat_address) {
+		Permanat_address = permanat_address;
+	}
+
 	@Override
 	public String toString() {
 		return "AddEmployee [id=" + id + ", Employee_Id=" + Employee_Id + ", Name=" + Name + ", Email_ID=" + Email_ID
-				+ ", Mobile_No=" + Mobile_No + ", Gender=" + Gender + ", Role=" + Role + "]";
+				+ ", Mobile_No=" + Mobile_No + ", Gender=" + Gender + ", Role=" + Role + ", Passward=" + Passward
+				+ ", Confirm_Passward=" + Confirm_Passward + ", Upload_Photo=" + Upload_Photo + ", Temporary_address="
+				+ Temporary_address + ", Permanat_address=" + Permanat_address + "]";
 	}
-	
-	
-	
 	
 	
 }
