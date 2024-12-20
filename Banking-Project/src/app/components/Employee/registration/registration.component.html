@@ -40,15 +40,15 @@
         <div class="form-row">
           <div class="form-group">
             <label for="id">Employee ID:</label>
-            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)">
+            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="employee_Id" name="employee_Id">
           </div>
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" placeholder="Enter Name" id="name" required>
+            <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name">
           </div>
           <div class="form-group">
             <label for="email">Email ID:</label>
-            <input type="email" placeholder="Enter Email" id="email" required>
+            <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID">
           </div>
         </div>
 
@@ -56,11 +56,11 @@
         <div class="form-row">
           <div class="form-group">
             <label for="mobile">Mobile:</label>
-            <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)">
+            <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)" [(ngModel)]="mobile_No" name="mobile">
           </div>
           <div class="form-group">
             <label for="gender">Gender:</label>
-            <select name="gender" id="gender" required>
+            <select name="gender" id="gender" required [(ngModel)]="gender" name="gender">
               <option value="">Select Gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -69,7 +69,7 @@
           </div>
           <div class="form-group">
             <label for="role">Role:</label>
-            <input type="text" placeholder="Enter Role" id="role" required>
+            <input type="text" placeholder="Enter Role" id="role" required [(ngModel)]="role" name="role">
           </div>
         </div>
 
@@ -77,12 +77,12 @@
         <div class="form-row1">
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required placeholder="Enter Password">
+            <input type="password" name="password" id="password" required placeholder="Enter Password" [(ngModel)]="passward" name="passward">
           </div>
 
           <div class="form-group">
             <label for="confirm-password">Confirm Password:</label>
-            <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password">
+            <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password" [(ngModel)]="confirm_Passward" name="confirm_Passward">
           </div>
 
         </div>
@@ -90,7 +90,7 @@
         <div class="form-row1">
           <div class="form-group">
             <label for="address">Temporary Address:</label>
-            <input type="text" name="address" id="address" placeholder="Temporary Address">  
+            <input type="text" name="address" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">  
             <span id="note">Temporary address same as permanant address.</span>
               <input type="checkbox" class="tick"  width="40px"/>
            
@@ -99,7 +99,7 @@
 
           <div class="form-group">
             <label for="p-address">Permanant Address:</label>
-            <input type="text" name="p-address" id="p-address" placeholder="Permanant Address">
+            <input type="text" name="p-address" id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress" name="permAddress">
           </div>
         </div>
 
@@ -108,7 +108,7 @@
         <div class="button-container">
           <button type="button" (click)="handleCancel()">Cancel</button>
         
-          <button type="button" (click)="handleAdd()">Add</button>
+          <button type="button" (click)="submitForm()">Add</button>
         </div>
       </form>
     </div>

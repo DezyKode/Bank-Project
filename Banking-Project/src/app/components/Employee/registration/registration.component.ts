@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddEmpService } from '../../../Service/AddEmployee/add-emp.service';
 
 @Component({
   selector: 'app-registration',
@@ -6,9 +7,22 @@ import { Component } from '@angular/core';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent {
+
+  constructor(private addEmpServiec: AddEmpService) { }
+
   tempAddress: string = '';  // Temporary address
   permAddress: string = '';  // Permanent address
   isAddressSame: boolean = false;  // Checkbox state
+  employee_Id: number = 0;
+  name: string = '';
+  email_ID: string = '';
+  mobile_No: string = '';
+  gender: string = '';
+  role: string = '';
+  passward: string = '';
+  confirm_Passward: string = '';
+  upload_Photo: string = '';
+
 
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
@@ -37,15 +51,15 @@ export class RegistrationComponent {
 
   validateNumber(event: any): void {
     let inputValue = event.target.value;
-  
+
     // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
-  
+
     // Restrict to exactly 10 digits
     if (inputValue.length > 10) {
       inputValue = inputValue.slice(0, 10);
     }
-  
+
     // Update the input field
     event.target.value = inputValue;
   }
@@ -81,5 +95,37 @@ export class RegistrationComponent {
   // Function to reset the uploaded image
   resetImage(): void {
     this.backgroundImage = ''; // Clear the image
+  }
+
+  submitForm(): void {
+    // if (this.isFormValid) {
+    const formData = {
+      employee_Id: this.employee_Id,
+      name: this.name,
+      email_ID: this.email_ID,
+      mobile_No: this.mobile_No,
+      gender: this.gender,
+      role: this.role,
+      passward: this.passward,
+      confirm_Passward: this.confirm_Passward,
+      upload_Photo: this.upload_Photo,
+      temporary_address: this.tempAddress,
+      permanat_address: this.permAddress
+
+    };
+
+    // Call the service to send data to the backend
+    this.addEmpServiec.postEmployee(formData).subscribe({
+      next: (response) => {
+        console.log('Data sent successfully:', response);
+        alert("Data Sent Successfully")
+      },
+      error: (error) => {
+        console.error('Error sending data:', error);
+      }
+    });
+    // } else {
+    //   console.error('Form is not valid');
+    // }
   }
 }
