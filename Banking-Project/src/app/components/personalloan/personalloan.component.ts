@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ElegibilityServiceService } from '../../Service/CheckElegibility/elegibility-service.service';
 
 @Component({
   selector: 'app-personalloan',
@@ -6,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./personalloan.component.css']
 })
 export class PersonalloanComponent {
+
+  constructor(private elegibilityService:ElegibilityServiceService){}
+
   personalLoan: string = ''; // Bind to loan type select
   isFormValid: boolean = false; // Form validation flag
   panNo: string = '';
@@ -36,6 +41,7 @@ export class PersonalloanComponent {
   pensionError:boolean=false;
   Employer1: string = '';
   employerError: boolean = false; 
+  dateOfBirth:String = '';
 
   // Validate the form to check if required fields are filled
   validateForm(): void {
@@ -112,4 +118,45 @@ export class PersonalloanComponent {
     this.employerError = this.Employer === '';
 
   }
+
+  // Submit the form to the backend
+  submitForm(): void {
+    if (this.isFormValid) {
+      const formData = {
+        typeOfLoan: this.personalLoan,
+        firstName: this.firstName,
+        middleName: this.middleName,
+        lastName: this.lastName,
+        email: this.email, 
+        employmentType: this.empType,
+        panNo: this.panNo,
+        mobileNo: this.mobile,
+        employerType: this.Employer1,
+        averageBonusOfLastThreeYears: this.averageBonus,
+        futureRentIncome: this.futureRent,
+        monthlyGrossSalary: this.monthSalary,
+        averageMonthlyIncentiveOfLast6Month: this.incentive,
+        loanEMI: this.loanEmi,
+        monthlyNetSalary: this.netSalary,
+        rentIncome: this.rentIncome,
+        pension: this.pension,
+        dateOfBirth: this.dateOfBirth
+      };
+
+      // Call the service to send data to the backend
+      this.elegibilityService.postElegibility(formData).subscribe({
+        next: (response) => {
+          console.log('Data sent successfully:', response);
+          alert("Data Sent Successfully")
+        },
+        error: (error) => {
+          console.error('Error sending data:', error);
+        }
+      });
+    } else {
+      // console.error('Form is not valid');
+      alert("Form is not complete")
+    }
+  }
+
 }

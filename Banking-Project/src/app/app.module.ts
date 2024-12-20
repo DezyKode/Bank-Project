@@ -9,6 +9,7 @@ import { RegistrationComponent } from './components/Employee/registration/regist
 import { leadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { PersonalloanComponent } from './components/personalloan/personalloan.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule  
+    FormsModule,
+    HttpClientModule  
   ],
   providers: [
     provideClientHydration()
