@@ -102,12 +102,20 @@
     background-color: #d32f2f;
   }
   
- 
-  
+
   button:nth-child(2) {
-    background-color: #45a049;  }
+    background-color: #4586a0;  }
   
   button:nth-child(2):hover {
+    background-color:  #4586a0;;
+    
+  }
+ 
+  
+  button:nth-child(3) {
+    background-color: #45a049;  }
+  
+  button:nth-child(3):hover {
     background-color: #45a049;
     
   }
@@ -136,8 +144,8 @@
   }
   .profile-picture {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     background-color: #f0f0f0;
     background-size: cover;
@@ -149,6 +157,7 @@
     cursor: pointer;
     overflow: hidden;
     margin-left: 700px;
+    border: 1px solid rgb(158, 155, 155);
  background-image: url('https://i.pinimg.com/736x/c0/74/9b/c0749b7cc401421662ae901ec8f9f660.jpg');
     
   }
@@ -195,76 +204,53 @@
   
   @media (max-width: 768px) {
     .Container {
-      margin-left: 0; /* Remove unnecessary margin */
+      margin-left: 0;
       overflow-x: hidden;
     }
   
-    .form-row {
-      grid-template-columns: 1fr; /* Single column layout for small screens */
-      padding-left: 6px;
-    }
-  
+    .form-row,
     .form-row1 {
-      grid-template-columns: 1fr; /* Single column layout for small screens */
+      grid-template-columns: 1fr;
+      gap: 15px;
       padding-left: 6px;
     }
   
     .register-text p {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 0px;
-      margin-left: -15px;
-      color: #444;
+      font-size: 20px;
       text-align: center;
+      margin-left: -20px;
     }
   
     .form-group input,
-  .form-group select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 80%
-  }
+    .form-group select {
+      width: 80%;
+    }
   
     .button-container {
-      display: flex;
       flex-direction: column;
       gap: 10px;
-    
+      margin-left: 0;
+      margin-top: 35px;
     }
   
     .form {
-      background-color: white;
-      /* padding: 20px; */
-      padding-top: 0px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* border: 1px solid black; */
-    width: 100%;
-  height: auto;
-      margin-left: 60px;
-      margin-top: 50px;
-    }
-
-
-    input[type='checkbox']{
-      margin-top:5px;
-      margin-left: -110px;
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+      margin-top: 20px;
     }
   
-    .button-container {
-      display: flex;
-       flex-direction: column;
-      justify-content: space-evenly; 
-       gap: 15px; 
-      margin-left: 0px;
-      margin-top: 35px;
-      width: 90%;
-    
+    .profile-picture {
+      width: 90px;
+      height: 90px;
+      margin-left: 40px;
+      padding-left: 20px;
     }
-
-    
+  
+    input[type='checkbox'] {
+      margin-top: 5px;
+      margin-left: -110px;
+    }
     
   }
   
@@ -285,6 +271,12 @@
     .form-row1 {
       grid-template-columns: 1fr; /* Single column for specific rows if needed */
       padding-left: 0;
+    }
+
+    .register-text p {
+      font-size: 24px; /* Slightly smaller font for iPad */
+      margin-bottom: 0px;
+      margin-left: -320px;
     }
   
     .register-text p {
@@ -313,6 +305,12 @@
       height: auto; /* Allow the form to adjust height */
       margin-left: -10px;
       margin-top: 40px; /* Adjusted margin-top for iPad */
+    }
+    .profile-picture {
+      width: 100px;
+      height: 100px;
+      margin-left: 40px;
+      padding-left: 20px;
     }
   
     

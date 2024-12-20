@@ -55,12 +55,13 @@ export class RegistrationComponent {
     alert('Add button clicked!');
   }
 
-  handleCancel(): void {
-    alert('Cancel button clicked!');
+  handleReset(): void {
+    alert('Reset button clicked!');
+    
   }
 
-  handleEdit(): void {
-    alert('Edit button clicked!');
+  handleCancel(): void {
+    alert('cancel button clicked!');
   }
 
 
