@@ -7,7 +7,7 @@
       <div class="profile-picture" [style.backgroundImage]="'url(' + backgroundImage + ')'">
         <!-- Show upload icon when there's no image -->
         <h1 class="upload-icon" *ngIf="!backgroundImage">
-          <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+          <!-- <i class="fa fa-plus fa-2x" aria-hidden="true"></i> -->
         </h1>
         
         <!-- Show the uploaded image when there is one -->
@@ -40,7 +40,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="id">Employee ID:</label>
-            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="employee_Id" name="employee_Id">
+            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" name="employee_Id">
           </div>
           <div class="form-group">
             <label for="name">Name:</label>
