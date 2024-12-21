@@ -223,7 +223,7 @@
 
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="averageBouns" name="averageBouns" [(ngModel)]="averageBonus"
+          <input type="text" class="form-control" id="averageBouns" name="averageBouns" [(ngModel)]="averageBonus"
             (blur)="validateBonus()" />
         </div>
         <small *ngIf="bonusError" id="bonusError" class="form-text text-danger">Please enter a valid bonus
@@ -239,7 +239,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="futureIncome" name="futureIncome" [(ngModel)]="futureRent"
+          <input type="text" class="form-control" id="futureIncome" name="futureIncome" [(ngModel)]="futureRent"
             (blur)="validateFutureRent()" />
         </div>
         <small *ngIf="futureRentError" id="futureRentError" class="form-text text-danger">Please enter a valid future
@@ -258,7 +258,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="grossSalary" name="grossSalary" [(ngModel)]="monthSalary"
+          <input type="text" class="form-control" id="grossSalary" name="grossSalary" [(ngModel)]="monthSalary"
             (blur)="validateMonthSalary()" />
         </div>
         <small *ngIf="grossSalaryError" id="grossSalaryError" class="form-text text-danger">Please enter a valid monthly
@@ -273,7 +273,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="avgInsentive" name="avgInsentive" [(ngModel)]="incentive"
+          <input type="text" class="form-control" id="avgInsentive" name="avgInsentive" [(ngModel)]="incentive"
             (blur)="validateIncentive()" />
         </div>
         <small *ngIf="incentiveError" id="incentiveError" class="form-text text-danger">Please enter a valid average
@@ -289,7 +289,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="loan" name="loan" [(ngModel)]="loanEmi"
+          <input type="text" class="form-control" id="loan" name="loan" [(ngModel)]="loanEmi"
             (blur)="validateLoanEmi()" />
         </div>
         <small *ngIf="loanError" id="loanError" class="form-text text-danger"> Please enter a valid Loan EMI
@@ -309,7 +309,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="netsal" name="netsal" [(ngModel)]="netSalary"
+          <input type="text" class="form-control" id="netsal" name="netsal" [(ngModel)]="netSalary"
             (blur)="validateNetSal()" />
         </div>
         <small *ngIf="netSalError" id="netSalError" class="form-text text-danger"> Please enter a valid monthly net
@@ -325,7 +325,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="income" name="income" [(ngModel)]="rentIncome"
+          <input type="text" class="form-control" id="income" name="income" [(ngModel)]="rentIncome"
             (blur)="validateRentIncome()" />
         </div>
         <small *ngIf="rentError" id="rentError" class="form-text text-danger"> Please enter a valid rent income
@@ -341,7 +341,7 @@
 
             <span class="input-group-text">$</span>
           </div>
-          <input type="number" class="form-control" id="Pension" name="pension" [(ngModel)]="pension"
+          <input type="text" class="form-control" id="Pension" name="pension" [(ngModel)]="pension"
             (blur)="validatePension()" />
         </div>
         <small *ngIf="pensionError" id="pensionError" class="form-text text-danger"> Please enter a valid pension
