@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 
     leadComponent,
       CheckeligibilityComponent,
-      PersonalloanComponent
+      PersonalloanComponent,
+      
 
 
 
