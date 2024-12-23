@@ -1,4 +1,15 @@
 
+<div class="container-fluid py-2 px-5">
+  <div class="register-text d-flex">
+    <p class="text-start py-5">Employee Registration</p>
+    <div class="form-group ml-auto py-2">
+      <label for="photo">Upload Photo:</label>
+      <div class="dropzone" #dropzone>
+        <p>Drag and drop your photo here</p>
+        <p class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></p>
+        <input type="file" name="photo" id="photo" #photo accept="image/*" required>
+      </div>
+
 
 <div class="Container">
     <div class="register-text">
@@ -7,7 +18,8 @@
       <div class="profile-picture" [style.backgroundImage]="'url(' + backgroundImage + ')'">
         <!-- Show upload icon when there's no image -->
         <h1 class="upload-icon" *ngIf="!backgroundImage">
-          <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+          
+         
         </h1>
         
         <!-- Show the uploaded image when there is one -->
@@ -32,23 +44,27 @@
       
     
       
-      
+
     </div>
+    
+    
+  </div>
+  
     <div class="form">
       <form>
         <!-- First Row -->
         <div class="form-row">
           <div class="form-group">
             <label for="id">Employee ID:</label>
-            <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="employee_Id" name="employee_Id">
+            <input type="text" placeholder="Enter Employee ID" id="id" required required   name="employee_Id">
           </div>
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name">
+            <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name" (input)="validateName($event)">
           </div>
           <div class="form-group">
             <label for="email">Email ID:</label>
-            <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID">
+            <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID" (input)="validateEmail($event)">
           </div>
         </div>
 
@@ -74,7 +90,11 @@
         </div>
 
         <!-- Third Row -->
+
+        <div class="form-row3">
+
         <div class="form-row1">
+
           <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required placeholder="Enter Password" [(ngModel)]="passward" name="passward">
@@ -84,6 +104,7 @@
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password" [(ngModel)]="confirm_Passward" name="confirm_Passward">
           </div>
+
 
         </div>
         
@@ -108,7 +129,7 @@
         <div class="button-container">
           <button type="button" (click)="handleCancel()">Cancel</button>
           <button type="button" (click)="handleReset()">Reset</button>
-          <button type="button" (click)="handleAdd()">Add</button>
+          <button type="button" (click)="submitForm()">Add</button>
 
         </div>
       </form>
