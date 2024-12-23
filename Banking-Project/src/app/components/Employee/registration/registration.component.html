@@ -1,4 +1,15 @@
 
+<div class="container-fluid py-2 px-5">
+  <div class="register-text d-flex">
+    <p class="text-start py-5">Employee Registration</p>
+    <div class="form-group ml-auto py-2">
+      <label for="photo">Upload Photo:</label>
+      <div class="dropzone" #dropzone>
+        <p>Drag and drop your photo here</p>
+        <p class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></p>
+        <input type="file" name="photo" id="photo" #photo accept="image/*" required>
+      </div>
+
 
 <div class="Container">
     <div class="register-text">
@@ -33,8 +44,12 @@
       
     
       
-      
+
     </div>
+    
+    
+  </div>
+  
     <div class="form">
       <form>
         <!-- First Row -->
@@ -75,7 +90,11 @@
         </div>
 
         <!-- Third Row -->
+
+        <div class="form-row3">
+
         <div class="form-row1">
+
           <div class="form-group">
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required placeholder="Enter Password" [(ngModel)]="passward" name="passward">
@@ -85,6 +104,7 @@
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" name="confirm-password" id="confirm-password" required placeholder="Confirm Password" [(ngModel)]="confirm_Passward" name="confirm_Passward">
           </div>
+
 
         </div>
         
