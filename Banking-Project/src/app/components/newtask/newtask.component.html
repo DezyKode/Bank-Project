@@ -19,49 +19,29 @@
           <div class="row ">
             <div class="col-md-12">
            <!-- Task Name -->
-           <div class="form-group">
-            <label for="taskType1" class="form-label">
-              <span style="color: red">* </span> Task Type
-            </label>
-          
-            <!-- Dropdown for Task Type -->
-            <select id="taskType1" class="form-control" formControlName="taskType1" (change)="onTaskTypeChange($event)">
-              <option value="" disabled selected>Select Task Type</option>
-              <option *ngFor="let task of tasks" [value]="task.value">
-                {{ task.name }} ({{ task.files }} files)
-              </option>
-            </select>
-          
-            <!-- Display number of files for selected task -->
-            <div *ngIf="selectedTask">
-              <p>You selected: {{ selectedTask.name }} with {{ selectedTask.files }} files.</p>
-            </div>
-          
-            <!-- Nested Dropdown for Sub-task Type based on Task Type selection -->
-            <div *ngIf="selectedTask?.subTasks?.length > 0">
-              <label for="subTaskType" class="form-label">
-                <span style="color: red">* </span> Sub Task Type
-              </label>
-              <select id="subTaskType" class="form-control" formControlName="subTaskType" (change)="onTaskTypeChange($event)">
-                <option value="" disabled selected>Select Sub Task Type</option>
-                <option *ngFor="let subTask of selectedTask.subTasks" [value]="subTask.value">
-                  {{ subTask.name }}
-                </option>
-              </select>
-            </div>
-          
-            <!-- Error Messages for Task Type -->
-            <div *ngIf="taskForm.controls['taskType1'].invalid && taskForm.controls['taskType1'].touched" class="text-danger">
-              <div *ngIf="taskForm.controls['taskType1'].errors?.['required']">Task Type is required</div>
-            </div>
-          
-            <!-- Error Messages for Sub-task Type -->
-            <div *ngIf="taskForm.controls['subTaskType']?.invalid && taskForm.controls['subTaskType']?.touched" class="text-danger">
-              <div *ngIf="taskForm.controls['subTaskType']?.errors?.['required']">Sub Task Type is required</div>
-            </div>
-          </div>
-          
-          
+<div class="form-group">
+  <label for="taskType1" class="form-label">
+    <span style="color: red">* </span> Task Type
+  </label>
+  
+  <!-- Dropdown for Task Type -->
+  <select id="taskType1" class="form-control" formControlName="taskType1" (change)="onTaskTypeChange($event)">
+    <option value="" disabled selected>Select Task Type</option>
+    <option *ngFor="let task of tasks" [value]="task.value">
+      {{ task.name }} ({{ task.files }} files)
+    </option>
+  </select>
+  
+  <!-- Display number of files for selected task -->
+  <div *ngIf="selectedTask">
+    <p>You selected: {{ selectedTask.name }} with {{ selectedTask.files }} files.</p>
+  </div>
+
+  <div *ngIf="taskForm.controls['taskType1'].invalid && taskForm.controls['taskType'].touched" class="text-danger">
+    <div *ngIf="taskForm.controls['taskType1'].errors?.['required']">Task Type is required</div>
+  </div>
+</div>
+
               
               
             </div>
