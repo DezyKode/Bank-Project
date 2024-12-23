@@ -14,6 +14,7 @@ import { NewtaskComponent } from './components/newtask/newtask.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './components/lead/card/card.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     leadComponent,
       CheckeligibilityComponent,
       PersonalloanComponent,
+
 
       NewtaskComponent
 
