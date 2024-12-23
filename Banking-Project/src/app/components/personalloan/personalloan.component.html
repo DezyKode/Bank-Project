@@ -1,516 +1,364 @@
 <form action="" class="container-fluid" id="isFormValid">
-    <h2 class="text-start py-2">Check Eligibility</h2>
-  
-    <!-- Type of Loan -->
-    <div class="row py-2">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="personalLoan" class="form-label"
-            >Type Of Loan <span style="color: red">*</span></label
-          ><br />
-          <select
-            id="personalLoan"
-            class="form-control mt-2"
-            aria-label="Type Of Loan"
-            required
-            [(ngModel)]="personalLoan"
-            name="personalLoan"
-            (change)="validateForm()"
-          >
-            <option value="">Select loan type</option>
-            <option value="personal">Personal Loan</option>
-            <option value="home">Home Loan</option>
-            <option value="auto">Auto Loan</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
+  <h2 class="text-start py-2">Check Eligibility</h2>
+
+  <!-- Type of Loan -->
+  <div class="row py-2">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="personalLoan" class="form-label">Type Of Loan <span style="color: red">*</span></label><br />
+        <select id="personalLoan" class="form-control mt-2" aria-label="Type Of Loan" required
+          [(ngModel)]="personalLoan" name="personalLoan" (change)="validateForm()">
+          <option value="">Select loan type</option>
+          <option value="personal">Personal Loan</option>
+          <option value="home">Home Loan</option>
+          <option value="auto">Auto Loan</option>
+          <option value="other">Other</option>
+        </select>
       </div>
     </div>
-  
-    <!-- Primary Applicant -->
-    <div class="row py-2">
-      <div class="col-md-12">
-        <div class="form-group">
-          <div class="row py-2">
-            <a href="" class="text-decoration-none">Primary Applicant</a>
-            <hr
-              style="
+  </div>
+
+  <!-- Primary Applicant -->
+  <div class="row py-2">
+    <div class="col-md-12">
+      <div class="form-group">
+        <div class="row py-2">
+          <a href="" class="text-decoration-none">Primary Applicant</a>
+          <hr style="
                 border-top: 1px solid grey;
                 margin-top: 10px;
                 margin-bottom: 10px;
-              "
-            />
+              " />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applicant Data -->
+  <div class="row py-2">
+    <!-- 1st column -->
+    <div class="col-md-4">
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName" class="form-label">First Name (Name As Per Pan) <span style="color: red">*</span></label>
+        <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required
+          [(ngModel)]="firstName" name="firstName" pattern="^[A-Za-z\s]+$" minlength="2" maxlength="50"
+          #firstNameInput="ngModel" />
+        <div *ngIf="firstNameInput.invalid && firstNameInput.touched" class="text-danger">
+          <div *ngIf="firstNameInput.errors?.['required']">
+            First Name is required
+          </div>
+          <div *ngIf="firstNameInput.errors?.['pattern']">
+            Only letters and spaces are allowed
+          </div>
+          <div *ngIf="firstNameInput.errors?.['minlength']">
+            First Name must be at least 2 characters
+          </div>
+          <div *ngIf="firstNameInput.errors?.['maxlength']">
+            First Name cannot exceed 50 characters
+          </div>
+        </div>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="form-group py-2">
+        <label for="dobInput" class="form-label">Date Of Birth <span style="color: red">*</span></label>
+        <input type="date" id="dobInput" class="form-control" required [(ngModel)]="dateOfBirth" name="dateOfBirth" />
+      </div>
+
+      <!-- PAN No -->
+      <div class="form-group py-2">
+        <label for="panNo" class="form-label">Pan No <span style="color: red">*</span></label><br />
+        <input type="text" id="panNo" class="form-control mt-2" required [(ngModel)]="panNo" name="panNo"
+          (ngModelChange)="validatePanNo()" maxlength="10" [pattern]="'^[A-Z]{5}[0-9]{4}[A-Z]{1}$'"
+          title="PAN number must be in the format AAAAA9999A" placeholder="Enter Pan Number" />
+        <div *ngIf="panNo && !isValidPanNo" class="text-danger">
+          Invalid PAN Number. Please Follow The Format: AAAAA9999A
+        </div>
+      </div>
+    </div>
+
+    <!-- 2nd column -->
+    <div class="col-md-4">
+      <!-- Middle Name -->
+      <div class="form-group">
+        <label for="middleName" class="form-label">Middle Name (Name As Per Pan)
+          <span style="color: red">*</span></label>
+        <input type="text" id="middleName" class="form-control" placeholder="Enter your middle name" required
+          [(ngModel)]="middleName" name="middleName" pattern="^[A-Za-z\s]+$" minlength="2" maxlength="50"
+          #middleNameInput="ngModel" />
+        <div *ngIf="middleNameInput.invalid && middleNameInput.touched" class="text-danger">
+          <div *ngIf="middleNameInput.errors?.['required']">
+            Middle Name is required
+          </div>
+          <div *ngIf="middleNameInput.errors?.['pattern']">
+            Only letters and spaces are allowed
+          </div>
+          <div *ngIf="middleNameInput.errors?.['minlength']">
+            Middle Name must be at least 2 characters
+          </div>
+          <div *ngIf="middleNameInput.errors?.['maxlength']">
+            Middle Name cannot exceed 50 characters
+          </div>
+        </div>
+      </div>
+
+      <!-- Email (Read-only) -->
+      <div class="form-group py-2">
+        <label for="emailInput" class="form-label">Email</label>
+        <input type="email" id="emailInput" class="form-control" placeholder="Enter your email" required
+          [(ngModel)]="email" name="email" #emailInput="ngModel" />
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="text-danger">
+          <div *ngIf="emailInput.errors?.['required']">Email is required</div>
+          <div *ngIf="emailInput.errors?.['email']">
+            Please enter a valid email address
+          </div>
+        </div>
+      </div>
+
+      <!-- employment type -->
+
+      <div class="form-group py-2">
+        <label for="empType" class="form-label">employment Type <span style="color: red">*</span></label><br />
+        <select id="empType" class="form-control mt-2" aria-label="employment Type" required [(ngModel)]="empType"
+          name="empType" (change)="validateForm()" #empTypeInput="ngModel">
+          <option value="">Select employment type</option>
+          <option value="Salaried">Salaried</option>
+          <option value="Self Employed">Self Employed</option>
+          <option value="Business Owner">Business Owner</option>
+          <option value="other">Other</option>
+        </select>
+        <div *ngIf="empTypeInput.invalid && empTypeInput.touched" class="text-danger">
+          <div *ngIf="emailInput.errors?.['required']">
+            Employment TYpe is required
           </div>
         </div>
       </div>
     </div>
-  
-    <!-- Applicant Data -->
-    <div class="row py-2">
-      <!-- 1st column -->
-      <div class="col-md-4">
-        <!-- First Name -->
-        <div class="form-group">
-          <label for="firstName" class="form-label"
-            >First Name (Name As Per Pan) <span style="color: red">*</span></label
-          >
-          <input
-            type="text"
-            id="firstName"
-            class="form-control"
-            placeholder="Enter your first name"
-            required
-            [(ngModel)]="firstName"
-            name="firstName"
-            pattern="^[A-Za-z\s]+$"
-            minlength="2"
-            maxlength="50"
-            #firstNameInput="ngModel"
-          />
-          <div
-            *ngIf="firstNameInput.invalid && firstNameInput.touched"
-            class="text-danger"
-          >
-            <div *ngIf="firstNameInput.errors?.['required']">
-              First Name is required
-            </div>
-            <div *ngIf="firstNameInput.errors?.['pattern']">
-              Only letters and spaces are allowed
-            </div>
-            <div *ngIf="firstNameInput.errors?.['minlength']">
-              First Name must be at least 2 characters
-            </div>
-            <div *ngIf="firstNameInput.errors?.['maxlength']">
-              First Name cannot exceed 50 characters
-            </div>
+
+    <!-- 3rd column -->
+    <div class="col-md-4">
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName" class="form-label">Last Name (Name As Per Pan) <span style="color: red">*</span></label>
+        <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required
+          [(ngModel)]="lastName" name="lastName" pattern="^[A-Za-z\s]+$" minlength="2" maxlength="50"
+          #lastNameInput="ngModel" />
+        <div *ngIf="lastNameInput.invalid && lastNameInput.touched" class="text-danger">
+          <div *ngIf="lastNameInput.errors?.['required']">
+            Last Name is required
           </div>
-        </div>
-  
-        <!-- Date of Birth -->
-        <div class="form-group py-2">
-          <label for="dobInput" class="form-label"
-            >Date Of Birth <span style="color: red">*</span></label
-          >
-          <input type="date" id="dobInput" class="form-control" required />
-        </div>
-  
-        <!-- PAN No -->
-        <div class="form-group py-2">
-          <label for="panNo" class="form-label"
-            >Pan No <span style="color: red">*</span></label
-          ><br />
-          <input
-            type="text"
-            id="panNo"
-            class="form-control mt-2"
-            required
-            [(ngModel)]="panNo"
-            name="panNo"
-            (ngModelChange)="validatePanNo()"
-            maxlength="10"
-            [pattern]="'^[A-Z]{5}[0-9]{4}[A-Z]{1}$'"
-            title="PAN number must be in the format AAAAA9999A"
-            placeholder="Enter Pan Number"
-          />
-          <div *ngIf="panNo && !isValidPanNo" class="text-danger">
-            Invalid PAN Number. Please Follow The Format: AAAAA9999A
+          <div *ngIf="lastNameInput.errors?.['pattern']">
+            Only letters and spaces are allowed
+          </div>
+          <div *ngIf="lastNameInput.errors?.['minlength']">
+            Last Name must be at least 2 characters
+          </div>
+          <div *ngIf="lastNameInput.errors?.['maxlength']">
+            Last Name cannot exceed 50 characters
           </div>
         </div>
       </div>
-  
-      <!-- 2nd column -->
-      <div class="col-md-4">
-        <!-- Middle Name -->
-        <div class="form-group">
-          <label for="middleName" class="form-label"
-            >Middle Name (Name As Per Pan)
-            <span style="color: red">*</span></label
-          >
-          <input
-            type="text"
-            id="middleName"
-            class="form-control"
-            placeholder="Enter your middle name"
-            required
-            [(ngModel)]="middleName"
-            name="middleName"
-            pattern="^[A-Za-z\s]+$"
-            minlength="2"
-            maxlength="50"
-            #middleNameInput="ngModel"
-          />
-          <div
-            *ngIf="middleNameInput.invalid && middleNameInput.touched"
-            class="text-danger"
-          >
-            <div *ngIf="middleNameInput.errors?.['required']">
-              Middle Name is required
-            </div>
-            <div *ngIf="middleNameInput.errors?.['pattern']">
-              Only letters and spaces are allowed
-            </div>
-            <div *ngIf="middleNameInput.errors?.['minlength']">
-              Middle Name must be at least 2 characters
-            </div>
-            <div *ngIf="middleNameInput.errors?.['maxlength']">
-              Middle Name cannot exceed 50 characters
-            </div>
-          </div>
-        </div>
-  
-        <!-- Email (Read-only) -->
-        <div class="form-group py-2">
-          <label for="emailInput" class="form-label">Email</label>
-          <input
-            type="email"
-            id="emailInput"
-            class="form-control"
-            placeholder="Enter your email"
-            required
-            [(ngModel)]="email"
-            name="email"
-            #emailInput="ngModel"
-          />
-          <div
-            *ngIf="emailInput.invalid && emailInput.touched"
-            class="text-danger"
-          >
-            <div *ngIf="emailInput.errors?.['required']">Email is required</div>
-            <div *ngIf="emailInput.errors?.['email']">
-              Please enter a valid email address
-            </div>
-          </div>
-        </div>
-  
-        <!-- employment type -->
-  
-        <div class="form-group py-2">
-          <label for="empType" class="form-label"
-            >employment Type <span style="color: red">*</span></label
-          ><br />
-          <select
-            id="empType"
-            class="form-control mt-2"
-            aria-label="employment Type"
-            required
-            [(ngModel)]="empType"
-            name="empType"
-            (change)="validateForm()"
-            #empTypeInput="ngModel"
-          >
-            <option value="">Select employment type</option>
-            <option value="personal">Salaried</option>
-            <option value="home">Self Employed</option>
-            <option value="auto">Business Owner</option>
-            <option value="other">Other</option>
-          </select>
-          <div
-            *ngIf="empTypeInput.invalid && empTypeInput.touched"
-            class="text-danger"
-          >
-            <div *ngIf="emailInput.errors?.['required']">
-              Employment TYpe is required
-            </div>
-          </div>
-        </div>
-      </div>
-  
-      <!-- 3rd column -->
-      <div class="col-md-4">
-        <!-- Last Name -->
-        <div class="form-group">
-          <label for="lastName" class="form-label"
-            >Last Name (Name As Per Pan) <span style="color: red">*</span></label
-          >
-          <input
-            type="text"
-            id="lastName"
-            class="form-control"
-            placeholder="Enter your last name"
-            required
-            [(ngModel)]="lastName"
-            name="lastName"
-            pattern="^[A-Za-z\s]+$"
-            minlength="2"
-            maxlength="50"
-            #lastNameInput="ngModel"
-          />
-          <div
-            *ngIf="lastNameInput.invalid && lastNameInput.touched"
-            class="text-danger"
-          >
-            <div *ngIf="lastNameInput.errors?.['required']">
-              Last Name is required
-            </div>
-            <div *ngIf="lastNameInput.errors?.['pattern']">
-              Only letters and spaces are allowed
-            </div>
-            <div *ngIf="lastNameInput.errors?.['minlength']">
-              Last Name must be at least 2 characters
-            </div>
-            <div *ngIf="lastNameInput.errors?.['maxlength']">
-              Last Name cannot exceed 50 characters
-            </div>
-          </div>
-        </div>
-        <!-- number -->
-        <div class="form-group py-2">
-          <label for="mobile">Mobile <span style="color: red">*</span></label
-          ><br />
-          <input
-            type="tel"
-            id="mobile"
-            class="form-control mt-2"
-            required
-            [(ngModel)]="mobile"
-            name="mobile"
-            (input)="validateMobile()"
-            maxlength="10"
-            pattern="^\d{10}$"
-            #mobileInput="ngModel"
-          />
-          <!-- Show error message if mobile validation fails -->
-          <span
-            *ngIf="mobileInput.invalid && mobileInput.touched"
-            style="color: red; display: block"
-          >
-            Please enter a valid 10-digit mobile number.
-          </span>
-        </div>
+      <!-- number -->
+      <div class="form-group py-2">
+        <label for="mobile">Mobile <span style="color: red">*</span></label><br />
+        <input type="tel" id="mobile" class="form-control mt-2" required [(ngModel)]="mobile" name="mobile"
+          (input)="validateMobile()" maxlength="10" pattern="^\d{10}$" #mobileInput="ngModel" />
+        <!-- Show error message if mobile validation fails -->
+        <span *ngIf="mobileInput.invalid && mobileInput.touched" style="color: red; display: block">
+          Please enter a valid 10-digit mobile number.
+        </span>
       </div>
     </div>
-  
-    <div class="row py-2">
-      <!-- Primary Applicant -->
-      <div class="col-md-12">
-        <div class="form-group">
-          <hr
-            style="
+  </div>
+
+  <div class="row py-2">
+    <!-- Primary Applicant -->
+    <div class="col-md-12">
+      <div class="form-group">
+        <hr style="
               border-top: 1px solid grey;
               margin-top: 10px;
               margin-bottom: 10px;
-            "
-          />
+            " />
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 3rd row data -->
+  <!-- 3rd row data -->
+  <div class="row">
+    <div class="col-md-4">
+      <!-- employer type -->
+      <div class="form-group">
+        <label for="Employer" class="form-label">
+          Employer Type <span style="color: red;">*</span>
+        </label><br />
+        <div class="input-group">
+          <select id="Employer1" class="form-control mt-2" aria-label="Type Of Employment" required
+            [(ngModel)]="Employer1" name="Employer1" (blur)="validateEmployer()" (change)="validateForm()">
+            <option value="">Select Employer Type</option>
+            <option value="salaried">Salaried</option>
+            <option value="selfEmployed">Self-Employed</option>
+            <option value="other">Other</option>
+          </select>
+          <!-- Dropdown icon -->
+          <div class="input-group-append">
+            <i class="fas fa-chevron-down" style="position: absolute; right: 10px; top: 14px;"></i>
+          </div>
+        </div>
+        <!-- Error message for invalid selection -->
+        <div *ngIf="employerError && Employer1 === ''" class="text-danger mt-2">
+          Employment Type is required.
         </div>
       </div>
+      <!-- avg bonus of last three years -->
+      <div class="form-group py-2">
+        <label for="averageBouns" class="form-label">
+          Average Bonus Of Last Three Years <span style="color: red;">*</span>
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" id="averageBouns" name="averageBouns" [(ngModel)]="averageBonus"
+            (blur)="validateBonus()" />
+        </div>
+        <small *ngIf="bonusError" id="bonusError" class="form-text text-danger">Please enter a valid bonus
+          amount</small>
+      </div>
+
+      <!-- future rent income -->
+      <div class="form-group py-2">
+        <label for="futureIncome" class="form-label">
+          Future Rent Income <span style="color: red;">*</span>
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" id="futureIncome" name="futureIncome" [(ngModel)]="futureRent"
+            (blur)="validateFutureRent()" />
+        </div>
+        <small *ngIf="futureRentError" id="futureRentError" class="form-text text-danger">Please enter a valid future
+          rent amount</small>
+      </div>
+
     </div>
-  
-  
-      <!-- 3rd row data -->
-       <!-- 3rd row data -->
-     <div class="row">
-      <div class="col-md-4">
-          <!-- employer type -->
-          <div class="form-group">
-              <label for="Employer" class="form-label">
-                Employer Type <span style="color: red;">*</span>
-              </label><br />
-              <div class="input-group">
-                <select
-                  id="Employer1"
-                  class="form-control mt-2"
-                  aria-label="Type Of Employment"
-                  required
-                  [(ngModel)]="Employer1"
-                  name="Employer1"
-                  (blur)="validateEmployer()"
-                  (change)="validateForm()"
-                >
-                  <option value="">Select Employer Type</option>
-                  <option value="salaried">Salaried</option>
-                  <option value="selfEmployed">Self-Employed</option>
-                  <option value="other">Other</option>
-                </select>
-                <!-- Dropdown icon -->
-                <div class="input-group-append">
-                  <i class="fas fa-chevron-down" style="position: absolute; right: 10px; top: 14px;"></i>
-                </div>
-              </div>
-              <!-- Error message for invalid selection -->
-              <div *ngIf="employerError && Employer1 === ''" class="text-danger mt-2">
-                Employment Type is required.
-              </div>
-            </div>
-            <!-- avg bonus of last three years -->
-             <div class="form-group py-2">
-              <label for="averageBouns" class="form-label">
-                Average Bonus Of Last Three Years <span style="color: red;">*</span>
-              </label>
-              <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-    
-                  <span class="input-group-text">$</span>
-                </div>
-                <input type="text" class="form-control" id="averageBouns" 
-                name="averageBouns"
-                [(ngModel)]="averageBonus"
-                (blur)="validateBonus()"
-                
-                />
-              </div>
-              <small *ngIf="bonusError" id="bonusError" class="form-text text-danger">Please enter a valid bonus amount</small>
-             </div>
-  
-             <!-- future rent income -->
-             <div class="form-group py-2">
-              <label for="futureIncome" class="form-label">
-                Future Rent Income <span style="color: red;">*</span>
-              </label>
-              <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-    
-                  <span class="input-group-text">$</span>
-                </div>
-                <input type="text" class="form-control" id="futureIncome" 
-                name="futureIncome"
-                [(ngModel)]="futureRent"
-                (blur)="validateFutureRent()"
-                
-                />
-              </div>
-              <small *ngIf="futureRentError" id="futureRentError" class="form-text text-danger">Please enter a valid future rent amount</small>
-             </div>
-          
+    <!-- 2nd colum -->
+    <div class="col-md-4">
+      <!-- monthly gross salary -->
+      <div class="form-group py-2">
+        <label for="grossSalary" class="form-label">
+          Monthly Gross Salary <span style="color: red;"> *</span>
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" id="grossSalary" name="grossSalary" [(ngModel)]="monthSalary"
+            (blur)="validateMonthSalary()" />
+        </div>
+        <small *ngIf="grossSalaryError" id="grossSalaryError" class="form-text text-danger">Please enter a valid monthly
+          gross salary</small>
       </div>
-      <!-- 2nd colum -->
-      <div class="col-md-4">
-  <!-- monthly gross salary -->
-  <div class="form-group py-2">
-    <label for="grossSalary" class="form-label">
-      Monthly Gross Salary <span style="color: red;"> *</span>
-    </label>
-    <div class="input-group input-group-sm">
-      <div class="input-group-prepend">
-  
-        <span class="input-group-text">$</span>
+      <!-- avg monthly  incentive of last 6 month -->
+      <div class="form-group py-2">
+        <label for="avgInsentive" class="form-label">
+          Average Monthly Incentive Of last 6 Month<span style="color: red;">*</span>
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" id="avgInsentive" name="avgInsentive" [(ngModel)]="incentive"
+            (blur)="validateIncentive()" />
+        </div>
+        <small *ngIf="incentiveError" id="incentiveError" class="form-text text-danger">Please enter a valid average
+          last 6 month incentive</small>
       </div>
-      <input type="text" class="form-control" id="grossSalary" 
-      name="grossSalary"
-      [(ngModel)]="monthSalary"
-      (blur)="validateMonthSalary()"
-      
-      />
+
+      <!-- loan emi -->
+      <div class="form-group py-2">
+        <label for="loan" class="form-label">
+          Loan EMI (Obligation)<span style="color: red;"> *</span>
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" id="loan" name="loan" [(ngModel)]="loanEmi"
+            (blur)="validateLoanEmi()" />
+        </div>
+        <small *ngIf="loanError" id="loanError" class="form-text text-danger"> Please enter a valid Loan EMI
+          (Obligation)
+        </small>
+      </div>
     </div>
-    <small *ngIf="grossSalaryError" id="grossSalaryError" class="form-text text-danger">Please enter a valid monthly gross salary</small>
-   </div>
-   <!-- avg monthly  incentive of last 6 month -->
-   <div class="form-group py-2">
-    <label for="avgInsentive" class="form-label">
-      Average Monthly Incentive Of last 6 Month<span style="color: red;">*</span>
-    </label>
-    <div class="input-group input-group-sm">
-      <div class="input-group-prepend">
-  
-        <span class="input-group-text">$</span>
-      </div>
-      <input type="text" class="form-control" id="avgInsentive" 
-      name="avgInsentive"
-      [(ngModel)]="incentive"
-      (blur)="validateIncentive()"
-      
-      />
-    </div>
-    <small *ngIf="incentiveError" id="incentiveError" class="form-text text-danger">Please enter a valid average last 6 month incentive</small>
-   </div>
-  
-   <!-- loan emi -->
-   <div class="form-group py-2">
-    <label for="loan" class="form-label">
-    Loan EMI (Obligation)<span style="color: red;"> *</span>
-    </label>
-    <div class="input-group input-group-sm">
-      <div class="input-group-prepend">
-  
-        <span class="input-group-text">$</span>
-      </div>
-      <input type="text" class="form-control" id="loan" 
-      name="loan"
-      [(ngModel)]="loanEmi"
-      (blur)="validateLoanEmi()"
-      
-      />
-    </div>
-    <small *ngIf="loanError" id="loanError" class="form-text text-danger">    Please enter a valid Loan EMI (Obligation)
-    </small>
-   </div>
-      </div>
-  
-      <!-- 3rd colum -->
-      <div class="col-md-4">
-        <!-- monthly net sal -->
-        <div class="form-group py-2">
-          <label for="netsal" class="form-label">
+
+    <!-- 3rd colum -->
+    <div class="col-md-4">
+      <!-- monthly net sal -->
+      <div class="form-group py-2">
+        <label for="netsal" class="form-label">
           Monthly Net Salary <span style="color: red;"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-        
-              <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" id="netsal" 
-            name="netsal"
-            [(ngModel)]="netSalary"
-            (blur)="validateNetSal()"
-            
-            />
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
           </div>
-          <small *ngIf="netSalError" id="netSalError" class="form-text text-danger">    Please enter a valid monthly net salary
-          </small>
-         </div>
-         <!-- rent income -->
-         <div class="form-group py-2">
-          <label for="income" class="form-label">
+          <input type="text" class="form-control" id="netsal" name="netsal" [(ngModel)]="netSalary"
+            (blur)="validateNetSal()" />
+        </div>
+        <small *ngIf="netSalError" id="netSalError" class="form-text text-danger"> Please enter a valid monthly net
+          salary
+        </small>
+      </div>
+      <!-- rent income -->
+      <div class="form-group py-2">
+        <label for="income" class="form-label">
           Rent Income <span style="color: red;"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-        
-              <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" id="income" 
-            name="income"
-            [(ngModel)]="rentIncome"
-            (blur)="validateRentIncome()"
-            
-            />
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
           </div>
-          <small *ngIf="rentError" id="rentError" class="form-text text-danger">    Please enter a valid rent income
-          </small>
-         </div>
-         <!--pension  -->
-         <div class="form-group py-2">
-          <label for="Pension" class="form-label">
+          <input type="text" class="form-control" id="income" name="income" [(ngModel)]="rentIncome"
+            (blur)="validateRentIncome()" />
+        </div>
+        <small *ngIf="rentError" id="rentError" class="form-text text-danger"> Please enter a valid rent income
+        </small>
+      </div>
+      <!--pension  -->
+      <div class="form-group py-2">
+        <label for="Pension" class="form-label">
           Pension <span style="color: red;"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-        
-              <span class="input-group-text">$</span>
-            </div>
-            <input type="text" class="form-control" id="Pension" 
-            name="pension"
-            [(ngModel)]="pension"
-            (blur)="validatePension()"
-            
-            />
+        </label>
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+
+            <span class="input-group-text">$</span>
           </div>
-          <small *ngIf="pensionError" id="pensionError" class="form-text text-danger">    Please enter a valid pension
-          </small>
-         </div>
+          <input type="text" class="form-control" id="Pension" name="pension" [(ngModel)]="pension"
+            (blur)="validatePension()" />
+        </div>
+        <small *ngIf="pensionError" id="pensionError" class="form-text text-danger"> Please enter a valid pension
+        </small>
       </div>
-     </div>
-     <!-- applicant -->
-     <div class="row py-2" >
-      <div class="col-md-12">
-        <a href="" class="text-decoration-none"> <b>+ Add Co-Applicant</b></a>
-      </div>
-     </div>
+    </div>
+  </div>
+  <!-- applicant -->
+  <div class="row py-2">
+    <div class="col-md-12">
+      <a href="" class="text-decoration-none"> <b>+ Add Co-Applicant</b></a>
+    </div>
+  </div>
   <!-- btn -->
   <div class="row py-2">
     <div class="col-md-12">
-      <button class="btn btn-primary" style="float: right;">Check</button>
+      <button type="submit" class="btn btn-primary" style="float: right;" (click)="submitForm()">Check</button>
     </div>
   </div>
-  
-  </form>
-  
+</form>
