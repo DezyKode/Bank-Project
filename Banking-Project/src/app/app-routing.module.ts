@@ -6,6 +6,7 @@ import { RegistrationComponent } from './components/Employee/registration/regist
 import {leadComponent} from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+import {CardComponent} from './components/lead/card/card.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   // {path:'', redirectTo:'login', pathMatch:'full'},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
-  {path:'lead',component:leadComponent}
+  {path:'lead',component:leadComponent},
+  {path:'card',component:CardComponent}
  
 ]
 
