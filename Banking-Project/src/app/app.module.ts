@@ -10,6 +10,7 @@ import { leadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NewtaskComponent } from './components/newtask/newtask.component';
     LoginComponent,
     ManagerLoginComponent,
     RegistrationComponent,
+    NewtaskComponent ,
 
     leadComponent,
       CheckeligibilityComponent,
@@ -30,7 +32,8 @@ import { NewtaskComponent } from './components/newtask/newtask.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule  
+    FormsModule,
+    ReactiveFormsModule   
   ],
   providers: [
     provideClientHydration()
