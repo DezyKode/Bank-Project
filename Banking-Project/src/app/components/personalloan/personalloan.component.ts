@@ -158,5 +158,4 @@ export class PersonalloanComponent {
       alert("Form is not complete")
     }
   }
-
 }

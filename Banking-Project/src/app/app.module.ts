@@ -12,6 +12,7 @@ import { PersonalloanComponent } from './components/personalloan/personalloan.co
 import { NewtaskComponent } from './components/newtask/newtask.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './components/lead/card/card.component';
 
 @NgModule({
   declarations: [
