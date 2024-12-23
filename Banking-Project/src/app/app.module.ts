@@ -9,12 +9,9 @@ import { RegistrationComponent } from './components/Employee/registration/regist
 import { leadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
-
 import { NewtaskComponent } from './components/newtask/newtask.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
-
 
 @NgModule({
   declarations: [
@@ -22,27 +19,17 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ManagerLoginComponent,
     RegistrationComponent,
-    NewtaskComponent ,
-
+    NewtaskComponent,
     leadComponent,
-      CheckeligibilityComponent,
-      PersonalloanComponent,
-
-      NewtaskComponent
-
-
-
-
+    CheckeligibilityComponent,
+    PersonalloanComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
-    ReactiveFormsModule   
-
-    HttpClientModule  
-
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration()
