@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // import { CardComponent } from './components/lead/card/card.component';
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
+import { GraphComponent } from './components/lead/graph/graph.component';
+// import { GraphComponent } from './graph/graph.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,13 +29,16 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
+    GraphComponent,
+    // GraphComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, NgChartsModule
+  
   ],
   providers: [
     provideClientHydration()

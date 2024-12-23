@@ -8,6 +8,7 @@ type TaskType = 'personalLoan' | 'homeLoan' | 'goldLoan' | 'carLoan';
   styleUrls: ['./newtask.component.css']
 })
 export class NewtaskComponent {
+  
 // onTaskTypeChange($event: Event):void {
 // throw new Error('Method not implemented.');
 // }
