@@ -8,6 +8,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
+  overflow-y: hidden;
 }
 
 .Container {
@@ -17,6 +18,8 @@ body {
   align-items: center;
   margin: 20px 0px;
   overflow-x: hidden;
+
+height: auto;
 }
 
 .register-text p {
@@ -35,7 +38,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 1300px;
-  height: 430px;
+  /* height: 430px; */
   margin-left: -10px;
   margin-top: -10px;
 }
@@ -140,8 +143,8 @@ button:nth-child(3):hover {
 
 .profile-picture {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 110px;
   border-radius: 50%;
   background-color: #f0f0f0;
   background-size: cover;
