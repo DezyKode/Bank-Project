@@ -10,6 +10,10 @@ export class RegistrationComponent {
   tempAddress: string = '';  // Temporary address
   permAddress: string = '';  // Permanent address
   isAddressSame: boolean = false;  // Checkbox state
+  Pincode:string=''
+  State:string=''
+  City:string=''
+  permAddress1:String=''
 
   name: string = '';
   email_ID: string = '';
@@ -74,7 +78,7 @@ export class RegistrationComponent {
 
 
   handleAdd(): void {
-    alert('Add button clicked!');
+    
     if (
 
       this.name === ''||
@@ -82,7 +86,8 @@ export class RegistrationComponent {
       this.mobile_No===''||
       this.gender===''|| this.role===''||
       this.passward===''||
-      this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''
+      this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
+      this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''
     
 
      
@@ -95,11 +100,13 @@ export class RegistrationComponent {
       // If any field is empty, show an alert to fill in all the details
       alert('Please fill in all details');
       return; // Stop the function execution if fields are empty
-    }
+    }else{
 
+      
+      alert('Add button clicked!');
 
-
-    // Logging form data before sending
+      
+      // Logging form data before sending
     
     const formData = {
      
@@ -112,11 +119,16 @@ export class RegistrationComponent {
       confirm_Passward: this.confirm_Passward,
       upload_Photo: this.upload_Photo,
       temporary_address: this.tempAddress,
-      permanat_address: this.permAddress
+      permanat_address: this.permAddress,
+      State:this.State,
+      City:this.City,
+      Pincode:this.Pincode,
+      permAddress1: this.permAddress1,
+      
     };
-  
     // Log the form data
     console.log('Form Data:', formData);
+  }
   }
 
   handleCancel(): void {
@@ -125,8 +137,6 @@ export class RegistrationComponent {
 
   handleReset(): void {
     alert('Reset button clicked!');
- 
-
     this.name = '';        // Reset Name
     this.email_ID = '';    // Reset Email ID
     this.mobile_No = '';   // Reset Mobile Number
@@ -136,7 +146,12 @@ export class RegistrationComponent {
     this.confirm_Passward = ''; // Reset Confirm Password
     this.upload_Photo = '';    // Reset uploaded photo URL
     this.tempAddress = '';    // Reset Temporary Address
-    this.permAddress = '';    // Reset Permanent Address
+    this.permAddress = ''; 
+    this.permAddress1=''   // Reset Permanent Address
+
+    this.Pincode=''
+    this.State=''
+    this.City=''
   
     // Reset the background image
     this.backgroundImage = '';
@@ -153,22 +168,71 @@ export class RegistrationComponent {
 
   backgroundImage: string = '';
 
+  isEditMode: boolean = false;  // Flag to trigger file input visibility
   // Function to handle the image upload
   upload(event: any): void {
-    const file = event.target.files[0]; // Get the uploaded file
+    const file = event.target.files[0]; // Get the selected file
+    
     if (file) {
+      // Validate the file size (256KB = 262144 bytes)
+      const maxSize = 256 * 1024; // 256KB in bytes
+      
+      if (file.size > maxSize) {
+        alert('File size exceeds 256KB. Please choose a smaller file.');
+        return; // Stop further processing if file is too large
+      }
+      
+      // Optional: Validate file type (e.g., only images)
+      const allowedTypes = ['image/jpeg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Invalid file type. Please upload a JPG, PNG, or GIF image.');
+        return;
+      }
+      
+      // If validation passes, display the image
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.backgroundImage = e.target.result; // Set the image as the background
+      reader.onload = () => {
+        this.backgroundImage = reader.result as string; // Set the image URL
       };
-      reader.readAsDataURL(file); // Read the file as a data URL
+      reader.readAsDataURL(file); // Convert file to base64 format
     }
   }
 
   // Function to reset the uploaded image
+
+
+  // resetImage(): void {
+  //   const fileInput = document.getElementById('profile') as HTMLInputElement;
+  //   if (fileInput) {
+  //     fileInput.click();  // Open file input dialog to select a new image
+  //   }
+  // }
+
+
+  // backgroundImage: string = 'https://via.placeholder.com/150'; // Default image URL
+
+  // Opens file input dialog to select a new image
   resetImage(): void {
-    this.backgroundImage = ''; // Clear the image
+    const fileInput = document.getElementById('profile') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = ''; // Clear the value to allow re-upload of the same file
+      fileInput.click();    // Open file input dialog
+    }
   }
+
+  // Handles file selection and updates the background image
+  onImageUpload(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.backgroundImage = reader.result as string; // Update the background image
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+ 
 
 
   // validate email
@@ -184,4 +248,39 @@ export class RegistrationComponent {
     // Test if the input matches the email pattern
     this.isValidEmail = emailPattern.test(inputValue);
   }
+
+
+  isFormInvalid(): boolean {
+    return (
+      !this.name ||
+      !this.email_ID ||
+      !this.mobile_No ||
+      !this.gender ||
+      !this.role ||
+      !this.passward ||
+      !this.confirm_Passward ||
+      !this.tempAddress ||
+      !this.permAddress ||
+      !this.isValidEmail || // Ensure email is valid
+      this.passward !== this.confirm_Passward // Ensure passwords match
+    );
+  }
+
+
+  
+  validatePincode(event: any): void {
+    let inputValue = event.target.value;
+  
+    // Allow only numeric characters
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+  
+    // Restrict to exactly 10 digits
+    if (inputValue.length > 6) {
+      inputValue = inputValue.slice(0, 6);
+    }
+  
+    // Update the input field
+    event.target.value = inputValue;
+  }
+  
 }
