@@ -14,6 +14,7 @@ export class RegistrationComponent {
   State:string=''
   City:string=''
   permAddress1:String=''
+  empID:string=''
 
   name: string = '';
   email_ID: string = '';
@@ -37,7 +38,7 @@ export class RegistrationComponent {
 
     console.log('Before validation:', inputValue);
 
-    inputValue = inputValue.replace(/[^0-9]/g, '');
+    // inputValue = inputValue.replace(/[^0-9]/g, '');
 
     if (inputValue.length > 5) {
       inputValue = inputValue.slice(0, 5);
@@ -80,7 +81,7 @@ export class RegistrationComponent {
   handleAdd(): void {
     
     if (
-
+this.empID===''||
       this.name === ''||
       this.email_ID===''||
       this.mobile_No===''||
@@ -109,7 +110,7 @@ export class RegistrationComponent {
       // Logging form data before sending
     
     const formData = {
-     
+     empID:this.empID,
       name: this.name,
       email_ID: this.email_ID,
       mobile_No: this.mobile_No,
@@ -137,6 +138,7 @@ export class RegistrationComponent {
 
   handleReset(): void {
     alert('Reset button clicked!');
+    this.empID=''
     this.name = '';        // Reset Name
     this.email_ID = '';    // Reset Email ID
     this.mobile_No = '';   // Reset Mobile Number

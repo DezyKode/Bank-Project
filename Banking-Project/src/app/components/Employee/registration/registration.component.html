@@ -51,7 +51,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="id">Employee ID:</label>
-          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)">
+          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="empID" name="empID">
         </div>
         <div class="form-group">
           <label for="name">Name:</label>
@@ -122,7 +122,7 @@
           <input type="text" placeholder="City" id="City" required (input)="validateName($event)" [(ngModel)]="City" name="City">
         </div>
         <div class="form-group">
-          <label for="PinCode">PinCode</label>
+          <label for="PinCode">PinCode:</label>
           <input type="text"  id="PinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
         </div>
       </div>
@@ -139,6 +139,22 @@
           <input type="text" placeholder="Permanant Address" id="permAddress" required  [(ngModel)]="permAddress1" name="permAddress1">
         </div>
      
+      </div>
+
+
+      <div class="form-row5">
+        <div class="form-group">
+          <label for="permState">State:</label>
+          <input type="text" placeholder="State" id="permState" required (input)="validateName($event)" [(ngModel)]="State" name="State">
+        </div>
+        <div class="form-group">
+          <label for="permCity">City:</label>
+          <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)" [(ngModel)]="City" name="City">
+        </div>
+        <div class="form-group">
+          <label for="permPinCode">PinCode:</label>
+          <input type="text"  id="permPinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
+        </div>
       </div>
 
 
