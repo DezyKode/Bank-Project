@@ -1,3 +1,4 @@
+
 <div class="Container">
   <div class="register-text">
     <p>Employee Registration</p>
@@ -25,14 +26,12 @@
       <button *ngIf="backgroundImage" class="edit-btn" (click)="resetImage()">
         <img src="https://cdn-icons-png.flaticon.com/128/2951/2951136.png" alt="Edit Icon" />
       </button>
-<<<<<<< HEAD
+
     </div>
 
 
 
 
-
-=======
     
       <!-- Hidden file input -->
       <input
@@ -44,7 +43,7 @@
       />
 
     </div>  
->>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
+
   </div>
   <div class="form">
     <form>
@@ -61,18 +60,48 @@
         </div>
         <div class="form-group">
           <label for="email">Email ID:</label>
-          <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID"
-            (input)="validateEmail($event)">
+
+
+          <input
+            type="email"
+            placeholder="Enter Email"
+            id="email"
+            required
+            [(ngModel)]="email_ID"
+            name="email_ID"
+            (input)="validateEmail($event)"
+            [class.invalid]="!isValidEmail"
+          />
+          <!-- Error message -->
+          <small *ngIf="!isValidEmail" class="error-text">Invalid email format</small>
         </div>
+        
+
       </div>
 
       <!-- Second Row -->
       <div class="form-row">
         <div class="form-group">
           <label for="mobile">Mobile:</label>
-          <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)"
-            [(ngModel)]="mobile_No" name="mobile_No">
+      
+          <input
+            type="text"
+            placeholder="Enter Mobile Number"
+            id="mobile"
+            required
+            (input)="validateNumber($event)"
+            [(ngModel)]="mobile_No"
+            name="mobile_No"
+            [class.invalid]="!isValidMobile"
+          />
+          <!-- Error message -->
+          <small *ngIf="!isValidMobile" class="error-text">
+            Mobile number must be exactly 10 digits.
+          </small>
         </div>
+        
+
+
         <div class="form-group">
           <label for="gender">Gender:</label>
           <select name="gender" id="gender" required [(ngModel)]="gender" name="gender">
@@ -102,26 +131,11 @@
             [(ngModel)]="confirm_Passward" name="confirm_Passward">
         </div>
 
-<<<<<<< HEAD
-      </div>  
 
-      <div class="form-row1">
-        <div class="form-group">
-          <label for="address">Temporary Address:</label>
-          <input type="text" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">
-          <span id="note">Temporary address same as permanant address.</span>
-          <input type="checkbox" class="tick" width="40px" />
-
-
-        </div>
-
-        <div class="form-group">
-          <label for="p-address">Permanant Address:</label>
-          <input type="text" id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress"
-            name="permAddress">
-=======
       </div>
-    
+<strong>
+  <h3 style="margin-top: 13px; margin-bottom: 10px;">Temporary Address: </h3>
+</strong>
       <div class="form-row1">
         <div class="form-group">
           <label for="address">Address Line 1</label>
@@ -132,8 +146,10 @@
 
         <div class="form-group">
           <label for="p-address">Address Line 2</label>
-          <input type="text"  id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress" name="permAddress">
->>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
+
+
+          <input type="text"  id="p-address" placeholder="Permanant Address" [(ngModel)]="tempAddress1" name="permAddress1">
+
         </div>
       </div>
 
@@ -157,11 +173,23 @@
         <input type="checkbox" class="tick"  width="40px" id="tick"/>
         <label id="note" for="tick">Permanant address same as temparary address.</label>
       </div>
-
-      <div class="form-row4">
+<strong>
+  <h3 style="margin-top: 13px; margin-bottom: 10px;">Permanant Address: </h3>
+</strong>
+      <div class="form-row6">
         <div class="form-group">
-          <label for="permAddress">Permanant Address:</label>
-          <input type="text" placeholder="Permanant Address" id="permAddress" required  [(ngModel)]="permAddress1" name="permAddress1">
+          <label for="permAddress">Address Line 1</label>
+          <input type="text" id="permAddress" placeholder="Temporary Address" [(ngModel)]="permAddress" name="tempAddress">  
+          <!-- <span id="note">Temporary address same as permanant address.</span>
+            <input type="checkbox" class="tick"  width="40px"/> -->
+        </div>
+
+        <div class="form-group">
+          <label for="permAddress1">Address Line 2</label>
+
+
+          <input type="text"  id="permAddress1" placeholder="Permanant Address" [(ngModel)]="permAddress1" name="permAddress1">
+
         </div>
      
       </div>
@@ -192,5 +220,5 @@
         <button type="button" (click)="handleAdd()">Add</button>
       </div>
     </form>
-  </div>
-</div>
+    </div>
+

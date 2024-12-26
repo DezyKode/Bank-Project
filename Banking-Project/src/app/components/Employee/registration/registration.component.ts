@@ -28,6 +28,8 @@ export class RegistrationComponent {
   permState:string=''
   permCity:string=''
   permPinCode:string=''
+tempAddress1: any;
+
 
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
@@ -53,23 +55,27 @@ export class RegistrationComponent {
   }
 
   // number valid
+  mobile_No1: string = '';
+  isValidMobile: boolean = true;
 
   validateNumber(event: any): void {
     let inputValue = event.target.value;
-  
+
     // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
-  
+
     // Restrict to exactly 10 digits
     if (inputValue.length > 10) {
       inputValue = inputValue.slice(0, 10);
     }
-  
-    // Update the input field
+
+    // Update the input field and model
+    this.mobile_No1 = inputValue;
+    this.isValidMobile = inputValue.length === 10;
+
+    // Reflect changes in the input field
     event.target.value = inputValue;
   }
-
-
 
 
   // validate Name
@@ -83,6 +89,18 @@ export class RegistrationComponent {
 
 
   handleAdd(): void {
+
+    
+        if (!this.isValidEmail) {
+          alert('Please enter a valid email address.');
+          return; // Stop the function execution if the email is invalid
+        }
+
+    if (!this.isValidMobile || this.mobile_No1.length !== 10) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return; // Stop the function execution if the mobile number is invalid
+    }
+
     
     if (
 this.empID===''||
@@ -91,9 +109,7 @@ this.empID===''||
       this.mobile_No===''||
       this.gender===''|| this.role===''||
       this.passward===''||
-<<<<<<< HEAD
-      this.confirm_Passward===''||this.tempAddress===''||this.permAddress==='' 
-=======
+
       this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
       this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
       this.permState===''|| this.permCity===''||this.permPinCode===''
@@ -104,8 +120,6 @@ this.empID===''||
     
       
 
-
->>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
     ) {
       // If any field is empty, show an alert to fill in all the details
       alert('Please fill in all details');
@@ -128,11 +142,12 @@ this.empID===''||
       passward: this.passward,
       confirm_Passward: this.confirm_Passward,
       upload_Photo: this.upload_Photo,
-      temporary_address: this.tempAddress,
-      permanat_address: this.permAddress,
+      tempAddress: this.tempAddress,
+      tempAddress1:this.tempAddress1,
       State:this.State,
       City:this.City,
       Pincode:this.Pincode,
+      permAddress: this.permAddress,
       permAddress1: this.permAddress1,
       permState:this.permState,
       permCity:this.permCity,
