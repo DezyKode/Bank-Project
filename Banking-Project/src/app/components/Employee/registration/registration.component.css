@@ -208,18 +208,6 @@ button:nth-child(3):hover {
 .edit-btn:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-
-
-
-.invalid {
-  border: 1px solid red;
-}
-
-.error-text {
-  color: red;
-  font-size: 12px;
-}
-
 /* 
 @media (max-width: 768px) {
   .Container {
