@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+// import { log } from 'node:console';
 
 @Component({
   selector: 'app-personalloan',
@@ -7,6 +8,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
   styleUrls: ['./personalloan.component.css']
 })
 export class PersonalloanComponent {
+[x: string]: any;
   personalLoan: string = ''; // Bind to loan type select
   isFormValid: boolean = false; // Form validation flag
   panNo: string = '';
@@ -38,18 +40,95 @@ export class PersonalloanComponent {
   Employer1: string = '';
   employerError: boolean = false; 
   isSuccess: boolean = false;
-
+  dob: string = '';
   emailUsername: string = ''; // Stores the username part of the email
   emailDomain: string = '@gmail.com';
 
+    // Optional custom validation function to check age
+    validateAge() {
+      const age = this.calculateAge(new Date(this.dob));
+      if (age < 18) {
+        return { ageTooYoung: true };  // Custom validation error
+      }
+      return null;  // No validation error
+    }
+  
+    calculateAge(dateOfBirth: Date): number {
+      const today = new Date();
+      let age = today.getFullYear() - dateOfBirth.getFullYear();
+      const month = today.getMonth();
+      if (month < dateOfBirth.getMonth() || (month === dateOfBirth.getMonth() && today.getDate() < dateOfBirth.getDate())) {
+        age--;
+      }
+      return age;
+    }
+  
     // Combine the username and domain dynamically
     get fullEmail(): string {
       return this.emailUsername + this.emailDomain;
     }
+    onReset():void{
+
+      
+      this.emailUsername=''
+      this.personalLoan ='';
+      this.firstName ='';
+      this.dob ='';
+      this.panNo ='';
+      this.middleName ='';
+      this.empType ='';
+      this.lastName ='';
+      this.mobile ='';
+      this.Employer1 ='';
+      this.averageBonus ='';
+      this.futureRent ='';
+      this.monthSalary = '';
+      this.incentive ='';
+      this.loanEmi ='';
+      this.netSalary ='';
+      this.rentIncome ='';
+      this.pension=''; // Show success message;
+      this.isFormValid = false;
+// console.log(this.mobileError);
+
+      alert("reset sucessfully");
+
+
+
+    }
+
+
   // Submit the form and show success message
   onSubmit() {
+    
+    if(!this.mobileError){
+      alert('Plz fill phone number correctlty');
+      return
+    }
     if (this.isFormValid) {
       this.isSuccess = true; // Show success message
+    }
+
+    if (this.emailUsername!==''||
+      this.personalLoan!==''||
+      this.firstName!==''||
+      this.dob!==''||
+      this.panNo!==''||
+      this.middleName!==''||
+      this.empType!==''||
+      this.lastName!==''||
+      this.mobile!==''||
+      this.Employer1!==''||
+      this.averageBonus!==''||
+      this.futureRent!==''||
+      this.monthSalary||
+      this.incentive!==''||
+      this.loanEmi!==''||
+      this.netSalary!==''||
+      this.rentIncome!==''||
+      this.pension!=='')
+    {
+      alert("Form submiited successfully")
     }
   }
 
@@ -107,6 +186,28 @@ blockNonDigits(event: KeyboardEvent): void {
   if (!/\d/.test(charStr)) {
     event.preventDefault(); // Prevent the input of non-numeric characters
   }
+}
+isformInvalid():boolean{
+  return( !this.emailUsername||
+   !this.personalLoan||
+   !this.firstName||
+   !this.dob||
+   !this.panNo||
+   !this.middleName||
+   !this.empType||
+   !this.lastName||
+   !this.mobile||
+   !this.Employer1||
+   !this.averageBonus||
+   !this.futureRent||
+   !this.monthSalary||
+   !this.incentive||
+   !this.loanEmi||
+   !this.netSalary||
+   !this.rentIncome||
+   !this.pension
+  );
+
 }
   // Validate the form to check if required fields are filled
 // Validate the form to check if required fields are filled
