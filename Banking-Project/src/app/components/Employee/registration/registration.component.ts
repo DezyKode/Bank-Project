@@ -25,6 +25,10 @@ export class RegistrationComponent {
   confirm_Passward: string = '';
   upload_Photo: string = '';
 
+  permState:string=''
+  permCity:string=''
+  permPinCode:string=''
+
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
     if (this.isAddressSame) {
@@ -88,7 +92,8 @@ this.empID===''||
       this.gender===''|| this.role===''||
       this.passward===''||
       this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
-      this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''
+      this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
+      this.permState===''|| this.permCity===''||this.permPinCode===''
     
 
      
@@ -125,6 +130,9 @@ this.empID===''||
       City:this.City,
       Pincode:this.Pincode,
       permAddress1: this.permAddress1,
+      permState:this.permState,
+      permCity:this.permCity,
+      permPinCode: this.permPinCode
       
     };
     // Log the form data
@@ -154,6 +162,10 @@ this.empID===''||
     this.Pincode=''
     this.State=''
     this.City=''
+
+    this.permState='',
+    this.permCity='',
+    this.permPinCode=''
   
     // Reset the background image
     this.backgroundImage = '';
