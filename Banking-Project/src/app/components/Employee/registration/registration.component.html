@@ -83,8 +83,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="mobile">Mobile:</label>
-
-
+      
           <input
             type="text"
             placeholder="Enter Mobile Number"
@@ -96,7 +95,9 @@
             [class.invalid]="!isValidMobile"
           />
           <!-- Error message -->
-          <small *ngIf="!isValidMobile" class="error-text">Mobile number must be exactly 10 digits.</small>
+          <small *ngIf="!isValidMobile" class="error-text">
+            Mobile number must be exactly 10 digits.
+          </small>
         </div>
         
 
@@ -132,7 +133,9 @@
 
 
       </div>
-    
+<strong>
+  <h3 style="margin-top: 13px; margin-bottom: 10px;">Temporary Address: </h3>
+</strong>
       <div class="form-row1">
         <div class="form-group">
           <label for="address">Address Line 1</label>
@@ -170,11 +173,23 @@
         <input type="checkbox" class="tick"  width="40px" id="tick"/>
         <label id="note" for="tick">Permanant address same as temparary address.</label>
       </div>
-
-      <div class="form-row4">
+<strong>
+  <h3 style="margin-top: 13px; margin-bottom: 10px;">Permanant Address: </h3>
+</strong>
+      <div class="form-row6">
         <div class="form-group">
-          <label for="permAddress">Permanant Address:</label>
-          <input type="text" placeholder="Permanant Address" id="permAddress" required  [(ngModel)]="permAddress1" name="permAddress1">
+          <label for="permAddress">Address Line 1</label>
+          <input type="text" id="permAddress" placeholder="Temporary Address" [(ngModel)]="permAddress" name="tempAddress">  
+          <!-- <span id="note">Temporary address same as permanant address.</span>
+            <input type="checkbox" class="tick"  width="40px"/> -->
+        </div>
+
+        <div class="form-group">
+          <label for="permAddress1">Address Line 2</label>
+
+
+          <input type="text"  id="permAddress1" placeholder="Permanant Address" [(ngModel)]="permAddress1" name="permAddress1">
+
         </div>
      
       </div>
@@ -205,4 +220,5 @@
         <button type="button" (click)="handleAdd()">Add</button>
       </div>
     </form>
-  </div>
+    </div>
+
