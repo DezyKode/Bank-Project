@@ -1,0 +1,41 @@
+/* nested-dropdown.component.css */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.nested-dropdown {
+  list-style: none;
+  padding-left: 20px;
+  background-color: #e0e0e0;
+}
+
+.nested-dropdown-item {
+  padding: 8px;
+  background-color: #d3d3d3;
+}
+
+.nested-dropdown-item:hover {
+  background-color: #ccc;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: blue;
+}

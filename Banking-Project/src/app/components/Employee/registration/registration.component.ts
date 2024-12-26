@@ -82,15 +82,7 @@ export class RegistrationComponent {
       this.mobile_No===''||
       this.gender===''|| this.role===''||
       this.passward===''||
-      this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''
-    
-
-     
-      
-    
-      
-
-
+      this.confirm_Passward===''||this.tempAddress===''||this.permAddress==='' 
     ) {
       // If any field is empty, show an alert to fill in all the details
       alert('Please fill in all details');
