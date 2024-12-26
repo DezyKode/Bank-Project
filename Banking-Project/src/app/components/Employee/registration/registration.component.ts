@@ -29,7 +29,7 @@ export class RegistrationComponent {
   permCity:string=''
   permPinCode:string=''
 tempAddress1: any;
-isValidMobile: any;
+
 
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
@@ -55,23 +55,27 @@ isValidMobile: any;
   }
 
   // number valid
+  mobile_No1: string = '';
+  isValidMobile: boolean = true;
 
   validateNumber(event: any): void {
     let inputValue = event.target.value;
-  
+
     // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
-  
+
     // Restrict to exactly 10 digits
     if (inputValue.length > 10) {
       inputValue = inputValue.slice(0, 10);
     }
-  
-    // Update the input field
+
+    // Update the input field and model
+    this.mobile_No1 = inputValue;
+    this.isValidMobile = inputValue.length === 10;
+
+    // Reflect changes in the input field
     event.target.value = inputValue;
   }
-
-
 
 
   // validate Name
@@ -85,6 +89,18 @@ isValidMobile: any;
 
 
   handleAdd(): void {
+
+    
+        if (!this.isValidEmail) {
+          alert('Please enter a valid email address.');
+          return; // Stop the function execution if the email is invalid
+        }
+
+    if (!this.isValidMobile || this.mobile_No1.length !== 10) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return; // Stop the function execution if the mobile number is invalid
+    }
+
     
     if (
 this.empID===''||
@@ -126,11 +142,12 @@ this.empID===''||
       passward: this.passward,
       confirm_Passward: this.confirm_Passward,
       upload_Photo: this.upload_Photo,
-      temporary_address: this.tempAddress,
-      permanat_address: this.permAddress,
+      tempAddress: this.tempAddress,
+      tempAddress1:this.tempAddress1,
       State:this.State,
       City:this.City,
       Pincode:this.Pincode,
+      permAddress: this.permAddress,
       permAddress1: this.permAddress1,
       permState:this.permState,
       permCity:this.permCity,
