@@ -145,15 +145,15 @@
       <div class="form-row5">
         <div class="form-group">
           <label for="permState">State:</label>
-          <input type="text" placeholder="State" id="permState" required (input)="validateName($event)" [(ngModel)]="State" name="State">
+          <input type="text" placeholder="State" id="permState" required (input)="validateName($event)" [(ngModel)]="permState" name="permState">
         </div>
         <div class="form-group">
           <label for="permCity">City:</label>
-          <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)" [(ngModel)]="City" name="City">
+          <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)" [(ngModel)]="permCity" name="permCity">
         </div>
         <div class="form-group">
           <label for="permPinCode">PinCode:</label>
-          <input type="text"  id="permPinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
+          <input type="text"  id="permPinCode" required placeholder="PinCode"  [(ngModel)]="permPinCode"  (input)="validatePincode($event)" name="permPinCode">
         </div>
       </div>
 
