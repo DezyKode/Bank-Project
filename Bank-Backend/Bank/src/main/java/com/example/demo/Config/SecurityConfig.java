@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF protection
                 .authorizeHttpRequests(authorizeRequests ->
-                                authorizeRequests
+                                 authorizeRequests
                                         .requestMatchers("/addemployee/**" ).permitAll()
                                         .requestMatchers("/elegibility/**").permitAll()// Public POST requests
 
@@ -30,7 +30,6 @@ public class SecurityConfig {
                         sessionManagement
                                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Use stateless session management
                 );
-
         return http.build();
     }
 

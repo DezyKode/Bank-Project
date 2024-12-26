@@ -13,9 +13,7 @@ export class RegistrationComponent {
   Pincode:string=''
   State:string=''
   City:string=''
-  
   permAddress1:String=''
-
   empID:string=''
 
   name: string = '';
@@ -26,10 +24,10 @@ export class RegistrationComponent {
   passward: string = '';
   confirm_Passward: string = '';
   upload_Photo: string = '';
+
   permState:string=''
   permCity:string=''
   permPinCode:string=''
-  tempAddress1: string | undefined;
 
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
@@ -54,12 +52,8 @@ export class RegistrationComponent {
     console.log('After validation:', inputValue);
   }
 
-  
-
   // number valid
-  mobile_No_mess: string = '';
-  isValidMobile: boolean = true;
-  
+
   validateNumber(event: any): void {
     let inputValue = event.target.value;
   
@@ -71,14 +65,10 @@ export class RegistrationComponent {
       inputValue = inputValue.slice(0, 10);
     }
   
-    // Update the input field and model
+    // Update the input field
     event.target.value = inputValue;
-    this.mobile_No_mess = inputValue;
-  
-    // Validate the mobile number
-    this.isValidMobile = inputValue.length === 10;
   }
-  
+
 
 
 
@@ -93,20 +83,7 @@ export class RegistrationComponent {
 
 
   handleAdd(): void {
-
-
-    if (!this.isValidMobile || this.mobile_No_mess.length !== 10) {
-      alert('Please enter a valid 10-digit mobile number.');
-      return; // Stop the function execution if the mobile number is invalid
-    }
     
-
-     // Check if the email is valid
-  if (!this.isValidEmail) {
-    alert('Please enter a valid email address.');
-    return; // Stop the function execution if the email is invalid
-  }
-  
     if (
 this.empID===''||
       this.name === ''||
@@ -116,7 +93,12 @@ this.empID===''||
       this.passward===''||
       this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
       this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
-      this.permState===''|| this.permCity===''||this.permPinCode===''||this.tempAddress1===''
+      this.permState===''|| this.permCity===''||this.permPinCode===''
+    
+
+     
+      
+    
       
 
 
@@ -143,7 +125,6 @@ this.empID===''||
       confirm_Passward: this.confirm_Passward,
       upload_Photo: this.upload_Photo,
       temporary_address: this.tempAddress,
-      temporary_addressLine2:this.tempAddress1,
       permanat_address: this.permAddress,
       State:this.State,
       City:this.City,
@@ -175,7 +156,6 @@ this.empID===''||
     this.confirm_Passward = ''; // Reset Confirm Password
     this.upload_Photo = '';    // Reset uploaded photo URL
     this.tempAddress = '';    // Reset Temporary Address
-    this.tempAddress1='',
     this.permAddress = ''; 
     this.permAddress1=''   // Reset Permanent Address
 
@@ -269,19 +249,19 @@ this.empID===''||
  
 
 
-//email vali with error message
-  isValidEmail: boolean = true; // Flag to track if email is valid
+  // validate email
 
-validateEmail(event: any): void {
-  const inputValue = event.target.value;
+  isValidEmail: boolean = true;   // Flag to track if email is valid
 
-  // Regular expression for email validation
-  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  validateEmail(event: any): void {
+    const inputValue = event.target.value;
 
-  // Test if the input matches the email pattern
-  this.isValidEmail = emailPattern.test(inputValue);
-}
+    // Regular expression for email validation
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
+    // Test if the input matches the email pattern
+    this.isValidEmail = emailPattern.test(inputValue);
+  }
 
 
   isFormInvalid(): boolean {
