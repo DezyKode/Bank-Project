@@ -17,8 +17,10 @@ import { CardComponent } from './components/lead/card/card.component';
 // import { NgChartsModule } from 'ng2-charts';
 // import { ChartsModule } from 'ng2-charts';  // Correct import for ChartsModule in v3.x+
 
+
 // import { CardComponent } from './components/lead/card/card.component';
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
+
 
 @NgModule({
   declarations: [
