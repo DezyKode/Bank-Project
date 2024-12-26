@@ -8,6 +8,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   color: #333;
+  overflow-y: hidden;
 }
 
 .Container {
@@ -17,6 +18,8 @@ body {
   align-items: center;
   margin: 20px 0px;
   overflow-x: hidden;
+
+height: auto;
 }
 
 .register-text p {
@@ -35,7 +38,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 1300px;
-  height: 430px;
+  /* height: 430px; */
   margin-left: -10px;
   margin-top: -10px;
 }
@@ -52,6 +55,20 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 15px;
+}
+
+.form-row4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.form-row5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 15px;
 }
 
 .form-group {
@@ -125,10 +142,11 @@ button:nth-child(3):hover {
 
 #note {
   margin-top: 10px;
+  padding-left: 10px;
 }
 
 .tick {
-  margin-left: 40px;
+  margin-left: 40x;
   margin-top: -16px;
 }
 
@@ -140,8 +158,8 @@ button:nth-child(3):hover {
 
 .profile-picture {
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 110px;
   border-radius: 50%;
   background-color: #f0f0f0;
   background-size: cover;
@@ -292,7 +310,7 @@ button:nth-child(3):hover {
   .register-text p {
     font-size: 20px;
     text-align: center;
-    margin-left: -20px;
+    margin-left: 4px;
   }
 
   .form-group input,
@@ -310,21 +328,42 @@ button:nth-child(3):hover {
   .form {
     width: 100%;
     height: auto;
-    margin-left: 0;
-    margin-top: 20px;
+    margin-left: 60px;
+    margin-top: 1px;
   }
 
   .profile-picture {
     width: 90px;
     height: 90px;
-    margin-left: 40px;
+    margin-left: 30px;
     padding-left: 20px;
   }
 
   input[type='checkbox'] {
     margin-top: 5px;
-    margin-left: -110px;
+    margin-left: -294px;
   }
+
+  .permAdd_is_sameAs_tempAdd{
+    /* margin-left: 110px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  #note{
+    margin-left: -1px;
+  }
+
+  .form-row5{
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-left: 6px;
+  }
+
+ 
+
+ 
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

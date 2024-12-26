@@ -16,15 +16,35 @@
 
 
       <label for="profile" *ngIf="!backgroundImage">Upload image</label>
+      <!-- <button *ngIf="backgroundImage" class="edit-btn" (click)="resetImage()">
+        <img src="https://cdn-icons-png.flaticon.com/128/2951/2951136.png" alt="Edit Icon" />
+      </button> -->
+
+
+
       <button *ngIf="backgroundImage" class="edit-btn" (click)="resetImage()">
         <img src="https://cdn-icons-png.flaticon.com/128/2951/2951136.png" alt="Edit Icon" />
       </button>
+<<<<<<< HEAD
     </div>
 
 
 
 
 
+=======
+    
+      <!-- Hidden file input -->
+      <input
+        id="profile"
+        type="file"
+        accept="image/*"
+        style="display: none"
+        (change)="onImageUpload($event)"
+      />
+
+    </div>  
+>>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
   </div>
   <div class="form">
     <form>
@@ -32,7 +52,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="id">Employee ID:</label>
-          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)">
+          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="empID" name="empID">
         </div>
         <div class="form-group">
           <label for="name">Name:</label>
@@ -82,6 +102,7 @@
             [(ngModel)]="confirm_Passward" name="confirm_Passward">
         </div>
 
+<<<<<<< HEAD
       </div>  
 
       <div class="form-row1">
@@ -98,8 +119,69 @@
           <label for="p-address">Permanant Address:</label>
           <input type="text" id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress"
             name="permAddress">
+=======
+      </div>
+    
+      <div class="form-row1">
+        <div class="form-group">
+          <label for="address">Address Line 1</label>
+          <input type="text" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">  
+          <!-- <span id="note">Temporary address same as permanant address.</span>
+            <input type="checkbox" class="tick"  width="40px"/> -->
+        </div>
+
+        <div class="form-group">
+          <label for="p-address">Address Line 2</label>
+          <input type="text"  id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress" name="permAddress">
+>>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
         </div>
       </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="State">State:</label>
+          <input type="text" placeholder="State" id="State" required (input)="validateName($event)" [(ngModel)]="State" name="State">
+        </div>
+        <div class="form-group">
+          <label for="City">City:</label>
+          <input type="text" placeholder="City" id="City" required (input)="validateName($event)" [(ngModel)]="City" name="City">
+        </div>
+        <div class="form-group">
+          <label for="PinCode">PinCode:</label>
+          <input type="text"  id="PinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
+        </div>
+      </div>
+
+
+      <div class="permAdd_is_sameAs_tempAdd">
+        <input type="checkbox" class="tick"  width="40px" id="tick"/>
+        <label id="note" for="tick">Permanant address same as temparary address.</label>
+      </div>
+
+      <div class="form-row4">
+        <div class="form-group">
+          <label for="permAddress">Permanant Address:</label>
+          <input type="text" placeholder="Permanant Address" id="permAddress" required  [(ngModel)]="permAddress1" name="permAddress1">
+        </div>
+     
+      </div>
+
+
+      <div class="form-row5">
+        <div class="form-group">
+          <label for="permState">State:</label>
+          <input type="text" placeholder="State" id="permState" required (input)="validateName($event)" [(ngModel)]="State" name="State">
+        </div>
+        <div class="form-group">
+          <label for="permCity">City:</label>
+          <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)" [(ngModel)]="City" name="City">
+        </div>
+        <div class="form-group">
+          <label for="permPinCode">PinCode:</label>
+          <input type="text"  id="permPinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
+        </div>
+      </div>
+
 
 
 
