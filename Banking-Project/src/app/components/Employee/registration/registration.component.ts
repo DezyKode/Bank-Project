@@ -1,36 +1,21 @@
-
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
 import { Component } from '@angular/core';
-import { AddEmpService } from '../../../Service/AddEmployee/add-emp.service';
 
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  styleUrl: './registration.component.css'
 })
-
-export class RegistrationComponent implements OnInit {
-  tempAddress: string = '';  // Temporary address
-  permAddress: string = '';  // Permanent address
-  isAddressSame: boolean = false;  // Checkbox state
-  @ViewChild('dropzone') dropzone: ElementRef | undefined; // Dropzone reference
-  @ViewChild('photo') inputFile: ElementRef | undefined;  // File input reference
-
-  ngOnInit(): void {
-    // The DOM is ready after this point, so you can safely access DOM elements here.
-    this.setupDragAndDrop();
-  }
-
 export class RegistrationComponent {
-
-  constructor(private addEmpServiec: AddEmpService) { }
-
   tempAddress: string = '';  // Temporary address
   permAddress: string = '';  // Permanent address
   isAddressSame: boolean = false;  // Checkbox state
-  employee_Id: number = 0;
+  Pincode:string=''
+  State:string=''
+  City:string=''
+  permAddress1:String=''
+  empID:string=''
+
   name: string = '';
   email_ID: string = '';
   mobile_No: string = '';
@@ -40,21 +25,10 @@ export class RegistrationComponent {
   confirm_Passward: string = '';
   upload_Photo: string = '';
 
-
-
-       // This will hold the input value
-  isValidEmail: boolean = true;   // Flag to track if email is valid
-
-  validateEmail(event: any): void {
-    const inputValue = event.target.value;
-
-    // Regular expression for email validation
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-    // Test if the input matches the email pattern
-    this.isValidEmail = emailPattern.test(inputValue);
-  }
-
+  permState:string=''
+  permCity:string=''
+  permPinCode:string=''
+tempAddress1: any;
 
 
   // Synchronize addresses when checkbox is clicked
@@ -64,56 +38,28 @@ export class RegistrationComponent {
     }
   }
 
-
-  // ID validation
+  // id validation
   validateID(event: any): void {
     let inputValue = event.target.value;
+
     console.log('Before validation:', inputValue);
 
-    inputValue = inputValue.replace(/[^0-9]/g, '');
+    // inputValue = inputValue.replace(/[^0-9]/g, '');
+
     if (inputValue.length > 5) {
       inputValue = inputValue.slice(0, 5);
     }
 
-  // id validation
-  // validateID(event: any): void {
-  //   let inputValue = event.target.value;
+    event.target.value = inputValue;
+    console.log('After validation:', inputValue);
+  }
 
-  //   console.log('Before validation:', inputValue);
+  // number valid
+  mobile_No1: string = '';
+  isValidMobile: boolean = true;
 
-  //   inputValue = inputValue.replace(/[^0-9]/g, '');
-
-  //   if (inputValue.length > 5) {
-  //     inputValue = inputValue.slice(0, 5);
-  //   }
-
-  //   event.target.value = inputValue;
-  //   console.log('After validation:', inputValue);
-  // }
-
-
-  validateName(event: any): void {
-    let inputValue = event.target.value;
-
-    // Remove any non-letter characters (including numbers and special characters)
-    event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
-}
-
-
-
-
-
-
-
-  // Phone number validation
   validateNumber(event: any): void {
     let inputValue = event.target.value;
-
-    inputValue = inputValue.replace(/[^0-9]/g, '');
-    if (inputValue.length > 10) {
-      inputValue = inputValue.slice(0, 10);
-    }
-
 
     // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
@@ -123,36 +69,71 @@ export class RegistrationComponent {
       inputValue = inputValue.slice(0, 10);
     }
 
-    // Update the input field
+    // Update the input field and model
+    this.mobile_No1 = inputValue;
+    this.isValidMobile = inputValue.length === 10;
 
+    // Reflect changes in the input field
     event.target.value = inputValue;
   }
 
+
+  // validate Name
+  validateName(event: any): void {
+    let inputValue = event.target.value;
+
+    // Remove any non-letter characters (including numbers and special characters)
+    event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
+}
+
+
+
   handleAdd(): void {
 
+    
+        if (!this.isValidEmail) {
+          alert('Please enter a valid email address.');
+          return; // Stop the function execution if the email is invalid
+        }
+
+    if (!this.isValidMobile || this.mobile_No1.length !== 10) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return; // Stop the function execution if the mobile number is invalid
+    }
+
+    
     if (
+this.empID===''||
+      this.name === ''||
+      this.email_ID===''||
+      this.mobile_No===''||
+      this.gender===''|| this.role===''||
+      this.passward===''||
 
-      this.name === '' || 
-      this.email_ID === '' || 
-      this.mobile_No === '' || 
-      this.gender === '' || 
-      this.role === ''||
-      this.tempAddress===''
+      this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
+      this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
+      this.permState===''|| this.permCity===''||this.permPinCode===''
+    
+
+     
       
-
+    
+      
 
     ) {
       // If any field is empty, show an alert to fill in all the details
       alert('Please fill in all details');
       return; // Stop the function execution if fields are empty
-    }
+    }else{
 
+      
+      alert('Add button clicked!');
 
-
-    // Logging form data before sending
+      
+      // Logging form data before sending
     
     const formData = {
-      employee_Id: this.employee_Id,
+     empID:this.empID,
       name: this.name,
       email_ID: this.email_ID,
       mobile_No: this.mobile_No,
@@ -161,18 +142,30 @@ export class RegistrationComponent {
       passward: this.passward,
       confirm_Passward: this.confirm_Passward,
       upload_Photo: this.upload_Photo,
-      temporary_address: this.tempAddress,
-      permanat_address: this.permAddress
+      tempAddress: this.tempAddress,
+      tempAddress1:this.tempAddress1,
+      State:this.State,
+      City:this.City,
+      Pincode:this.Pincode,
+      permAddress: this.permAddress,
+      permAddress1: this.permAddress1,
+      permState:this.permState,
+      permCity:this.permCity,
+      permPinCode: this.permPinCode
+      
     };
-  
     // Log the form data
     console.log('Form Data:', formData);
   }
-  
+  }
+
+  handleCancel(): void {
+    alert('Cancel button clicked!');
+  }
 
   handleReset(): void {
     alert('Reset button clicked!');
-    this.employee_Id = 0;  // Reset Employee ID
+    this.empID=''
     this.name = '';        // Reset Name
     this.email_ID = '';    // Reset Email ID
     this.mobile_No = '';   // Reset Mobile Number
@@ -182,7 +175,16 @@ export class RegistrationComponent {
     this.confirm_Passward = ''; // Reset Confirm Password
     this.upload_Photo = '';    // Reset uploaded photo URL
     this.tempAddress = '';    // Reset Temporary Address
-    this.permAddress = '';    // Reset Permanent Address
+    this.permAddress = ''; 
+    this.permAddress1=''   // Reset Permanent Address
+
+    this.Pincode=''
+    this.State=''
+    this.City=''
+
+    this.permState='',
+    this.permCity='',
+    this.permPinCode=''
   
     // Reset the background image
     this.backgroundImage = '';
@@ -196,13 +198,10 @@ export class RegistrationComponent {
     
   }
 
-  handleCancel(): void {
-    alert('cancel button clicked!');
-  }
-
 
   backgroundImage: string = '';
 
+  isEditMode: boolean = false;  // Flag to trigger file input visibility
   // Function to handle the image upload
   upload(event: any): void {
     const file = event.target.files[0]; // Get the selected file
@@ -231,109 +230,90 @@ export class RegistrationComponent {
       reader.readAsDataURL(file); // Convert file to base64 format
     }
   }
-  
 
   // Function to reset the uploaded image
+
+
+  // resetImage(): void {
+  //   const fileInput = document.getElementById('profile') as HTMLInputElement;
+  //   if (fileInput) {
+  //     fileInput.click();  // Open file input dialog to select a new image
+  //   }
+  // }
+
+
+  // backgroundImage: string = 'https://via.placeholder.com/150'; // Default image URL
+
+  // Opens file input dialog to select a new image
   resetImage(): void {
-    this.backgroundImage = ''; // Clear the image
+    const fileInput = document.getElementById('profile') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = ''; // Clear the value to allow re-upload of the same file
+      fileInput.click();    // Open file input dialog
+    }
   }
 
-  // Setup drag-and-drop functionality
-  private setupDragAndDrop(): void {
-    const dropzone = this.dropzone?.nativeElement;
-    const inputFile = this.inputFile?.nativeElement;
+  // Handles file selection and updates the background image
+  onImageUpload(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.backgroundImage = reader.result as string; // Update the background image
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+ 
 
-    // Handle dragover event to prevent default behavior
-    dropzone.addEventListener('dragover', (event: DragEvent) => {
-      event.preventDefault();
-      dropzone.style.backgroundColor = '#e9e9e9'; // Change background on drag over
-    });
 
-    // Handle dragleave event to reset background color
-    dropzone.addEventListener('dragleave', () => {
-      dropzone.style.backgroundColor = '#f9f9f9'; // Reset background color
-    });
+  // validate email
 
-    // Handle drop event
-    dropzone.addEventListener('drop', (event: DragEvent) => {
-      event.preventDefault();
-      dropzone.style.backgroundColor = '#f9f9f9'; // Reset background color
+  isValidEmail: boolean = true;   // Flag to track if email is valid
 
-      const file = event.dataTransfer?.files[0];
-      if (file) {
-        // Check file size (limit to 200KB)
-        if (file.size > 200 * 1024) {
-          alert('File is too large. Please upload an image less than 200KB.');
-          return;
-        }
+  validateEmail(event: any): void {
+    const inputValue = event.target.value;
 
-        // Check if it's an image
-        if (!file.type.startsWith('image/')) {
-          alert('Please upload a valid image file.');
-          return;
-        }
+    // Regular expression for email validation
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-        // Update the file input value to the dropped file
-        inputFile.files = event.dataTransfer.files;
-      }
-    });
-
-    // Open the file picker when the dropzone is clicked
-    dropzone.addEventListener('click', () => {
-      inputFile.click();
-    });
-
-    // Handle file selection from the file input
-    inputFile.addEventListener('change', () => {
-      const file = inputFile.files?.[0];
-      if (file) {
-        // Check file size
-        if (file.size > 200 * 1024) {
-          alert('File is too large. Please upload an image less than 200KB.');
-          return;
-        }
-
-        // Check if it's an image
-        if (!file.type.startsWith('image/')) {
-          alert('Please upload a valid image file.');
-          return;
-        }
-      }
-    });
+    // Test if the input matches the email pattern
+    this.isValidEmail = emailPattern.test(inputValue);
   }
 
-  submitForm(): void {
-    // if (this.isFormValid) {
-    const formData = {
-      employee_Id: this.employee_Id,
-      name: this.name,
-      email_ID: this.email_ID,
-      mobile_No: this.mobile_No,
-      gender: this.gender,
-      role: this.role,
-      passward: this.passward,
-      confirm_Passward: this.confirm_Passward,
-      upload_Photo: this.upload_Photo,
-      temporary_address: this.tempAddress,
-      permanat_address: this.permAddress
 
-    };
-
-    // Call the service to send data to the backend
-    this.addEmpServiec.postEmployee(formData).subscribe({
-      next: (response) => {
-        console.log('Data sent successfully:', response);
-        alert("Data Sent Successfully")
-      },
-      error: (error) => {
-        console.error('Error sending data:', error);
-      }
-    });
-    // } else {
-    //   console.error('Form is not valid');
-    // }
+  isFormInvalid(): boolean {
+    return (
+      !this.name ||
+      !this.email_ID ||
+      !this.mobile_No ||
+      !this.gender ||
+      !this.role ||
+      !this.passward ||
+      !this.confirm_Passward ||
+      !this.tempAddress ||
+      !this.permAddress ||
+      !this.isValidEmail || // Ensure email is valid
+      this.passward !== this.confirm_Passward // Ensure passwords match
+    );
   }
+
 
   
-
+  validatePincode(event: any): void {
+    let inputValue = event.target.value;
+  
+    // Allow only numeric characters
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+  
+    // Restrict to exactly 10 digits
+    if (inputValue.length > 6) {
+      inputValue = inputValue.slice(0, 6);
+    }
+  
+    // Update the input field
+    event.target.value = inputValue;
+  }
+  
 }

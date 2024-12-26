@@ -3,12 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-lead',
   templateUrl: './lead.component.html',
-  styleUrl: './lead.component.css'
+  styleUrls: ['./lead.component.css'] // Corrected property name
 })
-export class leadComponent {
- 
-  
-
+export class LeadComponent {
   // Data for lead sources
   leadSourceData = [
     { name: 'Walking', value: 0 },
@@ -22,6 +19,8 @@ export class leadComponent {
     { name: 'John Doe', totalLeads: 0, leadGenerating: 0, leadProcessing: 0 },
     { name: 'Jane Smith', totalLeads: 0, leadGenerating: 0, leadProcessing: 0 }
   ];
+
+  // Data for overview cards
   overviewCards = [
     {
       title: 'Users',
@@ -43,7 +42,28 @@ export class leadComponent {
       color: 'text-purple-500',
       icon: 'fas fa-dollar-sign',
       iconColor: 'text-green-500'
+    }, { title: 'Follow-ups', value: 25, color: 'text-yellow-600',icon: 'fas fa-check-circle',
+      iconColor: 'text-blue-500' },
+    { title: 'Closed Leads', value: 40, color: 'text-red-600',icon: 'fas fa-check-circle',
+      iconColor: 'text-blue-500' },
+    { title: 'Pending Leads', value: 15, color: 'text-gray-600' },
+  ];
+
+  // Data for secondary overview cards (if needed)
+  secondOverviewCards = [
+    {
+      title: 'Leads Processed',
+      value: 50,
+      color: 'text-blue-500',
+      icon: 'fas fa-check-circle',
+      iconColor: 'text-blue-500'
+    },
+    {
+      title: 'Revenue',
+      value: '$800',
+      color: 'text-purple-500',
+      icon: 'fas fa-dollar-sign',
+      iconColor: 'text-green-500'
     }
   ];
-  
 }

@@ -152,7 +152,6 @@ dateOfBirth: any;
     } else {
       // console.error('Form is not valid');
       alert("Form is not complete")
-    }
+    } 
   }
-
 }
