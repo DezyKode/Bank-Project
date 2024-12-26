@@ -28,6 +28,8 @@ export class RegistrationComponent {
   permState:string=''
   permCity:string=''
   permPinCode:string=''
+tempAddress1: any;
+isValidMobile: any;
 
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
@@ -91,9 +93,7 @@ this.empID===''||
       this.mobile_No===''||
       this.gender===''|| this.role===''||
       this.passward===''||
-<<<<<<< HEAD
-      this.confirm_Passward===''||this.tempAddress===''||this.permAddress==='' 
-=======
+
       this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
       this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
       this.permState===''|| this.permCity===''||this.permPinCode===''
@@ -104,8 +104,6 @@ this.empID===''||
     
       
 
-
->>>>>>> 87ffee3aa0651cd3c10cb04c795af6b20592cfd7
     ) {
       // If any field is empty, show an alert to fill in all the details
       alert('Please fill in all details');
