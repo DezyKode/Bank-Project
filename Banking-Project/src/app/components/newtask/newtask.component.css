@@ -67,3 +67,159 @@
   border: none;
   font-size: 40px;
 }
+/* nested-dropdown.component.css */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+/* nested-dropdown.component.css */
+.dropdown {
+  display: inline-block;
+  width: 100%;
+  position: relative; 
+}
+.dropdown:hover{
+  border-color: blue;
+}
+ 
+.dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+}
+ 
+.dropdown-item {
+  cursor: pointer;
+  width: 100%; /* Make sure each dropdown item takes full width */
+  padding: 7px;
+  background-color: white;
+  cursor: pointer;
+  border: 1px solid rgb(238, 238, 238);
+  /* border-bottom: 0;  */
+  border-radius: 6px;
+}
+ 
+.nested-dropdown {
+  list-style: none;
+  padding-left: 20px;
+  background-color: white;
+  width: 100%;
+  
+}
+ 
+.nested-dropdown-item {
+  padding: 8px;
+  background-color: rgb(209, 203, 203);
+
+  
+}
+ 
+.nested-dropdown-item:hover {
+  background-color: rgb(231, 228, 228);
+}
+ 
+a {
+  text-decoration: none;
+  color: black;
+}
+ 
+a:hover {
+  color: blue;
+}
+ /* Style the container as a dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Show the dropdown content when the dropdown is hovered or clicked */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style each checkbox option */
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.checkbox-option input {
+  margin-right: 8px;
+}
+/* Styling for the dropdown container */
+.dropdown-check-list {
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+/* Anchor element (the label inside the dropdown) */
+.dropdown-check-list .anchor {
+  padding: 8px;
+  display: block;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  /* border: 1px solid #ccc; */
+  text-align: left;
+}
+
+/* Items list inside the dropdown */
+.items {
+  display: block;
+  padding: 5px;
+  list-style: none;
+  margin: 0;
+  background-color: #fff;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.items li {
+  padding: 5px;
+}
+
+.items li:hover {
+  background-color: #f1f1f1;
+}
+
+.items input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+ 
