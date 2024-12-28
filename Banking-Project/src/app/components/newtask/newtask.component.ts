@@ -27,6 +27,7 @@ export class NewtaskComponent implements OnInit {
 
   ]; // Sample people data
 isModalOpen: any;
+files: any;
 
   
   constructor() {}
@@ -57,14 +58,17 @@ toggleFileDropdown(): void {
 
 // Get the text to display for selected files
 getSelectedFilesText(): string {
+ 
   const selectedFileNames = Object.keys(this.fileSelection).filter(file => this.fileSelection[file]);
   return selectedFileNames.length > 0 ? selectedFileNames.join(', ') : 'Select Files';
 }
 
 // Handles the change in checkbox status
 checkboxStatusChange(file: string): void {
+  debugger;
   if (this.fileSelection[file]) {
     if (this.selectedFileCount < 3) {
+      
       this.selectedFileNames.push(file);
       this.selectedFileCount++;
     } else {

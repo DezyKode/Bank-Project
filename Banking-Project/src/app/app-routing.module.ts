@@ -8,6 +8,7 @@ import { CheckeligibilityComponent } from './components/checkeligibility/checkel
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 
 import { NewtaskComponent } from './components/newtask/newtask.component';
+import { VerificationComponent } from './components/verification/verification.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -17,8 +18,9 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
-
-  {path:'newtask',component:NewtaskComponent}
+  {path:'verification',component:VerificationComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VerificationComponent}
 
  
 ]
