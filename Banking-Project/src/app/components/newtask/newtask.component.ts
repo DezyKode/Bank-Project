@@ -165,5 +165,5 @@ countSelectedFiles: any;
         console.log(`${control} is invalid`);
       }
     }
-  }
+  } 
 }
