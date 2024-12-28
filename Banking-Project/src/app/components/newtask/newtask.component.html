@@ -78,14 +78,25 @@
               
               
               <!-- Display selected files with close button -->
-              <div *ngIf="selectedFileNames.length > 0" class="selected-files-list">
+              <!-- <div *ngIf="selectedFileNames.length > 0" class="selected-files-list">
                 <h5>Selected Files:</h5>
                 <ul>
                   <li *ngFor="let file of selectedFileNames">
                     {{ file }} <button (click)="removeSelectedFile(file)">Close</button>
                   </li>
                 </ul>
+              </div> -->
+
+
+              <div *ngIf="selectedFileNames.length > 0" class="selected-files d-flex" >
+                <h5 class="me-3 text-center" >Selected Files:</h5>
+                <div class="file-item me-2" *ngFor="let file of selectedFileNames">
+                  <span class="me-2">{{ file }}</span>
+                  
+                  <button class="btn btn-sm btn-danger btn-close modal-header" data-bs-dismiss="modal" aria-bs-label="close" (click)="removeSelectedFile(file)"></button>
+                </div>
               </div>
+              
               
               
               
