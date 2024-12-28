@@ -31,6 +31,23 @@ export class RegistrationComponent {
 tempAddress1: any;
 
 
+// passward: string ;
+// confirm_Passward: string;
+showPassword: boolean = false; // Flag to toggle password visibility
+showConfirmPassword: boolean = false; // Flag to toggle confirm password visibility
+
+togglePasswordVisibility(field: string): void {
+  if (field === 'password') {
+    this.showPassword = !this.showPassword;
+    const passwordField = document.getElementById('password') as HTMLInputElement;
+    passwordField.type = this.showPassword ? 'text' : 'password';
+  } else if (field === 'confirm-password') {
+    this.showConfirmPassword = !this.showConfirmPassword;
+    const confirmPasswordField = document.getElementById('confirm-password') as HTMLInputElement;
+    confirmPasswordField.type = this.showConfirmPassword ? 'text' : 'password';
+  }
+}
+
   // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
     if (this.isAddressSame) {

@@ -55,8 +55,9 @@ toggleFileDropdown(): void {
   this.isFileDropdownVisible = !this.isFileDropdownVisible;
 }
 
-// Get the text to display for selected files
+// Get the text to display for selebcted files
 getSelectedFilesText(): string {
+
   const selectedFileNames = Object.keys(this.fileSelection).filter(file => this.fileSelection[file]);
   return selectedFileNames.length > 0 ? selectedFileNames.join(', ') : 'Select Files';
 }
@@ -64,21 +65,26 @@ getSelectedFilesText(): string {
 // Handles the change in checkbox status
 checkboxStatusChange(file: string): void {
   if (this.fileSelection[file]) {
-    if (this.selectedFileCount < 3) {
-      this.selectedFileNames.push(file);
-      this.selectedFileCount++;
-    } else {
-      this.fileSelection[file] = false; // Deselect if more than 3 are selected
-    }
-  } else {
+    // Deselect the file
     const index = this.selectedFileNames.indexOf(file);
     if (index > -1) {
       this.selectedFileNames.splice(index, 1);
       this.selectedFileCount--;
     }
+  } else {
+    // Select the file only if less than 3 are already selected
+    if (this.selectedFileCount < 3) {
+      this.selectedFileNames.push(file);
+      this.selectedFileCount++;
+    } else {
+      alert('You can select only up to 3 files.');
+      return;
+    }
   }
-}
 
+  // Update the checkbox state
+  this.fileSelection[file] = !this.fileSelection[file];
+}
 // Removes a selected file when the 'close' button is clicked
 removeSelectedFile(file: string): void {
   const index = this.selectedFileNames.indexOf(file);

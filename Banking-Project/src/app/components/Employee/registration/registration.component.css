@@ -84,6 +84,7 @@ overflow-x: hidden;
 .form-group {
   display: flex;
   flex-direction: column;
+  
 }
 
 .form-group label {
@@ -389,6 +390,21 @@ button:nth-child(3):hover {
     /* margin-top: 15px; */
   }
 
+
+  .password-container .eye {
+    position: absolute;
+    right: 92px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    
+  }
+  
+
+  
+
  
 
  
@@ -451,5 +467,40 @@ button:nth-child(3):hover {
     padding-left: 20px;
   }
 
+
+    .password-container .eye {
+    position: absolute;
+    right: 92px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    
+  }
+
+  
+}
+.password-container {
+  position: relative;
+ 
+}
+
+.password-container input {
+
+  padding-right: 40px; /* Space for the icon inside the input */
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.password-container .eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
   
 }
