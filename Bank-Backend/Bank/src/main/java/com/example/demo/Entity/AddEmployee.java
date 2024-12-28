@@ -5,153 +5,153 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "employee_details")
 public class AddEmployee {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(name="employee_id")
-	private int Employee_Id;
-	
-	@Column(name="employee_name")
-	private String Name;
-	
-	@Column(name="employee_email")
-	private String Email_ID;
-	
-	@Column(name="mobile_number")
-	private long Mobile_No;
-	
-	@Column(name="employee_gender")
-	private String Gender;
-	
-	@Column(name="employee_role")
-	private String Role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	@Column(name="passward")
-	private String Passward;
-	
-	@Column(name="confirm_passward")
-	private String Confirm_Passward;
-	
-	@Column(name="upload_photo")
-	private String Upload_Photo;
-	
-	@Column(name="temporary_address")
-	private String Temporary_address;
-	
-	@Column(name="permanat_address")
-	private String Permanat_address;
+    @Column(name="employee_id")
+    private int Employee_Id;
 
-	public int getId() {
-		return id;
-	}
+    @Column(name="employee_name")
+    private String Name;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Column(name="employee_email")
+    private String Email_ID;
 
-	public int getEmployee_Id() {
-		return Employee_Id;
-	}
+    @Column(name="mobile_number")
+    private long Mobile_No;
 
-	public void setEmployee_Id(int employee_Id) {
-		Employee_Id = employee_Id;
-	}
+    @Column(name="employee_gender")
+    private String Gender;
 
-	public String getName() {
-		return Name;
-	}
+    @Column(name="employee_role")
+    private String Role;
 
-	public void setName(String name) {
-		Name = name;
-	}
+    @Column(name="password")
+    private String Passward;
 
-	public String getEmail_ID() {
-		return Email_ID;
-	}
+    @Column(name="confirm_password")
+    private String Confirm_Passward;
 
-	public void setEmail_ID(String email_ID) {
-		Email_ID = email_ID;
-	}
+    @Column(name="upload_photo")
+    private String Upload_Photo; 
 
-	public long getMobile_No() {
-		return Mobile_No;
-	}
+    @Column(name="temporary_address")
+    private String Temporary_address;
 
-	public void setMobile_No(long mobile_No) {
-		Mobile_No = mobile_No;
-	}
+    @Column(name="permanent_address")
+    private String Permanent_address;
 
-	public String getGender() {
-		return Gender;
-	}
+    // Getters and Setters
 
-	public void setGender(String gender) {
-		Gender = gender;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getRole() {
-		return Role;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setRole(String role) {
-		Role = role;
-	}
+    public int getEmployee_Id() {
+        return Employee_Id;
+    }
 
-	public String getPassward() {
-		return Passward;
-	}
+    public void setEmployee_Id(int employee_Id) {
+        Employee_Id = employee_Id;
+    }
 
-	public void setPassward(String passward) {
-		Passward = passward;
-	}
+    public String getName() {
+        return Name;
+    }
 
-	public String getConfirm_Passward() {
-		return Confirm_Passward;
-	}
+    public void setName(String name) {
+        Name = name;
+    }
 
-	public void setConfirm_Passward(String confirm_Passward) {
-		Confirm_Passward = confirm_Passward;
-	}
+    public String getEmail_ID() {
+        return Email_ID;
+    }
 
-	public String getUpload_Photo() {
-		return Upload_Photo;
-	}
+    public void setEmail_ID(String email_ID) {
+        Email_ID = email_ID;
+    }
 
-	public void setUpload_Photo(String upload_Photo) {
-		Upload_Photo = upload_Photo;
-	}
+    public long getMobile_No() {
+        return Mobile_No;
+    }
 
-	public String getTemporary_address() {
-		return Temporary_address;
-	}
+    public void setMobile_No(long mobile_No) {
+        Mobile_No = mobile_No;
+    }
 
-	public void setTemporary_address(String temporary_address) {
-		Temporary_address = temporary_address;
-	}
+    public String getGender() {
+        return Gender;
+    }
 
-	public String getPermanat_address() {
-		return Permanat_address;
-	}
+    public void setGender(String gender) {
+        Gender = gender;
+    }
 
-	public void setPermanat_address(String permanat_address) {
-		Permanat_address = permanat_address;
-	}
+    public String getRole() {
+        return Role;
+    }
 
-	@Override
-	public String toString() {
-		return "AddEmployee [id=" + id + ", Employee_Id=" + Employee_Id + ", Name=" + Name + ", Email_ID=" + Email_ID
-				+ ", Mobile_No=" + Mobile_No + ", Gender=" + Gender + ", Role=" + Role + ", Passward=" + Passward
-				+ ", Confirm_Passward=" + Confirm_Passward + ", Upload_Photo=" + Upload_Photo + ", Temporary_address="
-				+ Temporary_address + ", Permanat_address=" + Permanat_address + "]";
-	}
-	
-	
+    public void setRole(String role) {
+        Role = role;
+    }
+
+    public String getPassward() {
+        return Passward;
+    }
+
+    public void setPassward(String passward) {
+        Passward = passward;
+    }
+
+    public String getConfirm_Passward() {
+        return Confirm_Passward;
+    }
+
+    public void setConfirm_Passward(String confirm_Passward) {
+        Confirm_Passward = confirm_Passward;
+    }
+
+    public String getUpload_Photo() {
+        return Upload_Photo;
+    }
+
+    public void setUpload_Photo(String upload_Photo) {
+        Upload_Photo = upload_Photo;
+    }
+
+    public String getTemporary_address() {
+        return Temporary_address;
+    }
+
+    public void setTemporary_address(String temporary_address) {
+        Temporary_address = temporary_address;
+    }
+
+    public String getPermanent_address() {
+        return Permanent_address;
+    }
+
+    public void setPermanent_address(String permanent_address) {
+        Permanent_address = permanent_address;
+    }
+
+    @Override
+    public String toString() {
+        return "AddEmployee [id=" + id + ", Employee_Id=" + Employee_Id + ", Name=" + Name + ", Email_ID=" + Email_ID
+                + ", Mobile_No=" + Mobile_No + ", Gender=" + Gender + ", Role=" + Role + ", Passward=" + Passward
+                + ", Confirm_Passward=" + Confirm_Passward + ", Upload_Photo=" + Upload_Photo + ", Temporary_address="
+                + Temporary_address + ", Permanent_address=" + Permanent_address + "]";
+    }
 }
