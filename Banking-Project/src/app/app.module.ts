@@ -12,7 +12,17 @@ import { PersonalloanComponent } from './components/personalloan/personalloan.co
 import { NewtaskComponent } from './components/newtask/newtask.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+<<<<<<< HEAD
+import { CardComponent } from './components/lead/card/card.component';
+// import { NgChartsModule } from 'ng2-charts';
+// import { ChartsModule } from 'ng2-charts';  // Correct import for ChartsModule in v3.x+
+
+ 
+
 // import { CardComponent } from './components/lead/card/card.component';
+=======
+>>>>>>> fd4e009aca09d13c20048869cbb7790b1faad6b1
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 // import { GraphComponent } from './components/lead/graph/graph.component';
 // import { GraphComponent } from './graph/graph.component';
