@@ -35,9 +35,6 @@
     font-size: 30px;  /* Adjust font size */
     font-weight: bold;
 }
-@media  (min-width:300px) and  (max-width:400px) {
-    #shareBtn{
-        float: left  !important;
-    }
-    
+form{
+    height: 200px;
 }

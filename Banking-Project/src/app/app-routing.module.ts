@@ -8,16 +8,15 @@ import { CheckeligibilityComponent } from './components/checkeligibility/checkel
 // import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
 
-import { VreportComponent } from './components/verification/verification.component';
-
 
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
 
 import { VerificationComponent } from './components/verification/verification.component';
-import { VreportComponent } from './components/vreport/vreport.component';
+
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+import { VreportComponent } from './components/vreport/vreport.component';
 // Define the application routes
 
 
@@ -33,7 +32,6 @@ const routes: Routes = [
 
   // {path:'verification',component:VerificationComponent},
   {path:'newtask',component:NewtaskComponent},
-  {path:'verify',component:VreportComponent}
 
 
 
@@ -41,7 +39,7 @@ const routes: Routes = [
   {path:'empdocuments',component:EmployeeDocumentsComponent},
   {path:'empdoc',component:BrowseempdocumentsComponent},
 
-  {path:'verification',component:VerificationComponent},
+  {path:'verification',component:VerificationComponent  },
 
   {path:'vreport',component:VreportComponent},
   
