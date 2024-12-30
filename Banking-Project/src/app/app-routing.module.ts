@@ -8,6 +8,8 @@ import { CheckeligibilityComponent } from './components/checkeligibility/checkel
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 
 import { NewtaskComponent } from './components/newtask/newtask.component';
+import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
+import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
 
-  {path:'newtask',component:NewtaskComponent}
+  {path:'newtask',component:NewtaskComponent},
+  {path:'empdocuments',component:EmployeeDocumentsComponent},
+  {path:'empdoc',component:BrowseempdocumentsComponent}
 
  
 ]

@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+.container {
+ 
+    padding: 0px 10px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    height: 115px;
+}
+
+.nav-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-1 img {
+    margin-right: 10px;
+    border-radius: 50%; /* Optional for rounded icons */
+}
+
+.nav-1-sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-1-sub img {
+    border-radius: 50%; /* Optional for rounded icons */
+}
+
+.nav-1-sub p {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.nav-2 {
+   display: flex;
+   align-items: center;
+   justify-content: start;
+   padding: 10px 20px;
+   gap: 60px;
+}
+
+.main-content{
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+   
+}
+
+.left-content{
+    /* border: 1px solid rgb(143, 126, 126); */
+    background-color: rgb(197, 224, 233);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 30%;
+    text-align: center;
+}
+
+.left-content p {
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth color transition */
+    padding: 3px 0px;
+ 
+}
+
+.left-content p:hover {
+    color: #007BFF; /* Change color on hover */
+    border-bottom: 3px solid #007BFF; /* Apply a border to the bottom of the <p> */
+    width: 100%; /* Ensure the border spans the full width */
+    background-color: #e7f5ff; 
+   
+}
+
+
+.right-content{
+    border: 1px solid rgb(143, 126, 126);
+ margin-left: 15px;
+    width:70%;
+    height: 500px;
+    
+}
+
+.right-sub-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.right-sub-2{
+    display: flex;
+    align-items: center;
+ 
+    gap: 40px;
+}
+
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #e7ebf0;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .Pri-sec-doc{
+    display: flex;
+  }
+  
+ 
+
+
+
+@media(min-width:360px)and (max-width:670px){
+    .nav-2 {
+        flex-wrap: wrap;
+        gap: 20px; /* Reduce gap for smaller screens */
+    }
+
+    .nav-2 p {
+        font-size: 14px; /* Adjust font size */
+        text-align: left;
+     
+    }
+}
