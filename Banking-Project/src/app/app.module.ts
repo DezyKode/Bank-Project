@@ -23,8 +23,14 @@ import { CardComponent } from './components/lead/card/card.component';
 // import { CardComponent } from './components/lead/card/card.component';
 
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
+
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
+
+import { VerificationComponent } from './components/verification/verification.component';
+import { VreportComponent } from './components/vreport/vreport.component';
+
+
 
 @NgModule({
   declarations: [
@@ -37,15 +43,22 @@ import { BrowseempdocumentsComponent } from './components/browseempdocuments/bro
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
+
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
+
+    VerificationComponent,
+    VreportComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    // NgChartsModule,
+  
   ],
   providers: [
     provideClientHydration()

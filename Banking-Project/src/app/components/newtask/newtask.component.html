@@ -4,6 +4,7 @@
   </div>
 
   <!-- Modal Structure -->
+
   <div
     class="modal fade"
     id="myModal"
@@ -12,6 +13,7 @@
     aria-bs-hidden="true"
     [ngClass]="{ show: showModal }"
   >
+
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- Modal Header -->
@@ -68,13 +70,33 @@
                         type="checkbox"
                         [(ngModel)]="fileSelection[file]"
                         (change)="checkboxStatusChange(file)"
-                        [disabled]="selectedFileCount >= 3 && !fileSelection[file]"
+                        [disabled]="selectedFileCount >3 && !fileSelection[file]"
                       />
-                      {{ file }}
+                      {{ file }} 
+
                     </li>
                   </ul>
                 </div>
               </div>
+              
+              
+              <!-- Display selected files with close button -->
+              <div *ngIf="selectedFileNames.length > 0" class="selected-files-list">
+                <h5>Selected Files:</h5>
+                <ul>
+                  <li *ngFor="let file of selectedFileNames">
+                    {{ file }} <button (click)="removeSelectedFile(file)">Close</button>
+                  </li>
+                </ul>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+
               
               
               <!-- Display selected files with close button -->

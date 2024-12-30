@@ -1,0 +1,139 @@
+<form action="" class="min-vh-100 bg-light "  >
+    <div class="container-fluid  border min-vh-100 bg-white">
+        <div class="row">
+            <div class="col-md-12 p-3 d-md-flex d-sm-block justify-content-between align-items-center">
+                <!-- Left content -->
+                <div class="d-flex justify-content-start">
+                    <a href="" class="verification">
+                        <i class="fa fa-medal me-2 p-3"></i> Verification Reports
+                    </a>
+                </div>
+                
+                <!-- Right content on larger screens, left on smaller screens -->
+                <div class="d-flex justify-content-end order-md-1 order-0">
+                    <button class="btn btn-outline-primary mr-5" id="shareBtn" (click)="checkWebShareAPI()">
+                        <i class="fa fa-share-square me-2"></i> Share
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row p-0  mb-4">
+            <div class="col-md-12">
+                <hr class="verification ">
+            </div>
+        </div>
+        <!--  -->
+        <div class="row  m-4">
+            <div class="col-md-12 ">
+                <!-- <a href="" class=" text-white  primary "> Primary Applicant</a> -->
+                <button class=" text-white p-0 m-0 primary "
+                >Primary Applicant </button>
+            </div>
+        </div>
+<!--  -->
+<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block">
+    <div class="col border p-2  mr-4  ">
+        <label class="pb-2 verification" for=""> Pan Verification</label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+    <div class="col border p-2 ">
+        <label class="pb-2 verification" for=""> Aadhar</label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+</div>
+
+<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block">
+    <div class="col border p-2 mb-1 mr-4">
+
+        <label class="pb-2 verification" for=""> Driving License </label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+    <div class="col border p-2 mb-1 ">
+        <label class="pb-2 verification" for=""> Credit Report </label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+</div>
+
+<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block ">
+    <div class="col border p-2 mb-1  mr-4">
+        <label class="pb-2 verification" for=""> ITR </label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+    <div class="col border p-2 mb-1  ">
+        <label class="pb-2 verification" for=""> GSTIN </label>
+        <br>
+        <button class="btn btn-outline-primary" (click)="openModal()">Fetch</button>
+        <img class="float-right" src=" " alt="" width="100px">
+    </div>
+
+
+
+</div>
+
+<div class="row m-3 justify-content-between p-3  d-md-flex d-sm-block">
+    <div class="col border p-2 mb-1  mr-4">
+        <label class="pb-2 verification" for=""> CIN </label>
+        <br>
+        <button class="btn btn-outline-primary">Fetch</button>
+    </div>
+    <!-- <div class="col border p-2 mb-1  mr-4">
+        
+    </div> -->
+   
+
+
+
+</div>
+ 
+
+
+
+
+    </div>
+
+</form>
+<div class="modal fade" id="fetchModal" tabindex="-1" aria-bs-labelledby="fetchModalLabel" area-bs-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fetchModalLabel">Fetch information</h5>
+                <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <p>loading your information</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                <button type="button" class="btn btn-primary">confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script>
+    // Check if the Web Share API is supported
+    if (navigator.share) {
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            navigator.share({
+                title: 'Share this Content',
+                text: 'Check out this awesome content!',
+                url: 'https://example.com'  // You can replace this URL with any content you'd like to share
+            }).then(() => {
+                console.log('Content shared successfully');
+            }).catch((error) => {
+                console.log('Error sharing content:', error);
+            });
+        });
+    } else {
+        // Fallback if Web Share API is not supported
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            alert('Web Share API is not supported in this browser.');
+        });
+    }
+</script> -->
