@@ -30,7 +30,7 @@ const routes: Routes = [
 
   {path:'newtask',component:NewtaskComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
-  {path:'empdoc',component:BrowseempdocumentsComponent}
+  {path:'empdoc',component:BrowseempdocumentsComponent},
 
   {path:'verification',component:VerificationComponent},
 
