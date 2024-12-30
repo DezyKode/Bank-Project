@@ -7,10 +7,16 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 // import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
+
+import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
+import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
+
+
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 // Define the application routes
+
 const routes: Routes = [
 
   {path:'login',component:LoginComponent},
@@ -20,14 +26,21 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
-  {path:'verification',component:VerificationComponent},
+
+
   {path:'newtask',component:NewtaskComponent},
+  {path:'empdocuments',component:EmployeeDocumentsComponent},
+  {path:'empdoc',component:BrowseempdocumentsComponent}
+
+  {path:'verification',component:VerificationComponent},
+
   {path:'vreport',component:VreportComponent},
   
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
     // {path:'vreport',component:VreportComponent},
   ]}
+
  
 ]
 
