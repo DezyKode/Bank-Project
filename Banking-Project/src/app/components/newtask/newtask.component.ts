@@ -6,10 +6,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './newtask.component.html',
   styleUrls: ['./newtask.component.css'],
 })
+
 export class NewtaskComponent implements OnInit {
   taskForm!: FormGroup;
   showModal: boolean = false; // Flag to show modal visibility
   taskAdded: boolean | undefined;
+
   assign: string = '';
   selectedPerson: string = '';
   selectedFiles: string[] = [];
@@ -123,7 +125,9 @@ removeSelectedFile(file: string): void {
     alert('Task added successfully!');
     console.log('Form submitted successfully:', this.taskForm.value);
 
+
     // Reset form after submission
     this.taskForm.reset();
   }
+
 }

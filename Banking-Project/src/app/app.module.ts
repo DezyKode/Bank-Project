@@ -26,6 +26,7 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,13 +40,16 @@ import { VreportComponent } from './components/vreport/vreport.component';
     LeadComponent,
     VerificationComponent,
     VreportComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, 
+    // NgChartsModule,
+  
   ],
   providers: [
     provideClientHydration()

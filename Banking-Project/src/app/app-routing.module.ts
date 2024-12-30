@@ -3,15 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/Admin/login/login.component';
 import { ManagerLoginComponent } from './components/Maneger/maneger-login/manager-login.component';
 import { RegistrationComponent } from './components/Employee/registration/registration.component';
-import {LeadComponent} from './components/lead/LeadDashboard/lead.component';
+import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
-import { PersonalloanComponent } from './components/personalloan/personalloan.component';
-
+// import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
-
+import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+// Define the application routes
 const routes: Routes = [
+
   {path:'login',component:LoginComponent},
   // {path:'', redirectTo:'login', pathMatch:'full'},
   {path:'managerlogin',component:ManagerLoginComponent},
@@ -31,7 +32,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)], // Ensure the RouterModule is initialized with routes
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
