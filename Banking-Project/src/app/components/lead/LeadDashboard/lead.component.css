@@ -1,3 +1,4 @@
+
 .login {
     height: 20px;
     width: 20px;
@@ -48,3 +49,437 @@
     margin: 5px 0 0;
     font-size: 14px;
 }
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.leaderboard {
+    width: 30%;
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 20px;
+}
+
+.sales-potential,
+.employee-statistics {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.sales-potential canvas {
+    width: 80%;
+    height: 200px;
+}
+
+.employee-statistics table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-statistics table th,
+.employee-statistics table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.employee-statistics table th {
+    background-color: #f2f2f2;
+}
+
+.leaderboard {
+    width: 60%;
+    max-height: 670px;
+    /* Adjust the height as per requirement */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.leader-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leader-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leader-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ccc;
+    /* Optional border */
+}
+
+.leader-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.leader-details span:first-child {
+    font-weight: bold;
+}
+
+.leader-details span:last-child {
+    color: #777;
+}
+
+.leaderboard {
+    width: 100%;
+    height: 200%;
+    /* Full width */
+    max-width: 800px;
+    /* Optional: Adjust width */
+    margin: 0 auto;
+    /* Center the leaderboard */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.leader-list {
+    max-height: 600px;
+    height: 100%;
+    /* Adjust the height as needed */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    padding: 10px;
+}
+
+.leader-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.leader-item:last-child {
+    border-bottom: none;
+}
+
+.leader-avatar {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.leader-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.leader-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.leader-amount {
+    font-size: 14px;
+    color: #555;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+}
+
+    .login {
+        height: 20px;
+        width: 20px;
+    }
+    
+    .lead-div {
+        float: start;
+    }
+    
+    .btn-tabs {
+        float: end;
+    }
+    
+    .custom-card {
+        max-width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .custom-icon {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #e0f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        color: #007bff;
+    }
+    
+    .card-content {
+        margin-left: 15px;
+    }
+    
+    .card-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .card-text {
+        margin: 5px 0 0;
+        font-size: 14px;
+    }
+    
+    .dashboard-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .leaderboard {
+        width: 30%;
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        height: 100vh;
+    }
+    
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        gap: 20px;
+    }
+    
+    .sales-potential,
+    .employee-statistics {
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .sales-potential canvas {
+        width: 80%;
+        height: 200px;
+    }
+    
+    .employee-statistics table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .employee-statistics table th,
+    .employee-statistics table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    .employee-statistics table th {
+        background-color: #f2f2f2;
+    }
+    
+    .leaderboard {
+        width: 60%;
+        max-height: 670px;
+        /* Adjust the height as per requirement */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .leader-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .leader-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .leader-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #ccc;
+        /* Optional border */
+    }
+    
+    .leader-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .leader-details {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .leader-details span:first-child {
+        font-weight: bold;
+    }
+    
+    .leader-details span:last-child {
+        color: #777;
+    }
+    
+    .leaderboard {
+        width: 100%;
+        height: 200%;
+        /* Full width */
+        max-width: 800px;
+        /* Optional: Adjust width */
+        margin: 0 auto;
+        /* Center the leaderboard */
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    
+    .leaderboard-header {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        padding: 10px 15px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 1;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .leader-list {
+        max-height: 600px;
+        height: 100%;
+        /* Adjust the height as needed */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        padding: 10px;
+    }
+    
+    .leader-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .leader-item:last-child {
+        border-bottom: none;
+    }
+    
+    .leader-avatar {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+    
+    .leader-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .leader-details {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .leader-name {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .leader-amount {
+        font-size: 14px;
+        color: #555;
+    }
+    
+    .main-content {
+        width: 100%;
+        max-width: 800px;
+        overflow: hidden;
+    }
+
