@@ -60,6 +60,7 @@ dateOfBirth: any;
   }
 
   validateMobile():void{
+    debugger;
     const mobileRegex = /^d{10}$/;
     this.mobileError = mobileRegex.test(this.mobile);
     this.validateForm(); // Revalidate the form when mobile number changes

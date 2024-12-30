@@ -31,6 +31,7 @@ const routes: Routes = [
  
 ]
 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)], // Ensure the RouterModule is initialized with routes
   exports: [RouterModule],

@@ -11,7 +11,6 @@ export class NewtaskComponent implements OnInit {
   taskForm!: FormGroup;
   showModal: boolean = false; // Flag to show modal visibility
   taskAdded: boolean | undefined;
-
   assign: string = '';
   selectedPerson: string = '';
   selectedFiles: string[] = [];
@@ -29,6 +28,7 @@ export class NewtaskComponent implements OnInit {
 
   ]; // Sample people data
 isModalOpen: any;
+files: any;
 
   
   constructor() {}
@@ -57,36 +57,33 @@ toggleFileDropdown(): void {
   this.isFileDropdownVisible = !this.isFileDropdownVisible;
 }
 
-// Get the text to display for selebcted files
+// Get the text to display for selected files
 getSelectedFilesText(): string {
-
+ 
   const selectedFileNames = Object.keys(this.fileSelection).filter(file => this.fileSelection[file]);
   return selectedFileNames.length > 0 ? selectedFileNames.join(', ') : 'Select Files';
 }
 
 // Handles the change in checkbox status
 checkboxStatusChange(file: string): void {
+  debugger;
   if (this.fileSelection[file]) {
-    // Deselect the file
+    if (this.selectedFileCount < 3) {
+      
+      this.selectedFileNames.push(file);
+      this.selectedFileCount++;
+    } else {
+      this.fileSelection[file] = false; // Deselect if more than 3 are selected
+    }
+  } else {
     const index = this.selectedFileNames.indexOf(file);
     if (index > -1) {
       this.selectedFileNames.splice(index, 1);
       this.selectedFileCount--;
     }
-  } else {
-    // Select the file only if less than 3 are already selected
-    if (this.selectedFileCount < 3) {
-      this.selectedFileNames.push(file);
-      this.selectedFileCount++;
-    } else {
-      alert('You can select only up to 3 files.');
-      return;
-    }
   }
-
-  // Update the checkbox state
-  this.fileSelection[file] = !this.fileSelection[file];
 }
+
 // Removes a selected file when the 'close' button is clicked
 removeSelectedFile(file: string): void {
   const index = this.selectedFileNames.indexOf(file);
@@ -106,6 +103,7 @@ removeSelectedFile(file: string): void {
     this.showModal = false;
     this.taskForm.reset();
   }
+
 
   // Handle form submission
   onSubmit(): void {
