@@ -1,0 +1,24 @@
+<form action="" class="bg-light vh-100">
+    <div class="container-fluid ">
+        <h1 class=" ml-12 fs-5 fw-bold p-3  "> <i class="fa fa-file-alt me-2"></i> CASE DETAILS</h1>
+        <div class="row justify-content-around">
+            <div class="col-md-3 bg-white">
+                <div class="">
+                    <ul class="list-style-type p-3">
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink="/vreport"> <i class="fa fa-home me-2  p-2 "></i> Overview</a></li>
+                        <li class="p-1 border mb-3 bg-light">  <a routerLink="/personalloan"> <i class="fa fa-cogs me-2 p-2"></i> Application Details</a></li>
+                        <li  class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-credit-card me-2 p-2"></i> Loan Details </a> </li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-university  me-2 p-2"></i> Bank</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-file-alt  me-2 p-2"></i> Documents</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-money-bill-wave me-2 p-2"></i> Loan Offers</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-check-circle me-2 p-2"></i> Verification Reports</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-comments me-2 p-2"></i> Comments</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-7 bg-white">
+                <router-outlet></router-outlet>
+                </div>
+        </div>
+    </div>
+</form>
