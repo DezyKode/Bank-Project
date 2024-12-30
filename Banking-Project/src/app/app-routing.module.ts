@@ -7,19 +7,21 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 // import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
+import { VerificationComponent } from './components/verification/verification.component';
 
 // Define the application routes
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'managerlogin', component: ManagerLoginComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'checkeligibility', component: CheckeligibilityComponent },
-  { path: 'lead', component: LeadComponent },
-  // { path: 'graph', component: GraphComponent },
-  { path: 'newtask', component: NewtaskComponent },
+  {path:'login',component:LoginComponent},
+  // {path:'', redirectTo:'login', pathMatch:'full'},
+  {path:'managerlogin',component:ManagerLoginComponent},
+  {path:'registration',component:RegistrationComponent},
+  {path:'checkeligibility',component:CheckeligibilityComponent},
+  {path:'personalloan',component:PersonalloanComponent},
+  {path:'lead',component:LeadComponent},
+  {path:'verification',component:VerificationComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VerificationComponent}
 
-  // Default route (redirect to login page)
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   // Wildcard route (catch-all for undefined routes)
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
