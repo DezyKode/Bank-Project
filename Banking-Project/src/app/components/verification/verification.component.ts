@@ -2,8 +2,8 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-vreport',
-  templateUrl: './vreport.component.html',
-  styleUrl: './vreport.component.css'
+  templateUrl: './verification.component.html',
+  styleUrl: './verification.component.css'
 })
 export class VreportComponent {
 

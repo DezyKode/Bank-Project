@@ -20,7 +20,7 @@ import { CardComponent } from './components/lead/card/card.component';
 
 // import { CardComponent } from './components/lead/card/card.component';
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
-import { VerificationComponent } from './components/verification/verification.component';
+import { VreportComponent } from './components/verification/verification.component';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { VerificationComponent } from './components/verification/verification.co
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
-    VerificationComponent,
+    VreportComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VreportComponent } from './vreport.component';
+import { VreportComponent } from './verification.component';
 
 describe('VreportComponent', () => {
   let component: VreportComponent;
