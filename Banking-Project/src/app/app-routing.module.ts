@@ -8,6 +8,9 @@ import { CheckeligibilityComponent } from './components/checkeligibility/checkel
 // import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
 
+import { VreportComponent } from './components/verification/verification.component';
+
+
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
@@ -16,6 +19,7 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 // Define the application routes
+
 
 const routes: Routes = [
 
@@ -26,6 +30,11 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
+
+  // {path:'verification',component:VerificationComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent}
+
 
 
   {path:'newtask',component:NewtaskComponent},
@@ -40,6 +49,7 @@ const routes: Routes = [
   {path:'',component:VerificationComponent, children:[
     // {path:'vreport',component:VreportComponent},
   ]}
+
 
  
 ]

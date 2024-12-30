@@ -24,11 +24,14 @@ import { CardComponent } from './components/lead/card/card.component';
 
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 
+import { VreportComponent } from './components/verification/verification.component';
+
+
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
 import { VerificationComponent } from './components/verification/verification.component';
-import { VreportComponent } from './components/vreport/vreport.component';
+
 
 
 
@@ -44,11 +47,15 @@ import { VreportComponent } from './components/vreport/vreport.component';
     PersonalloanComponent,
     LeadComponent,
 
+    VreportComponent,
+
+
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
 
     VerificationComponent,
-    VreportComponent,
+   
+
 
   ],
   imports: [
