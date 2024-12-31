@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
+
+
 
 @Component({
   selector: 'app-lead',
@@ -111,21 +112,22 @@ export class LeadComponent implements AfterViewInit {
   // Bar Chart Initialization
   ngAfterViewInit() {
     const ctx = document.getElementById('salesChart') as HTMLCanvasElement;
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Login', 'Sanction', 'Disbursement'],
-        datasets: [
-          {
-            label: 'Cases',
-            data: [4, 0, 2],
-            backgroundColor: ['#ffcc00', '#ff9900', '#ff6600'],
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-      }
-    });
+    // new Chart(ctx, {
+    //   type: 'bar',
+    //   data: {
+    //     labels: ['Login', 'Sanction', 'Disbursement'],
+    //     datasets: [
+    //       {
+    //         label: 'Cases',
+    //         data: [4, 0, 2],
+    //         backgroundColor: ['#ffcc00', '#ff9900', '#ff6600'],
+    //       }
+    //     ]
+    //   },
+    //   options: {
+    //     responsive: true,
+    //   }
+    // });
   }
+
 }
