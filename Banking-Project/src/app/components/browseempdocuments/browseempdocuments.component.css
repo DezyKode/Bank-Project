@@ -1,0 +1,138 @@
+/* Main Container */
+.container {
+    margin-top: 30px;
+    margin-left: 70px;
+    font-size: large;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    /* overflow-x: hidden;  */
+}
+
+/* Top Section */
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sub-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adds spacing between buttons */
+}
+
+/* Button Styling */
+button {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Adds a pointer on hover */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+button:hover {
+    background-color: #f0f0f0; /* Lighter background on hover */
+}
+
+button img {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Primary and Secondary Applicant Buttons */
+.pri-sec-documents {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px; /* Space between buttons */
+    margin: 20px 0;
+}
+
+.pri-sec-documents button {
+    background-color: #2C2A8C; /* Blue shade */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px; /* Adjusted for tab size */
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 2px solid #2C2A8C; /* Consistent border */
+    margin-bottom: -1px; /* Prevents gap below the tab */
+    position: relative;
+    text-align: center;
+}
+
+.pri-sec-documents button:hover {
+    background-color: #4040c0; /* Slightly darker blue on hover */
+}
+
+/* Content Section */
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.i{
+ display: none;
+}
+.left-content {
+    display: flex;
+    align-items: center;
+    gap: 130px; /* Space between columns */
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between actions */
+}
+
+/* Document Upload Section */
+.upload-documents {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload-documents .left-content {
+    gap: 10px; /* Space between content items */
+}
+
+.upload-documents input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 1250px; /* Fixed width */
+    height: 45px; /* Input height */
+    margin-left: 80px; /* Adjust for alignment */
+}
+
+/* Responsive Design */
+@media (max-width: 760px) {
+    .container {
+        margin: 10px;
+    }
+
+    .content,
+    .upload-documents {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .pri-sec-documents {
+        gap: 15px;
+    }
+
+    .upload-documents .left-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .upload-documents input {
+        width: 100%; /* Responsive width for small screens */
+    }
+}

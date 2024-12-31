@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ElegibilityServiceService } from '../../Service/CheckElegibility/elegibility-service.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-personalloan',
@@ -8,9 +6,6 @@ import { ElegibilityServiceService } from '../../Service/CheckElegibility/elegib
   styleUrls: ['./personalloan.component.css']
 })
 export class PersonalloanComponent {
-
-  constructor(private elegibilityService:ElegibilityServiceService){}
-
   personalLoan: string = ''; // Bind to loan type select
   isFormValid: boolean = false; // Form validation flag
   panNo: string = '';
@@ -41,7 +36,8 @@ export class PersonalloanComponent {
   pensionError:boolean=false;
   Employer1: string = '';
   employerError: boolean = false; 
-  dateOfBirth:String = '';
+dateOfBirth: any;
+  elegibilityService: any;
 
   // Validate the form to check if required fields are filled
   validateForm(): void {
@@ -64,6 +60,7 @@ export class PersonalloanComponent {
   }
 
   validateMobile():void{
+    debugger;
     const mobileRegex = /^d{10}$/;
     this.mobileError = mobileRegex.test(this.mobile);
     this.validateForm(); // Revalidate the form when mobile number changes
@@ -145,17 +142,17 @@ export class PersonalloanComponent {
 
       // Call the service to send data to the backend
       this.elegibilityService.postElegibility(formData).subscribe({
-        next: (response) => {
+        next: (response: any) => {
           console.log('Data sent successfully:', response);
           alert("Data Sent Successfully")
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error sending data:', error);
         }
       });
     } else {
       // console.error('Form is not valid');
       alert("Form is not complete")
-    }
+    } 
   }
 }

@@ -1,0 +1,43 @@
+.verification{
+    font-weight: bold;
+    color: rgb(5, 5, 102);
+    font-size: 20px;
+}
+.btn-outline-primary{
+    color: rgb(5, 5, 102);
+    border:1px solid rgb(5, 5, 102) ;
+    
+}
+.color{
+    background-color:rgb(5, 5, 102) ;
+}
+.primary {
+    position: relative;  /* Allow for positioning of text */
+    border-bottom: 50px solid rgb(5, 5, 102);
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 300px;  /* Adjust width to your preference */
+    text-align: center;  /* Center the text horizontally */
+    line-height: 50px;  /* Center the text vertically */
+    font-size: 20px;  /* Adjust font size */
+    font-weight: bold;
+}
+
+.primary::before {
+    content: '';  /* Create an empty pseudo-element */
+    position: absolute;
+    top: 50%;  /* Position the text vertically */
+    left: 50%;  /* Position it horizontally */
+    transform: translate(-50%, -50%);  /* Center the text */
+    color: white;  /* Text color */
+    font-weight: bold;  /* Make the text bold */
+    font-size: 30px;  /* Adjust font size */
+    font-weight: bold;
+}
+@media  (min-width:300px) and  (max-width:400px) {
+    #shareBtn{
+        float: left  !important;
+    }
+    
+}

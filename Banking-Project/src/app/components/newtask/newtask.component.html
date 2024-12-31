@@ -4,81 +4,156 @@
   </div>
 
   <!-- Modal Structure -->
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" [ngClass]="{ show: showModal }">
+
+  <div
+    class="modal fade"
+    id="myModal"
+    tabindex="-1"
+    aria-labelledby="myModalLabel"
+    aria-bs-hidden="true"
+    [ngClass]="{ show: showModal }"
+  >
+
     <div class="modal-dialog">
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h5 class="modal-title" id="myModalLabel" class="form-label">Create New Task</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close" (click)="closeModal()"></button>
+          <h5 class="modal-title" id="myModalLabel" class="form-label">
+            Create New Task
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-bs-label="Close"
+            (click)="closeModal()"
+          ></button>
         </div>
 
         <!-- Modal Body -->
         <div class="modal-body">
           <!-- Enter Task and Assign To Inline -->
-          <div class="row ">
+          <div class="row">
             <div class="col-md-12">
-           <!-- Task Name -->
-           <div class="form-group">
-            <label for="taskType1" class="form-label">
-              <span style="color: red">* </span> Task Type
-            </label>
-          
-            <!-- Dropdown for Task Type -->
-            <select id="taskType1" class="form-control" formControlName="taskType1" (change)="onTaskTypeChange($event)">
-              <option value="" disabled selected>Select Task Type</option>
-              <option *ngFor="let task of tasks" [value]="task.value">
-                {{ task.name }} ({{ task.files }} files)
-              </option>
-            </select>
-          
-            <!-- Display number of files for selected task -->
-            <div *ngIf="selectedTask">
-              <p>You selected: {{ selectedTask.name }} with {{ selectedTask.files }} files.</p>
-            </div>
-          
-            <!-- Nested Dropdown for Sub-task Type based on Task Type selection -->
-            <div *ngIf="selectedTask?.subTasks?.length > 0">
-              <label for="subTaskType" class="form-label">
-                <span style="color: red">* </span> Sub Task Type
-              </label>
-              <select id="subTaskType" class="form-control" formControlName="subTaskType" (change)="onTaskTypeChange($event)">
-                <option value="" disabled selected>Select Sub Task Type</option>
-                <option *ngFor="let subTask of selectedTask.subTasks" [value]="subTask.value">
-                  {{ subTask.name }}
-                </option>
-              </select>
-            </div>
-          
-            <!-- Error Messages for Task Type -->
-            <div *ngIf="taskForm.controls['taskType1'].invalid && taskForm.controls['taskType1'].touched" class="text-danger">
-              <div *ngIf="taskForm.controls['taskType1'].errors?.['required']">Task Type is required</div>
-            </div>
-          
-            <!-- Error Messages for Sub-task Type -->
-            <div *ngIf="taskForm.controls['subTaskType']?.invalid && taskForm.controls['subTaskType']?.touched" class="text-danger">
-              <div *ngIf="taskForm.controls['subTaskType']?.errors?.['required']">Sub Task Type is required</div>
+              <div class="form-group">
+                <label for="assign" class="form-label">Assign To</label>
+                <select
+                  id="assign"
+                  formControlName="assign"
+                  class="form-control form-select"
+                  name="assign"
+                  [(ngModel)]="assign"
+                  (change)="onAssignChange1()"
+                >
+                  <option value="">Select Name</option>
+                  <option *ngFor="let person of people" [value]="person.key">
+                    {{ person.name }} ({{ person.files.length }} files)
+                  </option>
+                </select>
+              
+                <div *ngIf="taskForm.controls['assign'].invalid && taskForm.controls['assign'].touched" class="text-danger">
+                  Please Select a Person
+                </div>
+              </div>
+              
+              <!-- Files dropdown with checkboxes -->
+              <div *ngIf="selectedPerson">
+                <label for="files" class="form-label">{{ selectedPerson }}'s Files</label>
+              
+                <div class="dropdown-check-list" tabindex="100">
+                  <span class="anchor" (click)="toggleFileDropdown()">
+                    {{ getSelectedFilesText() || 'Select Files' }}
+                  </span>
+                  <ul class="items" *ngIf="isFileDropdownVisible">
+                    <li *ngFor="let file of selectedFiles">
+                      <input
+                        type="checkbox"
+                        [(ngModel)]="fileSelection[file]"
+                        (change)="checkboxStatusChange(file)"
+                        [disabled]="selectedFileCount >3 && !fileSelection[file]"
+                      />
+                      {{ file }} 
+
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              
+              <!-- Display selected files with close button -->
+              <div *ngIf="selectedFileNames.length > 0" class="selected-files-list">
+                <h5>Selected Files:</h5>
+                <ul>
+                  <li *ngFor="let file of selectedFileNames">
+                    {{ file }} <button (click)="removeSelectedFile(file)">Close</button>
+                  </li>
+                </ul>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+
+              
+              
+              <!-- Display selected files with close button -->
+              <!-- <div *ngIf="selectedFileNames.length > 0" class="selected-files-list">
+                <h5>Selected Files:</h5>
+                <ul>
+                  <li *ngFor="let file of selectedFileNames">
+                    {{ file }} <button (click)="removeSelectedFile(file)">Close</button>
+                  </li>
+                </ul>
+              </div> -->
+
+
+              <div *ngIf="selectedFileNames.length > 0" class="selected-files d-flex" >
+                <h5 class="me-3 text-center" >Selected Files:</h5>
+                <div class="file-item me-2" *ngFor="let file of selectedFileNames">
+                  <span class="me-2">{{ file }}</span>
+                  
+                  <button class="btn btn-sm btn-danger btn-close modal-header" data-bs-dismiss="modal" aria-bs-label="close" (click)="removeSelectedFile(file)"></button>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+              
+
             </div>
           </div>
-          
-          
-              
-              
-            </div>
-</div>
-<div class="row">
+          <div class="row">
             <div class="col-md-12">
               <!-- Assign To -->
               <div class="form-group">
                 <label for="assign" class="form-label">Assign To</label>
-                <select id="assign" formControlName="assign" class="form-control">
-                  <option value="">Select Name</option>
+                <select
+                  id="assign"
+                  formControlName="assign"
+                  class="form-control form-select"
+                  name="assign"
+                  [ngModel]="assign"
+                >
+                  <option value="" class="">Select Name</option>
                   <option value="personal">Mohini</option>
                   <option value="home">Shalini</option>
                   <option value="auto">Pratik</option>
                   <option value="other">Bhushan</option>
                 </select>
-                <div *ngIf="taskForm.controls['assign'].invalid && taskForm.controls['assign'].touched" class="text-danger">
+                <div
+                  *ngIf="
+                    taskForm.controls['assign'].invalid &&
+                    taskForm.controls['assign'].touched
+                  "
+                  class="text-danger"
+                >
                   Please Select a Person
                 </div>
               </div>
@@ -89,11 +164,33 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="taskDescription" class="form-label">Task Description</label>
-                <textarea id="taskDescription" formControlName="taskDescription" class="form-control" rows="4" placeholder="Enter task description (min. 10 characters)"></textarea>
-                <div *ngIf="taskForm.controls['taskDescription'].invalid && taskForm.controls['taskDescription'].touched" class="text-danger">
-                  <div *ngIf="taskForm.controls['taskDescription'].errors?.['required']">Description is required</div>
-                  <div *ngIf="taskForm.controls['taskDescription'].errors?.['minlength']">Description must be at least 10 characters</div>
+                <label for="taskDescription" class="form-label"
+                  >Task Description</label
+                >
+                <textarea
+                  id="taskDescription"
+                  formControlName="taskDescription"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Enter task description (min. 10 characters)"
+                ></textarea>
+                <div
+                  *ngIf="
+                    taskForm.controls['taskDescription'].invalid &&
+                    taskForm.controls['taskDescription'].touched
+                  "
+                  class="text-danger"
+                >
+                  <div
+                    *ngIf="taskForm.controls['taskDescription'].errors?.['required']"
+                  >
+                    Description is required
+                  </div>
+                  <div
+                    *ngIf="taskForm.controls['taskDescription'].errors?.['minlength']"
+                  >
+                    Description must be at least 10 characters
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,8 +202,19 @@
               <!-- Due Date -->
               <div class="form-group">
                 <label for="dueDate" class="form-label">Due Date</label>
-                <input type="date" id="dueDate" formControlName="dueDate" class="form-control" />
-                <div *ngIf="taskForm.controls['dueDate'].invalid && taskForm.controls['dueDate'].touched" class="text-danger">
+                <input
+                  type="date"
+                  id="dueDate"
+                  formControlName="dueDate"
+                  class="form-control"
+                />
+                <div
+                  *ngIf="
+                    taskForm.controls['dueDate'].invalid &&
+                    taskForm.controls['dueDate'].touched
+                  "
+                  class="text-danger"
+                >
                   Due date is required
                 </div>
               </div>
@@ -116,13 +224,23 @@
               <!-- Priority -->
               <div class="form-group">
                 <label for="priority" class="form-label">Priority</label>
-                <select id="priority" formControlName="priority" class="form-control">
+                <select
+                  id="priority"
+                  formControlName="priority"
+                  class="form-control"
+                >
                   <option value="">Select Priority</option>
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
                   <option value="high">High</option>
                 </select>
-                <div *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched" class="text-danger">
+                <div
+                  *ngIf="
+                    taskForm.controls['priority'].invalid &&
+                    taskForm.controls['priority'].touched
+                  "
+                  class="text-danger"
+                >
                   Priority is required
                 </div>
               </div>
@@ -149,13 +267,20 @@
               
             </div>
           </div> -->
-
         </div>
 
         <!-- Modal Footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid || !fileUploaded">Add Task</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary"
+          [disabled]="taskForm.invalid"
+          >Add Task</button>
         </div>
       </div>
     </div>
@@ -166,5 +291,3 @@
 <div *ngIf="taskAdded" class="alert alert-success success-popup">
   Task added successfully!
 </div>
-
-
