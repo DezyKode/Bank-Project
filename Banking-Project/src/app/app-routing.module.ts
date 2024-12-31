@@ -20,7 +20,13 @@ import { VreportComponent } from './components/vreport/vreport.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 // Define the application routes
 
+import { NewtaskComponent } from './components/newtask/newtask.component';
+import { OverviewComponent } from './components/casedetails/overview/overview.component';
+import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
+import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
+
+import { BankComponent } from './components/casedetails/bank/bank.component';
 const routes: Routes = [
 
   {path:'login',component:LoginComponent},
@@ -30,6 +36,13 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
+
+  {path:'newtask',component:NewtaskComponent},
+  {path:'Overview',component:OverviewComponent},
+{path:"Application-details",component:AplicationDetailsComponent},
+{path:'loan-details',component:LoanDetailsComponent}
+,{path:"bank",component:BankComponent}
+
 
   // {path:'verification',component:VerificationComponent},
   {path:'newtask',component:NewtaskComponent},
@@ -49,6 +62,7 @@ const routes: Routes = [
   {path:'',component:VerificationComponent, children:[
     // {path:'vreport',component:VreportComponent},
   ]}
+
 
 
  
