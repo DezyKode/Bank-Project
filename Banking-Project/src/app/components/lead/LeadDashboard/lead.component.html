@@ -1,0 +1,98 @@
+<div class="container mx-auto p-6">
+  <!-- Header Section -->
+  <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold text-blue-600 mb-4 md:mb-0">Leads</h1>
+    <div class="flex space-x-2">
+      <button class="border border-gray-300 px-4 py-2 hover:bg-orange-600 text-gray-700 rounded-l-md">
+        Sign In
+      </button>
+      <button class="border border-gray-300 px-4 py-2 hover:bg-orange-600 text-gray-700">
+        Credit Card
+      </button>
+      <button class="border border-gray-300 px-4 py-2 hover:bg-orange-600 text-gray-700 rounded-r-md">
+        Insurance
+      </button>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="flex flex-wrap md:flex-nowrap justify-end items-center space-x-2 mb-6">
+    <button class="border border-gray-300 px-4 py-2 bg-blue-600 text-white hover:bg-blue-400 rounded">
+      + Check Eligibility
+    </button>
+    <button class="border border-gray-300 px-4 py-2 bg-blue-600 text-white hover:bg-blue-400 rounded">
+      View Leads
+    </button>
+    <input
+      type="date"
+      class="border border-gray-300 px-4 py-2 rounded focus:ring-2 focus:ring-blue-600"
+    />
+  </div>
+
+  <!-- Leads Overview -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+    <div
+      *ngFor="let card of overviewCards | slice:0:5"
+      class="bg-white border border-gray-300 shadow-sm p-4 rounded-lg flex items-center text-center"
+    >
+      <div class="custom-icon w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 mr-4">
+        <img src="assets/your-uploaded-image.png" alt="Icon" class="w-10 h-10 object-contain" />
+      </div>
+      <div class="flex flex-col">
+        <div class="text-lg font-semibold text-gray-700 mb-2">{{ card.title }}</div>
+        <div class="text-2xl font-bold" [ngClass]="card.color">{{ card.value }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Sections -->
+  <div class="flex flex-col lg:flex-row gap-6">
+    <!-- Leaderboard -->
+    <div class="leaderboard w-full lg:w-1/3 bg-gray-50 p-4 rounded-lg shadow-md">
+      <h3 class="text-lg font-bold mb-4">Leaderboards</h3>
+      <div class="leader-list space-y-4">
+        <div *ngFor="let leader of leaders" class="flex items-center border-b pb-2">
+          <div class="leader-avatar w-12 h-12 rounded-full overflow-hidden mr-4">
+            <img [src]="leader.imageUrl" alt="Leader Image" class="object-cover w-full h-full" />
+          </div>
+          <div>
+            <p class="font-bold">{{ leader.name }}</p>
+            <p class="text-gray-600">{{ leader.amount | currency: 'INR' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content w-full  lg:w-2/3 space-y-6">
+      <div class="sales-potential bg-gray-50 p-4 rounded-lg shadow-md">
+        <h3 class="text-lg font-bold">Sales Potential</h3>
+        <p class="text-gray-600">By Case Status</p>
+        <canvas id="salesChart"></canvas>
+      </div>
+      <div class="employee-statistics bg-gray-50 p-4 rounded-lg shadow-md">
+        <h3 class="text-lg font-bold">Employee Statistics</h3>
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="p-2 border">Employee Name</th>
+              <th class="p-2 border">Total Cases</th>
+              <th class="p-2 border">Sanction Cases</th>
+              <th class="p-2 border">Disbursement Cases</th>
+              <th class="p-2 border">Completed Cases</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees" class="text-center">
+              <td class="p-2 border">{{ employee.name }}</td>
+              <td class="p-2 border">{{ employee.totalCases }}</td>
+              <td class="p-2 border">{{ employee.sanctionCases }}</td>
+              <td class="p-2 border">{{ employee.disbursementCases }}</td>
+              <td class="p-2 border">{{ employee.completedCases }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

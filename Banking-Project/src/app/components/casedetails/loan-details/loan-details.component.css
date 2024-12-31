@@ -1,0 +1,96 @@
+    /* Container Styling */
+    
+    .container-loan {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: #f8f8f8;
+        font-family: Arial, sans-serif;
+        width: 100%;
+    }
+    /* Main Content Styling */
+    
+    .details {
+        width: 100%;
+        /* max-width: 800px; */
+    }
+    
+    h2 {
+        text-align: start;
+        margin: 20px;
+        font-size: 24px;
+    }
+    /* Grid Layout for Loan Details */
+    
+    .loan-details {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* Four columns by default */
+        gap: 20px;
+        margin: 10px;
+        /* Space between grid items */
+    }
+    /* Styling for Individual Loan Items */
+    
+    .loan-item {
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: center;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .loan-item strong {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .loan-item span {
+        color: #555;
+    }
+    /* Media Query for Responsiveness */
+    
+    @media (max-width: 768px) {
+        .loan-details {
+            grid-template-columns: repeat(2, 1fr);
+            /* Two columns for tablets */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .loan-details {
+            grid-template-columns: 1fr;
+            /* One column for smaller screens */
+        }
+        h2 {
+            font-size: 20px;
+            /* Adjust heading size for smaller screens */
+            text-align: center;
+            /* Center align the heading */
+        }
+        .loan-item {
+            font-size: 12px;
+            /* Adjust font size for smaller screens */
+        }
+    }
+    /* CSS */
+    
+    hr {
+        border: none;
+        border-top: 2px solid #000;
+        /* Thickness and color of the line */
+        margin: 10px 0;
+        /* Space above and below the line */
+        width: 100%;
+        /* Make the line stretch across the container */
+    }
+    
+    @media (max-width: 1440px) {
+        .container {
+            width: 100%;
+        }
+    }

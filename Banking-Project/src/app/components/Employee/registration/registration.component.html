@@ -1,0 +1,111 @@
+
+
+<div class="Container">
+  <div class="register-text">
+    <p>Employee Registration</p>
+    
+    <div class="profile-picture" [style.backgroundImage]="'url(' + backgroundImage + ')'">
+      <!-- Show upload icon when there's no image -->
+      <h1 class="upload-icon" *ngIf="!backgroundImage">
+        <!-- <i class="fa fa-plus fa-2x" aria-hidden="true"></i> -->
+      </h1>
+      
+      <!-- Show the uploaded image when there is one -->
+      <input
+        class="file-uploader"
+        type="file"
+        (change)="upload($event)"
+        accept="image/*"
+        id="profile"
+        *ngIf="!backgroundImage"
+      />
+    
+      <!-- Show the edit button when an image is uploaded -->
+     
+      
+      <label for="profile" *ngIf="!backgroundImage">Upload image</label>
+      <button *ngIf="backgroundImage" class="edit-btn" (click)="resetImage()">
+        <img src="https://cdn-icons-png.flaticon.com/128/2951/2951136.png" alt="Edit Icon" />
+      </button>
+    </div>  
+  </div>
+  <div class="form">
+    <form>
+      <!-- First Row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="id">Employee ID:</label>
+          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)">
+        </div>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name" (input)="validateName($event)">
+        </div>
+        <div class="form-group">
+          <label for="email">Email ID:</label>
+          <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID" (input)="validateEmail($event)">
+        </div>
+      </div>
+
+      <!-- Second Row -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mobile">Mobile:</label>
+          <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)" [(ngModel)]="mobile_No" name="mobile_No">
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select name="gender" id="gender" required  [(ngModel)]="gender" name="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <input type="text" placeholder="Enter Role" id="role" required required [(ngModel)]="role" name="role">
+        </div>
+      </div>
+
+      <!-- Third Row -->
+      <div class="form-row1">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password"  id="password" required placeholder="Enter Password" [(ngModel)]="passward" name="passward">
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input type="password"  id="confirm-password" required placeholder="Confirm Password"  [(ngModel)]="confirm_Passward" name="confirm_Passward">
+        </div>
+
+      </div>
+      
+      <div class="form-row1">
+        <div class="form-group">
+          <label for="address">Temporary Address:</label>
+          <input type="text" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">  
+          <span id="note">Temporary address same as permanant address.</span>
+            <input type="checkbox" class="tick"  width="40px"/>
+         
+      
+        </div>
+
+        <div class="form-group">
+          <label for="p-address">Permanant Address:</label>
+          <input type="text"  id="p-address" placeholder="Permanant Address" [(ngModel)]="permAddress" name="permAddress">
+        </div>
+      </div>
+
+
+
+      <!-- Buttons -->
+      <div class="button-container">
+        <button type="button" (click)="handleCancel()">Cancel</button>
+          <button type="button" (click)="handleReset()">Reset</button>
+          <button type="button" (click)="handleAdd()">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
