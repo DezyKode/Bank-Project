@@ -7,12 +7,12 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 // import { GraphComponent } from './components/lead/graph/graph.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
-import { OverviewComponent } from './components/casedetails/overview/overview.component';
+// import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
 import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
 
-import { VreportComponent } from './components/verification/verification.component';
+// import { VreportComponent } from './components/verification/verification.component';
 
 
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
@@ -24,10 +24,10 @@ import { VreportComponent } from './components/vreport/vreport.component';
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 // Define the application routes
 
-import { NewtaskComponent } from './components/newtask/newtask.component';
+// import { NewtaskComponent } from './components/newtask/newtask.component';
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
-import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
-import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
+
+// import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
 
 
@@ -46,7 +46,7 @@ const routes: Routes = [
   {path:'Overview',component:OverviewComponent},
 {path:"Application-details",component:AplicationDetailsComponent},
 {path:'loan-details',component:LoanDetailsComponent}
-,{path:"bank",component:BankComponent}
+,{path:"bank",component:BankComponent},
 
 
 
@@ -55,8 +55,7 @@ const routes: Routes = [
   {path:'verify',component:VreportComponent}
 
 
-
-  {path:'newtask',component:NewtaskComponent},
+,
   {path:'empdocuments',component:EmployeeDocumentsComponent},
   {path:'empdoc',component:BrowseempdocumentsComponent},
 

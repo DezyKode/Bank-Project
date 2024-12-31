@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import { CardComponent } from './components/lead/card/card.component';
+// import { CardComponent } from './components/lead/card/card.component';
 // import { NgChartsModule } from 'ng2-charts';
 // import { ChartsModule } from 'ng2-charts';  // Correct import for ChartsModule in v3.x+
 
@@ -32,7 +32,7 @@ import { BankComponent } from './components/casedetails/bank/bank.component';
 import { VerificationReportsComponent } from './components/casedetails/verification-reports/verification-reports.component';
 import { CommentsComponent } from './components/casedetails/comments/comments.component';
 
-import { VreportComponent } from './components/verification/verification.component';
+// import { VreportComponent } from './components/verification/verification.component';
 
 
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
@@ -64,10 +64,7 @@ import { VerificationComponent } from './components/verification/verification.co
     BankComponent,
     VerificationReportsComponent,
     CommentsComponent,
-
-
-
-    VreportComponent,
+    // VreportComponent,
 
 
     EmployeeDocumentsComponent,

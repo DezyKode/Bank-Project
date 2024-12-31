@@ -5,7 +5,7 @@ import { Component, ElementRef, Renderer2 } from '@angular/core';
   templateUrl: './verification.component.html',
   styleUrl: './verification.component.css'
 })
-export class VreportComponent {
+export class VerificationComponent {
 
   async checkWebShareAPI(): Promise<void> {
     if ('share' in navigator) {  // Check if navigator.share exists
