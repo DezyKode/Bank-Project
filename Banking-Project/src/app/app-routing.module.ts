@@ -17,6 +17,7 @@ import { VerificationComponent } from './components/verification/verification.co
 
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 import { VreportComponent } from './components/vreport/vreport.component';
+import { CommentsComponent } from './components/comments/comments.component';
 // Define the application routes
 
 
@@ -33,22 +34,21 @@ const routes: Routes = [
   // {path:'verification',component:VerificationComponent},
   {path:'newtask',component:NewtaskComponent},
 
-
-
+  // {path:'comments',component:CommentsComponent},
   {path:'newtask',component:NewtaskComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
   {path:'empdoc',component:BrowseempdocumentsComponent},
 
   {path:'verification',component:VerificationComponent  },
 
-  {path:'vreport',component:VreportComponent},
+  // {path:'vreport',component:VreportComponent},
   
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
-    // {path:'vreport',component:VreportComponent},
+    {path:'vreport',component:VreportComponent},
+    {path:'comments',component:CommentsComponent},
+
   ]}
-
-
  
 ]
 
