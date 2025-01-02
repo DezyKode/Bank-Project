@@ -30,16 +30,17 @@ const routes: Routes = [
 
   {path:'newtask',component:NewtaskComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
-  {path:'empdoc',component:BrowseempdocumentsComponent}
+  
+  {path:'empdoc',component:BrowseempdocumentsComponent},
 
-  {path:'verification',component:VerificationComponent},
+  // {path:'verification',component:VerificationComponent},
 
   {path:'vreport',component:VreportComponent},
   
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-  {path:'',component:VerificationComponent, children:[
-    // {path:'vreport',component:VreportComponent},
-  ]}
+  // {path:'',component:VerificationComponent, children:[
+  //   // {path:'vreport',component:VreportComponent},
+  // ]}
 
  
 ]
