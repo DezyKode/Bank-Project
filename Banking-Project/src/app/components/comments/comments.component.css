@@ -1,0 +1,24 @@
+form{
+    height: fit-content;
+    
+}
+.comments{
+    font-weight: bold;
+    color: rgb(5, 5, 102);
+    font-size: 20px;
+}
+.btn-outline-primary{
+    margin-top: 10px;
+    color: rgb(5, 5, 102);
+    border:1px solid rgb(5, 5, 102) ;
+    
+}
+.container{
+    border: 1px sold grey;
+}
+/* comment-section.component.css */
+.reply-section {
+    display: block;
+    margin-top: 10px;
+  }
+  

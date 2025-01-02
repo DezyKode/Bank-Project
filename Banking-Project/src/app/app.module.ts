@@ -31,15 +31,13 @@ import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-o
 import { BankComponent } from './components/casedetails/bank/bank.component';
 import { VerificationReportsComponent } from './components/casedetails/verification-reports/verification-reports.component';
 import { CommentsComponent } from './components/casedetails/comments/comments.component';
-
 // import { VreportComponent } from './components/verification/verification.component';
-
-
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
 import { VerificationComponent } from './components/verification/verification.component';
-
+import { VreportComponent } from './components/vreport/vreport.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 
 
@@ -56,6 +54,7 @@ import { VerificationComponent } from './components/verification/verification.co
     PersonalloanComponent,
     LeadComponent,
 
+
     OverviewComponent,
     AplicationDetailsComponent,
     LoanDetailsComponent,
@@ -71,8 +70,8 @@ import { VerificationComponent } from './components/verification/verification.co
     BrowseempdocumentsComponent,
 
     VerificationComponent,
-   
-
+    VreportComponent,
+    CommentsComponent,
 
 
   ],

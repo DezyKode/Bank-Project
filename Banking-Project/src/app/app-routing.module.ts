@@ -12,16 +12,15 @@ import { AplicationDetailsComponent } from './components/casedetails/aplication-
 import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
 
-// import { VreportComponent } from './components/verification/verification.component';
-
-
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 
 
 import { VerificationComponent } from './components/verification/verification.component';
-import { VreportComponent } from './components/vreport/vreport.component';
+
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+import { VreportComponent } from './components/vreport/vreport.component';
+import { CommentsComponent } from './components/comments/comments.component';
 // Define the application routes
 
 // import { NewtaskComponent } from './components/newtask/newtask.component';
@@ -44,6 +43,8 @@ const routes: Routes = [
 
   {path:'newtask',component:NewtaskComponent},
 
+  // {path:'comments',component:CommentsComponent},
+
   {path:'Overview',component:OverviewComponent},
 {path:"Application-details",component:AplicationDetailsComponent},
 {path:'loan-details',component:LoanDetailsComponent},
@@ -62,16 +63,21 @@ const routes: Routes = [
 
   {path:'empdoc',component:BrowseempdocumentsComponent},
 
+  {path:'verification',component:VerificationComponent  },
   // {path:'verification',component:VerificationComponent},
 
-  {path:'vreport',component:VreportComponent},
+  // {path:'vreport',component:VreportComponent},
   
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+  {path:'',component:VerificationComponent, children:[
+    {path:'vreport',component:VreportComponent},
+    {path:'comments',component:CommentsComponent},
   // {path:'',component:VerificationComponent, children:[
   //   // {path:'vreport',component:VreportComponent},
   // ]}
 
 
+  ]}
  
 ]
 
