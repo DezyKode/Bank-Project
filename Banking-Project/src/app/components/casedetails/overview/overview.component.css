@@ -1,0 +1,93 @@
+/* Main Styles */
+
+.outer {
+    width: 100%;
+    background-color: lightgray;
+    /* Background for visibility */
+}
+
+.inner {
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.inner.vertical {
+    height: 60%;
+    /* Adjust height as needed */
+}
+
+.inner.horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px;
+    /* Add padding for spacing */
+}
+
+.centered {
+    font-weight: bold;
+    text-align: start;
+    width: 100%;
+    /* margin-bottom: 10px; */
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin: 10px 0;
+}
+
+.inner-div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+    padding: 10px;
+    /* background-color: #f9f9f9; */
+}
+
+.inner-div>div {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* Add a border for clarity */
+    background-color: #fff;
+    /* White background for cells */
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Media Queries for Responsiveness */
+
+
+/* For smaller screens (tablets and below) */
+
+@media (max-width: 768px) {
+    .inner-div {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on smaller screens */
+        gap: 10px;
+    }
+}
+
+
+/* For very small screens (mobile phones) */
+
+@media (max-width: 480px) {
+    .inner-div {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+    }
+    .centered {
+        font-size: 1.2rem;
+        /* Adjust font size for mobile */
+    }
+}
