@@ -6,13 +6,19 @@ import { RegistrationComponent } from './components/Employee/registration/regist
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
+ import { OverviewComponent } from './components/casedetails/overview/overview.component';
 
-// import { VreportComponent } from './components/verification/verification.component';
+import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
+
+
+
+
 import { EmployeeDocumentsComponent } from './components/employee-documents/employee-documents.component';
 import { BrowseempdocumentsComponent } from './components/browseempdocuments/browseempdocuments.component';
 import { VerificationComponent } from './components/verification/verification.component';
-import { VreportComponent } from './components/vreport/vreport.component';
+
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
+
 // import { NewtaskComponent } from './components/newtask/newtask.component';
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
@@ -21,6 +27,14 @@ import { BankComponent } from './components/casedetails/bank/bank.component';
 import { DocumentsComponent } from './components/casedetails/documents/documents.component';
 import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-offers.component';
 import { DocumentsComponents } from './components/creatnewlead/documents-1/documents.component';
+
+import { VreportComponent } from './components/vreport/vreport.component';
+
+// Define the application routes
+
+// import { NewtaskComponent } from './components/newtask/newtask.component';
+
+
 
 const routes: Routes = [
 
@@ -31,28 +45,60 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
+  
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent},
+  {path:'newtask',component:NewtaskComponent},
 
   {path:'newtask',component:NewtaskComponent},
+
+
+{path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
+
   {path:"Application-details",component:AplicationDetailsComponent},
   {path:'loan-details',component:LoanDetailsComponent}, 
   {path:"bank",component:BankComponent},
   {path:'documents',component:DocumentsComponent},
   {path:'loan-offers',component:LoanOffersComponent},
+
   // {path:'verification',component:VerificationComponent},
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
-  {path:'empdoc',component:BrowseempdocumentsComponent},
-  {path:'verification',component:VerificationComponent},
+
+ 
+ 
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
+
+
+  {path:'empdoc',component:BrowseempdocumentsComponent},
+  {path:'verification',component:VerificationComponent},
+  
+
+
+  // {path:'verification',component:VerificationComponent},
+
+  // {path:'vreport',component:VreportComponent},
+
+      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+
+  // {path:'verification',component:VerificationComponent},
+
+  // {path:'vreport',component:VreportComponent},
+  
+
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
-    // {path:'vreport',component:VreportComponent},
+    {path:'vreport',component:VreportComponent},
+    {path:'comments',component:CommentsComponent}
+  // {path:'',component:VerificationComponent, children:[
+  //   // {path:'vreport',component:VreportComponent},
+  // ]}
+
+
   ]}
-
-
  
 ]
 

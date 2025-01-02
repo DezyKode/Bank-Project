@@ -1,144 +1,3 @@
-
-<form action="" class="min-vh-100 bg-light "  >
-    <div class="container-fluid  border min-vh-100 bg-white">
-        <div class="row">
-            <div class="col-md-12 p-3 d-md-flex d-sm-block justify-content-between align-items-center">
-                <!-- Left content -->
-                <div class="d-flex justify-content-start">
-                    <a href="" class="verification">
-                        <i class="fa fa-medal me-2 p-3"></i> Verification Reports
-                    </a>
-                </div>
-                
-                <!-- Right content on larger screens, left on smaller screens -->
-                <div class="d-flex justify-content-end order-md-1 order-0">
-                    <button class="btn btn-outline-primary mr-5" id="shareBtn" (click)="checkWebShareAPI()">
-                        <i class="fa fa-share-square me-2"></i> Share
-                    </button>
-                </div>
-            </div>
-            
-        </div>
-        <div class="row p-0  mb-4">
-            <div class="col-md-12">
-                <hr class="verification ">
-            </div>
-        </div>
-        <!--  -->
-        <div class="row  m-4">
-            <div class="col-md-12 ">
-                <!-- <a href="" class=" text-white  primary "> Primary Applicant</a> -->
-                <button class=" text-white p-0 m-0 primary "
-                >Primary Applicant </button>
-            </div>
-        </div>
-<!--  -->
-<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block">
-    <div class="col border p-2  mr-4  ">
-        <label class="pb-2 verification" for=""> Pan Verification</label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-    <div class="col border p-2 ">
-        <label class="pb-2 verification" for=""> Aadhar</label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-</div>
-
-<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block">
-    <div class="col border p-2 mb-1 mr-4">
-
-        <label class="pb-2 verification" for=""> Driving License </label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-    <div class="col border p-2 mb-1 ">
-        <label class="pb-2 verification" for=""> Credit Report </label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-</div>
-
-<div class="row m-3 justify-content-between p-3 d-md-flex d-sm-block ">
-    <div class="col border p-2 mb-1  mr-4">
-        <label class="pb-2 verification" for=""> ITR </label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-    <div class="col border p-2 mb-1  ">
-        <label class="pb-2 verification" for=""> GSTIN </label>
-        <br>
-        <button class="btn btn-outline-primary" (click)="openModal()">Fetch</button>
-        <img class="float-right" src=" " alt="" width="100px">
-    </div>
-
-
-
-</div>
-
-<div class="row m-3 justify-content-between p-3  d-md-flex d-sm-block">
-    <div class="col border p-2 mb-1  mr-4">
-        <label class="pb-2 verification" for=""> CIN </label>
-        <br>
-        <button class="btn btn-outline-primary">Fetch</button>
-    </div>
-    <!-- <div class="col border p-2 mb-1  mr-4">
-        
-    </div> -->
-   
-
-
-
-</div>
- 
-
-
-
-
-    </div>
-
-</form>
-<div class="modal fade" id="fetchModal" tabindex="-1" aria-bs-labelledby="fetchModalLabel" area-bs-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="fetchModalLabel">Fetch information</h5>
-                <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-bs-label="close"></button>
-            </div>
-            <div class="modal-body">
-                <p>loading your information</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                <button type="button" class="btn btn-primary">confirm</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- <script>
-    // Check if the Web Share API is supported
-    if (navigator.share) {
-        document.getElementById('shareBtn').addEventListener('click', function() {
-            navigator.share({
-                title: 'Share this Content',
-                text: 'Check out this awesome content!',
-                url: 'https://example.com'  // You can replace this URL with any content you'd like to share
-            }).then(() => {
-                console.log('Content shared successfully');
-            }).catch((error) => {
-                console.log('Error sharing content:', error);
-            });
-        });
-    } else {
-        // Fallback if Web Share API is not supported
-        document.getElementById('shareBtn').addEventListener('click', function() {
-            alert('Web Share API is not supported in this browser.');
-        });
-    }
-</script> -->
-
 <form action="" class="bg-light vh-100">
     <div class="container-fluid ">
         <h1 class=" ml-12 fs-5 fw-bold p-3  "> <i class="fa fa-file-alt me-2"></i> CASE DETAILS</h1>
@@ -146,24 +5,26 @@
             <div class="col-md-3 bg-white">
                 <div class="">
                     <ul class="list-style-type p-3">
-                        <li class="p-1 border mb-3 bg-light"> <a routerLink="/vreport"> <i class="fa fa-home me-2  p-2 "></i> Overview</a></li>
-                        <li class="p-1 border mb-3 bg-light">  <a routerLink="/personalloan"> <i class="fa fa-cogs me-2 p-2"></i> Application Details</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-home me-2  p-2 "></i> Overview</a></li>
+                        <li class="p-1 border mb-3 bg-light">  <a routerLink=""> <i class="fa fa-cogs me-2 p-2"></i> Application Details</a></li>
                         <li  class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-credit-card me-2 p-2"></i> Loan Details </a> </li>
                         <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-university  me-2 p-2"></i> Bank</a></li>
-                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-file-alt  me-2 p-2"></i> Documents</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink="empdoc"> <i class="fa fa-file-alt  me-2 p-2"></i> Documents</a></li>
                         <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-money-bill-wave me-2 p-2"></i> Loan Offers</a></li>
-                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-check-circle me-2 p-2"></i> Verification Reports</a></li>
-                        <li class="p-1 border mb-3 bg-light"> <a routerLink=""> <i class="fa fa-comments me-2 p-2"></i> Comments</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink="vreport"> <i class="fa fa-check-circle me-2 p-2"></i> Verification Reports</a></li>
+                        <li class="p-1 border mb-3 bg-light"> <a routerLink="comments"> <i class="fa fa-comments me-2 p-2"></i> Comments</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-7 bg-white">
-                <router-outlet></router-outlet>
+
+                <div class="form wh-100">
+                    <div class="container-fluid p-0 " style="height: 100%; overflow: hidden; ">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
                 </div>
         </div>
     </div>
-<form action="">
-    <h1>case details</h1>
 
 </form>
-

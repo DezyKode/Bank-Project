@@ -1,0 +1,52 @@
+<!-- Loop through comments -->
+<div *ngFor="let comment of comments; let i = index" class="row py-3">
+  <div class="col">
+    <div class="media mb-3 d-flex">
+      <img class="mr-3 align-self-start" [src]="comment.icon" alt="icon" style="width: 60px; height: 60px;">
+      <div class="media-body">
+        <h5 class="comments">{{ comment.name }}</h5>
+        <p>{{ comment.text }}</p>
+        <p>Follow-up date: {{ comment.followupDate }}</p>
+        <button class="btn btn-outline-primary" (click)="toggleReplySection(i)">
+          <i class="fas fa-reply me-2"></i> Reply
+        </button>
+
+        <!-- Reply Section -->
+        <div *ngIf="comment.showReplySection" class="reply-section mt-3">
+          <textarea class="w-100 bg-light form-control" placeholder="Enter Your Comment" [(ngModel)]="Comment.replyText" required></textarea>
+          <!-- <input type="date" class="w-100 form-control mt-2 mb-2" [(ngModel)]="comment.followupDate" required> -->
+          <button class="btn btn-outline-primary mt-2" (click)="postNewComment(i)">Post Comment</button>
+        </div>
+
+        <!-- Display Replies (Subcomments) -->
+        <div *ngFor="let reply of comment.replies" class="media mt-3">
+          <img class="mr-3 align-self-start" [src]="reply.icon" alt="icon" style="width: 50px; height: 50px;">
+          <div class="media-body">
+            <h5 class="comments">{{ reply.name }}</h5>
+            <p>{{ reply.text}}</p> 
+            <!-- Displaying the reply text here --> 
+             <p>comment: {{ reply.text }}</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Comment Form -->
+<div class="row mb-2">
+  <div class="col col-md-12">
+    <h2 class="comments mb-2">Leave a Comment</h2>
+    <textarea class="w-100 bg-light form-control" placeholder="Enter Your Comment" [(ngModel)]="newCommentText" required></textarea>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-md-12 py-3 d-flex justify-content-between ">
+    <input type="date" class="form-control  w-50 mr-auto" [(ngModel)]="newFollowupDate" [min]="todayDate" required>
+    <button class="btn btn-outline-primary" (click)="postNewComment()">Post Comment</button>
+  </div>
+</div>
+  
+
+  
