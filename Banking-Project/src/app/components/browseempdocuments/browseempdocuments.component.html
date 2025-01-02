@@ -1,225 +1,122 @@
-<div class="container">
+<!-- <div class="container">
     <div class="top">
-        <p>Documents</p>
-        <div class="sub-container">
-            <button>Send Documents</button>
-            <button>
-                <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
-            </button>
-        </div>
+      <p>Documents</p>
+      <div class="sub-container">
+        <button>Send Documents</button>
+        <button>
+          <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
+        </button>
+      </div>
     </div>
-
+  
     <div class="pri-sec-documents">
-        <button>Primary Applicant</button>
-        <button>Secondary Applicant</button>
+      <button>Primary Applicant</button>
+      <button>Secondary Applicant</button>
     </div>
-
+  
     <div class="content">
-        <div class="left-content">
-           <strong> <p>#</p></strong>
-           <strong>
-            <p>Document</p>
-           </strong> 
-        </div>
-        <div class="right-content">
-            <!-- <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i> -->
-            <strong><p>Action</p></strong>
-        </div>
+      <div class="left-content">
+        <strong><p>#</p></strong>
+        <strong><p>Document</p></strong>
+      </div>
+      <div class="right-content">
+        <strong><p>Action</p></strong>
+      </div>
     </div>
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>1</p>
-            <input type="text" placeholder="Photo" disabled>
-        </div>
-        <div class="right-content" >
-            <input  class="i" onchange="handleFileUpload(1)" type="file" id="l" >
-            
-            <label for="l">
-                <i class="fa-solid fa-upload" ></i>
-            </label>
-            <i class="fa-solid fa-eye" ></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+  
+    <div *ngFor="let document of documents; let i = index" class="upload-documents">
+      <div class="left-content">
+        <p>{{ i + 1 }}</p>
+        <input type="text" [placeholder]="document.placeholder" [id]="'file-url-' + (i + 1)" disabled />
+      </div>
+      <div class="right-content">
+        <input
+          class="i"
+          type="file"      
+          [id]="'l-' + (i + 1)"
+          (change)="handleFileUpload(i + 1, $event)"
+        />
+        <label [for]="'l-' + (i + 1)">
+          <i class="fa-solid fa-upload"></i>
+        </label>
+        <i class="fa-solid fa-eye"></i>
+     
+      </div>
     </div>
+  </div>
+   -->
 
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>2</p>
-            <input type="text" placeholder="Photo" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+<div class="container">
+  <div class="top">
+    <p>Documents</p>
+    <div class="sub-container">
+      <button>Send Documents</button>
+      <button>
+        <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
+      </button>
     </div>
+  </div>
 
+  <div class="pri-sec-documents">
+    <button>Primary Applicant</button>
+    <button>Secondary Applicant</button>
+  </div>
 
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>3</p>
-            <input type="text" placeholder="Addhar Card" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+  <div class="content">
+    <div class="left-content">
+      <strong><p>#</p></strong>
+      <strong><p>Document</p></strong>
     </div>
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>4</p>
-            <input type="text" placeholder="3 Months Salary Slip" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+    <div class="right-content">
+      <strong><p>Action</p></strong>
     </div>
+  </div>
 
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>5</p>
-            <input type="text" placeholder="Last 2 Years Form 16" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-        
+  <!-- Dynamically generated document upload fields -->
+  <div *ngFor="let document of documents; let i = index" class="upload-documents">
+    <div class="left-content">
+      <p>{{ i + 1 }}</p>
+      <input
+        type="text"
+        [placeholder]="document.placeholder"
+        [id]="'file-url-' + (i + 1)"
+        [value]="document.fileName"
+        disabled
+      />
     </div>
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>6</p>
-            <input type="text" placeholder="Property Cost Sheet/ Sale Agreement" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+    <div class="right-content">
+      <input
+        class="i"
+        type="file"      
+        [id]="'l-' + (i + 1)"
+        (change)="handleFileUpload(i, $event)"
+      />
+      <label [for]="'l-' + (i + 1)">
+        <i class="fa-solid fa-upload"></i>
+      </label>
+      <i class="fa-solid fa-eye" (click)="viewDocument(i)"></i>
+      <!-- Cross icon inside the input field to reset -->
+      <i
+        *ngIf="document.fileName"
+        class="fa-solid fa-times reset-icon"
+        (click)="resetFile(i)"
+        aria-hidden="true"
+      ></i>
     </div>
-        
+  </div>
 
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>7</p>
-            <input type="text" placeholder="Property Cost Sheet/ Sale Agreement" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
+  <!-- Modal for viewing the uploaded document -->
+  <div *ngIf="isModalVisible" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h3>Uploaded Document</h3>
+      <p><strong>Document Name:</strong> {{ selectedDocument.fileName }}</p>
+      <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
+      <div *ngIf="selectedDocument.fileName">
+        <p><strong>Preview:</strong></p>
+        <img *ngIf="isImage(selectedDocument.fileName)" [src]="getFileUrl(selectedDocument.fileName)" alt="Document Preview" />
+        <p *ngIf="!isImage(selectedDocument.fileName)">No preview available for this file type.</p>
+      </div>
     </div>
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>8</p>
-            <input type="text" placeholder="Index 2 " disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-    </div>
-        
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>8</p>
-            <input type="text" placeholder="Pan Card" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-    </div>
-        
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>9</p>
-            <input type="text" placeholder="Address Proof" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-    </div>
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>10</p>
-            <input type="text" placeholder="6 Months Bank Statement" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-    </div>
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>11</p>
-            <input type="text" placeholder="Proof Of Rent Income" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-    </div>
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>12</p>
-            <input type="text" placeholder="Proof Of Incentive Income" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-    </div>
-
-
-    <div class="upload-documents">
-        <div class="left-content">
-            <p>13</p>
-            <input type="text" placeholder="Floor Plan" disabled>
-        </div>
-        <div class="right-content">
-            <i class="fa-solid fa-upload"></i>
-            <i class="fa-solid fa-eye"></i>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-        </div>
-
-    </div>
-    
-    
+  </div>
 </div>
