@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+
+import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
-  styleUrl: './verification.component.css'
+  styleUrls: ['./verification.component.css'],  // Fix typo here: it should be 'styleUrls' (plural)
 })
 export class VerificationComponent {
 
 
+  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
+
+  // Check for Web Share API support
   async checkWebShareAPI(): Promise<void> {
     if ('share' in navigator) {  // Check if navigator.share exists
       // Web Share API is supported, now share content
@@ -33,14 +38,12 @@ export class VerificationComponent {
     }
   }
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
-
+  // Open the modal
   openModal() {
     const modalElement = this.elRef.nativeElement.querySelector('#fetchModal');
-    
+
     // Initialize and show the Bootstrap Modal
     const modal = new (window as any).bootstrap.Modal(modalElement);
     modal.show();
   }
-
 }
