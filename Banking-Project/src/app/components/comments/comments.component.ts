@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,15 +11,17 @@ interface Comment {
   showReplySection: boolean;
   replyText: string;
   replies: Comment[];  // Replies are also of type Comment
-  
+
 }
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
+
   styleUrls: ['./comments.component.css'],  // Corrected this
   standalone: true,  // Mark this component as standalone
   imports: [FormsModule], 
+
 })
 export class CommentsComponent {
 
@@ -41,7 +44,9 @@ export class CommentsComponent {
   // Initialize text inputs for new comment
   newCommentText: string = '';  
   newFollowupDate: string = '';  
+
 Comment: any;
+
 
   constructor() {
     const today = new Date();

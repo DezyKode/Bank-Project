@@ -1,4 +1,6 @@
+
 import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'app-verification',
@@ -6,6 +8,7 @@ import { Component, Renderer2, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./verification.component.css'],  // Fix typo here: it should be 'styleUrls' (plural)
 })
 export class VerificationComponent {
+
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
 
