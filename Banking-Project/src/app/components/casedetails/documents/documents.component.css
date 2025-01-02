@@ -1,0 +1,323 @@
+/* General Container */
+
+.documents-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Title */
+
+.documents-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Action Buttons (Send Documents, Share) */
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* Table Section */
+
+.documents-table {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.tabs {
+    margin-bottom: 20px;
+}
+
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Input Fields */
+
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+/* Add Item Button */
+
+button[type="button"] {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button[type="button"]:hover {
+    background-color: #218838;
+}
+
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {
+    .documents-container {
+        width: 100%;
+        margin: 10px;
+    }
+    table th,
+    table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+    input[type="text"] {
+        width: 100%;
+    }
+    .btn-action,
+    button[type="button"] {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+
+/* Delete Button */
+
+.btn-delete:hover {
+    background-color: #b02a37;
+}
+
+
+/* Upload Button */
+
+.btn-upload {
+    background-color: #007bff;
+    cursor: pointer;
+    padding: 8px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.btn-upload:hover {
+    background-color: #0056b3;
+}
+
+
+/* Hide the actual file input */
+
+.file-upload {
+    display: none;
+}
+
+
+/* Align "Primary Applicant" below "Documents" */
+
+.header-section {
+    margin-bottom: 20px;
+}
+
+.header-section h2 {
+    margin: 0;
+}
+
+.tabs {
+    margin-top: 10px;
+}
+
+.primary-applicant-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.primary-applicant-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Other Buttons Styling */
+
+.btn-action {
+    margin: 5px;
+}
+
+.action-buttons {
+    margin-bottom: 20px;
+}
+
+
+/* Table Styling */
+
+.documents-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.documents-table th,
+.documents-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+
+/* Header Row Styling */
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.primary-applicant-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.primary-applicant-button:hover {
+    background-color: #0056b3;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    /* background-color: #007bff; */
+    color: rgb(14, 13, 13);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+btn-action .send {
+    border: solid blue 1px;
+}
+
+btn-action .share {
+    border: solid blue 1px;
+}
+
+.btn-action:hover {
+    background-color: #0056b3;
+}
+
+
+/* Table Styling */
+
+.documents-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.documents-table th,
+.documents-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.primary-applicant-button {
+    display: inline-block;
+    width: 190px;
+    /* Adjust width */
+    /* height: 50px; */
+    /* Adjust height */
+    background-color: #053697;
+    /* Light gray base color */
+    color: #ebedf1;
+    /* Dark gray text */
+    font-size: 16px;
+    /* font-weight: bold; */
+    text-align: center;
+    line-height: 30px;
+    /* border-radius: 20px 20px 0px 0px; */
+    /* Centers the text vertically */
+    border: none;
+    clip-path: polygon(10% 0, 90% 0, 100% 90%, 100% 100%, 90% 100%, 0% 100%, 0 90%);
+    /* Right corner */
+    /* Diamond shape */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.primary-applicant-button:hover {
+    background-color: #4C51BF;
+    /* Darker purple on hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+}
+
+.primary-applicant-button:active {
+    background-color: #434190;
+    /* Even darker purple when active */
+    transform: translateY(0);
+    /* Reset lift on click */
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-action.send,
+.btn-action.share {
+    border: 2px solid #000;
+    /* You can change the color */
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    border-radius: 4px;
+    /* Optional: Add rounded corners */
+}
