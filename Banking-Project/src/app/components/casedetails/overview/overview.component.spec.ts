@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VreportComponent } from './verification.component';
+import { OverviewComponent } from './overview.component';
 
-describe('VreportComponent', () => {
-  let component: VreportComponent;
-  let fixture: ComponentFixture<VreportComponent>;
+describe('OverviewComponent', () => {
+  let component: OverviewComponent;
+  let fixture: ComponentFixture<OverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VreportComponent]
+      declarations: [OverviewComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VreportComponent);
+    fixture = TestBed.createComponent(OverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
