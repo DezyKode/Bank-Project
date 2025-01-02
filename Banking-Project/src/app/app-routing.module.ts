@@ -29,7 +29,6 @@ import { OverviewComponent } from './components/casedetails/overview/overview.co
 // import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
-import { CommentsComponent } from './components/casedetails/comments/comments.component';
 
 
 // import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
@@ -37,6 +36,7 @@ import { CommentsComponent } from './components/casedetails/comments/comments.co
 
 
 import { BankComponent } from './components/casedetails/bank/bank.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 const routes: Routes = [
 
@@ -55,8 +55,7 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
 
 
-  // {path:'comments',component:CommentsComponent},
-
+{path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
 {path:"Application-details",component:AplicationDetailsComponent},
 {path:'loan-details',component:LoanDetailsComponent},
@@ -87,7 +86,7 @@ const routes: Routes = [
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
     {path:'vreport',component:VreportComponent},
-    {path:'comments',component:CommentsComponent},
+    {path:'comments',component:CommentsComponent}
   // {path:'',component:VerificationComponent, children:[
   //   // {path:'vreport',component:VreportComponent},
   // ]}
