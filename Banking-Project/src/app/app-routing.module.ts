@@ -6,9 +6,6 @@ import { RegistrationComponent } from './components/Employee/registration/regist
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { CheckeligibilityComponent } from './components/checkeligibility/checkeligibility.component';
 import { NewtaskComponent } from './components/newtask/newtask.component';
- import { OverviewComponent } from './components/casedetails/overview/overview.component';
-
-import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
 
 
 
@@ -19,7 +16,7 @@ import { VerificationComponent } from './components/verification/verification.co
 
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 
-// import { NewtaskComponent } from './components/newtask/newtask.component';
+
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
 import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
@@ -29,17 +26,13 @@ import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-o
 import { DocumentsComponents } from './components/creatnewlead/documents-1/documents.component';
 
 import { VreportComponent } from './components/vreport/vreport.component';
-
-// Define the application routes
-
-// import { NewtaskComponent } from './components/newtask/newtask.component';
-
+import {CommentsComponent} from './components/comments/comments.component'
 
 
 const routes: Routes = [
 
   {path:'login',component:LoginComponent},
-  // {path:'', redirectTo:'login', pathMatch:'full'},
+
   {path:'managerlogin',component:ManagerLoginComponent},
   {path:'registration',component:RegistrationComponent},
   {path:'checkeligibility',component:CheckeligibilityComponent},
@@ -62,7 +55,7 @@ const routes: Routes = [
   {path:'documents',component:DocumentsComponent},
   {path:'loan-offers',component:LoanOffersComponent},
 
-  // {path:'verification',component:VerificationComponent},
+ 
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
@@ -78,24 +71,13 @@ const routes: Routes = [
   
 
 
-  // {path:'verification',component:VerificationComponent},
 
-  // {path:'vreport',component:VreportComponent},
-
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-
-  // {path:'verification',component:VerificationComponent},
-
-  // {path:'vreport',component:VreportComponent},
   
 
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+     
   {path:'',component:VerificationComponent, children:[
     {path:'vreport',component:VreportComponent},
-    {path:'comments',component:CommentsComponent}
-  // {path:'',component:VerificationComponent, children:[
-  //   // {path:'vreport',component:VreportComponent},
-  // ]}
+   
 
 
   ]}
