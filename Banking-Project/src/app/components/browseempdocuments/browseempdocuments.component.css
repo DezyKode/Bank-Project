@@ -106,17 +106,28 @@ button img {
 }
 
 .pri-sec-documents button {
-    background-color: #2C2A8C; /* Blue shade */
-    color: white;
+    display: inline-block;
+    width: 190px;
+    /* Adjust width */
+    /* height: 50px; */
+    /* Adjust height */
+    background-color: #053697;
+    /* Light gray base color */
+    color: #ebedf1;
+    /* Dark gray text */
     font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px; /* Adjusted for tab size */
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border: 2px solid #2C2A8C; /* Consistent border */
-    margin-bottom: -1px; /* Prevents gap below the tab */
-    position: relative;
+    /* font-weight: bold; */
     text-align: center;
+    line-height: 30px;
+    /* border-radius: 20px 20px 0px 0px; */
+    /* Centers the text vertically */
+    border: none;
+    clip-path: polygon(10% 0, 90% 0, 100% 90%, 100% 100%, 90% 100%, 0% 100%, 0 90%);
+    /* Right corner */
+    /* Diamond shape */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .pri-sec-documents button:hover {
@@ -139,13 +150,27 @@ button img {
     display: flex;
     align-items: center;
     gap: 130px; /* Space between columns */
+    width: 90%; 
+    
+
 }
+
+
+.left-content p {
+    margin: 0;
+ min-width: 30px; 
+
+    text-align: right; 
+}
+
+
 
 .right-content {
     display: flex;
     align-items: center;
     gap: 25px; /* Space between actions */
-    margin-right: 70px;
+    margin-right: 60px;
+    
 }
 
 /* Document Upload Section */
@@ -219,6 +244,10 @@ button img {
     .upload-documents input {
         width: 100%;
         margin-left: 0; /* Center input on smaller screens */
+    }
+
+    .left-content input{
+        /* width: ; */
     }
 }
 
