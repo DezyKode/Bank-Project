@@ -3,29 +3,64 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css'] // Corrected to "styleUrls"
+  styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent {
-  documents: { name: string }[] = [{ name: '' }];
+  documents: Array<any> = []; // Holds the documents
 
-  addDocument(): void {
-    this.documents.push({ name: '' });
+  // Adds a new document item to the list
+  addDocument() {
+    this.documents.push({
+      name: '', // Initial empty document name
+      file: null // No file initially
+    });
   }
 
-  deleteDocument(index: number): void {
-    this.documents.splice(index, 1);
-  }
+  // Handles file upload
+  uploadFile(event: any, doc: any) {
+    const file = event.target.files[0];
 
-  uploadDocument(doc: { name: string }): void {
-    alert(`Document "${doc.name}" uploaded!`);
-  }
-  uploadFile(event: Event, doc: { name: string }): void {
-    const fileInput = event.target as HTMLInputElement;
-    const file = fileInput?.files?.[0];
-    if (file) {
-      doc.name = file.name; // Update the document name with the file name
-      alert(`File "${file.name}" has been uploaded!`);
+    if (file && file.type === 'application/pdf') {
+      // Only allow PDF files
+      doc.file = file;
+      console.log('File uploaded:', file.name);
+    } else {
+      alert('Only PDF files are allowed!');
     }
   }
-  
+
+  // Handles the editing of a document (Name change or Deletion)
+  editDocument(index: number) {
+    const doc = this.documents[index];
+
+    // Prompt the user for the action
+    const action = prompt('Enter "edit" to change name or "delete" to remove the document:', 'edit');
+
+    if (action) {
+      if (action.toLowerCase() === 'edit') {
+        // Ask the user to enter a new document name
+        const newName = prompt('Enter new document name:', doc.name);
+        if (newName !== null) {
+          doc.name = newName; // Update the document name
+        }
+      } else if (action.toLowerCase() === 'delete') {
+        // Confirm deletion
+        const confirmDelete = confirm('Are you sure you want to delete this document?');
+        if (confirmDelete) {
+          this.deleteDocument(index); // Delete the document
+        }
+      } else {
+        alert('Invalid action! Please enter "edit" or "delete".');
+      }
+    }
+  }
+
+  // Handles deleting a document
+  deleteDocument(index: number) {
+    const confirmDelete = confirm('Are you sure you want to delete this document?');
+    if (confirmDelete) {
+      this.documents.splice(index, 1); // Remove the document from the array
+    }
+  }
 }
+

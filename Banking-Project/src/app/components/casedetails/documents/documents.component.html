@@ -1,17 +1,16 @@
 <div class="documents-container">
-    <h2>Documents </h2>
+    <h2>Documents</h2>
     <!-- Tab and Action Buttons Section -->
     <div class="header-row">
       <button class="primary-applicant-button">Primary Applicant</button>
-      <div class="action-buttons">
-        <button class="btn-action send">Send Documents</button>
-        <button class="btn-action share">Share</button>
+      <div class="sub-container">
+        <button>Send Documents</button>
+        <button>
+          <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
+        </button>
       </div>
     </div>
-
-    <!-- Heading Section -->
- 
-
+  
     <!-- Table Section -->
     <div class="documents-table">
       <table>
@@ -23,6 +22,7 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Documents List -->
           <tr *ngFor="let doc of documents; let i = index">
             <td>{{ i + 1 }}</td>
             <td>
@@ -41,24 +41,33 @@
                   class="file-upload"
                   (change)="uploadFile($event, doc)"
                   hidden
+                  accept=".pdf"
                 />
               </label>
-              <!-- Delete Button -->
-              <button
-                class="btn-action btn-delete"
-                (click)="deleteDocument(i)"
-              >
-                Delete
-              </button>
+  
+              <!-- Buttons Container -->
+              <div class="buttons-container">
+                <!-- Edit Button -->
+                <button class="btn-action btn-edit" (click)="editDocument(i)">
+                  Edit
+                </button>
+  
+                <!-- Delete Button -->
+                <button
+                  *ngIf="doc.isEdited"
+                  class="btn-action btn-delete"
+                  (click)="deleteDocument(i)"
+                >
+                  Delete
+                </button>
+              </div>
             </td>
           </tr>
+  
+          <!-- Add Item Button -->
           <tr>
             <td colspan="3">
-              <button
-                class="btn-action"
-                type="button"
-                (click)="addDocument()"
-              >
+              <button class="btn-action" type="button" (click)="addDocument()">
                 Add Item
               </button>
             </td>
@@ -66,4 +75,5 @@
         </tbody>
       </table>
     </div>
-</div>
+  </div>
+  
