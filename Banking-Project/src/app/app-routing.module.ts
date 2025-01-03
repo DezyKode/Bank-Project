@@ -69,25 +69,26 @@ const routes: Routes = [
   {path:'verify',component:VreportComponent},
   {path:'empdocuments',component:EmployeeDocumentsComponent},
 
-  {path:'empdoc',component:BrowseempdocumentsComponent},
+  
   {path:'verification',component:VerificationComponent},
   
-
-
+  
   // {path:'verification',component:VerificationComponent},
-
+  
   // {path:'vreport',component:VreportComponent},
-
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-
+  
+  // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+  
   // {path:'verification',component:VerificationComponent},
 
   // {path:'vreport',component:VreportComponent},
   
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+  {path:'empdoc',component:BrowseempdocumentsComponent},
+  // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
-    {path:'vreport',component:VreportComponent},
     {path:'comments',component:CommentsComponent},
+    {path:'vreport',component:VreportComponent},
+    
   // {path:'',component:VerificationComponent, children:[
   //   // {path:'vreport',component:VreportComponent},
   // ]}
