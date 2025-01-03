@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';  // Import CommonModule for ngFor and ngIf
 
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +21,7 @@ interface Comment {
 
   styleUrls: ['./comments.component.css'],  // Corrected this
   standalone: true,  // Mark this component as standalone
-  imports: [FormsModule], 
+  imports: [CommonModule,FormsModule],
 
 })
 export class CommentsComponent {

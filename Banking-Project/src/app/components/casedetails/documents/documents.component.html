@@ -1,1 +1,69 @@
-<p>documents works!</p>
+<div class="documents-container">
+    <h2>Documents </h2>
+    <!-- Tab and Action Buttons Section -->
+    <div class="header-row">
+      <button class="primary-applicant-button">Primary Applicant</button>
+      <div class="action-buttons">
+        <button class="btn-action send">Send Documents</button>
+        <button class="btn-action share">Share</button>
+      </div>
+    </div>
+
+    <!-- Heading Section -->
+ 
+
+    <!-- Table Section -->
+    <div class="documents-table">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Document</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of documents; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <input
+                type="text"
+                [(ngModel)]="doc.name"
+                placeholder="Enter Document Name"
+              />
+            </td>
+            <td>
+              <!-- Upload Button -->
+              <label class="btn-action btn-upload">
+                Upload
+                <input
+                  type="file"
+                  class="file-upload"
+                  (change)="uploadFile($event, doc)"
+                  hidden
+                />
+              </label>
+              <!-- Delete Button -->
+              <button
+                class="btn-action btn-delete"
+                (click)="deleteDocument(i)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <button
+                class="btn-action"
+                type="button"
+                (click)="addDocument()"
+              >
+                Add Item
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
