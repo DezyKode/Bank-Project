@@ -73,7 +73,7 @@
 .sub-container {
     display: flex;
     align-items: center;
-    gap: 15px; /* Adds spacing between buttons */
+    gap: 1px; /* Adds spacing between buttons */
 }
 
 /* Button Styling */
@@ -163,7 +163,21 @@ button img {
     text-align: right; 
 }
 
-
+.preview-container img {
+    max-width: 100%;
+    /* max-height: 500px; */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .preview-container {
+    text-align: center;
+    padding: 10px;
+  }
+  
 
 .right-content {
     display: flex;
@@ -189,11 +203,27 @@ button img {
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    width: 950px; /* Fixed width */
+    width: 50%; 
     height: 45px; /* Input height */
-    margin-left: 80px; /* Adjust for alignment */
+    margin-left: 40px; /* Adjust for alignment */
 }
 
+.dynamic-label{
+    min-width: 300px;
+    /* border: 1px solid red; */
+    margin-left: 120px;
+  
+}
+
+.pri-sec-documents .btn-2{
+    background-color: gray;
+    margin-left: -30px;
+}
+
+
+.pri-sec-documents .btn-2:hover{
+    background-color: gray;
+}
 /* Responsive Design */
 @media (max-width: 760px) {
     .container {
@@ -327,4 +357,76 @@ button img {
         padding: 10px 18px; /* Adjust padding for consistency */
     }
 }
+
+
+/* 
+@media (min-width: 768px) {
+    .container {
+        margin-top: 30px;
+        margin-left: 50px;
+        width: 95%;
+    }
+
+    .top {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .left-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .right-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        margin-right: 10px;
+    }
+
+    .pri-sec-documents {
+        flex-wrap: nowrap;
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .upload-documents {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .upload-documents .left-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .upload-documents input {
+        width: 80%;
+        margin-left: 0;
+    }
+
+    button {
+        width: auto;
+        padding: 8px 14px;
+    }
+
+    .pri-sec-documents button {
+        font-size: 15px;
+        padding: 10px 18px;
+    }
+} */
+
 
