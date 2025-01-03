@@ -47,12 +47,11 @@ const routes: Routes = [
   {path:'documents-1',component:DocumentsComponents},
   {path:'empdoc',component:BrowseempdocumentsComponent},
   {path:'verification',component:VerificationComponent},
-  {path:'',component:VerificationComponent, children:[
+  
     {path:'vreport',component:VreportComponent},
    
 
 
-  ]}
  
 ]
 

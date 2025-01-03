@@ -1,79 +1,77 @@
 <div class="documents-container">
-    <h2>Documents</h2>
-    <!-- Tab and Action Buttons Section -->
-    <div class="header-row">
-      <button class="primary-applicant-button">Primary Applicant</button>
-      <div class="sub-container">
-        <button>Send Documents</button>
-        <button>
-          <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
-        </button>
-      </div>
-    </div>
-  
-    <!-- Table Section -->
-    <div class="documents-table">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Document</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Documents List -->
-          <tr *ngFor="let doc of documents; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>
-              <input
-                type="text"
-                [(ngModel)]="doc.name"
-                placeholder="Enter Document Name"
-              />
-            </td>
-            <td>
-              <!-- Upload Button -->
-              <label class="btn-action btn-upload">
-                Upload
-                <input
-                  type="file"
-                  class="file-upload"
-                  (change)="uploadFile($event, doc)"
-                  hidden
-                  accept=".pdf"
-                />
-              </label>
-  
-              <!-- Buttons Container -->
-              <div class="buttons-container">
-                <!-- Edit Button -->
-                <button class="btn-action btn-edit" (click)="editDocument(i)">
-                  Edit
-                </button>
-  
-                <!-- Delete Button -->
-                <button
-                  *ngIf="doc.isEdited"
-                  class="btn-action btn-delete"
-                  (click)="deleteDocument(i)"
-                >
-                  Delete
-                </button>
-              </div>
-            </td>
-          </tr>
-  
-          <!-- Add Item Button -->
-          <tr>
-            <td colspan="3">
-              <button class="btn-action" type="button" (click)="addDocument()">
-                Add Item
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h2>Documents</h2>
+  <!-- Tab and Action Buttons Section -->
+  <div class="header-row">
+    <button class="primary-applicant-button">Primary Applicant</button>
+    <div class="sub-container">
+      <button>Send Documents</button>
+      <button>
+        <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
+      </button>
     </div>
   </div>
-  
+
+  <!-- Table Section -->
+  <div class="table">
+    <div class="table-header">
+      <div class="column-header">#</div>
+      <div class="column-header">Document</div>
+      <div class="column-header">Action</div>
+    </div>
+
+    <!-- Dynamically generated document upload fields -->
+    <div *ngFor="let document of documents; let i = index" class="upload-documents">
+      <div class="column-content">{{ i + 1 }}</div>
+      <div class="column-content">
+        <input
+          type="text"
+          [placeholder]="document.placeholder"
+          [id]="'file-url-' + (i + 1)"
+          [value]="document.fileName"
+          disabled
+        />
+      </div>
+      <div class="column-content">
+        <input
+          class="i"
+          type="file"
+          [id]="'l-' + (i + 1)"
+          (change)="handleFileUpload(i, $event)"
+        />
+        <label [for]="'l-' + (i + 1)">
+          <i class="fa-solid fa-upload"></i>
+        </label>
+        <i class="fa-solid fa-eye" (click)="viewDocument(i)"></i>
+        <i
+          *ngIf="document.fileName"
+          class="fa-solid fa-times reset-icon"
+          (click)="resetFile(i)"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </div>
+
+    <!-- Add Item Button -->
+    <div class="add-item-container">
+      <button class="add-item-button" (click)="addNewDocument()">
+        <i class="fa-solid fa-plus"></i> Add Item
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal for viewing the uploaded document -->
+  <div *ngIf="isModalVisible" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h3>Uploaded Document</h3>
+      <p><strong>Document Name:</strong> {{ selectedDocument.fileName }}</p>
+      <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
+      <div *ngIf="selectedDocument.fileName">
+        <p><strong>Preview:</strong></p>
+        <img *ngIf="isImage(selectedDocument.fileName)" [src]="getFileUrl(selectedDocument.fileName)" alt="Document Preview" />
+        <p *ngIf="!isImage(selectedDocument.fileName)">No preview available for this file type.</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -6,61 +6,59 @@ import { Component } from '@angular/core';
   styleUrls: ['./documents.component.css']
 })
 export class DocumentsComponent {
-  documents: Array<any> = []; // Holds the documents
+  documents = [
+    { placeholder: 'Upload your document', fileName: '' }
+    // Add more document objects as needed
+  ];
 
-  // Adds a new document item to the list
-  addDocument() {
-    this.documents.push({
-      name: '', // Initial empty document name
-      file: null // No file initially
-    });
-  }
+  isModalVisible = false;  // Flag to control the visibility of the modal
+  selectedDocument: any = {};  // Store the selected document for viewing
 
-  // Handles file upload
-  uploadFile(event: any, doc: any) {
+  // Handle file upload and update the document name
+  handleFileUpload(index: number, event: any): void {
     const file = event.target.files[0];
-
-    if (file && file.type === 'application/pdf') {
-      // Only allow PDF files
-      doc.file = file;
-      console.log('File uploaded:', file.name);
-    } else {
-      alert('Only PDF files are allowed!');
+    if (file) {
+      // Update the document object with the file name
+      this.documents[index].fileName = file.name;
     }
   }
 
-  // Handles the editing of a document (Name change or Deletion)
-  editDocument(index: number) {
-    const doc = this.documents[index];
+  // Function to reset the file input and file name
+  resetFile(index: number): void {
+    this.documents[index].fileName = '';  // Reset file name
+    const fileInput = document.getElementById('l-' + (index + 1)) as HTMLInputElement;
+    if (fileInput) fileInput.value = '';  // Reset file input
+  }
 
-    // Prompt the user for the action
-    const action = prompt('Enter "edit" to change name or "delete" to remove the document:', 'edit');
+  // Function to add a new document input
+  addNewDocument(): void {
+    this.documents.push({ placeholder: 'Upload your document', fileName: '' });
+  }
 
-    if (action) {
-      if (action.toLowerCase() === 'edit') {
-        // Ask the user to enter a new document name
-        const newName = prompt('Enter new document name:', doc.name);
-        if (newName !== null) {
-          doc.name = newName; // Update the document name
-        }
-      } else if (action.toLowerCase() === 'delete') {
-        // Confirm deletion
-        const confirmDelete = confirm('Are you sure you want to delete this document?');
-        if (confirmDelete) {
-          this.deleteDocument(index); // Delete the document
-        }
-      } else {
-        alert('Invalid action! Please enter "edit" or "delete".');
-      }
+  // Function to open the modal and view the document
+  viewDocument(index: number): void {
+    const selectedDoc = this.documents[index];
+    if (selectedDoc.fileName) {
+      this.selectedDocument = selectedDoc;
+      this.isModalVisible = true;
     }
   }
 
-  // Handles deleting a document
-  deleteDocument(index: number) {
-    const confirmDelete = confirm('Are you sure you want to delete this document?');
-    if (confirmDelete) {
-      this.documents.splice(index, 1); // Remove the document from the array
-    }
+  // Function to close the modal
+  closeModal(): void {
+    this.isModalVisible = false;
   }
+
+  // Function to check if the file is an image
+  isImage(fileName: string): boolean {
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
+    return fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png' || fileExtension === 'gif';
+  }
+
+  // Function to get the URL of the uploaded file
+  getFileUrl(fileName: string): string {
+    return URL.createObjectURL(new Blob([fileName]));
+  }
+  
+  
 }
-
