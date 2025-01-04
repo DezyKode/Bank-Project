@@ -19,6 +19,7 @@ import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-o
 import { DocumentsComponents } from './components/creatnewlead/documents-1/documents.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,15 @@ const routes: Routes = [
   {path:'verify',component:VreportComponent},
   {path:'newtask',component:NewtaskComponent},
   {path:'newtask',component:NewtaskComponent},
+
+
+// {path:'comments',component:CommentsComponent},
+ 
+
+{path:"invoice",component:InvoiceComponent},
+
+  // {path:'verification',component:VerificationComponent},
+
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
@@ -45,6 +55,21 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
+
+
+      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+  {path:'',component:VerificationComponent, children:[
+    {path:'vreport',component:VreportComponent},
+    {path:'comments',component:CommentsComponent},
+
+
+  // {path:'',component:VerificationComponent, children:[
+  //   // {path:'vreport',component:VreportComponent},
+  // ]}
+
+
+  ]}
+
   
   {path:'vreport',component:VreportComponent},
   { path: '', redirectTo: 'verification', pathMatch: 'full' },

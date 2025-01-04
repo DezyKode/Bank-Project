@@ -21,4 +21,28 @@ form{
     display: block;
     margin-top: 10px;
   }
+
+  /* Custom indentation for each level */
+.reply-section {
+    margin-left: 20px;
+  }
+  
+  .media-body {
+    padding-left: 20px;
+  }
+  
+  .media {
+    margin-top: 10px;
+  }
+  /* Add spacing between timestamp and reply button */
+.media-body small {
+    display: block;  /* Ensures timestamp is treated as a block-level element */
+    margin-bottom: 10px;  /* Adds space below the timestamp */
+  }
+  
+  .media-body button {
+    margin-top: 10px;  /* Adds space above the button */
+  }
+  
+  
   
