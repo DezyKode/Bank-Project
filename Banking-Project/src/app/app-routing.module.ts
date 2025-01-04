@@ -44,49 +44,26 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
-  
-  {path:'vreport',component:VreportComponent},
-  { path: '', redirectTo: 'verification', pathMatch: 'full' },
-  {
-    path: 'verification',
-    component: VerificationComponent,
-    children: [
-      
-      { path: 'comments', component: CommentsComponent },
-      { path: 'vreport', component: VreportComponent },
-      {path:"Application-details",component:AplicationDetailsComponent},
-      {path:'empdoc',component:BrowseempdocumentsComponent},
+
+    {path:'vreport',component:VreportComponent},
+    { path: '', redirectTo: 'verification', pathMatch: 'full' },
+    {
+      path: 'verification',
+      component: VerificationComponent,
+      children: [
+         {path:'Overview',component:OverviewComponent},
+         {path:"Application-details",component:AplicationDetailsComponent},
+         {path:'loan-details',component:LoanDetailsComponent}, 
+         {path:"bank",component:BankComponent},
+         {path:'loan-offers',component:LoanOffersComponent},
+        { path: 'comments', component: CommentsComponent },
+        { path: 'vreport', component: VreportComponent },
+              {path:'empdoc',component:BrowseempdocumentsComponent},
+
       ],
     },
  
 ]
-
-// const routes: Routes = [
-  // { path: 'login', component: LoginComponent },
-  // { path: 'managerlogin', component: ManagerLoginComponent },
-  // { path: 'registration', component: RegistrationComponent },
-  // { path: 'checkeligibility', component: CheckeligibilityComponent },
-  // { path: 'personalloan', component: PersonalloanComponent },
-  // { path: 'lead', component: LeadComponent },
-  // { path: 'newtask', component: NewtaskComponent },
-  // { path: 'verify', component: VreportComponent },
-  // { path: 'empdocuments', component: EmployeeDocumentsComponent },
-  // { path: 'empdoc', component: BrowseempdocumentsComponent },
-  // { path: 'verification', component: VerificationComponent },
-  // { path: 'overview', component: OverviewComponent },
-  // { path: 'application-details', component: AplicationDetailsComponent },
-  // { path: 'loan-details', component: LoanDetailsComponent },
-  // { path: 'bank', component: BankComponent },
-  // { path: '', redirectTo: 'verification', pathMatch: 'full' },
-  // {
-  //   path: 'verification',
-  //   component: VerificationComponent,
-  //   children: [
-  //     { path: 'comments', component: CommentsComponent },
-  //     { path: 'vreport', component: VreportComponent },
-  //   ],
-  // },
-// ];
 
 
 @NgModule({
