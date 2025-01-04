@@ -37,6 +37,7 @@ import { AplicationDetailsComponent } from './components/casedetails/aplication-
 
 import { BankComponent } from './components/casedetails/bank/bank.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 const routes: Routes = [
 
@@ -55,13 +56,13 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
 
 
-{path:'comments',component:CommentsComponent},
+// {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
 {path:"Application-details",component:AplicationDetailsComponent},
 {path:'loan-details',component:LoanDetailsComponent},
 {path:"bank",component:BankComponent},
 
-
+{path:"invoice",component:InvoiceComponent},
 
   // {path:'verification',component:VerificationComponent},
   {path:'newtask',component:NewtaskComponent},
@@ -70,23 +71,14 @@ const routes: Routes = [
 
   {path:'empdoc',component:BrowseempdocumentsComponent},
   {path:'verification',component:VerificationComponent},
-  
 
 
-  // {path:'verification',component:VerificationComponent},
-
-  // {path:'vreport',component:VreportComponent},
-
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-
-  // {path:'verification',component:VerificationComponent},
-
-  // {path:'vreport',component:VreportComponent},
-  
       // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
   {path:'',component:VerificationComponent, children:[
     {path:'vreport',component:VreportComponent},
-    {path:'comments',component:CommentsComponent}
+    {path:'comments',component:CommentsComponent},
+
+
   // {path:'',component:VerificationComponent, children:[
   //   // {path:'vreport',component:VreportComponent},
   // ]}

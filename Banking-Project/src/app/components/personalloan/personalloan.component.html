@@ -167,7 +167,7 @@
         <input type="tel" id="mobile" class="form-control mt-2" required [(ngModel)]="mobile" name="mobile"
           (input)="validateMobile()" maxlength="10" pattern="^\d{10}$" #mobileInput="ngModel" />
         <!-- Show error message if mobile validation fails -->
-        <span *ngIf="mobileInput.invalid && mobileInput.touched" style="color: red; display: block">
+        <span *ngIf="mobileInput.invalid && mobileInput.touched" class="text-danger invalid-feedback">
           Please enter a valid 10-digit mobile number.
         </span>
       </div>

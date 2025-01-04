@@ -1,0 +1,214 @@
+<form action="" class="bg-white" [formGroup]="invoiceForm" (ngSubmit)="onSave()">
+    <div class="container bg-light">
+        <div class="row  py-3 d-flex justify-content-between ">
+            <div class="col-md-9">
+                <h1 class="color ">DSA CRM</h1>
+            </div>  
+            <div class="col-md-3">
+                <h2 class="color mb-1 ">DSA CRM</h2>
+                <address>
+                    <ul class="list-style" style="font-size: small;">
+                        <li>office no:1008 ABC imperium rise wipro circle</li>
+                        <li> hinjewadi phase-2 pune 413202</li>
+                        <li>www.abc.com</li>
+                        <li>+91 7820897648 info <span></span> abc.com</li>
+                        <li>CIN:U6207352472AJGDHFER</li>
+                    </ul>
+                </address>
+
+            </div>
+
+        </div>
+
+        <!--  -->
+
+        <div class="row py-3">
+            <div class="col-md-12">
+                <hr class="color">
+            </div>
+        </div>
+        <!--  -->
+        <div class="row py-3">
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <label for="invoiceNo">Invoice No</label>
+                    <input type="text"
+                      class="form-control"
+                      name="invoiceNo"
+                      id="invoiceNo"
+                      formControlName="invoiceNo"
+                      required>
+                    <span *ngIf="formControls['invoiceNo'].touched && formControls['invoiceNo'].invalid" class="text-danger form-text position-absolute">
+                        Invoice No must be numeric only                    
+                    </span>
+             </div>
+                  
+            </div>
+            
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <label for="Reference po no">Reference Po No</label>
+                    <input type="text"
+                    class="form-control"
+                    formControlName="referencePoNo"
+                    required
+                    >
+                    <span *ngIf="formControls['referencePoNo'].touched && formControls['referencePoNo'].invalid" class="text-danger form-text position-absolute">
+                        Reference PO No is required
+                      </span>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <label for="date">Date</label>
+                    <input type="date"
+                    class="form-control position-relative"
+                    formControlName="date"
+                    [max]="today"
+                    required
+                    >
+                    <span *ngIf="formControls['date'].touched && formControls['date'].invalid" class="text-danger form-text position-absolute">
+                        Date is required
+                      </span>
+                </div>
+                
+            </div>
+        </div>
+<!--  -->
+        <div class="row py-3">
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <label for="bank">Bank</label>
+                <select name="" id="" class="form-control form-select "
+                formControlName="bank"
+                    required
+                >
+                    <option value="">select</option>
+                    <option value="hdfc">hdfc</option>
+                    <option value="state">state </option>
+                </select>
+                <span *ngIf="formControls['bank'].touched && formControls['bank'].invalid" class="text-danger form-text position-absolute">
+                    Bank is required
+                  </span>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <label for="branch">RAC Branch</label>
+                    <select name="" id="" class="form-control form-select"
+                    formControlName="branch"
+                    required
+                    >
+                        <option value="">select</option>
+                        <option value="pune">pune</option>
+                        <option value="mumbai">mumbai </option>
+                    </select>
+                    <span *ngIf="formControls['branch'].touched && formControls['branch'].invalid" class="text-danger form-text position-absolute">
+                        Branch is required
+                      </span>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="row d-md-flex  d-sm-block  py-3">
+            <div class="col-md-4 mb-sm-4">
+                <div class="form-group position-relative">
+                    <!-- <label for="billingAddress"  class="" required></label> -->
+                    <textarea name="" id="" class="form-control" placeholder="Enter Billing Address"
+                    formControlName="billingAddress"
+                    required
+                    ></textarea>
+                    <span *ngIf="formControls['billingAddress'].touched && formControls['billingAddress'].invalid" class="text-danger form-text position-absolute">
+                        Billing Address is required
+                      </span>
+                </div>
+            </div>
+          
+            <div class="col-md-4 mb-sm-4">
+                <div class="form-group position-relative">
+                    <input type="text" placeholder="Enter Billing State" class="form-control"
+                    formControlName="billingState"
+                    required>
+                    <span *ngIf="formControls['billingState'].touched && formControls['billingState'].invalid" class="text-danger form-text position-absolute">
+                        Billing State is required
+                      </span>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="form-group position-relative">
+                    <input type="text" placeholder="Enter Billing Pincode" class="form-control"
+                    formControlName="billingPincode"
+                    required>
+                    <span *ngIf="formControls['billingPincode'].touched && formControls['billingPincode'].invalid" class="text-danger form-text position-absolute">
+                        Pincode must be 6 digits
+                      </span>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="row">
+            <div class="col">
+
+                <ul class="list-style d-md-flex d-sm-block justify-content-around py-3 form-control mb-3">
+                    <li><a href="">Case ID</a> </li>
+                    <li><a href=""> Application Name</a></li>
+                    <li><a href="">Sanction Amount</a></li>
+                    <li><a href="">Disburse Amount</a></li>
+                    <li><a href="">Rate</a></li>
+                    <li><a href="">Amount</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--  -->
+        <hr class="color py-2" style="border-top: 1px dashed grey;">
+
+        <div class="row d-flex">
+            <div class="col-md-3">
+                <div class="form-group position-relative">
+                    <label for="tax" class="">Tax </label>
+                    <select name="" id="" class="form-control form-select"
+                    formControlName="tax"
+                     required
+                    >
+                     <option value="">select</option>
+                     <option value="one">one</option>
+                     <option value="two">two</option>
+                     <option value="three">three</option>
+                    </select>
+                    <span *ngIf="formControls['tax'].touched && formControls['tax'].invalid" class="text-danger form-text position-absolute">
+                     Tax is required
+                   </span>
+            </div>
+            </div>
+            <div class="col-md-3 offset-md-6">
+                <div class="d-flex">
+                    <label for="subTotal " class="me-4 align-self-center">subTotal</label>
+                    <input type="text" class="form-control" value="0" formControlName="subTotal">
+                </div>
+                <hr class="color mb-2 mt-2" style="border-top: 1px dashed grey;">
+
+                <div class="d-flex ">
+                    <label for="subTotal " class="me-4 align-self-center">TotalTax </label>
+                    <input type="text" class="form-control" value="0" formControlName="totalTax">
+                </div>
+                <hr class="color mb-2 mt-2" style="border-top: 1px dashed grey;">
+
+                <div class="d-flex ">
+                    <label for="subTotal " class="me-4 align-self-center">TotalAmount</label>
+                    <input type="text" class="form-control" value="0" formControlName="totalAmount">
+                </div>
+               
+            </div>
+        </div>
+        <!--  -->
+        <div class="row py-3">
+            <div class="col-md-12 d-flex justify-content-end">
+                <button type="button" class="btn btn-primary ml-auto me-3" (click)="resetForm()"> <i class="fas fa-edit"></i> Reset</button>
+                <button type="submit" class="btn btn-primary ml-auto" [disabled]="invoiceForm.invalid"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+    </div>
+</form>
