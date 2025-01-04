@@ -47,6 +47,8 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
+    
+
   {path:'vreport',component:VreportComponent},
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
@@ -57,7 +59,7 @@ const routes: Routes = [
       {path:'loan-details',component:LoanDetailsComponent}, 
       {path:"bank",component:BankComponent},
       {path:'loan-offers',component:LoanOffersComponent},
-      { path:'comments', component: CommentsComponent },
+      { path: 'comments', component: CommentsComponent },
       { path: 'vreport', component: VreportComponent },
       {path:'empdoc',component:BrowseempdocumentsComponent},
       ],
