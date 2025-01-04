@@ -59,12 +59,30 @@ export class BrowseempdocumentsComponent {
   // Handle file upload and update the text field with the file name
   handleFileUpload(index: number, event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input && input.files && input.files.length > 0) {
-      const fileName = input.files[0].name;
-      this.documents[index].fileName = fileName;  // Store the file name in the document
-    } else {
-      console.error('No file selected or input not found.');
+  if (input && input.files && input.files.length > 0) {
+    const file = input.files[0];
+    const fileName = file.name;
+    const fileSize = file.size / (1024 * 1024); // Convert size to MB
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
+
+    // Allowable extensions
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+
+    // Check file extension and size
+    if (!allowedExtensions.includes(fileExtension || '')) {
+      alert('Only JPG, JPEG, and Pdf files are allowed.');
+      return;
     }
+    if (fileSize > 2) {
+      alert('File size must not exceed 2MB.');
+      return;
+    }
+
+    // Valid file: store the file name in the document
+    this.documents[index].fileName = fileName;
+  } else {
+    console.error('No file selected or input not found.');
+  }
   }
 
   // Reset the file and restore the placeholder when X is clicked
@@ -74,13 +92,23 @@ export class BrowseempdocumentsComponent {
 
   // Handle view document click (open modal)
   viewDocument(index: number): void {
-    this.selectedDocument = this.documents[index];
+    const document = this.documents[index];
+
+  // Check if a file is selected
+  if (!document.fileName) {
+    this.selectedDocument = null; // Set selectedDocument to null if no file
     this.isModalVisible = true;
+  } else {
+    // Set the selected document for viewing
+    this.selectedDocument = document;
+    this.isModalVisible = true;
+  }
   }
 
   // Close the modal
   closeModal(): void {
     this.isModalVisible = false;
+  this.selectedDocument = null; 
   }
 
   // Check if the file is an image
@@ -90,7 +118,7 @@ export class BrowseempdocumentsComponent {
   //   return imageExtensions.includes(fileExtension || '');
   // }
   isImage(fileName: string): boolean {
-    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp','pdf'];
+    const imageExtensions = ['jpg', 'jpeg', 'pdf'];
     const fileExtension = fileName.split('.').pop()?.toLowerCase();
     return fileExtension ? imageExtensions.includes(fileExtension) : false;
   }

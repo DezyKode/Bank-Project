@@ -18,9 +18,10 @@
   <div class="content">
     <div class="left-content">
       <strong><p>#</p></strong>
-      <strong><p>Document</p></strong>
+      <strong><p class="document-text" style="padding-right: 200px;">Document</p></strong>
     </div>
     <div class="right-content">
+      <strong><p class="browse">Files</p></strong>
       <strong><p>Action</p></strong>
     </div>
   </div>
@@ -71,24 +72,31 @@
   <div *ngIf="isModalVisible" class="modal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
-      <h3>Uploaded Document</h3>
-      <p><strong>Document Name:</strong> {{ selectedDocument.fileName }}</p>
-      <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
-      <div *ngIf="selectedDocument.fileName">
-        <p><strong>Preview:</strong></p>
-        <div class="preview-container">
-          <img
-            *ngIf="isImage(selectedDocument.fileName)"
-            [src]="getFileUrl(selectedDocument.fileName)"
-            alt="Document Preview"
-          />
-          <p *ngIf="!isImage(selectedDocument.fileName)">
-            No preview available for this file type.
-          </p>
+  
+      <ng-container *ngIf="selectedDocument; else noFileMessage">
+        <h3>Uploaded Document</h3>
+        <p><strong>Document Name:</strong> {{ selectedDocument.fileName }}</p>
+        <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
+        <div *ngIf="selectedDocument.fileName">
+          <p><strong>Preview:</strong></p>
+          <div class="preview-container">
+            <img
+              *ngIf="isImage(selectedDocument.fileName)"
+              [src]="getFileUrl(selectedDocument.fileName)"
+              alt="Document Preview"
+              (error)="onImageError($event)"
+            />
+            <p *ngIf="!isImage(selectedDocument.fileName)">
+              No preview available for this file type.
+            </p>
+          </div>
         </div>
-        
-      </div>
+      </ng-container>
+  
+      <!-- Message for no file selected -->
+      <ng-template #noFileMessage>
+        <h3>No file selected</h3>
+      </ng-template>
     </div>
-    
   </div>
 </div>
