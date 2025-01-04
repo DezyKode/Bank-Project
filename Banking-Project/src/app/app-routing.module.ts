@@ -44,22 +44,22 @@ const routes: Routes = [
   {path:'empdocuments',component:EmployeeDocumentsComponent},
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
-  {path:'empdoc',component:BrowseempdocumentsComponent},
   {path:'verification',component:VerificationComponent},
   
-    {path:'vreport',component:VreportComponent},
-    { path: '', redirectTo: 'verification', pathMatch: 'full' },
-    {
-      path: 'verification',
-      component: VerificationComponent,
-      children: [
-         {path:'Overview',component:OverviewComponent},
-         {path:"Application-details",component:AplicationDetailsComponent},
-         {path:'loan-details',component:LoanDetailsComponent}, 
-         {path:"bank",component:BankComponent},
-         {path:'loan-offers',component:LoanOffersComponent},
+  {path:'vreport',component:VreportComponent},
+  { path: '', redirectTo: 'verification', pathMatch: 'full' },
+  {
+    path: 'verification',
+    component: VerificationComponent,
+    children: [
+      {path:'Overview',component:OverviewComponent},
+      {path:"Application-details",component:AplicationDetailsComponent},
+      {path:'loan-details',component:LoanDetailsComponent}, 
+      {path:"bank",component:BankComponent},
+      {path:'loan-offers',component:LoanOffersComponent},
         { path: 'comments', component: CommentsComponent },
         { path: 'vreport', component: VreportComponent },
+        {path:'empdoc',component:BrowseempdocumentsComponent},
       ],
     },
  
