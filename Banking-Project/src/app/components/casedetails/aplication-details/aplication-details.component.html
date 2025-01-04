@@ -5,50 +5,93 @@
           <button class="primary-applicant-button">Primary Applicant</button>
       </div>
       <div class="details-grid">
-          <div class="detail-item">
-              <strong>Name:</strong>
-              <span>{{ applicantDetails.name }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Date of Birth:</strong>
-              <span>{{ applicantDetails.dob }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Email:</strong>
-              <span>{{ applicantDetails.email }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Mobile No:</strong>
-              <span>{{ applicantDetails.mobile }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>PAN No:</strong>
-              <span>{{ applicantDetails.pan }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Employment Type:</strong>
-              <span>{{ applicantDetails.employmentType }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Period of Employment:</strong>
-              <span>{{ applicantDetails.employmentPeriod }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Retirement Age:</strong>
-              <span>{{ applicantDetails.retirementAge }}</span>
-          </div>
+        <div class="custom-card">
+            <div class="custom-icon border-2">
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Name</h3>
+                <p class="card-text">{{ applicantDetails.name }}</p>
+            </div>
+        </div>
+        
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-birthday-cake"></i> <!-- Icon for Date of Birth -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Date of Birth</h3>
+                <p class="card-text">{{ applicantDetails.dob }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-envelope"></i> <!-- Icon for Email -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Email</h3>
+                <p class="card-text">{{ applicantDetails.email }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-phone"></i> <!-- Icon for Mobile No -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Mobile No</h3>
+                <p class="card-text">{{ applicantDetails.mobile }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-id-card"></i> <!-- Icon for PAN No -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">PAN No</h3>
+                <p class="card-text">{{ applicantDetails.pan }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-briefcase"></i> <!-- Icon for Employment Type -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Employment Type</h3>
+                <p class="card-text">{{ applicantDetails.employmentType }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-calendar-alt"></i> <!-- Icon for Period of Employment -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Period of Employment</h3>
+                <p class="card-text">{{ applicantDetails.employmentPeriod }} Years</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-user-clock"></i> <!-- Icon for Retirement Age -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Retirement Age</h3>
+                <p class="card-text">{{ applicantDetails.retirementAge }} Years</p>
+            </div>
+        </div>
+        
+         
           <div class="detail-item">
               <strong>Lead Source:</strong>
               <span>{{ applicantDetails.leadsource }}</span>
           </div>
-          <div class="detail-item">
-              <strong>Employment Type:</strong>
-              <span>{{ applicantDetails.employetype }}</span>
-          </div>
-          <div class="detail-item">
-              <strong>Monthly Gross Salary:</strong>
-              <span>{{ applicantDetails.grossSalary }}</span>
-          </div>
+       
           <div class="detail-item">
               <strong>Monthly Net Salary:</strong>
               <span>{{ applicantDetails.netSalary }}</span>

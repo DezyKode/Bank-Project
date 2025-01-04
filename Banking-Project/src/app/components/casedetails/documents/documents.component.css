@@ -1,272 +1,261 @@
-/* General Container */
-
 .documents-container {
-    font-family: Arial, sans-serif;
     margin: 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-
-/* Title */
-
 .documents-container h2 {
-    font-size: 24px;
     margin-bottom: 20px;
+    font-size: 24px;
     color: #333;
 }
 
-
-/* Action Buttons (Send Documents, Share) */
-
-.action-buttons {
+.header-row {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-
-/* Table Section */
-
-.documents-table {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    padding: 10px;
+.primary-applicant-button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.tabs {
-    margin-bottom: 20px;
+.primary-applicant-button:hover {
+    background-color: #0056b3;
 }
 
+.sub-container button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    border: 2px solid #434190;
+    /* background-color: #28a745; */
+    color: #0a0808;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Ensures borders don't overlap */
+}
 
-table {
+.sub-container button:hover {
+    background-color: #212688;
+}
+
+.sub-container button i {
+    margin-right: 8px;
+}
+
+.documents-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-table th,
-table td {
+.documents-table th,
+.documents-table td {
     text-align: left;
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
-table th {
-    background-color: #f4f4f4;
+.documents-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.upload-documents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.upload-documents .left-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.upload-documents .left-content p {
+    margin-right: 10px;
+    font-size: 16px;
     color: #333;
 }
 
-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-
-/* Input Fields */
-
-input[type="text"] {
-    width: 90%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-
-/* Add Item Button */
-
-button[type="button"] {
-    background-color: #28a745;
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-button[type="button"]:hover {
-    background-color: #218838;
-}
-
-
-/* Mobile Responsiveness */
-
-@media (max-width: 768px) {
-    .documents-container {
-        width: 100%;
-        margin: 10px;
-    }
-    table th,
-    table td {
-        font-size: 12px;
-        padding: 8px;
-    }
-    input[type="text"] {
-        width: 100%;
-    }
-    .btn-action,
-    button[type="button"] {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-}
-
-
-/* Delete Button */
-
-.btn-delete:hover {
-    background-color: #b02a37;
-}
-
-
-/* Upload Button */
-
-.btn-upload {
-    background-color: #007bff;
-    cursor: pointer;
-    padding: 8px 15px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    display: inline-block;
-}
-
-.btn-upload:hover {
-    background-color: #0056b3;
-}
-
-
-/* Hide the actual file input */
-
-.file-upload {
-    display: none;
-}
-
-
-/* Align "Primary Applicant" below "Documents" */
-
-.header-section {
-    margin-bottom: 20px;
-}
-
-.header-section h2 {
-    margin: 0;
-}
-
-.tabs {
-    margin-top: 10px;
-}
-
-.primary-applicant-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.primary-applicant-button:hover {
-    background-color: #0056b3;
-}
-
-
-/* Other Buttons Styling */
-
-.btn-action {
-    margin: 5px;
-}
-
-.action-buttons {
-    margin-bottom: 20px;
-}
-
-
-/* Table Styling */
-
-.documents-table table {
+.upload-documents .left-content input {
     width: 100%;
-    border-collapse: collapse;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.documents-table th,
-.documents-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-
-/* Header Row Styling */
-
-.header-row {
+.upload-documents .right-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.primary-applicant-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.primary-applicant-button:hover {
-    background-color: #0056b3;
-}
-
-.action-buttons {
-    display: flex;
     gap: 10px;
 }
 
-.btn-action {
-    /* background-color: #007bff; */
-    color: rgb(14, 13, 13);
-    padding: 10px 15px;
-    border-radius: 5px;
+.upload-documents .right-content label {
     cursor: pointer;
 }
 
-btn-action .send {
-    border: solid blue 1px;
+.upload-documents .right-content i {
+    font-size: 16px;
+    color: #007bff;
+    cursor: pointer;
 }
 
-btn-action .share {
-    border: solid blue 1px;
+.upload-documents .right-content i.reset-icon {
+    color: #dc3545;
 }
 
-.btn-action:hover {
-    background-color: #0056b3;
-}
-
-
-/* Table Styling */
-
-.documents-table table {
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.documents-table th,
-.documents-table td {
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.table-header.content.table {
+    border: solid 2px rgb(11, 3, 4);
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.file-input {
+    display: none;
+}
+
+.i {
+    display: none;
+}
+
+.documents-container {
+    padding: 20px;
+}
+
+.table-header,
+.upload-documents {
+    display: flex;
+    justify-content: space-between;
+}
+
+.upload-documents .u {
+    border: 2px solid black;
+}
+
+button {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Adds a pointer on hover */
+    transition: background-color 0.3s;
+    /* Smooth hover effect */
+}
+
+
+/* button:hover {
+    background-color: #f0f0f0;
+    /* Lighter background on hover */
+
+
+/* } */
+
+button img {
+    margin-right: 5px;
+    /* Space between icon and text */
+}
+
+
+/* .column-header,
+.column-content {
+    flex: 1;
+    padding: 1px;
+    text-align: center;
+} */
+
+.add-item-container {
+    text-align: center;
+    margin-top: 20px;
+    /* background-color: #007bff; */
+}
+
+.add-item-button {
     padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
+    background-color: #007bff;
+    color: rgb(7, 6, 6);
+    border: none;
+    cursor: pointer;
+}
+
+.add-item-button i {
+    margin-right: 8px;
+}
+
+
+/* Modal styling */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.close {
+    font-size: 30px;
+    cursor: pointer;
 }
 
 .primary-applicant-button {
@@ -308,16 +297,84 @@ btn-action .share {
     /* Reset lift on click */
 }
 
-.btn-delete {
-    background-color: #dc3545;
+.documents-container {
+    padding: 20px;
 }
 
-.btn-action.send,
-.btn-action.share {
-    border: 2px solid #000;
-    /* You can change the color */
-    padding: 10px 20px;
-    /* Adjust padding as needed */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Ensures borders don't overlap */
+}
+
+.table-header {
+    display: flex;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+}
+
+.column-header,
+.column-content {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    /* Border for each column */
+}
+
+.upload-documents {
+    display: flex;
+    margin-top: 10px;
+}
+
+.column-content input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    /* Optional: Add rounded corners */
+}
+
+.add-item-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.add-item-button {
+    padding: 10px;
+    background-color: #434190;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-item-button i {
+    margin-right: 8px;
+}
+
+
+/* Modal styling */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.close {
+    font-size: 30px;
+    cursor: pointer;
 }

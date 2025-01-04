@@ -37,6 +37,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .detail-item strong {
@@ -113,4 +114,78 @@
 .primary-applicant-button {
     margin-bottom: 20px;
     /* Adds space below the button */
+}
+
+
+/* Style for Detail Item */
+
+
+/* Custom Card Styling */
+
+.custom-card {
+    /* max-width: 200px; */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    /* Card background */
+}
+
+
+/* Icon styling inside the card */
+
+.custom-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Makes the icon's background circular */
+    background-color: #e0f7fa;
+    /* Light blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    /* Icon size */
+    color: #007bff;
+    /* Icon color */
+}
+
+
+/* Card content container */
+
+.card-content {
+    margin-left: 15px;
+    /* Space between icon and content */
+}
+
+
+/* Card title styling */
+
+.card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Card text styling */
+
+.card-text {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+    /* Text color */
+}
+
+
+/* Optional: Add hover effect to the card */
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
