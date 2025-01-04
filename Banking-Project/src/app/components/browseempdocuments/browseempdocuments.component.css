@@ -5,12 +5,12 @@
 }
 
 .container {
-    margin-top: 30px;
-    margin-left: 50px;
+    margin: 0px;
     font-size: large;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    width: 100%;
+
     overflow-x: hidden;
+    /* border: 1px solid red; */
 }
 
 
@@ -194,7 +194,7 @@ button img {
     align-items: center;
     gap: 25px;
     /* Space between actions */
-    margin-right: 60px;
+    margin-right: 0px;
 }
 
 
@@ -217,15 +217,17 @@ button img {
     border-radius: 5px;
     padding: 5px;
 
-    width: 50%; 
+    width: 35%; 
     height: 45px; /* Input height */
-    margin-left: 40px; /* Adjust for alignment */
+    /* Adjust for alignment */
+
 }
 
 .dynamic-label{
     min-width: 300px;
+    margin-left: 40px;
     /* border: 1px solid red; */
-    margin-left: 120px;
+   
   
 }
 
