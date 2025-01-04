@@ -53,7 +53,11 @@ const routes: Routes = [
       path: 'verification',
       component: VerificationComponent,
       children: [
-        
+         {path:'Overview',component:OverviewComponent},
+         {path:"Application-details",component:AplicationDetailsComponent},
+         {path:'loan-details',component:LoanDetailsComponent}, 
+         {path:"bank",component:BankComponent},
+         {path:'loan-offers',component:LoanOffersComponent},
         { path: 'comments', component: CommentsComponent },
         { path: 'vreport', component: VreportComponent },
       ],
