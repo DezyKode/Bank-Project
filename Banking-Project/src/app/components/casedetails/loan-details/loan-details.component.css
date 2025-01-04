@@ -17,8 +17,12 @@
     
     h2 {
         text-align: start;
-        margin: 20px;
-        font-size: 24px;
+        /* margin: 20px; */
+        /* font-size: 24px; */
+        padding: 10px;
+        /* font-size: 1.5rem; */
+        font-weight: bold;
+        font-size: 1.5rem;
     }
     /* Grid Layout for Loan Details */
     
@@ -93,4 +97,52 @@
         .container {
             width: 100%;
         }
+    }
+    
+    .custom-card {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+    }
+    
+    .custom-icon {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        /* Makes the icon's background circular */
+        background-color: #e0f7fa;
+        /* Light blue background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        /* Icon size */
+        color: #007bff;
+    }
+    
+    .card-content {
+        margin-left: 15px;
+    }
+    
+    .card-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .card-text {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
     }
