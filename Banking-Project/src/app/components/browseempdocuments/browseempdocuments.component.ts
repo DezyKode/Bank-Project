@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class BrowseempdocumentsComponent {
 
-
   // documents = [
   //   { placeholder: 'Photo' },
   //   { placeholder: 'Aadhar Card' },
@@ -35,10 +34,12 @@ export class BrowseempdocumentsComponent {
   //   }
   // }
 
+// fileName:String='icon.png';
 
   documents = [
     { placeholder: 'Photo', fileName: '' },
-    { placeholder: 'Aadhar Card', fileName: '' },
+    { placeholder: 'Aadhar Card Front-side', fileName: '' },
+     { placeholder: 'Aadhar Card Back-side', fileName: '' },
     { placeholder: '3 Months Salary Slip', fileName: '' },
     { placeholder: 'Last 2 Years Form 16', fileName: '' },
     { placeholder: 'Proof Of Bonus Income', fileName: '' },
@@ -83,14 +84,25 @@ export class BrowseempdocumentsComponent {
   }
 
   // Check if the file is an image
+  // isImage(fileName: string): boolean {
+  //   const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+  //   const fileExtension = fileName.split('.').pop()?.toLowerCase();
+  //   return imageExtensions.includes(fileExtension || '');
+  // }
   isImage(fileName: string): boolean {
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp','pdf'];
     const fileExtension = fileName.split('.').pop()?.toLowerCase();
-    return imageExtensions.includes(fileExtension || '');
+    return fileExtension ? imageExtensions.includes(fileExtension) : false;
   }
-
-  // Get the file URL (for image preview)
   getFileUrl(fileName: string): string {
-    return `/uploads/${fileName}`;  // You can customize this based on your file storage path
+    return `${fileName}`; // Replace with your file path logic
   }
+  onImageError(event: Event): void {
+    (event.target as HTMLImageElement).src = 'placeholder.png';
+  }
+  
+  // Get the file URL (for image preview)
+  // getFileUrl(fileName: string): string {
+  //   return `/uploads/${fileName}`;  // You can customize this based on your file storage path
+  // }
 }

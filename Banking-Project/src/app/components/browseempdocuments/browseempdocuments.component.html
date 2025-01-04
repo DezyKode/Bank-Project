@@ -11,8 +11,8 @@
   </div>
 
   <div class="pri-sec-documents">
-    <button>Primary Applicant</button>
-    <button>Secondary Applicant</button>
+    <button >Primary Applicant</button>
+    <button class="btn-2">Secondary Applicant</button>
   </div>
 
   <div class="content">
@@ -29,13 +29,22 @@
   <div *ngFor="let document of documents; let i = index" class="upload-documents">
     <div class="left-content">
       <p>{{ i + 1 }}</p>
+      <label [for]="'file-url-' + (i + 1)" class="dynamic-label">{{ document.placeholder }}</label>
       <input
         type="text"
         [placeholder]="document.placeholder"
         [id]="'file-url-' + (i + 1)"
         [value]="document.fileName"
         disabled
+
       />
+
+      <i
+      *ngIf="document.fileName"
+      class="fa-solid fa-times reset-icon"
+      (click)="resetFile(i)"
+      aria-hidden="true"
+    ></i>
     </div>
     <div class="right-content">
       <input
@@ -49,12 +58,12 @@
       </label>
       <i class="fa-solid fa-eye" (click)="viewDocument(i)"></i>
       <!-- Cross icon inside the input field to reset -->
-      <i
+      <!-- <i
         *ngIf="document.fileName"
         class="fa-solid fa-times reset-icon"
         (click)="resetFile(i)"
         aria-hidden="true"
-      ></i>
+      ></i> -->
     </div>
   </div>
 
@@ -67,9 +76,19 @@
       <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
       <div *ngIf="selectedDocument.fileName">
         <p><strong>Preview:</strong></p>
-        <img *ngIf="isImage(selectedDocument.fileName)" [src]="getFileUrl(selectedDocument.fileName)" alt="Document Preview" />
-        <p *ngIf="!isImage(selectedDocument.fileName)">No preview available for this file type.</p>
+        <div class="preview-container">
+          <img
+            *ngIf="isImage(selectedDocument.fileName)"
+            [src]="getFileUrl(selectedDocument.fileName)"
+            alt="Document Preview"
+          />
+          <p *ngIf="!isImage(selectedDocument.fileName)">
+            No preview available for this file type.
+          </p>
+        </div>
+        
       </div>
     </div>
+    
   </div>
 </div>
