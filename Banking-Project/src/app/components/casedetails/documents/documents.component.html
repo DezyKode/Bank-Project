@@ -1,3 +1,5 @@
+
+
 <div class="documents-container">
   <h2>Documents</h2>
   <!-- Tab and Action Buttons Section -->
@@ -6,47 +8,88 @@
     <div class="sub-container">
       <button>Send Documents</button>
       <button>
-        <i class="fas fa-share-alt" style="margin-right: 8px;"></i>Share
+        <i class="fas fa-share-alt" style="margin-right: 8px;"></i> Share
       </button>
     </div>
   </div>
 
   <!-- Table Section -->
   <div class="table">
+    <!-- Table Header -->
     <div class="table-header">
-      <div class="column-header">#</div>
+      <div class="column-header">Sr No</div>
       <div class="column-header">Document</div>
+      <div class="column-header">File Name</div>
       <div class="column-header">Action</div>
     </div>
 
     <!-- Dynamically generated document upload fields -->
-    <div *ngFor="let document of documents; let i = index" class="upload-documents">
+    <div
+      *ngFor="let document of documents; let i = index"
+      class="upload-documents table-row"
+    >
+      <!-- Serial Number -->
       <div class="column-content">{{ i + 1 }}</div>
+
+      <!-- Document Input Field -->
       <div class="column-content">
         <input
           type="text"
-          [placeholder]="document.placeholder"
-          [id]="'file-url-' + (i + 1)"
-          [value]="document.fileName"
-          disabled
+          [(ngModel)]="document.placeholder"
+          [id]="'doc-name-' + (i + 1)"
+          placeholder="Enter document name"
         />
       </div>
-      <div class="column-content">
-        <input
-          class="i"
-          type="file"
-          [id]="'l-' + (i + 1)"
-          (change)="handleFileUpload(i, $event)"
-        />
-        <label [for]="'l-' + (i + 1)">
+
+      <!-- File Name -->
+      <div class="column-content file-name-column">
+        <span *ngIf="document.fileName">{{ document.fileName }}</span>
+        <span *ngIf="!document.fileName">No file selected</span>
+        <!-- Cross icon to delete the file -->
+        <i
+          class="fa-solid fa-times delete-file-icon"
+          *ngIf="document.fileName"
+          (click)="resetFile(i)"
+          title="Delete File"
+          style="margin-left: 8px; cursor: pointer; color: red;"
+        ></i>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="column-content action-buttons">
+        <!-- View Icon -->
+        <i
+          class="fa-solid fa-eye"
+          *ngIf="document.fileName"
+          (click)="viewDocument(i)"
+        ></i>
+
+        <!-- Upload Icon -->
+        <label [for]="'file-' + (i + 1)">
           <i class="fa-solid fa-upload"></i>
         </label>
-        <i class="fa-solid fa-eye" (click)="viewDocument(i)"></i>
+        <input
+          class="file-input"
+          type="file"
+          [id]="'file-' + (i + 1)"
+          (change)="handleFileUpload(i, $event)"
+          style="display: none;"
+        />
+
+        <!-- Reset Icon -->
         <i
-          *ngIf="document.fileName"
           class="fa-solid fa-times reset-icon"
+          *ngIf="document.fileName && i === 0"
           (click)="resetFile(i)"
-          aria-hidden="true"
+          title="Reset File"
+        ></i>
+
+        <!-- Delete Icon (only from second row onward) -->
+        <i
+          class="fa-solid fa-trash delete-icon"
+          *ngIf="i > 0"
+          (click)="deleteRow(i)"
+          title="Delete Row"
         ></i>
       </div>
     </div>
@@ -58,20 +101,4 @@
       </button>
     </div>
   </div>
-
-  <!-- Modal for viewing the uploaded document -->
-  <div *ngIf="isModalVisible" class="modal">
-    <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <h3>Uploaded Document</h3>
-      <p><strong>Document Name:</strong> {{ selectedDocument.fileName }}</p>
-      <p><strong>Document Type:</strong> {{ selectedDocument.placeholder }}</p>
-      <div *ngIf="selectedDocument.fileName">
-        <p><strong>Preview:</strong></p>
-        <img *ngIf="isImage(selectedDocument.fileName)" [src]="getFileUrl(selectedDocument.fileName)" alt="Document Preview" />
-        <p *ngIf="!isImage(selectedDocument.fileName)">No preview available for this file type.</p>
-      </div>
-    </div>
-  </div>
 </div>
-

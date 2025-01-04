@@ -32,13 +32,9 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
 
-// {path:'comments',component:CommentsComponent},
- 
+  {path:'newtask',component:NewtaskComponent},
 
 {path:"invoice",component:InvoiceComponent},
-
-  // {path:'verification',component:VerificationComponent},
-
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
@@ -52,11 +48,11 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
-  {path:'vreport',component:VreportComponent},
+  
+
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
-    path: 'verification',
-    component: VerificationComponent,
+    path: 'verification',component: VerificationComponent,
     children: [
       {path:'Overview',component:OverviewComponent},
       {path:"Application-details",component:AplicationDetailsComponent},
@@ -70,6 +66,7 @@ const routes: Routes = [
     },
  
 ]
+
 
 
 
