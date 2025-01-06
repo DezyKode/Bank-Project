@@ -58,33 +58,64 @@ export class BrowseempdocumentsComponent {
     }
   }
 
-  handleFileUpload(index: number, event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input && input.files && input.files.length > 0) {
-      const file = input.files[0];
-      const fileName = file.name;
-      const fileSize = file.size / (1024 * 1024); // Convert size to MB
-      const fileExtension = fileName.split('.').pop()?.toLowerCase();
+//  handleFileUpload (index: number, event: Event): void {
+//     const input = event.target as HTMLInputElement;
+//     if (input && input.files && input.files.length > 0) {
+//       const file = input.files[0];
+//       const fileName = file.name;
+//       const fileSize = file.size / (1024 * 1024); // Convert size to MB
+//       const fileExtension = fileName.split('.').pop()?.toLowerCase();
 
-      // Allowable extensions
-      const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+//       // Allowable extensions
+//       const allowedExtensions = ['jpg', 'jpeg', 'pdf'];
 
-      // Check file extension and size
-      if (!allowedExtensions.includes(fileExtension || '')) {
-        alert('Only JPG, JPEG, and Pdf files are allowed.');
-        return;
-      }
-      if (fileSize > 2) {
-        alert('File size must not exceed 2MB.');
-        return;
-      }
+//       // Check file extension and size
+//       if (!allowedExtensions.includes(fileExtension || '')) {
+//         alert('Only JPG, JPEG, and Pdf files are allowed.');
+//         return;
+//       }
+//       if (fileSize > 2) {
+//         alert('File size must not exceed 2MB.');
+//         return;
+//       }
 
-      // Valid file: store the file name in the document
-      this.selectedDocuments[index].fileName = fileName;
-    } else {
-      console.error('No file selected or input not found.');
+//       // Valid file: store the file name in the document
+//       this.selectedDocuments[index].fileName = fileName;
+//     } else {
+//       console.error('No file selected or input not found.');
+//     }
+//   }
+
+
+
+handleFileUpload(index: number, event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input && input.files && input.files.length > 0) {
+    const file = input.files[0];
+    const fileName = file.name;
+    const fileSize = file.size / (1024 * 1024); // Convert size to MB
+    const fileExtension = fileName.split('.').pop()?.toLowerCase();
+
+    // Allowable extensions
+    const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+
+    // Check file extension and size
+    if (!allowedExtensions.includes(fileExtension || '')) {
+      alert('Only JPG, JPEG, PNG, and PDF files are allowed.');
+      return;
     }
+    if (fileSize > 2) {
+      alert('File size must not exceed 2MB.');
+      return;
+    }
+
+    // Valid file: store the file name in the document
+    this.selectedDocuments[index].fileName = fileName;
+  } else {
+    console.error('No file selected or input not found.');
   }
+}
+
 
   resetFile(index: number): void {
     this.selectedDocuments[index].fileName = '';  // Clear the uploaded file name
