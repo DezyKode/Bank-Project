@@ -44,12 +44,26 @@
       <i *ngIf="document.fileName" class="fa-solid fa-times reset-icon" (click)="resetFile(i)" aria-hidden="true"></i>
     </div>
     <div class="right-content">
-      <input
+      <!-- <input
         class="i"
         type="file"      
         [id]="'l-' + (i + 1)"
         (change)="handleFileUpload(i, $event)"
-      />
+      /> -->
+
+
+<!-- File input element that allows both file selection and camera capture -->
+<input
+  class="i"
+  type="file"
+  [id]="'l-' + (i + 1)"
+  accept="image/*,application/pdf"
+  capture="camera" 
+  (change)="handleFileUpload(i, $event)"
+/>
+
+
+
       <label [for]="'l-' + (i + 1)">
         <i class="fa-solid fa-upload"></i>
       </label>
