@@ -2,6 +2,7 @@
 
 <div class="documents-container">
   <h2>Documents</h2>
+
   <!-- Tab and Action Buttons Section -->
   <div class="header-row">
     <button class="primary-applicant-button">Primary Applicant</button>
@@ -59,10 +60,13 @@
       <div class="column-content action-buttons">
         <!-- View Icon -->
         <i
-          class="fa-solid fa-eye"
-          *ngIf="document.fileName"
-          (click)="viewDocument(i)"
-        ></i>
+        class="fa-solid fa-eye"
+        *ngIf="document.fileName"
+        (click)="viewDocument(i)"
+        title="View Document"
+        style="cursor: pointer;"
+      ></i>
+        
 
         <!-- Upload Icon -->
         <label [for]="'file-' + (i + 1)">
@@ -78,7 +82,7 @@
 
         <!-- Reset Icon -->
         <i
-          class="fa-solid fa-times reset-icon"
+         
           *ngIf="document.fileName && i === 0"
           (click)="resetFile(i)"
           title="Reset File"
