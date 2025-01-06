@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="top">
     <p>Documents</p>
@@ -11,8 +10,12 @@
   </div>
 
   <div class="pri-sec-documents">
-    <button >Primary Applicant</button>
-    <button class="btn-2">Secondary Applicant</button>
+    <button 
+      [ngClass]="{'active-btn': isPrimarySelected}" 
+      (click)="selectApplicant('primary')">Primary Applicant</button>
+    <button 
+      [ngClass]="{'active-btn': !isPrimarySelected}" 
+      (click)="selectApplicant('secondary')">Secondary Applicant</button>
   </div>
 
   <div class="content">
@@ -27,7 +30,7 @@
   </div>
 
   <!-- Dynamically generated document upload fields -->
-  <div *ngFor="let document of documents; let i = index" class="upload-documents">
+  <div *ngFor="let document of selectedDocuments; let i = index" class="upload-documents">
     <div class="left-content">
       <p>{{ i + 1 }}</p>
       <label [for]="'file-url-' + (i + 1)" class="dynamic-label">{{ document.placeholder }}</label>
@@ -37,15 +40,8 @@
         [id]="'file-url-' + (i + 1)"
         [value]="document.fileName"
         disabled
-
       />
-
-      <i
-      *ngIf="document.fileName"
-      class="fa-solid fa-times reset-icon"
-      (click)="resetFile(i)"
-      aria-hidden="true"
-    ></i>
+      <i *ngIf="document.fileName" class="fa-solid fa-times reset-icon" (click)="resetFile(i)" aria-hidden="true"></i>
     </div>
     <div class="right-content">
       <input
@@ -58,13 +54,6 @@
         <i class="fa-solid fa-upload"></i>
       </label>
       <i class="fa-solid fa-eye" (click)="viewDocument(i)"></i>
-      <!-- Cross icon inside the input field to reset -->
-      <!-- <i
-        *ngIf="document.fileName"
-        class="fa-solid fa-times reset-icon"
-        (click)="resetFile(i)"
-        aria-hidden="true"
-      ></i> -->
     </div>
   </div>
 
@@ -93,7 +82,6 @@
         </div>
       </ng-container>
   
-      <!-- Message for no file selected -->
       <ng-template #noFileMessage>
         <h3>No file selected</h3>
       </ng-template>
