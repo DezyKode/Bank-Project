@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
+import { TaskTableComponent } from './components/task-table/task-table.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
+    TaskTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+   
   ],
   providers: [
     provideClientHydration()

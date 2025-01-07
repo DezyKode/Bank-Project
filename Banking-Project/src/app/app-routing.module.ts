@@ -8,6 +8,7 @@ import { CheckeligibilityComponent } from './components/checkeligibility/checkel
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 
 import { NewtaskComponent } from './components/newtask/newtask.component';
+import { TaskTableComponent } from './components/task-table/task-table.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -17,10 +18,9 @@ const routes: Routes = [
   {path:'checkeligibility',component:CheckeligibilityComponent},
   {path:'personalloan',component:PersonalloanComponent},
   {path:'lead',component:LeadComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'tasks', component:TaskTableComponent}
 
-  {path:'newtask',component:NewtaskComponent}
-
- 
 ]
 
 @NgModule({

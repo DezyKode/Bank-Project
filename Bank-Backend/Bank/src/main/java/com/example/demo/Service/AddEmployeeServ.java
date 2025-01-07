@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Service
 public class AddEmployeeServ {
@@ -54,4 +55,9 @@ public class AddEmployeeServ {
         // Save the employee details in the database
         return addEmployeeRepo.save(employee);
     }
+
+//	public List<AddEmployee> getEmp() {
+//		// TODO Auto-generated method stub
+//		return addEmployeeRepo.findAll();
+//	}
 }
