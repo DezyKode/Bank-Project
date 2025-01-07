@@ -3,62 +3,66 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css']
+  styleUrls: ['./documents.component.css'],
 })
 export class DocumentsComponent {
   documents = [
-    { placeholder: 'Upload your document', fileName: '' }
-    // Add more document objects as needed
+    { placeholder: 'Document 1', fileName: '', type: 'Photo' },
+    { placeholder: 'Document 2', fileName: '', type: 'PDF' },
   ];
 
-  isModalVisible = false;  // Flag to control the visibility of the modal
-  selectedDocument: any = {};  // Store the selected document for viewing
+  selectedDocumentDetails: { name: string; type: string } | null = null;
 
-  // Handle file upload and update the document name
-  handleFileUpload(index: number, event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      // Update the document object with the file name
-      this.documents[index].fileName = file.name;
-    }
-  }
-
-  // Function to reset the file input and file name
-  resetFile(index: number): void {
-    this.documents[index].fileName = '';  // Reset file name
-    const fileInput = document.getElementById('l-' + (index + 1)) as HTMLInputElement;
-    if (fileInput) fileInput.value = '';  // Reset file input
-  }
-
-  // Function to add a new document input
   addNewDocument(): void {
-    this.documents.push({ placeholder: 'Upload your document', fileName: '' });
+    this.documents.push({ placeholder: '', fileName: '', type: 'Photo' });
   }
 
-  // Function to open the modal and view the document
-  viewDocument(index: number): void {
-    const selectedDoc = this.documents[index];
-    if (selectedDoc.fileName) {
-      this.selectedDocument = selectedDoc;
-      this.isModalVisible = true;
+  handleFileUpload(index: number, event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.documents[index].fileName = input.files[0].name;
+      this.documents[index].type = this.getFileType(input.files[0].name);
     }
   }
 
-  // Function to close the modal
-  closeModal(): void {
-    this.isModalVisible = false;
+  getFileType(fileName: string): string {
+    const extension = fileName.split('.').pop()?.toLowerCase();
+    if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
+      return 'Photo';
+    } else if (extension === 'pdf') {
+      return 'PDF';
+    } else {
+      return 'Other';
+    }
   }
 
-  // Function to check if the file is an image
-  isImage(fileName: string): boolean {
-    const fileExtension = fileName.split('.').pop()?.toLowerCase();
-    return fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png' || fileExtension === 'gif';
+  resetFile(index: number): void {
+    this.documents[index].fileName = '';
+    this.documents[index].type = '';
   }
 
-  // Function to get the URL of the uploaded file
-  getFileUrl(fileName: string): string {
-    return URL.createObjectURL(new Blob([fileName]));
+  deleteRow(index: number): void {
+    if (index > 0) {
+      this.documents.splice(index, 1);
+    } else {
+      console.warn('Cannot delete the first row');
+    }
   }
-  
-  
+
+  viewDocument(index: number): void {
+    const document = this.documents[index];
+    if (document.fileName) {
+      this.selectedDocumentDetails = {
+        name: document.fileName,
+        type: document.type,
+      };
+      console.log('Viewing document:', document.fileName);
+    } else {
+      console.error('No file selected for viewing');
+    }
+  }
+
+  closeDocumentView(): void {
+    this.selectedDocumentDetails = null;
+  }
 }

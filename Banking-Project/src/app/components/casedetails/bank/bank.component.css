@@ -4,6 +4,16 @@
     font-family: Arial, sans-serif;
 }
 
+hr {
+    border: none;
+    border-top: 2px solid #000;
+    /* Thickness and color of the line */
+    margin: 10px 0;
+    /* Space above and below the line */
+    width: 100%;
+    /* Make the line stretch across the container */
+}
+
 .bank-header {
     display: flex;
     justify-content: space-between;

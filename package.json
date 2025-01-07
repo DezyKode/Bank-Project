@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "chart.js": "^2.9.4",
+    "chart.js": "^3.9.1",
+    "html2pdf.js": "^0.10.2",
     "ng2-charts": "^6.0.1"
   }
 }

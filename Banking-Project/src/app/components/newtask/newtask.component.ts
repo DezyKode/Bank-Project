@@ -8,7 +8,10 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 
 export class NewtaskComponent implements OnInit {
-  taskForm!: FormGroup;
+onInputChange($event: Event) {
+throw new Error('Method not implemented.');
+}
+  taskForm: FormGroup;
   showModal: boolean = false; // Flag to show modal visibility
   taskAdded: boolean | undefined;
   assign: string = '';
@@ -18,6 +21,8 @@ export class NewtaskComponent implements OnInit {
   isFileDropdownVisible: boolean = false;
   selectedFileNames: string[] = []; // To store the selected file names
   selectedFileCount: number = 0; // To keep track of the number of selected files
+  currentDate: string;
+
 
   people = [
     { key: '1', name: 'John', files: ['file1.txt', 'file2.txt', 'file5.txt', 'file5.txt'] },
@@ -29,9 +34,23 @@ export class NewtaskComponent implements OnInit {
   ]; // Sample people data
 isModalOpen: any;
 files: any;
+assignControl: any;
+task: any;
+taskControl: any;
+dobInput: any;
+
 
   
-  constructor() {}
+constructor(private fb: FormBuilder) {
+  this.taskForm = this.fb.group({
+    dueDate: ['', Validators.required],
+  });
+
+  // Get the current date in yyyy-mm-dd format
+  const today = new Date();
+  this.currentDate = today.toISOString().split('T')[0];
+}
+
 
  ngOnInit(): void {
     this.taskForm = new FormGroup({

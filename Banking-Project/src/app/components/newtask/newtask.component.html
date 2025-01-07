@@ -18,16 +18,18 @@
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h5 class="modal-title" id="myModalLabel" class="form-label">
+          <h5 class="modal-title" id="myModalLabel" class="form-label" style="font-size: 20px;font-weight: bold;color: white;">
             Create New Task
           </h5>
           <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-bs-label="Close"
-            (click)="closeModal()"
-          ></button>
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-bs-label="Close"
+          (click)="closeModal()"
+           
+        ></button>
+        
         </div>
 
         <!-- Modal Body -->
@@ -35,12 +37,12 @@
           <!-- Enter Task and Assign To Inline -->
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group">
+              <div class="form-group position-relative mb-3">
                 <label for="assign" class="form-label">Assign To</label>
                 <select
                   id="assign"
                   formControlName="assign"
-                  class="form-control form-select"
+                  class="form-control form-select "
                   name="assign"
                   [(ngModel)]="assign"
                   (change)="onAssignChange1()"
@@ -51,7 +53,7 @@
                   </option>
                 </select>
               
-                <div *ngIf="taskForm.controls['assign'].invalid && taskForm.controls['assign'].touched" class="text-danger">
+                <div *ngIf="taskForm.controls['assign'].invalid && taskForm.controls['assign'].touched" class="text-danger form-text position-absolute">
                   Please Select a Person
                 </div>
               </div>
@@ -132,8 +134,8 @@
           <div class="row">
             <div class="col-md-12">
               <!-- Assign To -->
-              <div class="form-group">
-                <label for="assign" class="form-label">Assign To</label>
+              <div class="form-group position-relative mb-3 mt-1">
+                <label for="assign" class="form-label">Select employee name to assign </label>
                 <select
                   id="assign"
                   formControlName="assign"
@@ -145,14 +147,14 @@
                   <option value="personal">Mohini</option>
                   <option value="home">Shalini</option>
                   <option value="auto">Pratik</option>
-                  <option value="other">Bhushan</option>
+                  <option value="other">shubham</option>
                 </select>
                 <div
                   *ngIf="
                     taskForm.controls['assign'].invalid &&
                     taskForm.controls['assign'].touched
                   "
-                  class="text-danger"
+                  class="text-danger form-text position-absolute"
                 >
                   Please Select a Person
                 </div>
@@ -163,7 +165,7 @@
           <!-- Task Description -->
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group">
+              <div class="form-group position-relative mb-3 mt-1">
                 <label for="taskDescription" class="form-label"
                   >Task Description</label
                 >
@@ -179,7 +181,7 @@
                     taskForm.controls['taskDescription'].invalid &&
                     taskForm.controls['taskDescription'].touched
                   "
-                  class="text-danger"
+                  class="text-danger form-text position-absolute"
                 >
                   <div
                     *ngIf="taskForm.controls['taskDescription'].errors?.['required']"
@@ -200,29 +202,28 @@
           <div class="row py-2">
             <div class="col-md-6">
               <!-- Due Date -->
-              <div class="form-group">
+              <div class="form-group position-relative mb-3">
                 <label for="dueDate" class="form-label">Due Date</label>
                 <input
                   type="date"
                   id="dueDate"
                   formControlName="dueDate"
                   class="form-control"
+                  [min]="currentDate"
                 />
                 <div
-                  *ngIf="
-                    taskForm.controls['dueDate'].invalid &&
-                    taskForm.controls['dueDate'].touched
-                  "
-                  class="text-danger"
+                  *ngIf="taskForm.controls['dueDate'].invalid && taskForm.controls['dueDate'].touched"
+                  class="text-danger position-absolute form-text"
                 >
-                  Due date is required
+                  Due date is required and cannot be in the past
                 </div>
               </div>
+              
             </div>
 
             <div class="col-md-6">
               <!-- Priority -->
-              <div class="form-group">
+              <div class="form-group position-relative mb-3">
                 <label for="priority" class="form-label">Priority</label>
                 <select
                   id="priority"
@@ -239,7 +240,7 @@
                     taskForm.controls['priority'].invalid &&
                     taskForm.controls['priority'].touched
                   "
-                  class="text-danger"
+                  class="text-danger form-text position-absolute"
                 >
                   Priority is required
                 </div>
