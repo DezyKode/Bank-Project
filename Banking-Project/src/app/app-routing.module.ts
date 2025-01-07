@@ -20,6 +20,7 @@ import { DocumentsComponents } from './components/creatnewlead/documents-1/docum
 import { VreportComponent } from './components/vreport/vreport.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
 const routes: Routes = [
 
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
+  {path:'master-zone',component:MasterZoneComponent},
   
 
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
