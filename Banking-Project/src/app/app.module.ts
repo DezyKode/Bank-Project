@@ -39,6 +39,7 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { RouterModule } from '@angular/router';
+import { TaskTableComponent } from './components/task-table/task-table.component';
 
 
 
@@ -77,6 +78,7 @@ import { RouterModule } from '@angular/router';
     VreportComponent,
     CommentsComponent,
     InvoiceComponent,
+    TaskTableComponent,
 
 
   ],
