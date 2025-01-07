@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.css']
+  styleUrls: ['./documents.component.css'],
 })
 export class DocumentsComponent {
   documents = [
@@ -13,18 +13,8 @@ export class DocumentsComponent {
 
   selectedDocumentDetails: { name: string; type: string } | null = null;
 
-  viewDocument(index: number): void {
-    const document = this.documents[index];
-    if (document.fileName) {
-      this.selectedDocumentDetails = {
-        name: document.fileName,
-        type: 'Uploaded File' // Replace with actual type if available
-      };
-    }
-  }
-
-  closeDocumentView(): void {
-    this.selectedDocumentDetails = null;
+  addNewDocument(): void {
+    this.documents.push({ placeholder: '', fileName: '', name: '', type: '' });
   }
 
   handleFileUpload(index: number, event: Event): void {
@@ -42,10 +32,27 @@ export class DocumentsComponent {
   }
 
   deleteRow(index: number): void {
-    this.documents.splice(index, 1);
+    if (index > 0) {
+      this.documents.splice(index, 1);
+    } else {
+      console.warn('Cannot delete the first row');
+    }
   }
 
-  addNewDocument(): void {
-    this.documents.push({ placeholder: '', fileName: '', name: '', type: '' });
+  viewDocument(index: number): void {
+    const document = this.documents[index];
+    if (document.fileName) {
+      this.selectedDocumentDetails = {
+        name: document.fileName,
+        type: document.type, // Use the type that is set on file upload
+      };
+      console.log('Viewing document:', document.fileName);
+    } else {
+      console.error('No file selected for viewing');
+    }
+  }
+
+  closeDocumentView(): void {
+    this.selectedDocumentDetails = null;
   }
 }

@@ -255,6 +255,14 @@ a:hover {
   font-size: 12px;
   padding: 5px 10px;
 }
+.is-invalid {
+  border-color: red !important;
+}
+
+/* Default or green border for valid input */
+.is-valid {
+  border-color: #28a745 !important; /* Green color for valid input */
+}
 
 
  
