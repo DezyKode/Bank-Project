@@ -12,6 +12,7 @@ interface Comment {
   replyText: string;
   replies: Comment[];  // Replies are also of type Comment
   isEditing: boolean;  // Flag for editing comment
+  isReplyDisabled: boolean;  // Flag to disable the reply button (changed to boolean)
 }
 
 @Component({
@@ -33,6 +34,7 @@ export class CommentsComponent {
       replies: [],
       followupDate: undefined,
       isEditing: false,
+      isReplyDisabled: false  // Initially, the reply button is enabled
     }
   ];
 
@@ -65,7 +67,8 @@ export class CommentsComponent {
       timestamp: currentDateTime, // Use the current date and time
       replies: [],
       followupDate: undefined,
-      isEditing: false,  // Initially not editing
+      isEditing: false,
+      isReplyDisabled: false  // Reply button is enabled when a new comment is posted
     };
 
     if (index === undefined) {
@@ -110,6 +113,7 @@ export class CommentsComponent {
       // Toggle the reply section for the main comment
       this.comments[index].showReplySection = !this.comments[index].showReplySection;
     }
+    this.comments[index].isReplyDisabled = true;  // Disable the "Reply" button when a reply section is visible
   }
 
   // Method to cancel a reply and hide the reply section
@@ -124,6 +128,7 @@ export class CommentsComponent {
       this.comments[index].showReplySection = false;
       this.comments[index].replyText = '';  // Clear reply text
     }
+    this.comments[index].isReplyDisabled = false;  // Re-enable the "Reply" button after canceling
   }
 
   // Method to toggle edit mode for the most recent comment

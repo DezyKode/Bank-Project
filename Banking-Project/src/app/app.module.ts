@@ -38,6 +38,7 @@ import { BrowseempdocumentsComponent } from './components/browseempdocuments/bro
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -84,7 +85,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
+    RouterModule, 
     // NgChartsModule,
   
   ],

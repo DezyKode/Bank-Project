@@ -68,7 +68,7 @@ const routes: Routes = [
   // ]}
 
 
-  ]}
+  ]},
 
   
   {path:'vreport',component:VreportComponent},
