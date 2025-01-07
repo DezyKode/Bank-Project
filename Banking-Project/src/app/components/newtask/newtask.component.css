@@ -54,6 +54,12 @@
   border: 1px solid #c3e6cb;
   border-radius: 5px;
 }
+/* Add this to your stylesheet */
+.btn-close {
+  color: white !important;       /* Ensures the icon color is white */
+  background-color: transparent; /* Keeps the button background transparent */
+  border: none;                  /* Removes any border */
+}
 
 .btn-light{
   background-color: white;

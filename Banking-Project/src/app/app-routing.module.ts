@@ -48,6 +48,23 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
+
+
+
+      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+//   {path:'',component:VerificationComponent, children:[
+//     {path:'vreport',component:VreportComponent},
+//     {path:'comments',component:CommentsComponent},
+
+
+  // {path:'',component:VerificationComponent, children:[
+  //   // {path:'vreport',component:VreportComponent},
+  // ]}
+
+
+  ]},
+
+
   
 
   { path: '', redirectTo: 'verification', pathMatch: 'full' },

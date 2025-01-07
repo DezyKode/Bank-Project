@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms'; // Import NgForm for resetting the form
 
 @Component({
   selector: 'app-personalloan',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./personalloan.component.css']
 })
 export class PersonalloanComponent {
+
   personalLoan: string = ''; // Bind to loan type select
   isFormValid: boolean = false; // Form validation flag
   panNo: string = '';
@@ -36,8 +38,14 @@ export class PersonalloanComponent {
   pensionError:boolean=false;
   Employer1: string = '';
   employerError: boolean = false; 
-dateOfBirth: any;
+  dateOfBirth!: string;
   elegibilityService: any;
+  formcontrols: any;
+  firstNameInput: any;
+  lastNameInput: any;
+emailInput: any;
+emailLocalPart: string = ''; // Local part of the email (before @)
+selectedDomain: string = ''; // Selected domain
 
   // Validate the form to check if required fields are filled
   validateForm(): void {
@@ -58,7 +66,24 @@ dateOfBirth: any;
     this.isValidPanNo = panNoRegex.test(this.panNo); // Validate the PAN number format
     this.validateForm(); // Revalidate the form when PAN number changes
   }
+  validateAge(dobInput: any) {
+    const dob = new Date(this.dateOfBirth);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear();
+    const monthDifference = today.getMonth() - dob.getMonth();
+    const dayDifference = today.getDate() - dob.getDate();
 
+    // If the user is under 18, mark the input as invalid with an 'underage' error
+    if (age < 18 || (age === 18 && (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)))) {
+      dobInput.control.setErrors({ underage: true });
+    } else {
+      // If age is valid, clear any previous error
+      if (dobInput.control.errors?.['underage']) {
+        delete dobInput.control.errors['underage'];
+        dobInput.control.updateValueAndValidity();
+      }
+    }
+  }
   validateMobile():void{
     debugger;
     const mobileRegex = /^d{10}$/;
@@ -66,7 +91,44 @@ dateOfBirth: any;
     this.validateForm(); // Revalidate the form when mobile number changes
 
   }
+  updateEmail() {
+    // If both email local part and domain are available, combine them
+    if (this.selectedDomain && this.emailLocalPart) {
+      // Append the domain to the local part
+      this.emailLocalPart = this.emailLocalPart.trim() + '@' + this.selectedDomain;
+    }
+  }
 
+  // This method prevents the '@' symbol from being typed in the input field
+  preventAtSymbol(event: KeyboardEvent) {
+    if (event.key === '@') {
+      event.preventDefault();  // Prevent entering '@' symbol
+    }
+  }
+    // Called whenever the input changes
+    validateEmailInput(event: any) {
+      const input = event.target.value;
+  
+      // If '@' is entered, restrict further input after '@'
+      if (input.includes('@')) {
+        const [localPart] = input.split('@');
+        this.emailLocalPart = localPart; // Only keep the local part
+      }
+  
+      // Check if the input ends with '@', so we can block further typing after it
+      if (input.includes('@') && input.indexOf('@') === input.length - 1) {
+        event.preventDefault(); // Stop further input after '@'
+      }
+    }
+  
+  
+  
+    // Optionally: You can have additional validation for the full email
+    validateFullEmail() {
+      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(this.email);
+    }
+  
   
   // Common validation function for both fields
   validateField(inputValue: string): boolean {
@@ -86,10 +148,16 @@ dateOfBirth: any;
   validateFutureRent(): void {
     this.futureRentError = !this.validateField(this.futureRent); // Call common validation
   }
-
-  validateMonthSalary():void{
-    this.grossSalaryError=!this.validateField(this.monthSalary);
+  validateMonthSalary(): void {
+    const salary = parseFloat(this.monthSalary); // convert string to number
+    
+    if (isNaN(salary) || salary <= 0) {
+      this.grossSalaryError = true;
+    } else {
+      this.grossSalaryError = false;
+    }
   }
+  
 
   validateIncentive():void{
     this.incentiveError=!this.validateField(this.incentive);
@@ -115,7 +183,72 @@ dateOfBirth: any;
     this.employerError = this.Employer === '';
 
   }
+  onInputChange(event: any): void {
+    // Convert the input to uppercase as the user types
+    this.firstName = this.firstName.toUpperCase();
+    this.lastName=this.lastName.toUpperCase();
+    this.middleName= this.middleName.toUpperCase();
+    this.panNo = this.panNo.toUpperCase()
+  }
 
+  restrictNumbers(event: KeyboardEvent) {
+    const charCode = event.charCode;
+    // Check if the key is a number (between 48-57 in ASCII)
+    if (charCode >= 48 && charCode <= 57) {
+      event.preventDefault();  // Prevent the number from being typed
+    }
+  }
+
+  restrictCharacter(event: KeyboardEvent): void {
+    // Get the character code of the key pressed
+    const charCode = event.charCode;
+  
+    // Allow only digits (0-9)
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();  // Prevent any non-numeric characters
+    }
+  }
+
+  
+  resetForm() {
+    this.personalLoan = '';
+    this.firstName = '';
+    this.middleName = '';
+    this.lastName = '';
+    this.dateOfBirth = '';
+    this.panNo = '';
+    this.email = '';
+    this.empType = '';
+    this.mobile = '';
+    this.Employer1 = '';
+    this.averageBonus = '';
+    this.futureRent = '';
+    this.monthSalary = '';
+    this.incentive = '';
+    this.loanEmi = '';
+    this.netSalary = '';
+    this.rentIncome = '';
+    this.pension = '';
+
+    // Reset the form validations (You may need to set this based on your form control names)
+    this.resetValidation();
+  }
+
+  // Reset validation errors
+  resetValidation() {
+    // Reset the form control's validity
+    // If you're using template-driven form with ngModel, you can set the ngModel to untouched and pristine
+    this.firstNameInput?.control?.markAsPristine();
+    this.firstNameInput?.control?.markAsUntouched();
+    // Repeat for all other form controls (e.g., lastNameInput, emailInput, etc.)
+    this.emailInput?.control?.markAllAsTouched();
+    // To ensure the errors are cleared on reset, you may want to mark controls as untouched
+    this.firstNameInput?.control?.setErrors(null);
+    this.lastNameInput?.control?.setErrors(null);
+    this.emailInput?.control?.setErrors(null);
+
+    // Repeat for all other controls (e.g., mobileInput, empTypeInput, etc.)
+  }
   // Submit the form to the backend
   submitForm(): void {
     if (this.isFormValid) {
