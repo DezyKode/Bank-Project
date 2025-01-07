@@ -41,6 +41,12 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { RouterModule } from '@angular/router';
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+
+import { RouterModule } from '@angular/router';
+import { TaskTableComponent } from './components/task-table/task-table.component';
+
+
 
 
 
@@ -79,6 +85,10 @@ import { TablereportComponent } from './components/tablereport/tablereport.compo
     CommentsComponent,
     InvoiceComponent,
     TablereportComponent,
+
+    MasterZoneComponent,
+
+    TaskTableComponent,
 
 
   ],
