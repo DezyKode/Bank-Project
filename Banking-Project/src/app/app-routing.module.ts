@@ -20,55 +20,48 @@ import { DocumentsComponents } from './components/creatnewlead/documents-1/docum
 import { VreportComponent } from './components/vreport/vreport.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+import { TaskTableComponent } from './components/task-table/task-table.component';
 
 const routes: Routes = [
-
-  {path:'login',component:LoginComponent},
-  {path:'managerlogin',component:ManagerLoginComponent},
-  {path:'registration',component:RegistrationComponent},
-  {path:'checkeligibility',component:CheckeligibilityComponent},
-  {path:'personalloan',component:PersonalloanComponent},
-  {path:'lead',component:LeadComponent},
-  {path:'newtask',component:NewtaskComponent},
-  {path:'verify',component:VreportComponent},
-
-  {path:'newtask',component:NewtaskComponent},
-
-{path:"invoice",component:InvoiceComponent},
-  {path:'comments',component:CommentsComponent},
-  {path:'Overview',component:OverviewComponent},
-  {path:"Application-details",component:AplicationDetailsComponent},
-  {path:'loan-details',component:LoanDetailsComponent}, 
-  {path:"bank",component:BankComponent},
-  {path:'documents',component:DocumentsComponent},
-  {path:'loan-offers',component:LoanOffersComponent},
-  {path:'newtask',component:NewtaskComponent},
-  {path:'verify',component:VreportComponent},
-  {path:'empdocuments',component:EmployeeDocumentsComponent},
-  {path:'vreport',component:VreportComponent},
-  {path:'documents-1',component:DocumentsComponents},
-  {path:'verification',component:VerificationComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'managerlogin', component: ManagerLoginComponent},
+  {path: 'registration', component: RegistrationComponent},
+  {path: 'checkeligibility', component: CheckeligibilityComponent},
+  {path: 'personalloan', component: PersonalloanComponent},
+  {path: 'lead', component: LeadComponent},
+  {path: 'newtask', component: NewtaskComponent},
+  {path: 'verify', component: VreportComponent},
+  {path: 'invoice', component: InvoiceComponent},
+  {path: 'comments', component: CommentsComponent},
+  {path: 'Overview', component: OverviewComponent},
+  {path: 'Application-details', component: AplicationDetailsComponent},
+  {path: 'loan-details', component: LoanDetailsComponent}, 
+  {path: 'bank', component: BankComponent},
+  {path: 'documents', component: DocumentsComponent},
+  {path: 'loan-offers', component: LoanOffersComponent},
+  {path: 'empdocuments', component: EmployeeDocumentsComponent},
+  {path: 'vreport', component: VreportComponent},
+  {path: 'documents-1', component: DocumentsComponents},
+  {path: 'verification', component: VerificationComponent},
+  {path: 'master-zone', component: MasterZoneComponent},
+  {path: 'tasks', component: TaskTableComponent},
   
-
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
-    path: 'verification',component: VerificationComponent,
+    path: 'verification', component: VerificationComponent,
     children: [
-      {path:'Overview',component:OverviewComponent},
-      {path:"Application-details",component:AplicationDetailsComponent},
-      {path:'loan-details',component:LoanDetailsComponent}, 
-      {path:"bank",component:BankComponent},
-      {path:'loan-offers',component:LoanOffersComponent},
+      { path: 'Overview', component: OverviewComponent },
+      { path: 'Application-details', component: AplicationDetailsComponent },
+      { path: 'loan-details', component: LoanDetailsComponent },
+      { path: 'bank', component: BankComponent },
+      { path: 'loan-offers', component: LoanOffersComponent },
       { path: 'comments', component: CommentsComponent },
       { path: 'vreport', component: VreportComponent },
-      {path:'empdoc',component:BrowseempdocumentsComponent},
-      ],
-    },
- 
-]
-
-
-
+      { path: 'empdoc', component: BrowseempdocumentsComponent },
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

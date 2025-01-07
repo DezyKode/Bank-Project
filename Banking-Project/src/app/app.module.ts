@@ -39,6 +39,12 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+
+import { RouterModule } from '@angular/router';
+import { TaskTableComponent } from './components/task-table/task-table.component';
+
+
 
 
 
@@ -77,6 +83,10 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     CommentsComponent,
     InvoiceComponent,
 
+    MasterZoneComponent,
+
+    TaskTableComponent,
+
 
   ],
   imports: [
@@ -84,7 +94,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
+    RouterModule, 
     // NgChartsModule,
   
   ],
