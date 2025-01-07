@@ -1,21 +1,7 @@
-
-
 <div class="documents-container">
   <h2>Documents</h2>
-  <!-- Tab and Action Buttons Section -->
-  <div class="header-row">
-    <button class="primary-applicant-button">Primary Applicant</button>
-    <div class="sub-container">
-      <button>Send Documents</button>
-      <button>
-        <i class="fas fa-share-alt" style="margin-right: 8px;"></i> Share
-      </button>
-    </div>
-  </div>
 
-  <!-- Table Section -->
   <div class="table">
-    <!-- Table Header -->
     <div class="table-header">
       <div class="column-header">Sr No</div>
       <div class="column-header">Document</div>
@@ -23,48 +9,37 @@
       <div class="column-header">Action</div>
     </div>
 
-    <!-- Dynamically generated document upload fields -->
     <div
       *ngFor="let document of documents; let i = index"
       class="upload-documents table-row"
     >
-      <!-- Serial Number -->
       <div class="column-content">{{ i + 1 }}</div>
-
-      <!-- Document Input Field -->
       <div class="column-content">
         <input
           type="text"
           [(ngModel)]="document.placeholder"
-          [id]="'doc-name-' + (i + 1)"
           placeholder="Enter document name"
         />
       </div>
-
-      <!-- File Name -->
       <div class="column-content file-name-column">
         <span *ngIf="document.fileName">{{ document.fileName }}</span>
         <span *ngIf="!document.fileName">No file selected</span>
-        <!-- Cross icon to delete the file -->
         <i
-          class="fa-solid fa-times delete-file-icon"
+          class="fa-solid fa-times"
           *ngIf="document.fileName"
           (click)="resetFile(i)"
           title="Delete File"
-          style="margin-left: 8px; cursor: pointer; color: red;"
+          style="cursor: pointer; color: red;"
         ></i>
       </div>
-
-      <!-- Action Buttons -->
       <div class="column-content action-buttons">
-        <!-- View Icon -->
         <i
           class="fa-solid fa-eye"
           *ngIf="document.fileName"
           (click)="viewDocument(i)"
+          title="View Document"
+          style="cursor: pointer;"
         ></i>
-
-        <!-- Upload Icon -->
         <label [for]="'file-' + (i + 1)">
           <i class="fa-solid fa-upload"></i>
         </label>
@@ -75,30 +50,31 @@
           (change)="handleFileUpload(i, $event)"
           style="display: none;"
         />
-
-        <!-- Reset Icon -->
         <i
-          class="fa-solid fa-times reset-icon"
-          *ngIf="document.fileName && i === 0"
-          (click)="resetFile(i)"
-          title="Reset File"
-        ></i>
-
-        <!-- Delete Icon (only from second row onward) -->
-        <i
-          class="fa-solid fa-trash delete-icon"
+          class="fa-solid fa-trash"
           *ngIf="i > 0"
           (click)="deleteRow(i)"
           title="Delete Row"
+          style="cursor: pointer;"
         ></i>
       </div>
     </div>
 
-    <!-- Add Item Button -->
     <div class="add-item-container">
       <button class="add-item-button" (click)="addNewDocument()">
         <i class="fa-solid fa-plus"></i> Add Item
       </button>
     </div>
+  </div>
+
+  <div
+    class="modal"
+    *ngIf="selectedDocumentDetails"
+    style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 8px;"
+  >
+    <h3>Uploaded Document</h3>
+    <p><strong>Document Name:</strong> {{ selectedDocumentDetails.name }}</p>
+    <p><strong>Document Type:</strong> {{ selectedDocumentDetails.type }}</p>
+    <button (click)="closeDocumentView()">Close</button>
   </div>
 </div>
