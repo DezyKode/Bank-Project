@@ -25,8 +25,36 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import { TaskReportComponent } from './components/task-report/task-report.component';
 
 const routes: Routes = [
+
+
+
+
+ 
+  
+  
+ 
+  
+ 
+  {path:'tasks-report', component:TaskReportComponent},
+
+
+
+      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
+//   {path:'',component:VerificationComponent, children:[
+//     {path:'vreport',component:VreportComponent},
+//     {path:'comments',component:CommentsComponent},
+
+
+  // {path:'',component:VerificationComponent, children:[
+  //   // {path:'vreport',component:VreportComponent},
+  // ]}
+
+
+  // ]},
+
   { path: 'login', component: LoginComponent },
   { path: 'managerlogin', component: ManagerLoginComponent },
   { path: 'registration', component: RegistrationComponent },
@@ -48,6 +76,7 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
   { path: 'master-zone', component: MasterZoneComponent },
   { path: 'tasks', component: TaskTableComponent },
+
   
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
