@@ -1,0 +1,16 @@
+.btn-s{
+    font-size: small;
+    height: 30px;
+    width: 100px;
+}
+
+.btn-s:hover{
+    /* background-color: rgb(214, 214, 214); */
+    color: aliceblue;
+}
+
+.hover-border:hover{ 
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+ }
