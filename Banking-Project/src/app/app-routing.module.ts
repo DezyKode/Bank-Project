@@ -25,6 +25,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -48,7 +50,6 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
   { path: 'master-zone', component: MasterZoneComponent },
   { path: 'tasks', component: TaskTableComponent },
-  
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
     path: 'verification', component: VerificationComponent,
@@ -63,7 +64,17 @@ const routes: Routes = [
       { path: 'empdoc', component: BrowseempdocumentsComponent },
     ]
   },
-  { path: 'tabelreport', component: TablereportComponent }
+
+  { path: 'tabelreport', component: TablereportComponent },
+
+  {
+    path:'personaldetails',component:PersonaldetailsComponent,
+    children: [
+      { path: 'pdetails', component: PdetailsComponent },
+
+
+    ]
+  },
 ];
 
 @NgModule({
