@@ -89,7 +89,9 @@ export class MasterZoneComponent implements OnInit {
 
   // Delete a zone
   deleteZone(index: number): void {
+
     if (confirm('Are you sure you want to delete this zone?')) {
+
       this.zonesList.splice(index, 1);
     }
   }

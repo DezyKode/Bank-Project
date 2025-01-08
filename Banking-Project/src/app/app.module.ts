@@ -43,11 +43,9 @@ import { TablereportComponent } from './components/tablereport/tablereport.compo
 
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
-import { RouterModule } from '@angular/router';
+
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
-
-
 
 
 
@@ -91,7 +89,11 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     MasterZoneComponent,
 
     TaskTableComponent,
+<<<<<<< HEAD
     TaskReportComponent,
+=======
+ 
+>>>>>>> d4e9a9860b957b464818d8cdd79d2da3d35501a7
 
 
   ],

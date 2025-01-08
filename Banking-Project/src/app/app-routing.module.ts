@@ -27,8 +27,10 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
+
 const routes: Routes = [
 
+<<<<<<< HEAD
 
 
 
@@ -77,7 +79,41 @@ const routes: Routes = [
   { path: 'master-zone', component: MasterZoneComponent },
   { path: 'tasks', component: TaskTableComponent },
 
+=======
+  {path:'login',component:LoginComponent},
+  {path:'managerlogin',component:ManagerLoginComponent},
+  {path:'registration',component:RegistrationComponent},
+  {path:'checkeligibility',component:CheckeligibilityComponent},
+  {path:'personalloan',component:PersonalloanComponent},
+  {path:'lead',component:LeadComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent},
+
+  {path:'newtask',component:NewtaskComponent},
+
+{path:"invoice",component:InvoiceComponent},
+  {path:'comments',component:CommentsComponent},
+  {path:'Overview',component:OverviewComponent},
+  {path:"Application-details",component:AplicationDetailsComponent},
+  {path:'loan-details',component:LoanDetailsComponent}, 
+  {path:"bank",component:BankComponent},
+  {path:'documents',component:DocumentsComponent},
+  {path:'loan-offers',component:LoanOffersComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent},
+  {path:'empdocuments',component:EmployeeDocumentsComponent},
+  {path:'vreport',component:VreportComponent},
+  {path:'documents-1',component:DocumentsComponents},
+  {path:'verification',component:VerificationComponent},
+  {path:'tasks', component:TaskTableComponent},
+  {path:'master-zone', component:MasterZoneComponent},
+
+
+
+
+>>>>>>> d4e9a9860b957b464818d8cdd79d2da3d35501a7
   
+
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
     path: 'verification', component: VerificationComponent,
