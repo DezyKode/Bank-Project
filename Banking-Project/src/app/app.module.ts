@@ -38,7 +38,7 @@ import { BrowseempdocumentsComponent } from './components/browseempdocuments/bro
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
-import { RouterModule } from '@angular/router';
+
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
