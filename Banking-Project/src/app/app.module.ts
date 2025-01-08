@@ -46,6 +46,7 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -89,14 +90,13 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     MasterZoneComponent,
 
     TaskTableComponent,
-<<<<<<< HEAD
+
     TaskReportComponent,
-=======
- 
->>>>>>> d4e9a9860b957b464818d8cdd79d2da3d35501a7
+
 
 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

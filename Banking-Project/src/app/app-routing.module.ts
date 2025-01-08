@@ -30,8 +30,6 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
 
 const routes: Routes = [
 
-<<<<<<< HEAD
-
 
 
  
@@ -44,42 +42,6 @@ const routes: Routes = [
 
 
 
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-//   {path:'',component:VerificationComponent, children:[
-//     {path:'vreport',component:VreportComponent},
-//     {path:'comments',component:CommentsComponent},
-
-
-  // {path:'',component:VerificationComponent, children:[
-  //   // {path:'vreport',component:VreportComponent},
-  // ]}
-
-
-  // ]},
-
-  { path: 'login', component: LoginComponent },
-  { path: 'managerlogin', component: ManagerLoginComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'checkeligibility', component: CheckeligibilityComponent },
-  { path: 'personalloan', component: PersonalloanComponent },
-  { path: 'lead', component: LeadComponent },
-  { path: 'newtask', component: NewtaskComponent },
-  { path: 'invoice', component: InvoiceComponent },
-  { path: 'comments', component: CommentsComponent },
-  { path: 'Overview', component: OverviewComponent },
-  { path: 'Application-details', component: AplicationDetailsComponent },
-  { path: 'loan-details', component: LoanDetailsComponent },
-  { path: 'bank', component: BankComponent },
-  { path: 'documents', component: DocumentsComponent },
-  { path: 'loan-offers', component: LoanOffersComponent },
-  { path: 'empdocuments', component: EmployeeDocumentsComponent },
-  { path: 'vreport', component: VreportComponent },
-  { path: 'documents-1', component: DocumentsComponents },
-  { path: 'verification', component: VerificationComponent },
-  { path: 'master-zone', component: MasterZoneComponent },
-  { path: 'tasks', component: TaskTableComponent },
-
-=======
   {path:'login',component:LoginComponent},
   {path:'managerlogin',component:ManagerLoginComponent},
   {path:'registration',component:RegistrationComponent},
@@ -109,10 +71,6 @@ const routes: Routes = [
   {path:'master-zone', component:MasterZoneComponent},
 
 
-
-
->>>>>>> d4e9a9860b957b464818d8cdd79d2da3d35501a7
-  
 
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
