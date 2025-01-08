@@ -21,6 +21,7 @@ import { VreportComponent } from './components/vreport/vreport.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import { TaskReportComponent } from './components/task-report/task-report.component';
 
 const routes: Routes = [
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
   {path:'tasks', component:TaskTableComponent},
+  {path:'tasks-report', component:TaskReportComponent},
 
 
 
