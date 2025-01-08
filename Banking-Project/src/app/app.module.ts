@@ -40,9 +40,7 @@ import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { RouterModule } from '@angular/router';
 import { TaskTableComponent } from './components/task-table/task-table.component';
-
-
-
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
 
 @NgModule({
@@ -79,6 +77,7 @@ import { TaskTableComponent } from './components/task-table/task-table.component
     CommentsComponent,
     InvoiceComponent,
     TaskTableComponent,
+    MasterZoneComponent
 
 
   ],
