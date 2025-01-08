@@ -7,32 +7,22 @@ import { Component } from '@angular/core';
 })
 export class DocumentsComponent {
   documents = [
-    { placeholder: 'Document 1', fileName: '', type: 'Photo' },
-    { placeholder: 'Document 2', fileName: '', type: 'PDF' },
+    { placeholder: '', fileName: '', name: '', type: '' },
+    // Add initial document rows here if needed
   ];
 
   selectedDocumentDetails: { name: string; type: string } | null = null;
 
   addNewDocument(): void {
-    this.documents.push({ placeholder: '', fileName: '', type: 'Photo' });
+    this.documents.push({ placeholder: '', fileName: '', name: '', type: '' });
   }
 
   handleFileUpload(index: number, event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this.documents[index].fileName = input.files[0].name;
-      this.documents[index].type = this.getFileType(input.files[0].name);
-    }
-  }
-
-  getFileType(fileName: string): string {
-    const extension = fileName.split('.').pop()?.toLowerCase();
-    if (extension === 'jpg' || extension === 'jpeg' || extension === 'png') {
-      return 'Photo';
-    } else if (extension === 'pdf') {
-      return 'PDF';
-    } else {
-      return 'Other';
+      const file = input.files[0];
+      this.documents[index].fileName = file.name;
+      this.documents[index].type = file.type;
     }
   }
 
@@ -54,7 +44,7 @@ export class DocumentsComponent {
     if (document.fileName) {
       this.selectedDocumentDetails = {
         name: document.fileName,
-        type: document.type,
+        type: document.type, // Use the type that is set on file upload
       };
       console.log('Viewing document:', document.fileName);
     } else {

@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms'; // Import NgForm for resetting the form
   styleUrls: ['./personalloan.component.css']
 })
 export class PersonalloanComponent {
-
+  showCoApplicantForm = false; // Initial state is hidden
   personalLoan: string = ''; // Bind to loan type select
   isFormValid: boolean = false; // Form validation flag
   panNo: string = '';
@@ -47,6 +47,9 @@ emailInput: any;
 emailLocalPart: string = ''; // Local part of the email (before @)
 selectedDomain: string = ''; // Selected domain
 
+toggleCoApplicantForm() {
+  this.showCoApplicantForm = !this.showCoApplicantForm; // Toggle visibility
+}
   // Validate the form to check if required fields are filled
   validateForm(): void {
     this.isFormValid = 
