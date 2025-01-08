@@ -39,8 +39,14 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { RouterModule } from '@angular/router';
+import { TablereportComponent } from './components/tablereport/tablereport.component';
+
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+
+import { RouterModule } from '@angular/router';
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
+
 
 
 
@@ -80,6 +86,10 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     VreportComponent,
     CommentsComponent,
     InvoiceComponent,
+    TablereportComponent,
+
+    MasterZoneComponent,
+
     TaskTableComponent,
     TaskReportComponent,
 
