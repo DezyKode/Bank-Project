@@ -1,0 +1,32 @@
+<div class="documents-container">
+    <h2>Documents</h2>
+    <input type="text" placeholder="Search..." class="search-bar" />
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Type Of Loan</th>
+          <th>Employment Type</th>
+          <th>Total Documents</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of documents; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ document.typeOfLoan }}</td>
+          <td>{{ document.employmentType }}</td>
+          <td>{{ document.totalDocuments }}</td>
+          <td>
+            <button class="edit-btn">✏️</button>
+            <button class="delete-btn">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button class="create-btn" routerLink='/create-modal'>+ Create Document</button>
+
+  </div>
+  

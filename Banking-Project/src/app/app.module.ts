@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
+
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +47,9 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 
 import { RouterModule } from '@angular/router';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 
 
 
@@ -60,7 +67,8 @@ import { TaskTableComponent } from './components/task-table/task-table.component
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
-
+    DocumentsListComponent,
+   CreateDocumentComponent,
 
     OverviewComponent,
     AplicationDetailsComponent,
@@ -86,6 +94,9 @@ import { TaskTableComponent } from './components/task-table/task-table.component
     MasterZoneComponent,
 
     TaskTableComponent,
+   
+   
+    CreateDocumentComponent,
 
 
   ],
@@ -97,7 +108,9 @@ import { TaskTableComponent } from './components/task-table/task-table.component
     HttpClientModule,
     RouterModule, 
     // NgChartsModule,
-  
+    CommonModule,
+    FormsModule, // If using forms
+   
   ],
   providers: [
     provideClientHydration()

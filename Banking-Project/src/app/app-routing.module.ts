@@ -22,7 +22,9 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
 
+import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'managerlogin', component: ManagerLoginComponent},
@@ -46,7 +48,9 @@ const routes: Routes = [
   {path: 'verification', component: VerificationComponent},
   {path: 'master-zone', component: MasterZoneComponent},
   {path: 'tasks', component: TaskTableComponent},
-  
+  { path:"DocumentList",component:DocumentsListComponent},
+  {path:"create-modal",component:CreateDocumentComponent},
+
   { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
     path: 'verification', component: VerificationComponent,
