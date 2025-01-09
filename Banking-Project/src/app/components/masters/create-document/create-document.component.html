@@ -25,16 +25,20 @@
 
   <div class="form-group">
     <label>Documents</label>
+    <!-- Display total documents -->
+    <p>Total Documents: {{ documents.length }}</p>
+
     <table class="document-table">
       <thead>
         <tr>
-          <th>Sr. No.</th>
+          <th># Sr. No.</th>
           <th>Document Name</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let doc of documents">
-          <td>{{ doc.srNo }}</td>
+        <!-- Use index for serial number -->
+        <tr *ngFor="let doc of documents; let i = index">
+          <td>#{{ i + 1 }}</td>
           <td>{{ doc.name }}</td>
         </tr>
         <tr>
@@ -53,6 +57,6 @@
   </div>
 
   <div class="form-actions">
-    <button class="create-btn" (click)="createDocument()">Create</button>
+    <button class="create-btn" (click)="createDocument()">Update</button>
   </div>
 </div>

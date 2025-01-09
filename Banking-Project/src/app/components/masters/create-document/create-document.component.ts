@@ -28,9 +28,7 @@ export class CreateDocumentComponent {
       this.typeOfLoan = '';
       this.employmentType = '';
       this.totalDocuments = 0;
-    } else {
-      alert('Please fill all fields correctly.');
-    }
+    } 
   }
 
   // typeOfLoan: string = '';

@@ -39,4 +39,6 @@ export class DocumentsListComponent {
       this.documents.splice(index, 1);
     }
   }
+  
+  
 }
