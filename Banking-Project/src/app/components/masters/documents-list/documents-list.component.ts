@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-documents-list',
   templateUrl: './documents-list.component.html',
-  styleUrls: ['./documents-list.component.css']
+  styleUrls: ['./documents-list.component.css'],
 })
 export class DocumentsListComponent {
   documents = [
@@ -11,35 +11,27 @@ export class DocumentsListComponent {
     { typeOfLoan: 'Personal Loan', employmentType: 'Self-Employed', totalDocuments: 3 },
   ];
 
-  showCreateDocumentForm = false;
   showEditForm = false;
   editIndex: number | null = null;
-
-  openCreateDocumentForm() {
-    this.showCreateDocumentForm = true;
-  }
-
-  closeCreateDocumentForm() {
-    this.showCreateDocumentForm = false;
-    this.showEditForm = false;
-    this.editIndex = null;
-  }
-
-  addNewDocument(document: any) {
-    this.documents.push(document);
-    this.closeCreateDocumentForm();
-  }
+  editedDocument: any = {};
 
   handleEdit(index: number) {
     this.editIndex = index;
-    this.showEditForm = true;
+    this.editedDocument = { ...this.documents[index] }; // Create a copy for editing
+    this.showEditForm = true; // Show the edit form
   }
 
   saveEditedDocument(updatedDocument: any) {
     if (this.editIndex !== null) {
-      this.documents[this.editIndex] = updatedDocument;
-      this.closeCreateDocumentForm();
+      this.documents[this.editIndex] = updatedDocument; // Save the updated document
+      this.closeEditForm(); // Hide the form after saving
     }
+  }
+
+  closeEditForm() {
+    this.showEditForm = false;
+    this.editIndex = null;
+    this.editedDocument = {};
   }
 
   handleDelete(index: number) {
