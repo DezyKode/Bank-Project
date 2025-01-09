@@ -121,7 +121,7 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule, 
+ 
     // NgChartsModule,
     CommonModule,
     FormsModule, // If using forms
