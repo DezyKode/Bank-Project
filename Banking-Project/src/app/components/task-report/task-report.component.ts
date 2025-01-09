@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { TaskReportService } from '../../Service/TaskReport/task-report.service';
+
 
 @Component({
   selector: 'app-task-report',
@@ -21,4 +23,5 @@ export class TaskReportComponent {
       this.Tasks = res;
     })
   }
+
 }

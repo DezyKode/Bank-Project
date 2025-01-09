@@ -1,4 +1,5 @@
-<div class="container">
+
+   <div class="container">
     <div class="nav">
       <div class="sub-nav">
         <h5 class="zone" style="color: blue;"><strong>Zone</strong></h5>
@@ -9,57 +10,68 @@
     </div>
   
     <div class="container-1 mt-5">
-      <div class="title-1">
+      <div class="title-1  d-flex justify-content-between">
         <h6>Create Zone</h6>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          (click)="toggleMiddleContainer()">
+          <i class="fa-solid fa-plus"></i> Create Zone
+        </button>
       </div>
   
-      <div class="row mt-5">
-        <div class="col-md-4">
-          <label for="zone">Zone</label>
-          <input 
-            type="text" 
-            class="form-control border border-secondary mt-1" 
-            id="zone" 
-            [(ngModel)]="zone" 
-            placeholder="Enter Zone">
+      <!-- Middle container will be toggled based on the isMiddleContainerVisible flag -->
+      <div class="moddle-container" *ngIf="isMiddleContainerVisible">
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <label for="zone">Zone</label>
+            <input 
+              type="text" 
+              class="form-control border border-secondary mt-1" 
+              id="zone" 
+              [(ngModel)]="zone" 
+              placeholder="Enter Zone"
+              (input)="ZoneValidation($event)"
+             >
+              
+          </div>
+  
+          <div class="col-md-4">
+            <label for="state">State</label>
+            <select 
+              id="state" 
+              class="form-select border border-secondary mt-1" 
+              [(ngModel)]="selectedState" 
+              (change)="onStateChange()">
+              <option value="" disabled selected>Select State</option>
+              <option *ngFor="let state of states" [value]="state.name">
+                {{ state.name }}
+              </option>
+            </select>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="city">City</label>
+            <select 
+              id="city" 
+              class="form-select border border-secondary mt-1" 
+              [(ngModel)]="selectedCity">
+              <option value="" disabled selected>Select City</option>
+              <option *ngFor="let city of cities" [value]="city">
+                {{ city }}
+              </option>
+            </select>
+          </div>
         </div>
   
-        <div class="col-md-4">
-          <label for="state">State</label>
-          <select 
-            id="state" 
-            class="form-select border border-secondary mt-1" 
-            [(ngModel)]="selectedState" 
-            (change)="onStateChange()">
-            <option value="" disabled selected>Select State</option>
-            <option *ngFor="let state of states" [value]="state.name">
-              {{ state.name }}
-            </option>
-          </select>
+        <div class="d-flex justify-content-end mt-5 gap-3">
+          <button type="button" class="btn btn-light" (click)="cancelCreateZone()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="createZone()">Create</button>
         </div>
-  
-        <div class="col-md-4">
-          <label for="city">City</label>
-          <select 
-            id="city" 
-            class="form-select border border-secondary mt-1" 
-            [(ngModel)]="selectedCity">
-            <option value="" disabled selected>Select City</option>
-            <option *ngFor="let city of cities" [value]="city">
-              {{ city }}
-            </option>
-          </select>
-        </div>
-      </div>
-  
-      <div class="d-flex justify-content-end mt-5 gap-3">
-        <button type="button" class="btn btn-light" (click)="resetForm()">Close</button>
-        <button type="button" class="btn btn-primary" (click)="createZone()">Create</button>
       </div>
   
       <hr class="mt-4">
-
-
+  
       <div class="d-flex justify-content-between align-items-center mt-2">
         <div class="d-flex">
           <span class="input-group-text" id="inputGroup-sizing-sm">
@@ -72,56 +84,38 @@
             aria-describedby="inputGroup-sizing-sm" 
             placeholder="Search...">
         </div>
-  
-        <button 
-          type="button" 
-          class="btn btn-primary" 
-          (click)="createZone()">
-          <i class="fa-solid fa-plus"></i> Create Zone
-        </button>
       </div>
   
-  
-      <!-- Display the list of created zones -->
-      <!-- <div class="mt-4">
-        <div class="d-flex justify-content-between font-weight-bold">
-          <p class="zone-table-header">Sr.No</p>
-          <p class="zone-table-header">Zone</p>
-          <p class="zone-table-header">State</p>
-          <p class="zone-table-header">City</p>
-          <p class="zone-table-header">Total Locations</p>
-          <p class="zone-table-header">Action</p>
-        </div>
-         -->
+<div class="table-responsive">
 
-
-
-
-         <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Sr.No</th>
-                <th scope="col">Zone</th>
-                <th scope="col">State</th>
-                <th scope="col">City</th>
-                <th scope="col">Total Loations</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr  *ngFor="let zoneData of zonesList; let i = index">
-                <th scope="row">1</th>
-                <td>{{ i + 1 }}</td>
-                <td>{{ zoneData.zone }}</td>
-                <td>{{ zoneData.state }}</td>
-                <td>{{ zoneData.city }}</td>
-                <td>{{ zoneData.totalLocations }}</td>
-                <td class="icon"><i class="fas fa-edit me-3"></i> <i class="fa-solid fa-trash-can"></i></td>
-              </tr>
-            </tbody>
-          </table>
-      </div>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+   
+        <th scope="col">Sr.No</th>
+        <th scope="col">Zone</th>
+        <th scope="col">State</th>
+        <th scope="col">City</th>
+        <th scope="col">Total Locations</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let zoneData of zonesList; let i = index">
+    
+        <td>{{ i + 1 }}</td>
+        <td>{{ zoneData.zone }}</td>
+        <td>{{ zoneData.state }}</td>
+        <td>{{ zoneData.city }}</td>
+        <td>{{ zoneData.totalLocations }}</td>
+        <td class="icon">
+          <i class="fas fa-edit me-3" (click)="handleEdit(i)"></i> 
+          <i class="fa-solid fa-trash-can" (click)="deleteZone(i)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
     </div>
-
+  </div>
   

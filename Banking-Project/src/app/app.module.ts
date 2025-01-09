@@ -50,7 +50,7 @@ import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
-import { RouterModule } from '@angular/router';
+
 
 
 
@@ -94,12 +94,11 @@ import { RouterModule } from '@angular/router';
     MasterZoneComponent,
 
     TaskTableComponent,
+
       PersonaldetailsComponent,
       PdetailsComponent,
 
     TaskReportComponent,
-
-
 
   ],
   
