@@ -28,7 +28,7 @@ import { TaskTableComponent } from './components/task-table/task-table.component
 import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
 
 import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
-path: 'verify', component: VreportComponent},
+
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
