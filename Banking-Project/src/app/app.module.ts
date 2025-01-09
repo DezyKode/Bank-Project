@@ -43,13 +43,22 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
+import { TablereportComponent } from './components/tablereport/tablereport.component';
+
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
-import { RouterModule } from '@angular/router';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+
+
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
-// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+import { PdetailsComponent } from './components/pdetails/pdetails.component';
+
+
+import { TaskReportComponent } from './components/task-report/task-report.component';
+
 
 
 
@@ -90,6 +99,7 @@ import { DocumentsListComponent } from './components/masters/documents-list/docu
     VreportComponent,
     CommentsComponent,
     InvoiceComponent,
+    TablereportComponent,
 
     MasterZoneComponent,
 
@@ -98,8 +108,13 @@ import { DocumentsListComponent } from './components/masters/documents-list/docu
    
     CreateDocumentComponent,
 
+      PersonaldetailsComponent,
+      PdetailsComponent,
+
+    TaskReportComponent,
 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

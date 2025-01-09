@@ -1,56 +1,58 @@
+/* General container */
 .documents-container {
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
+/* Heading Styles */
 .documents-container h2 {
     font-weight: bold;
     padding: 10px;
     font-size: large;
 }
 
+/* Table Styles */
 .table {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
+/* Table Header and Row */
 .table-header,
 .table-row {
     display: flex;
-    align-items: stretch;
-    /* Ensures all rows align with equal height */
+    align-items: stretch; /* Ensures all rows align with equal height */
 }
 
 .column-header,
 .column-content {
     flex: 1;
-    /* Distributes columns equally */
     padding: 10px;
     text-align: center;
     border: 1px solid #ccc;
-    /* Adds borders for clear separation */
 }
 
 .column-header {
-    background-color: #f4f4f4;
-    /* Light background for headers */
+    background-color: #f4f4f4; /* Light background for headers */
     font-weight: bold;
     text-transform: uppercase;
 }
 
+/* Upload Documents Section */
 .upload-documents {
     display: flex;
-    align-items: stretch;
-    /* Equal row height alignment */
+    align-items: stretch; /* Equal row height alignment */
+    justify-content: space-between;
 }
 
 .upload-documents .column-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50px;
-    /* Ensures all cells have a base minimum height */
+    min-height: 50px; /* Ensures all cells have a base minimum height */
 }
 
 .upload-documents .document input {
@@ -61,6 +63,7 @@
     border-radius: 4px;
 }
 
+/* File Name Column */
 .file-name-column {
     display: flex;
     justify-content: space-between;
@@ -69,17 +72,94 @@
 }
 
 .action-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+
+.file-name-column span {
+    /* Add styles if needed for truncation, etc. */
 }
 
+/* Modal Styles */
+.modal-overlay,
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal,
+.popup {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.modal {
+    width: 350px;
+    height: 200px;
+}
+
+.popup {
+    width: 300px;
+    height: auto;
+}
+
+/* Modal Header and Content */
+.modal h3,
+.popup h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.modal p,
+.popup p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #333;
+}
+
+.modal button,
+.popup button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal button:hover,
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+/* Close Button in Modal */
+.modal i.fa-times,
+.popup .close {
+    cursor: pointer;
+    color: rgb(14, 12, 12);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+}
+
+/* Action Button Icons */
 .action-buttons i {
     font-size: 18px;
     cursor: pointer;
 }
 
+/* Add Item Button */
 .add-item-container {
     margin-top: 20px;
     text-align: center;
@@ -103,94 +183,24 @@
     background-color: #0056b3;
 }
 
-.modal {
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal h3 {
-    margin-top: 0;
-}
-
-.modal p {
-    margin: 10px 0;
-}
-
-
-/* Modal background overlay */
-
-.modal {
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    /* border-radius: 8px; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 350px;
-    height: 200px;
-    /* You can adjust this based on your preference */
-    /* max-width: 80%; */
-}
-
-
-/* Close button */
-
-.modal i.fa-times {
-    cursor: pointer;
-    color: rgb(14, 12, 12);
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-}
-
-
-/* Modal content */
-
-.modal h3 {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-}
-
-.modal p {
-    font-size: 1rem;
-    margin: 5px 0;
-    color: #333;
-}
-
-.modal p strong {
-    font-weight: bold;
-}
-
-
-/* If the modal needs to have a background overlay effect */
-
-.modal::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Input Fields */
+.column-content input,
+.upload-documents .document input {
     width: 100%;
-    height: 10%;
-    background: rgba(249, 247, 247, 0.5);
-    z-index: -1;
+    height: 35px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-
 
 /* Responsive Design */
-
 @media (max-width: 768px) {
     .table-header,
     .table-row {
         flex-direction: column;
         align-items: flex-start;
     }
+
     .column-header,
     .column-content {
         text-align: left;
