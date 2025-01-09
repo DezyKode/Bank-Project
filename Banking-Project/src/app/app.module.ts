@@ -43,7 +43,6 @@ import { TablereportComponent } from './components/tablereport/tablereport.compo
 
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
-import { RouterModule } from '@angular/router';
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
 

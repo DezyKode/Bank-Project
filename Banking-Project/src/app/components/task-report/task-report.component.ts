@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskReportService } from '../../Service/TaskReport/task-report.service';
 
 @Component({
   selector: 'app-task-report',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class TaskReportComponent {
 
+  Tasks:any=[];
+  constructor(private getTaskService:TaskReportService){}
+
+  ngOnInit(){
+    this.getAllTask();
+  }
+
+  getAllTask(){
+    this.getTaskService.getTask().subscribe((res)=>{
+      // console.log(res);
+      this.Tasks = res;
+    })
+  }
 }
