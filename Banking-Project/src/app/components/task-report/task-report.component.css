@@ -2,6 +2,9 @@
     font-size: small;
     height: 30px;
     width: 100px;
+
+    border: none;
+
 }
 
 .btn-s:hover{
@@ -13,4 +16,22 @@
     border-radius: 10px;
     border: 2px solid black;
     cursor: pointer;
+
+ }
+
+ .modalBody{
+    height: 400px;
+    width: 100%;
+    /* border: 1px solid black; */
+ }
+
+ .topBox{
+    height: 80%;
+    /* display: flex; */
+ }
+
+ .bottomBox{
+    height: 20%;
+    /* display: flex; */
+
  }

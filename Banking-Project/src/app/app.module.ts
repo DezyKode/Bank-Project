@@ -38,14 +38,19 @@ import { BrowseempdocumentsComponent } from './components/browseempdocuments/bro
 import { VerificationComponent } from './components/verification/verification.component';
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
-import { RouterModule } from '@angular/router';
+
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
+import { TaskTableComponent } from './components/task-table/task-table.component';
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+import { PdetailsComponent } from './components/pdetails/pdetails.component';
+
 
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
+
 
 
 
@@ -90,9 +95,13 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
 
     TaskTableComponent,
 
+      PersonaldetailsComponent,
+      PdetailsComponent,
+
     TaskReportComponent,
 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

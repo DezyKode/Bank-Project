@@ -1,0 +1,38 @@
+.bg-primary {
+    background-color: rgb(5, 5, 102) !important; /* Set the background color */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+/* Overlay the image with reduced opacity using ::after pseudo-element */
+.bg-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://t3.ftcdn.net/jpg/01/36/33/14/360_F_136331491_vRh0iHpvyi5juqXvbtujaibNIj6Xvyoh.jpg); /* Image as background */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.4; /* Adjust opacity of the image */
+    z-index: -1; /* Make sure the image is below the content */
+}
+form{
+    width: 100vw;
+    height: fit-content;
+}
+
+.topnav a {
+    transition: all 0.5s ease; /* Smooth transition for all properties */
+}
+
+.topnav a:hover {
+    color: black;
+    border-bottom: 2px solid red; /* Adds a bottom border on hover */
+    transform: scale(1.1); /* Slightly scales up the link */
+}
