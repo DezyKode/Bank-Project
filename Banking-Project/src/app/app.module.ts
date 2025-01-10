@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -43,13 +46,27 @@ import { TablereportComponent } from './components/tablereport/tablereport.compo
 
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 
+
+
+import { TaskTableComponent } from './components/task-table/task-table.component';
+
+
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
+
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 
-import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
-import { RouterModule } from '@angular/router';
+
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
+// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
+
+
 
 
 
@@ -66,7 +83,8 @@ import { RouterModule } from '@angular/router';
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
-
+    DocumentsListComponent,
+  //  CreateDocumentComponent,
 
     OverviewComponent,
     AplicationDetailsComponent,
@@ -77,9 +95,7 @@ import { RouterModule } from '@angular/router';
     VerificationReportsComponent,
     CommentsComponent,
 
-    // VreportComponent,
-
-
+   
 
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
@@ -93,12 +109,15 @@ import { RouterModule } from '@angular/router';
     MasterZoneComponent,
 
     TaskTableComponent,
+   
+   
+ 
+
       PersonaldetailsComponent,
       PdetailsComponent,
 
     TaskReportComponent,
-
-
+      // ParentComponent,
 
   ],
   
@@ -108,9 +127,11 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule, 
+    FormsModule,
     // NgChartsModule,
-  
+    CommonModule,
+    FormsModule, // If using forms
+   
   ],
   providers: [
     provideClientHydration()
