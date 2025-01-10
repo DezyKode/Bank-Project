@@ -1,0 +1,12 @@
+.btn-primary{
+    background-color: rgb(5,5,102);
+}
+.is-invalid {
+    border-color: red !important;
+  }
+  
+  /* Default or green border for valid input */
+  .is-valid {
+    border-color: #28a745 !important; /* Green color for valid input */
+  }
+  

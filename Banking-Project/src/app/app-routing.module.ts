@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+ 
+// Import components
 import { LoginComponent } from './components/Admin/login/login.component';
 import { ManagerLoginComponent } from './components/Maneger/maneger-login/manager-login.component';
 import { RegistrationComponent } from './components/Employee/registration/registration.component';
@@ -20,9 +22,22 @@ import { DocumentsComponents } from './components/creatnewlead/documents-1/docum
 import { VreportComponent } from './components/vreport/vreport.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
-
+import { TablereportComponent } from './components/tablereport/tablereport.component';
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+import { TaskTableComponent } from './components/task-table/task-table.component';
+import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
+ 
+import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
+ 
+ 
+import { TaskReportComponent } from './components/task-report/task-report.component';
+ 
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+import { PdetailsComponent } from './components/pdetails/pdetails.component';
+ import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 const routes: Routes = [
-
+  {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
   {path:'managerlogin',component:ManagerLoginComponent},
   {path:'registration',component:RegistrationComponent},
@@ -32,20 +47,11 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'newtask',component:NewtaskComponent},
-  {path:'newtask',component:NewtaskComponent},
-
-
-// {path:'comments',component:CommentsComponent},
- 
-
 {path:"invoice",component:InvoiceComponent},
-
-  // {path:'verification',component:VerificationComponent},
-
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
-  {path:'loan-details',component:LoanDetailsComponent}, 
+  {path:'loan-details',component:LoanDetailsComponent},
   {path:"bank",component:BankComponent},
   {path:'documents',component:DocumentsComponent},
   {path:'loan-offers',component:LoanOffersComponent},
@@ -55,71 +61,43 @@ const routes: Routes = [
   {path:'vreport',component:VreportComponent},
   {path:'documents-1',component:DocumentsComponents},
   {path:'verification',component:VerificationComponent},
-
-
-      // { path: '', redirectTo: '/vreport', pathMatch: 'full' }
-  {path:'',component:VerificationComponent, children:[
-    {path:'vreport',component:VreportComponent},
-    {path:'comments',component:CommentsComponent},
-
-
-  // {path:'',component:VerificationComponent, children:[
-  //   // {path:'vreport',component:VreportComponent},
-  // ]}
-
-
-  ]},
-
-  
-  {path:'vreport',component:VreportComponent},
-  { path: '', redirectTo: 'verification', pathMatch: 'full' },
-  {
-    path: 'verification',
-    component: VerificationComponent,
-    children: [
-      {path:'Overview',component:OverviewComponent},
-      {path:"Application-details",component:AplicationDetailsComponent},
-      {path:'loan-details',component:LoanDetailsComponent}, 
-      {path:"bank",component:BankComponent},
-      {path:'loan-offers',component:LoanOffersComponent},
-        // { path: 'comments', component: CommentsComponent },
-        // { path: 'vreport', component: VreportComponent },
-        {path:'empdoc',component:BrowseempdocumentsComponent},
-      ],
-    },
+  {path:'tasks', component:TaskTableComponent},
+  {path:'master-zone', component:MasterZoneComponent},
+   { path:"DocumentList",component:DocumentsListComponent},
+  {path:"create-modal",component:CreateDocumentComponent},
  
-]
+ 
+  {
+    path: 'verification', component: VerificationComponent,
+    children: [
+      { path: 'Overview', component: OverviewComponent },
+      { path: 'Application-details', component: AplicationDetailsComponent },
+      { path: 'loan-details', component: LoanDetailsComponent },
+      { path: 'bank', component: BankComponent },
+      { path: 'loan-offers', component: LoanOffersComponent },
+      { path: 'comments', component: CommentsComponent },
+      { path: 'vreport', component: VreportComponent },
+      { path: 'empdoc', component: BrowseempdocumentsComponent },
+    ]
+  },
+ 
+  { path: 'tabelreport', component: TablereportComponent },
+ 
+  {
+    path:'personaldetails',component:PersonaldetailsComponent,
+    children: [
+      { path: 'pdetails', component: PdetailsComponent },
+       {path:'taxmaster',component:TaxmasterComponent},
+      {path:'changepassword',component:ChangepasswordComponent},
 
-// const routes: Routes = [
-  // { path: 'login', component: LoginComponent },
-  // { path: 'managerlogin', component: ManagerLoginComponent },
-  // { path: 'registration', component: RegistrationComponent },
-  // { path: 'checkeligibility', component: CheckeligibilityComponent },
-  // { path: 'personalloan', component: PersonalloanComponent },
-  // { path: 'lead', component: LeadComponent },
-  // { path: 'newtask', component: NewtaskComponent },
-  // { path: 'verify', component: VreportComponent },
-  // { path: 'empdocuments', component: EmployeeDocumentsComponent },
-  // { path: 'empdoc', component: BrowseempdocumentsComponent },
-  // { path: 'verification', component: VerificationComponent },
-  // { path: 'overview', component: OverviewComponent },
-  // { path: 'application-details', component: AplicationDetailsComponent },
-  // { path: 'loan-details', component: LoanDetailsComponent },
-  // { path: 'bank', component: BankComponent },
-  // { path: '', redirectTo: 'verification', pathMatch: 'full' },
-  // {
-  //   path: 'verification',
-  //   component: VerificationComponent,
-  //   children: [
-  //     { path: 'comments', component: CommentsComponent },
-  //     { path: 'vreport', component: VreportComponent },
-  //   ],
-  // },
-// ];
-
-
+ 
+    ]
+  },
+];
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+ 

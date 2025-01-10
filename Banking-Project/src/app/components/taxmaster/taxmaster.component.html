@@ -1,0 +1,100 @@
+<div class="container bg-white">
+  <div class="row py-2">
+    <div class="col col-md-12">
+      <div class="table-responsive">
+        <table id="exportTable" class="table caption-top text-start">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Tax (%)</th>
+              <th></th>
+              <th>GST</th>
+              <th>CGST</th>
+              <th>SGST</th>
+              <th>IGST</th>
+              <th>TDS</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Loop through addedRows and display them in the table body -->
+            <tr *ngFor="let addedRow of addedRows; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ addedRow.name }}</td>
+              <td>{{ addedRow.type }}</td>
+              <td>{{ addedRow.tax }}</td>
+              <td></td>
+              <td>{{ addedRow.gstType }}</td>
+              <td>{{ addedRow.cgst }}</td>
+              <td>{{ addedRow.sgst }}</td>
+              <td>{{ addedRow.igst }}</td>
+              <td>{{ addedRow.tds }}</td>
+              <td>
+                <button class="btn btn-outline-danger" (click)="deleteAddedRow(i)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+
+            <!-- Loop through rows to display editable rows (new rows) -->
+            <tr *ngFor="let row of rows; let i = index">
+              <td>{{ addedRows.length + i + 1 }}</td>  <!-- Show incremented index -->
+              <td>
+                <input class="form-control bg-light border-0" type="text" [(ngModel)]="row.name" />
+              </td>
+              <td>
+                <div class="d-block">
+                  <div class="d-flex">
+                    <input class="me-2" type="radio" name="type{{ addedRows.length + i }}" [(ngModel)]="row.type" value="Invoice" />Invoice
+                  </div>
+                  <div class="d-flex">
+                    <input class="me-2" type="radio" name="type{{ addedRows.length + i }}" [(ngModel)]="row.type" value="Payout" />Payout
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input class="form-control bg-light border-0" type="text" [(ngModel)]="row.tax" />
+              </td>
+              <td></td>
+              <td>
+                <div class="d-block">
+                  <div class="d-flex">
+                    <input class="me-2" type="radio" name="gstType{{ addedRows.length + i }}" [(ngModel)]="row.gstType" value="CGST/SGST" />CGST/SGST
+                  </div>
+                  <div class="d-flex">
+                    <input class="me-2" type="radio" name="gstType{{ addedRows.length + i }}" [(ngModel)]="row.gstType" value="IGST" />IGST
+                  </div>
+                </div>
+              </td>
+              <td><input class="form-control border-0 bg-light" placeholder="0" type="text" [(ngModel)]="row.cgst" style="width: 50px;" /></td>
+              <td><input class="form-control border-0 bg-light" placeholder="0" type="text" [(ngModel)]="row.sgst" style="width: 50px;" /></td>
+              <td><input class="form-control border-0 bg-light" placeholder="0" type="text" [(ngModel)]="row.igst" style="width: 50px;" /></td>
+              <td><input class="form-control border-0 bg-light" placeholder="0" type="text" [(ngModel)]="row.tds" style="width: 50px;" /></td>
+              <td>
+                <div class="d-flex">
+                  <button class="btn btn-outline-light bg-primary me-2" (click)="checkAndAddRow(row, i)">
+                    <i class="fa fa-check"></i>
+                  </button>
+                  <button class="btn btn-outline-danger" (click)="deleteRow(i)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Button to add new editable rows -->
+        <div class="row">
+          <div class="col-md-12">
+            <a href="javascript:void(0);" (click)="addRow()" class="text-warning" style="text-decoration: none;">
+              <i class="fa fa-plus me-2"></i>Add Item
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

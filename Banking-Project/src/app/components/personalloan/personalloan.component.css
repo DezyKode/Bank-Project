@@ -7,6 +7,20 @@ form{
     box-sizing: border-box;
 }
 .form-group,label{
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+/* Red border for invalid input */
+.is-invalid {
+    border-color: red !important;
+  }
+  
+  /* Default or green border for valid input */
+  .is-valid {
+    border-color: #28a745 !important; /* Green color for valid input */
+  }
+  

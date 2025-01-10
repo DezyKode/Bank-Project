@@ -1,4 +1,7 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +42,37 @@ import { VerificationComponent } from './components/verification/verification.co
 import { VreportComponent } from './components/vreport/vreport.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 
+import { TablereportComponent } from './components/tablereport/tablereport.component';
+
+import { MasterZoneComponent } from './components/master-zone/master-zone.component';
+
+
+
+import { TaskTableComponent } from './components/task-table/task-table.component';
+
+
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
+
+import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
+import { PdetailsComponent } from './components/pdetails/pdetails.component';
+
+
+import { TaskReportComponent } from './components/task-report/task-report.component';
+
+import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+
+
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
+// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
+
+
+
+
 
 
 
@@ -54,7 +88,8 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     CheckeligibilityComponent,
     PersonalloanComponent,
     LeadComponent,
-
+    DocumentsListComponent,
+  //  CreateDocumentComponent,
 
     OverviewComponent,
     AplicationDetailsComponent,
@@ -65,9 +100,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     VerificationReportsComponent,
     CommentsComponent,
 
-    // VreportComponent,
-
-
+   
 
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
@@ -76,17 +109,41 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     VreportComponent,
     CommentsComponent,
     InvoiceComponent,
+    TablereportComponent,
+
+    MasterZoneComponent,
+
+    TaskTableComponent,
+   
+   
+ 
+
+      PersonaldetailsComponent,
+      PdetailsComponent,
+
+    TaskReportComponent,
+
+      TaxmasterComponent,
+      ChangepasswordComponent,
+
+
+
+      // ParentComponent,
 
 
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule, 
+    HttpClientModule,
+    FormsModule,
     // NgChartsModule,
-  
+    CommonModule,
+    FormsModule, // If using forms
+   
   ],
   providers: [
     provideClientHydration()

@@ -1,380 +1,205 @@
-.documents-container {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.documents-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
-.header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.primary-applicant-button {
-    padding: 8px 16px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.primary-applicant-button:hover {
-    background-color: #0056b3;
-}
-
-.sub-container button {
-    margin-left: 10px;
-    padding: 8px 12px;
-    border: 2px solid #434190;
-    /* background-color: #28a745; */
-    color: #0a0808;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    /* Ensures borders don't overlap */
-}
-
-.sub-container button:hover {
-    background-color: #212688;
-}
-
-.sub-container button i {
-    margin-right: 8px;
-}
-
-.documents-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.documents-table th,
-.documents-table td {
-    text-align: left;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.documents-table th {
-    background-color: #007bff;
-    color: white;
-}
-
-.upload-documents {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.upload-documents .left-content {
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.upload-documents .left-content p {
-    margin-right: 10px;
-    font-size: 16px;
-    color: #333;
-}
-
-.upload-documents .left-content input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.upload-documents .right-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.upload-documents .right-content label {
-    cursor: pointer;
-}
-
-.upload-documents .right-content i {
-    font-size: 16px;
-    color: #007bff;
-    cursor: pointer;
-}
-
-.upload-documents .right-content i.reset-icon {
-    color: #dc3545;
-}
-
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    text-align: center;
-}
-
-.modal-content .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.table-header.content.table {
-    border: solid 2px rgb(11, 3, 4);
-}
-
-.modal-content img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-}
-
-.file-input {
-    display: none;
-}
-
-.i {
-    display: none;
-}
-
-.documents-container {
-    padding: 20px;
-}
-
-.table-header,
-.upload-documents {
-    display: flex;
-    justify-content: space-between;
-}
-
-.upload-documents .u {
-    border: 2px solid black;
-}
-
-button {
-    border: 1px solid gray;
-    padding: 5px 10px;
-    border-radius: 5px;
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    /* Adds a pointer on hover */
-    transition: background-color 0.3s;
-    /* Smooth hover effect */
-}
-
-
-/* button:hover {
-    background-color: #f0f0f0;
-    /* Lighter background on hover */
-
-
-/* } */
-
-button img {
-    margin-right: 5px;
-    /* Space between icon and text */
-}
-
-
-/* .column-header,
-.column-content {
-    flex: 1;
-    padding: 1px;
-    text-align: center;
-} */
-
-.add-item-container {
-    text-align: center;
-    margin-top: 20px;
-    /* background-color: #007bff; */
-}
-
-.add-item-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: rgb(7, 6, 6);
-    border: none;
-    cursor: pointer;
-}
-
-.add-item-button i {
-    margin-right: 8px;
-}
-
-
-/* Modal styling */
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 60%;
-}
-
-.close {
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.primary-applicant-button {
-    display: inline-block;
-    width: 190px;
-    /* Adjust width */
-    /* height: 50px; */
-    /* Adjust height */
-    background-color: #053697;
-    /* Light gray base color */
-    color: #ebedf1;
-    /* Dark gray text */
-    font-size: 16px;
-    /* font-weight: bold; */
-    text-align: center;
-    line-height: 30px;
-    /* border-radius: 20px 20px 0px 0px; */
-    /* Centers the text vertically */
-    border: none;
-    clip-path: polygon(10% 0, 90% 0, 100% 90%, 100% 100%, 90% 100%, 0% 100%, 0 90%);
-    /* Right corner */
-    /* Diamond shape */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.primary-applicant-button:hover {
-    background-color: #4C51BF;
-    /* Darker purple on hover */
-    transform: translateY(-2px);
-    /* Slight lift on hover */
-}
-
-.primary-applicant-button:active {
-    background-color: #434190;
-    /* Even darker purple when active */
-    transform: translateY(0);
-    /* Reset lift on click */
-}
-
-.documents-container {
-    padding: 20px;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    /* Ensures borders don't overlap */
-}
-
-.table-header {
-    display: flex;
-    background-color: #f2f2f2;
-    font-weight: bold;
-    border-bottom: 2px solid #ccc;
-}
-
-.column-header,
-.column-content {
-    flex: 1;
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ddd;
-    /* Border for each column */
-}
-
-.upload-documents {
-    display: flex;
-    margin-top: 10px;
-}
-
-.column-content input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.add-item-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.add-item-button {
-    padding: 10px;
-    background-color: #434190;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.add-item-button i {
-    margin-right: 8px;
-}
-
-
-/* Modal styling */
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 60%;
-}
-
-.close {
-    font-size: 30px;
-    cursor: pointer;
-}
+        /* General container */
+        
+        .documents-container {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        /* Heading Styles */
+        
+        .documents-container h2 {
+            font-weight: bold;
+            padding: 10px;
+            font-size: large;
+        }
+        /* Table Styles */
+        
+        .table {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        /* Table Header and Row */
+        
+        .table-header,
+        .table-row {
+            display: flex;
+            align-items: stretch;
+            /* Ensures all rows align with equal height */
+        }
+        
+        .column-header,
+        .column-content {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        
+        .column-header {
+            background-color: #f4f4f4;
+            /* Light background for headers */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Upload Documents Section */
+        
+        .upload-documents {
+            display: flex;
+            align-items: stretch;
+            /* Equal row height alignment */
+            justify-content: space-between;
+        }
+        
+        .upload-documents .column-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            /* Ensures all cells have a base minimum height */
+        }
+        
+        .upload-documents .document input {
+            width: 100%;
+            height: 35px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /* File Name Column */
+        
+        .file-name-column {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Modal Styles */
+        
+        .modal-overlay,
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .modal,
+        .popup {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .modal {
+            width: 350px;
+            height: 200px;
+        }
+        
+        .popup {
+            width: 300px;
+            height: auto;
+        }
+        /* Modal Header and Content */
+        
+        .modal h3,
+        .popup h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal p,
+        .popup p {
+            font-size: 1rem;
+            margin: 5px 0;
+            color: #333;
+        }
+        
+        .modal button,
+        .popup button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .modal button:hover,
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+        /* Close Button in Modal */
+        
+        .modal i.fa-times,
+        .popup .close {
+            cursor: pointer;
+            color: rgb(14, 12, 12);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+        /* Action Button Icons */
+        
+        .action-buttons i {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        /* Add Item Button */
+        
+        .add-item-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .add-item-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .add-item-button i {
+            margin-right: 5px;
+        }
+        
+        .add-item-button:hover {
+            background-color: #0056b3;
+        }
+        /* Input Fields */
+        
+        .column-content input,
+        .upload-documents .document input {
+            width: 100%;
+            height: 35px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .table-header,
+            .table-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .column-header,
+            .column-content {
+                text-align: left;
+            }
+        }
