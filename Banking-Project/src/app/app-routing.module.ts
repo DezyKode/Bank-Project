@@ -34,10 +34,30 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
 
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
-// import { ParentComponent } from './components/ashanka/parent/parent.component';
-// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
-// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
 
+// const routes: Routes = [
+//   { path: 'login', component: LoginComponent },
+//   { path: 'managerlogin', component: ManagerLoginComponent },
+//   { path: 'registration', component: RegistrationComponent },
+//   { path: 'checkeligibility', component: CheckeligibilityComponent },
+//   { path: 'personalloan', component: PersonalloanComponent },
+//   { path: 'lead', component: LeadComponent },
+//   { path: 'newtask', component: NewtaskComponent },
+//   { path: 'invoice', component: InvoiceComponent },
+//   { path: 'comments', component: CommentsComponent },
+//   { path: 'Overview', component: OverviewComponent },
+//   { path: 'Application-details', component: AplicationDetailsComponent },
+//   { path: 'loan-details', component: LoanDetailsComponent },
+//   { path: 'bank', component: BankComponent },
+//   { path: 'documents', component: DocumentsComponent },
+//   { path: 'loan-offers', component: LoanOffersComponent },
+//   { path: 'empdocuments', component: EmployeeDocumentsComponent },
+//   { path: 'vreport', component: VreportComponent },
+//   { path: 'documents-1', component: DocumentsComponents },
+//   { path: 'verification', component: VerificationComponent },
+//   { path: 'master-zone', component: MasterZoneComponent },
+//   { path: 'tasks', component: TaskTableComponent },
+// import { TaskReportComponent } from './components/task-report/task-report.component';
 
 const routes: Routes = [
   {path:'tasks-report', component:TaskReportComponent},
@@ -50,7 +70,7 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'newtask',component:NewtaskComponent},
-{path:"invoice",component:InvoiceComponent},
+  {path:"invoice",component:InvoiceComponent},
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},

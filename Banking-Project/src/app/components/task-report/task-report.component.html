@@ -1,18 +1,27 @@
-<div class="container1 ms-3 me-2" style="background-color: rgb(229, 229, 229); ">
+<div class="container1 ms-3 me-2" style="background-color: rgb(229, 229, 229);">
     <div style="background-color:rgb(229, 229, 229);">
         <h2 class="h4 text-primary">Tasks</h2>
-        <button type="button" class="bg-secondary mb-3 rounded btn-s"><i class="fa-solid fa-plus"></i> Create
-            Task</button>
+        <button type="button" class="bg-secondary mb-3 rounded btn-s"><i class="fa-solid fa-plus"></i> Create Task</button>
     </div>
-    <!-- <div class="container text-start"> -->
-    <div class="row" style=" width: 100%;">
-        <div class="col-3">
-            <h6 class="h6">To Do</h6>
-            <div style="overflow-y: auto; height: 82vh; width: 45vh;">
-                <div *ngFor="let task of Tasks">
-                    <div class="card border-danger mb-3 hover-border" style="max-width: 18rem;" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        <div class="card-header h6">#{{task.id}}</div>
+    <div class="row">
+        <!-- To Do Column -->
+        <div class="col-12 col-md-3">
+            <h6 class="h6">TO DO</h6>
+            <div style="overflow-y: auto; height: 82vh; width: 100%;">
+                <div *ngFor="let task of toDoTasks">
+                    <div class="card mb-3 hover-border" style="max-width: 18rem;" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectTask(task)" [ngClass]="{
+                            'border-warning ': task.priority === 'Low',
+                            'border-danger': task.priority === 'High',
+                            'border-primary': task.priority === 'Medium'
+                        }">
+                        <div class="card-header cardHeader">
+                            <div class="h6" style="width: 90%;">#{{task.id}}</div>
+                            <span style="width: 10%;" [ngClass]="{
+                                'text-warning': task.priority === 'Low',
+                                'text-danger': task.priority === 'High',
+                                'text-primary': task.priority === 'Medium'
+                            }"><i class="fa-solid fa-circle-dot"></i></span>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title h5">{{task.task_title}}</h5>
                             <p class="card-text mb-3" style="text-align: end;">Assign To: {{task.assign_to}}</p>
@@ -20,127 +29,149 @@
                             <p class="card-text"><i class="fa-regular fa-clock"></i> {{task.due_date}}</p>
                         </div>
                     </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="font-family:Arial, Helvetica, sans-serif;"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header bg-warning">
-                                    <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
-                                    <div class="m-0 p-0">
-                                        <h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">#{{task.id}} - {{task.task_title}}</h4>
-                                        <div style="display: flex; flex-direction: row;">
-                                            <p>Create Date: <b>14 Sep 2024</b> | Due Date: <b>{{task.due_date}}</b>
-                                                |&nbsp; </p>
-                                            <p class="bg-danger ps-2 pe-2" style="border-radius: 10px;">
-                                                <b>{{task.priority}}</b>
-                                            </p>
-                                            &nbsp;
-                                            <p class="bg-success ps-2 pe-2" style="border-radius: 10px;">
-                                                <b>Completed</b>
-                                            </p>
-                                            <p>&nbsp; | Assign To: <b>{{task.assign_to}}</b></p>
-                                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="col-12 col-md-3">
+            <h6 class="h6">IN PROGRESS</h6>
+            <div style="overflow-y: auto; height: 82vh;">
+                <div *ngFor="let task of inProgressTasks">
+                    <div class="card mb-3 hover-border" style="max-width: 18rem;" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectTask(task)" [ngClass]="{
+                        'border-warning ': task.priority === 'Low',
+                        'border-danger': task.priority === 'High',
+                        'border-primary': task.priority === 'Medium'
+                    }">
+                        <div class="card-header cardHeader">
+                            <div class="h6" style="width: 90%;">#{{task.id}}</div>
+                            <span style="width: 10%;" [ngClass]="{
+                                'text-warning': task.priority === 'Low',
+                                'text-danger': task.priority === 'High',
+                                'text-primary': task.priority === 'Medium'
+                            }"><i class="fa-solid fa-circle-dot"></i></span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title h5">{{task.task_title}}</h5>
+                            <p class="card-text mb-3" style="text-align: end;">Assign To : {{task.assign_to}}</p>
+                            <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
+                            <p class="card-text"><i class="fa-regular fa-clock"></i> {{task.due_date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed Column -->
+        <div class="col-12 col-md-3">
+            <h6 class="h6">COMPLETED</h6>
+            <div style="overflow-y: auto; height: 82vh;">
+                <div *ngFor="let task of completedTasks">
+                    <div class="card mb-3 hover-border" style="max-width: 18rem;" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="selectTask(task)" [ngClass]="{
+                            'border-warning ': task.priority === 'Low',
+                            'border-danger': task.priority === 'High',
+                            'border-primary': task.priority === 'Medium'
+                        }">
+                        <div class="card-header cardHeader">
+                            <div class="h6" style="width: 90%;">#{{task.id}}</div>
+                            <span style="width: 10%;" [ngClass]="{
+                                'text-warning': task.priority === 'Low',
+                                'text-danger': task.priority === 'High',
+                                'text-primary': task.priority === 'Medium'
+                            }"><i class="fa-solid fa-circle-dot"></i></span>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title h5">{{task.task_title}}</h5>
+                            <p class="card-text mb-3" style="text-align: end;">Assign To: {{task.assign_to}}</p>
+                            <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
+                            <p class="card-text"><i class="fa-regular fa-clock"></i> {{task.due_date}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="font-family:Arial, Helvetica, sans-serif;" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning">
+                        <div class="m-0 p-0">
+                            <h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">#{{selectedTask?.id}} - {{selectedTask?.task_title}}</h4>
+                            <div style="display: flex; flex-direction: row;">
+                                <p>Create Date: <b>{{selectedTask?.create_date}}</b> | Due Date:
+                                    <b>{{selectedTask?.due_date}}</b>
+                                    |&nbsp;
+                                </p>
+                                <p [ngClass]="{
+                                                'bg-orange': selectedTask?.priority === 'Low',
+                                                'bg-danger': selectedTask?.priority === 'High',
+                                                'bg-primary': selectedTask?.priority === 'Medium'
+                                            }" class="ps-2 pe-2" style="border-radius: 10px;">
+                                    <b>{{selectedTask?.priority}}</b>
+                                </p>
+                                &nbsp;
+                                <p [ngClass]="{
+                                                'bg-orange': selectedTask?.status=== 'InProgress',
+                                                'bg-war': selectedTask?.status === 'ToDo',
+                                                'bg-success': selectedTask?.status === 'Completed'
+                                            }" class="ps-2 pe-2" style="border-radius: 10px;">
+                                    <b>{{selectedTask?.status}}</b>
+                                </p>
+                                <p>&nbsp; | Assign To: <b>{{selectedTask?.assign_to}}</b></p>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modalBody">
+                            <div class="container text-center topBox">
+                                <div class="row">
+                                    <div class="col-md-4 text-start">
+                                        <h6 class="h6 fw-semibold">DESCRIPTION</h6>
+                                        <p>{{selectedTask?.task_description}}</p>
                                     </div>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <div class="col-md-4 offset-md-4 text-end"><i class="fa-sharp-duotone fa-regular fa-circle-check text-success"></i></div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="modalBody">
-                                        <div class="container text-center topBox">
-                                            <div class="row ">
-                                                <div class="col-md-4 text-start">
-                                                    <h6 class="h6 fw-semibold">DESCRIPTION</h6>
-                                                    <p>{{task.task_description}}</p>
-                                                </div>
-                                                <div class="col-md-4 offset-md-4 text-end"><i
-                                                        class="fa-sharp-duotone fa-regular fa-circle-check text-success"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
-                                        <div class="bottomBox">
-                                            <div class="row align-items-start">
-                                                <div class="col">
-                                                    <p>Create Date : <br> <b>14 Sep 2024</b></p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Due Date: <br> <b>{{task.due_date}}</b></p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Priority: <br> <b class="bg-danger ps-2 pe-2" style="border-radius: 10px;">{{task.priority}}</b></p>
-                                                </div>
-                                                <div class="col">
-                                                    <p>Status: <br> <b class="bg-success ps-2 pe-2" style="border-radius: 10px;">
-                                                        Completed
-                                                    </b></p>
-                                                </div>
-                                            </div>
-                                        </div>
+                            </div>
+                            <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
+                            <div class="bottomBox">
+                                <div class="row align-items-start">
+                                    <div class="col">
+                                        <p>Create Date : <br> <b>{{selectedTask?.create_date}}</b></p>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <div class="col">
+                                        <p>Due Date: <br> <b>{{selectedTask?.due_date}}</b></p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Priority: <br>
+                                            <b class="ps-2 pe-2" [ngClass]="priorityClass" style="border-radius: 10px;">
+                                                <select [(ngModel)]="priority" (change)="onPriorityChange()"
+                                                    style="background: none; border: none; outline: none;">
+                                                    <option *ngFor="let option of ['Low', 'High', 'Medium']" [value]="option">{{option}}</option>
+                                                </select>
+                                            </b>
+                                        </p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Status: <br>
+                                            <b class="ps-2 pe-2" [ngClass]="statusClass" style="border-radius: 10px;">
+                                                <select [(ngModel)]="status" (change)="onStatusChange()"
+                                                    style="background: none; border: none; outline: none;">
+                                                    <option *ngFor="let option of ['Completed', 'InProgress', 'ToDo']" [value]="option">{{option}}</option>
+                                                </select>
+                                            </b>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="h6">INPROGRESS</div>
-            <div class="card border-danger mb-3 hover-border" style="max-width: 18rem;" data-bs-toggle="modal"
-                data-bs-target="#exampleModal1">
-                <div class="card-header">#2</div>
-                <div class="card-body">
-                    <h5 class="card-title h5">Form</h5>
-                    <p class="card-text mb-3" style="text-align: end;">Assign To : Hardit</p>
-                    <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
-                    <p class="card-text"><i class="fa-regular fa-clock"></i> 10 Jun 2024</p>
-                </div>
-            </div>
- 
- 
-            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-              </button> -->
- 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Modal 2
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
-                </div>
-            </div>
- 
- 
-        </div>
-        <div class="col">
-            <div class="h6">COMPLETED</div>
-            <div class="card border-warning mb-3 hover-border" style="max-width: 18rem;">
-                <div class="card-header">#1</div>
-                <div class="card-body">
-                    <h5 class="card-title h5">Excel</h5>
-                    <p class="card-text mb-3" style="text-align: end;">Assign To : Bumrah
-                        <hr style="border: 0;border-top: 2px dashed black;margin: 20px 0;">
-                    <p class="card-text"><i class="fa-regular fa-clock"></i> 11 Jun 2024</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>

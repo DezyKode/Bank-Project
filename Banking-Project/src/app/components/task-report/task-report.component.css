@@ -33,5 +33,35 @@
  .bottomBox{
     height: 20%;
     /* display: flex; */
+ }
+
+ .bg-orange {
+    background-color: #ff9900;
+  }
+  
+  .bg-danger {
+    background-color: #dc3545;
+  }
+  
+  .bg-primary {
+    background-color: #3178c4;
+  }
+
+
+  .bg-success {
+    background-color: #28a745;
+  }
+  
+  .bg-war {
+    background-color: #ff9900; 
+  }
+  
+  .cardHeader{
+    display: flex;
+    flex-direction: row;
+  }
+  
+
 
  }
+
