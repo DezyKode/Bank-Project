@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -51,13 +50,18 @@ import { TaskTableComponent } from './components/task-table/task-table.component
 
 
 // import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
-import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
+// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
+
 
 
 
@@ -77,7 +81,7 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     PersonalloanComponent,
     LeadComponent,
     DocumentsListComponent,
-   CreateDocumentComponent,
+  //  CreateDocumentComponent,
 
     OverviewComponent,
     AplicationDetailsComponent,
@@ -88,9 +92,7 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     VerificationReportsComponent,
     CommentsComponent,
 
-    // VreportComponent,
-
-
+   
 
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
@@ -106,12 +108,13 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     TaskTableComponent,
    
    
-    CreateDocumentComponent,
+ 
 
       PersonaldetailsComponent,
       PdetailsComponent,
 
     TaskReportComponent,
+      // ParentComponent,
 
   ],
   
@@ -121,7 +124,7 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
- 
+    FormsModule,
     // NgChartsModule,
     CommonModule,
     FormsModule, // If using forms
