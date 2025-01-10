@@ -56,10 +56,7 @@ import { DocumentsListComponent } from './components/masters/documents-list/docu
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 7912a80badfe1ddae168b1d59fccf41ba2a10ff2
 import { TaskReportComponent } from './components/task-report/task-report.component';
 import { RouterModule } from '@angular/router';
 
