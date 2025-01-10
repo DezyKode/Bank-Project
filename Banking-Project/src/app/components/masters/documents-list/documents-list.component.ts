@@ -54,16 +54,7 @@ export class DocumentsListComponent {
     this.showEditForm = true; // Show the edit form
   }
 
-  saveEditedDocument() {
-    if (this.editIndex !== null) {
-      // Update the document in the array
-      this.documents[this.editIndex] = { ...this.editedDocument };
 
-      // Hide the edit form
-      this.showEditForm = false;
-      this.editIndex = null; // Reset the edit index
-    }
-  }
 
   closeEditForm() {
     this.showEditForm = false;
@@ -102,5 +93,13 @@ export class DocumentsListComponent {
       { typeOfLoan: 'Car Loan', employmentType: 'Part-time', totalDocuments: 3 },
       // Add more documents here
     ];
+  }
+  saveEditedDocument(updatedDocument: any) {
+    if (this.editIndex !== null) {
+      this.documents[this.editIndex] = { ...updatedDocument };
+      this.showEditForm = false;
+      this.editIndex = null;
+      this.filterDocuments();
+    }
   }
 }

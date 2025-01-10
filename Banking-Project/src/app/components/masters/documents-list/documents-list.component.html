@@ -12,10 +12,8 @@
     </button>
   </div>
   
-
   <!-- Conditional Rendering -->
   <div *ngIf="!showCreateDocument">
-  
     <table>
       <thead>
         <tr>
@@ -65,7 +63,7 @@
 <div *ngIf="showEditForm" class="edit-popup">
   <div class="edit-popup-content">
     <h3>Edit Document</h3>
-    <form (ngSubmit)="saveEditedDocument()">
+    <form (ngSubmit)="saveEditedDocument(editedDocument)">
       <label for="typeOfLoan">Type of Loan</label>
       <input [(ngModel)]="editedDocument.typeOfLoan" id="typeOfLoan" name="typeOfLoan" required />
 
