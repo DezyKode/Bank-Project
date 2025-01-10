@@ -3,8 +3,8 @@
         margin: 20px auto;
     }
     
-    .search-bar {
-        margin-right: 730px;
+    .search-container {
+        margin-right: 700px;
         width: 150px;
         /* Adjust the value as needed */
     }
@@ -146,7 +146,7 @@
     }
     
     button {
-        padding: 10px 15px;
+        /* padding: 10px 15px; */
         margin: 5px;
         border: none;
         border-radius: 4px;
@@ -158,4 +158,117 @@
     button[type="submit"]:hover,
     button[type="button"]:hover {
         opacity: 0.8;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .documents-container {
+            padding: 10px;
+        }
+        /* Search container */
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .search-container label {
+            margin-bottom: 5px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        /* Table styles */
+        table {
+            font-size: 14px;
+        }
+        table th,
+        table td {
+            padding: 8px;
+        }
+        /* Button styles */
+        .toggle-btn {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .edit-btn,
+        .delete-btn {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+        /* Form styles */
+        .create-form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .create-form div {
+            margin-bottom: 15px;
+        }
+        .create-form label {
+            margin-bottom: 5px;
+        }
+        .create-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .create-form button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+        }
+        /* Edit form popup */
+        .edit-popup-content {
+            width: 90%;
+            padding: 20px;
+            margin: 10% auto;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .edit-popup-content h3 {
+            font-size: 18px;
+        }
+        .edit-popup-content form {
+            display: flex;
+            flex-direction: column;
+        }
+        .edit-popup-content label {
+            margin-bottom: 5px;
+        }
+        .edit-popup-content input {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .edit-popup-content button {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+    /* Media Query for screens smaller than 480px */
+    
+    @media screen and (max-width: 480px) {
+        .toggle-btn {
+            padding: 12px;
+        }
+        .edit-btn,
+        .delete-btn {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        .edit-popup-content {
+            width: 95%;
+            padding: 15px;
+        }
+        .edit-popup-content h3 {
+            font-size: 16px;
+        }
+        .edit-popup-content input {
+            padding: 8px;
+        }
     }
