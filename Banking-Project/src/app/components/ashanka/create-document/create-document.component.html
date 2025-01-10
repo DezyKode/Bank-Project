@@ -1,0 +1,19 @@
+<form (submit)="createDocument(); $event.preventDefault()">
+    <label>
+      Type of Loan:
+      <input type="text" [(ngModel)]="typeOfLoan" name="typeOfLoan" required />
+    </label>
+    <br />
+    <label>
+      Employment Type:
+      <input type="text" [(ngModel)]="employmentType" name="employmentType" required />
+    </label>
+    <br />
+    <label>
+      Total Documents:
+      <input type="number" [(ngModel)]="totalDocuments" name="totalDocuments" required />
+    </label>
+    <br />
+    <button type="submit">Create Document</button>
+  </form>
+  

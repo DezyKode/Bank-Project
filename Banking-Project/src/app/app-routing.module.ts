@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+ 
 // Import components
 import { LoginComponent } from './components/Admin/login/login.component';
 import { ManagerLoginComponent } from './components/Maneger/maneger-login/manager-login.component';
@@ -25,34 +25,48 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
+ 
+import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
+ 
+ 
+import { TaskReportComponent } from './components/task-report/task-report.component';
+ 
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
-import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
+ import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
-
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'managerlogin', component: ManagerLoginComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'checkeligibility', component: CheckeligibilityComponent },
-  { path: 'personalloan', component: PersonalloanComponent },
-  { path: 'lead', component: LeadComponent },
-  { path: 'newtask', component: NewtaskComponent },
-  { path: 'invoice', component: InvoiceComponent },
-  { path: 'comments', component: CommentsComponent },
-  { path: 'Overview', component: OverviewComponent },
-  { path: 'Application-details', component: AplicationDetailsComponent },
-  { path: 'loan-details', component: LoanDetailsComponent },
-  { path: 'bank', component: BankComponent },
-  { path: 'documents', component: DocumentsComponent },
-  { path: 'loan-offers', component: LoanOffersComponent },
-  { path: 'empdocuments', component: EmployeeDocumentsComponent },
-  { path: 'vreport', component: VreportComponent },
-  { path: 'documents-1', component: DocumentsComponents },
-  { path: 'verification', component: VerificationComponent },
-  { path: 'master-zone', component: MasterZoneComponent },
-  { path: 'tasks', component: TaskTableComponent },
-  { path: '', redirectTo: 'verification', pathMatch: 'full' },
+  {path:'tasks-report', component:TaskReportComponent},
+  {path:'login',component:LoginComponent},
+  {path:'managerlogin',component:ManagerLoginComponent},
+  {path:'registration',component:RegistrationComponent},
+  {path:'checkeligibility',component:CheckeligibilityComponent},
+  {path:'personalloan',component:PersonalloanComponent},
+  {path:'lead',component:LeadComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent},
+  {path:'newtask',component:NewtaskComponent},
+{path:"invoice",component:InvoiceComponent},
+  {path:'comments',component:CommentsComponent},
+  {path:'Overview',component:OverviewComponent},
+  {path:"Application-details",component:AplicationDetailsComponent},
+  {path:'loan-details',component:LoanDetailsComponent},
+  {path:"bank",component:BankComponent},
+  {path:'documents',component:DocumentsComponent},
+  {path:'loan-offers',component:LoanOffersComponent},
+  {path:'newtask',component:NewtaskComponent},
+  {path:'verify',component:VreportComponent},
+  {path:'empdocuments',component:EmployeeDocumentsComponent},
+  {path:'vreport',component:VreportComponent},
+  {path:'documents-1',component:DocumentsComponents},
+  {path:'verification',component:VerificationComponent},
+  {path:'tasks', component:TaskTableComponent},
+  {path:'master-zone', component:MasterZoneComponent},
+   { path:"DocumentList",component:DocumentsListComponent},
+  {path:"create-modal",component:CreateDocumentComponent},
+ 
+ 
   {
     path: 'verification', component: VerificationComponent,
     children: [
@@ -66,24 +80,24 @@ const routes: Routes = [
       { path: 'empdoc', component: BrowseempdocumentsComponent },
     ]
   },
-
+ 
   { path: 'tabelreport', component: TablereportComponent },
-
-
+ 
   {
     path:'personaldetails',component:PersonaldetailsComponent,
     children: [
       { path: 'pdetails', component: PdetailsComponent },
-      {path:'taxmaster',component:TaxmasterComponent},
+       {path:'taxmaster',component:TaxmasterComponent},
       {path:'changepassword',component:ChangepasswordComponent},
 
-
+ 
     ]
   },
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+ 

@@ -70,7 +70,7 @@ export class CommentsComponent {
       isEditing: false,
       isReplyDisabled: false,
     };
- 
+
     if (index === undefined) {
       // Adding a new comment
       newComment.text = this.newCommentText;
@@ -79,7 +79,7 @@ export class CommentsComponent {
     } else {
       // Replying to an existing comment
       const parentComment = this.comments[index];
- 
+
       if (subReplyIndex !== undefined && replyToIndex !== undefined) {
         // Sub-sub-reply (deep level)
         const subReply = parentComment.replies[replyToIndex].replies[subReplyIndex];
@@ -98,8 +98,7 @@ export class CommentsComponent {
       parentComment.replyText = ''; // Clear reply text
     }
   }
- 
- 
+
   // Method to toggle the visibility of the reply section
   toggleReplySection(index: number, replyIndex?: number, subReplyIndex?: number): void {
     if (subReplyIndex !== undefined && replyIndex !== undefined) {
@@ -146,4 +145,14 @@ export class CommentsComponent {
       lastComment.isEditing = false;  // Turn off editing mode after saving
     }
   }
+
 }
+
+
+
+
+
+  
+
+}
+
