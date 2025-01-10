@@ -2,7 +2,7 @@
    <div class="container">
     <div class="nav">
       <div class="sub-nav">
-        <h5 class="zone" style="color: blue;"><strong>Zone</strong></h5>
+        <h5 class="zone" style="color:#050566;"><strong>Zone</strong></h5>
       </div>
       <div class="sub-nav2">
         <span class="span">Masters > Zone > <span class="sub-span">Zones List</span></span>
@@ -15,14 +15,15 @@
         <button 
           type="button" 
           class="btn btn-primary" 
-          (click)="toggleMiddleContainer()">
+          (click)="toggleMiddleContainer()"
+          style="background-color: #050566;">
           <i class="fa-solid fa-plus"></i> Create Zone
         </button>
       </div>
   
       <!-- Middle container will be toggled based on the isMiddleContainerVisible flag -->
       <div class="moddle-container" *ngIf="isMiddleContainerVisible">
-        <h6>Create Zone</h6>
+        <h6>Create New Zone</h6>
  
         <div class="row mt-5">
           <div class="col-md-4">
@@ -68,7 +69,7 @@
   
         <div class="d-flex justify-content-end mt-5 gap-3">
           <button type="button" class="btn btn-light" (click)="cancelCreateZone()">Cancel</button>
-          <button type="button" class="btn btn-primary" (click)="createZone()">Create</button>
+          <button type="button" class="btn btn-primary" (click)="createZone()" style="background-color: #050566;">Create</button>
         </div>
       </div>
   
@@ -99,13 +100,16 @@
    
         <th scope="col">Sr.No</th>
         <th scope="col">Zone </th>
-        <th scope="col">State <i class="fa-solid fa-filter">  
-        </i>
-      
-      
-      
-      </th>
-        <th scope="col">City <i class="fa-solid fa-filter"></i></th>
+        <th scope="col">State <i class="fa-solid fa-sort" 
+          (click)="sortState()"
+          [class.asc]="sortStateOrder === 'asc'"
+          [class.desc]="sortStateOrder === 'desc'">
+       </i></th>
+        <th scope="col">City  <i class="fa-solid fa-sort" 
+          (click)="sortCity()"
+          [class.asc]="sortCityOrder === 'asc'"
+          [class.desc]="sortCityOrder === 'desc'">
+       </i></th>
         <th scope="col">Total Locations</th>
         <th scope="col">Action</th>
       </tr>

@@ -57,48 +57,48 @@ export class CommentsComponent {
 
   // Method to post a new comment or reply (to a comment or sub-reply)
   postNewComment(index?: number, replyToIndex?: number, subReplyIndex?: number): void {
-    const currentDateTime = this.getCurrentDateTime();  // Capture current date and time
+    const currentDateTime = this.getCurrentDateTime(); // Capture current date and time
     const newComment: Comment = {
       name: 'User',
-      text: index === undefined ? this.newCommentText : this.comments[index].replyText,
+      text: '',
       icon: 'icon.png',
       showReplySection: false,
       replyText: '',
-      timestamp: currentDateTime, // Use the current date and time
+      timestamp: currentDateTime,
       replies: [],
       followupDate: undefined,
       isEditing: false,
-      isReplyDisabled: false  // Reply button is enabled when a new comment is posted
+      isReplyDisabled: false,
     };
-
+  
     if (index === undefined) {
       // Adding a new comment
+      newComment.text = this.newCommentText;
       this.comments.push(newComment);
-      this.newCommentText = '';  // Clear new comment text
+      this.newCommentText = ''; // Clear the new comment text
     } else {
-      // If replying to a comment or sub-reply
+      // Replying to an existing comment
+      const parentComment = this.comments[index];
+  
       if (subReplyIndex !== undefined && replyToIndex !== undefined) {
-        // If replying to a sub-sub-reply (deep level)
-        this.comments[index].replies[replyToIndex].replies[subReplyIndex].replies.push(newComment);
+        // Sub-sub-reply (deep level)
+        const subReply = parentComment.replies[replyToIndex].replies[subReplyIndex];
+        newComment.text = subReply.replyText;
+        subReply.replies.push(newComment);
       } else if (replyToIndex !== undefined) {
-        // If replying to a sub-reply (second level)
-        this.comments[index].replies[replyToIndex].replies.push(newComment);
+        // Sub-reply (second level)
+        const reply = parentComment.replies[replyToIndex];
+        newComment.text = reply.replyText;
+        reply.replies.push(newComment);
       } else {
-        // Otherwise, reply to the main comment (first level)
-        this.comments[index].replies.push(newComment);
+        // Reply to main comment (first level)
+        newComment.text = parentComment.replyText;
+        parentComment.replies.push(newComment);
       }
-
-      // Clear the input field for the reply text
-      this.comments[index].replyText = '';
-      if (subReplyIndex !== undefined && replyToIndex !== undefined) {
-        this.comments[index].replies[replyToIndex].replies[subReplyIndex].showReplySection = false;
-      } else if (replyToIndex !== undefined) {
-        this.comments[index].replies[replyToIndex].showReplySection = false;
-      } else {
-        this.comments[index].showReplySection = false;
-      }
+      parentComment.replyText = ''; // Clear reply text
     }
   }
+  
 
   // Method to toggle the visibility of the reply section
   toggleReplySection(index: number, replyIndex?: number, subReplyIndex?: number): void {
@@ -146,4 +146,10 @@ export class CommentsComponent {
       lastComment.isEditing = false;  // Turn off editing mode after saving
     }
   }
+
+
+
+
+  
+
 }
