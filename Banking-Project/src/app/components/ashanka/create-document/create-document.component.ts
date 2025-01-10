@@ -3,15 +3,16 @@ import { Component, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-create-document',
   templateUrl: './create-document.component.html',
-  styleUrls: ['./create-document.component.css'],
+  styleUrl: './create-document.component.css'
 })
-export class CreateDocumentComponent {
+export class CreateDocumentComponents {
+  @Output() documentCreated = new EventEmitter<any>(); // EventEmitter to send data to parent
+
   typeOfLoan: string = '';
   employmentType: string = '';
   totalDocuments: number = 0;
 
-  @Output() documentCreated = new EventEmitter<any>();
-
+  // Method to handle document creation
   createDocument() {
     if (this.typeOfLoan && this.employmentType && this.totalDocuments > 0) {
       const newDocument = {
@@ -20,18 +21,12 @@ export class CreateDocumentComponent {
         totalDocuments: this.totalDocuments,
       };
 
-      // Emit the document data
-      this.documentCreated.emit(newDocument);
-      console.log('Emitted Document:', newDocument); // Debugging
-      this.documentCreated.emit(newDocument);
+      this.documentCreated.emit(newDocument); // Emit the document to the parent
 
-      // Reset form fields
+      // Reset form
       this.typeOfLoan = '';
       this.employmentType = '';
       this.totalDocuments = 0;
-    } else {
-      alert('Please fill all fields before updating.');
     }
   }
-  
 }

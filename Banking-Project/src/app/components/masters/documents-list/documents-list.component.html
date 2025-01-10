@@ -1,49 +1,78 @@
 <div class="documents-container">
   <h2>Documents</h2>
-  <input type="text" placeholder="Search..." class="search-bar" />
-  <button class="create-btn" routerLink='/create-modal'>+ Create Document</button>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Sr. No</th>
-        <th>Type Of Loan</th>
-        <th>Employment Type</th>
-        <th>Total Documents</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let document of documents; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ document.typeOfLoan }}</td>
-        <td>{{ document.employmentType }}</td>
-        <td>{{ document.totalDocuments }}</td>
-        <td>
-          <button class="edit-btn" (click)="handleEdit(i)">✏️</button>
-          <button class="delete-btn" (click)="handleDelete(i)">🗑️</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- Toggle Button -->
+  <button (click)="toggleCreateDocument()" class="toggle-btn">
+    {{ showCreateDocument ? 'Cancel' : 'Add Document' }}
+  </button>
 
-  <!-- Edit Popup Modal -->
-  <div *ngIf="showEditForm" class="edit-popup">
-    <div class="edit-popup-content">
-      <h3>Edit Document</h3>
-      <form (ngSubmit)="saveEditedDocument(editedDocument)">
-        <label for="typeOfLoan">Type of Loan</label>
-        <input [(ngModel)]="editedDocument.typeOfLoan" id="typeOfLoan" name="typeOfLoan" required />
-
-        <label for="employmentType">Employment Type</label>
-        <input [(ngModel)]="editedDocument.employmentType" id="employmentType" name="employmentType" required />
-
-        <label for="totalDocuments">Total Documents</label>
-        <input [(ngModel)]="editedDocument.totalDocuments" id="totalDocuments" name="totalDocuments" type="number" required />
-
-        <button type="submit">Save</button>
-        <button type="button" (click)="closeEditForm()">Cancel</button>
-      </form>
+  <!-- Conditional Rendering -->
+  <div *ngIf="!showCreateDocument">
+    <div class="search-container">
+      <label for="search">Search Documents:</label>
+      <input id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Type Of Loan</th>
+          <th>Employment Type</th>
+          <th>Total Documents</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of documents; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ document.typeOfLoan }}</td>
+          <td>{{ document.employmentType }}</td>
+          <td>{{ document.totalDocuments }}</td>
+          <td>
+            <button class="edit-btn" (click)="handleEdit(i)">✏️</button>
+            <button class="delete-btn" (click)="handleDelete(i)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Create Document Form -->
+  <div *ngIf="showCreateDocument">
+    <form (ngSubmit)="addDocument()">
+      <div>
+        <label for="typeOfLoan">Type of Loan:</label>
+        <input id="typeOfLoan" [(ngModel)]="newDocument.typeOfLoan" name="typeOfLoan" required />
+      </div>
+      <div>
+        <label for="employmentType">Employment Type:</label>
+        <input id="employmentType" [(ngModel)]="newDocument.employmentType" name="employmentType" required />
+      </div>
+      <div>
+        <label for="totalDocuments">Total Documents:</label>
+        <input id="totalDocuments" type="number" [(ngModel)]="newDocument.totalDocuments" name="totalDocuments" required />
+      </div>
+      <button type="submit"> + Create Document</button>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Document Form (Popup) -->
+<div *ngIf="showEditForm" class="edit-popup">
+  <div class="edit-popup-content">
+    <h3>Edit Document</h3>
+    <form (ngSubmit)="saveEditedDocument()">
+      <label for="typeOfLoan">Type of Loan</label>
+      <input [(ngModel)]="editedDocument.typeOfLoan" id="typeOfLoan" name="typeOfLoan" required />
+
+      <label for="employmentType">Employment Type</label>
+      <input [(ngModel)]="editedDocument.employmentType" id="employmentType" name="employmentType" required />
+
+      <label for="totalDocuments">Total Documents</label>
+      <input [(ngModel)]="editedDocument.totalDocuments" id="totalDocuments" name="totalDocuments" type="number" required />
+
+      <button type="submit">Save</button>
+      <button type="button" (click)="closeEditForm()">Cancel</button>
+    </form>
   </div>
 </div>

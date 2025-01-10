@@ -1,0 +1,8 @@
+<h2>Documents List</h2>
+<ul>
+  <li *ngFor="let document of documents">
+    <strong>Type of Loan:</strong> {{ document.typeOfLoan }} |
+    <strong>Employment Type:</strong> {{ document.employmentType }} |
+    <strong>Total Documents:</strong> {{ document.totalDocuments }}
+  </li>
+</ul>

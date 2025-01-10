@@ -27,13 +27,17 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
 
-import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
+// import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
 
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
+// import { ParentComponent } from './components/ashanka/parent/parent.component';
+// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
+// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
+
 
 const routes: Routes = [
   {path:'tasks-report', component:TaskReportComponent},
@@ -63,8 +67,10 @@ const routes: Routes = [
   {path:'tasks', component:TaskTableComponent},
   {path:'master-zone', component:MasterZoneComponent},
    { path:"DocumentList",component:DocumentsListComponent},
-  {path:"create-modal",component:CreateDocumentComponent},
-
+  // {path:"create-modal",component:CreateDocumentComponent},
+// {path:'parent',component:ParentComponent},
+// {path:"create-document",component:CreateDocumentComponents},
+// {path:'document-list',component:DocumentsListComponentss},
 
   {
     path: 'verification', component: VerificationComponent,
