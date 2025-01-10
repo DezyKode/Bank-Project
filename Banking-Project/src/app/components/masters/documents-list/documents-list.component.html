@@ -2,16 +2,20 @@
   <h2>Documents</h2>
 
   <!-- Toggle Button -->
-  <button (click)="toggleCreateDocument()" class="toggle-btn">
-    {{ showCreateDocument ? 'Cancel' : 'Add Document' }}
-  </button>
-
-  <!-- Conditional Rendering -->
-  <div *ngIf="!showCreateDocument">
+  <div class="search-add-container">
     <div class="search-container">
       <label for="search">Search Documents:</label>
       <input id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
     </div>
+    <button (click)="toggleCreateDocument()" class="toggle-btn">
+      {{ showCreateDocument ? 'Cancel' : 'Add Document' }}
+    </button>
+  </div>
+  
+
+  <!-- Conditional Rendering -->
+  <div *ngIf="!showCreateDocument">
+  
     <table>
       <thead>
         <tr>
