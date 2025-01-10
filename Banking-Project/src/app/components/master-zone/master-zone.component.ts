@@ -34,6 +34,12 @@ export class MasterZoneComponent implements OnInit {
   filterCity: string = '';   // City filter
 
 
+
+
+  sortStateOrder: 'asc' | 'desc' = 'asc'; // for sorting state
+sortCityOrder: 'asc' | 'desc' = 'asc'; // for sorting city
+
+
   ngOnInit(): void {
     // Initialize states and cities
     this.states = [
@@ -74,6 +80,32 @@ export class MasterZoneComponent implements OnInit {
   toggleMiddleContainer(): void {
     this.isMiddleContainerVisible = !this.isMiddleContainerVisible;
   }
+
+
+
+
+  sortState(): void {
+    this.sortStateOrder = this.sortStateOrder === 'asc' ? 'desc' : 'asc';
+    this.filteredZones.sort((a, b) => {
+      if (this.sortStateOrder === 'asc') {
+        return a.state.localeCompare(b.state);
+      } else {
+        return b.state.localeCompare(a.state);
+      }
+    });
+  }
+  
+  sortCity(): void {
+    this.sortCityOrder = this.sortCityOrder === 'asc' ? 'desc' : 'asc';
+    this.filteredZones.sort((a, b) => {
+      if (this.sortCityOrder === 'asc') {
+        return a.city.localeCompare(b.city);
+      } else {
+        return b.city.localeCompare(a.city);
+      }
+    });
+  }
+  
 
 
 
