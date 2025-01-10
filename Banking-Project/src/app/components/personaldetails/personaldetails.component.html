@@ -34,20 +34,20 @@
             class="container-fluid p-0 m-0 justify-content-start topnav navbar navbar-expand-lg navbar-dark"
             style="height: 100%; overflow: hidden"
           >
-            <nav class="topnav navbar navbar-expand-lg text-black">
+            <nav class="topnav navbar navbar-expand-lg text-black ">
               <div class="container-fluid">
                 <div class=" ">
-                  <ul class="navbar-nav ml-auto">
+                  <ul class="navbar-nav ml-auto border-bottom">
                     <li class="nav-item">
                       <a class="nav-link" routerLink="pdetails">
                         Personal Details</a
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Tax Master</a>
+                      <a class="nav-link" routerLink="taxmaster">Tax Master</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> Change Password</a>
+                      <a class="nav-link" routerLink="changepassword"> Change Password</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Verification API</a>
@@ -55,7 +55,9 @@
                   </ul>
                 </div>
               </div>
+              
             </nav>
+            
           </div>
           <router-outlet></router-outlet>
         </div>

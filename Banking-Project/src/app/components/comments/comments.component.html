@@ -8,23 +8,23 @@
         <p *ngIf="!comment.isEditing">{{ comment.text }}</p>
         <textarea *ngIf="comment.isEditing" [(ngModel)]="comment.text" class="w-100 bg-light form-control" required></textarea>
         <p><strong>Posted on:</strong> {{ comment.timestamp }}</p> <!-- Display timestamp -->
-
+ 
         <!-- Edit button -->
         <button *ngIf="!comment.isEditing" class="btn btn-outline-warning me-3" (click)="comment.isEditing = true"> <i class="fa fa-pencil"></i> </button>
         <!-- Edit -->
         <button *ngIf="comment.isEditing" class="btn btn-outline-primary me-3" (click)="saveEditedComment()"><i class="fa fa-save"></i> Save</button>
-        
+       
         <!-- Reply Section -->
         <button class="btn btn-outline-primary" [disabled]="comment.isReplyDisabled" (click)="toggleReplySection(i)">
           <i class="fas fa-reply me-2"></i> Reply
         </button>
-
+ 
         <div *ngIf="comment.showReplySection" class="reply-section mt-3">
           <textarea class="w-100 bg-light form-control" placeholder="Enter Your Comment" [(ngModel)]="comment.replyText" required></textarea>
           <button class="btn btn-outline-primary mt-2 me-3" (click)="postNewComment(i)">Post Comment</button>
           <button class="btn btn-outline-danger mt-2" (click)="cancelReply(i)">Cancel</button>
         </div>
-
+ 
         <!-- Display Replies (Subcomments) -->
         <div *ngFor="let reply of comment.replies; let j = index" class="media mt-3" [style.margin-left.px]="20">
           <img class="mr-3 align-self-start" [src]="reply.icon" alt="icon" style="width: 50px; height: 50px;">
@@ -32,17 +32,17 @@
             <h5 class="comments">{{ reply.name }}</h5>
             <p>{{ reply.text }}</p>
             <small class="text-muted">{{ reply.timestamp }}</small>
-
+ 
             <button class="btn btn-outline-primary" (click)="toggleReplySection(i, j)">
               <i class="fas fa-reply me-2"></i> Reply to Sub-Reply
             </button>
-
+ 
             <div *ngIf="reply.showReplySection" class="reply-section mt-3 ml-4">
               <textarea class="w-100 bg-light form-control" placeholder="Enter Your Sub-Reply" [(ngModel)]="reply.replyText" required></textarea>
               <button class="btn btn-outline-primary mt-2 me-2" (click)="postNewComment(i, j)">Post Sub-Reply</button>
               <button class="btn btn-outline-danger mt-2" (click)="cancelReply(i, j)">Cancel</button>
             </div>
-
+ 
             <!-- Recursively display sub-replies -->
             <div *ngFor="let subReply of reply.replies; let k = index" class="media mt-3 ml-4" [style.margin-left.px]="40">
               <img class="mr-3 align-self-start" [src]="subReply.icon" alt="icon" style="width: 50px; height: 50px;">
@@ -50,17 +50,17 @@
                 <h5 class="comments">{{ subReply.name }}</h5>
                 <p>{{ subReply.text }}</p>
                 <small class="text-muted">{{ subReply.timestamp }}</small>
-
+ 
                 <button class="btn btn-outline-primary" (click)="toggleReplySection(i, j, k)">
                   <i class="fas fa-reply me-2"></i> Reply to Sub-Sub-Reply
                 </button>
-
+ 
                 <div *ngIf="subReply.showReplySection" class="reply-section mt-3 ml-4">
                   <textarea class="w-100 bg-light form-control" placeholder="Enter Your Sub-Sub-Reply" [(ngModel)]="subReply.replyText" required></textarea>
                   <button class="btn btn-outline-primary mt-2 me-2" (click)="postNewComment(i, j, k)">Post Sub-Sub-Reply</button>
                   <button class="btn btn-outline-danger mt-2" (click)="cancelReply(i, j, k)">Cancel</button>
                 </div>
-
+ 
                 <!-- Recursively display sub-sub-replies -->
                 <div *ngFor="let subSubReply of subReply.replies; let l = index" class="media mt-3 ml-4">
                   <img class="mr-3 align-self-start" [src]="subSubReply.icon" alt="icon" style="width: 50px; height: 50px;">
@@ -78,7 +78,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- New Comment Form -->
 <div class="row mb-2">
   <div class="col col-md-12">
@@ -86,7 +86,7 @@
     <textarea class="w-100 bg-light form-control" placeholder="Enter Your Comment" [(ngModel)]="newCommentText" required></textarea>
   </div>
 </div>
-
+ 
 <div class="row">
   <div class="col col-md-12 py-3 d-flex justify-content-between">
         <button *ngIf="isEditingNewComment" class="btn btn-outline-warning" (click)="toggleEditComment()">Edit Comment</button>
@@ -98,7 +98,7 @@
     <button *ngIf="!isEditingNewComment" class="btn btn-outline-primary" (click)="postNewComment()">Post Comment</button>
   </div>
 </div>
-
+ 
 <!-- Edit Mode for Most Recent Comment -->
 <div *ngIf="isEditingNewComment" class="row">
   <div class="col col-md-12">
@@ -106,8 +106,10 @@
     <button class="btn btn-outline-primary mt-2" (click)="saveEditedComment()">Save Comment</button>
     <button class="btn btn-outline-danger mt-2" (click)="cancelReply(0)">Cancel</button>
   </div>
+
 </div>
 
+</div>
 
 
 

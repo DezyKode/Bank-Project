@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+ 
 interface Comment {
   followupDate: any;
   timestamp: string;
@@ -14,7 +14,7 @@ interface Comment {
   isEditing: boolean;  // Flag for editing comment
   isReplyDisabled: boolean;  // Flag to disable the reply button (changed to boolean)
 }
-
+ 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -37,16 +37,16 @@ export class CommentsComponent {
       isReplyDisabled: false  // Initially, the reply button is enabled
     }
   ];
-
+ 
   todayDate: string;
   newCommentText: string = '';
   isEditingNewComment: boolean = false;  // Flag for editing new comment
-
+ 
   constructor() {
     const today = new Date();
     this.todayDate = today.toISOString().split('T')[0];  // Get date in YYYY-MM-DD format
   }
-
+ 
   // Get the current date and time in a readable format
   getCurrentDateTime(): string {
     const now = new Date();
@@ -54,7 +54,7 @@ export class CommentsComponent {
     const time = now.toLocaleTimeString();  // Format: "HH:MM:SS AM/PM"
     return `${date} ${time}`;
   }
-
+ 
   // Method to post a new comment or reply (to a comment or sub-reply)
   postNewComment(index?: number, replyToIndex?: number, subReplyIndex?: number): void {
     const currentDateTime = this.getCurrentDateTime(); // Capture current date and time
@@ -70,7 +70,7 @@ export class CommentsComponent {
       isEditing: false,
       isReplyDisabled: false,
     };
-  
+
     if (index === undefined) {
       // Adding a new comment
       newComment.text = this.newCommentText;
@@ -79,7 +79,7 @@ export class CommentsComponent {
     } else {
       // Replying to an existing comment
       const parentComment = this.comments[index];
-  
+
       if (subReplyIndex !== undefined && replyToIndex !== undefined) {
         // Sub-sub-reply (deep level)
         const subReply = parentComment.replies[replyToIndex].replies[subReplyIndex];
@@ -98,7 +98,6 @@ export class CommentsComponent {
       parentComment.replyText = ''; // Clear reply text
     }
   }
-  
 
   // Method to toggle the visibility of the reply section
   toggleReplySection(index: number, replyIndex?: number, subReplyIndex?: number): void {
@@ -115,7 +114,7 @@ export class CommentsComponent {
     }
     this.comments[index].isReplyDisabled = true;  // Disable the "Reply" button when a reply section is visible
   }
-
+ 
   // Method to cancel a reply and hide the reply section
   cancelReply(index: number, replyIndex?: number, subReplyIndex?: number): void {
     if (subReplyIndex !== undefined && replyIndex !== undefined) {
@@ -130,7 +129,7 @@ export class CommentsComponent {
     }
     this.comments[index].isReplyDisabled = false;  // Re-enable the "Reply" button after canceling
   }
-
+ 
   // Method to toggle edit mode for the most recent comment
   toggleEditComment(): void {
     const lastComment = this.comments[this.comments.length - 1];
@@ -138,7 +137,7 @@ export class CommentsComponent {
       lastComment.isEditing = true;
     }
   }
-
+ 
   // Method to save the edited comment
   saveEditedComment(): void {
     const lastComment = this.comments[this.comments.length - 1];
@@ -147,9 +146,13 @@ export class CommentsComponent {
     }
   }
 
+}
+
+
 
 
 
   
 
 }
+
