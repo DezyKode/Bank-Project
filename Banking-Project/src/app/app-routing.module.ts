@@ -25,6 +25,10 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { TablereportComponent } from './components/tablereport/tablereport.component';
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import{ DocumentsListComponent} from './components/masters/documents-list/documents-list.component'
+
+import{CreateDocumentComponent} from './components/masters/create-document/create-document.component'
+
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
@@ -58,6 +62,9 @@ const routes: Routes = [
   {path:'verification',component:VerificationComponent},
   {path:'tasks', component:TaskTableComponent},
   {path:'master-zone', component:MasterZoneComponent},
+   { path:"DocumentList",component:DocumentsListComponent},
+  {path:"create-modal",component:CreateDocumentComponent},
+
 
   {
     path: 'verification', component: VerificationComponent,
