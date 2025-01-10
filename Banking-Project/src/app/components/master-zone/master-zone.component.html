@@ -10,8 +10,8 @@
     </div>
   
     <div class="container-1 mt-5">
-      <div class="title-1  d-flex justify-content-between">
-        <h6>Create Zone</h6>
+      <div class="title-1  d-flex justify-content-end">
+    
         <button 
           type="button" 
           class="btn btn-primary" 
@@ -22,6 +22,8 @@
   
       <!-- Middle container will be toggled based on the isMiddleContainerVisible flag -->
       <div class="moddle-container" *ngIf="isMiddleContainerVisible">
+        <h6>Create Zone</h6>
+ 
         <div class="row mt-5">
           <div class="col-md-4">
             <label for="zone">Zone</label>
@@ -82,9 +84,12 @@
             class="form-control" 
             aria-label="Sizing example input" 
             aria-describedby="inputGroup-sizing-sm" 
-            placeholder="Search...">
+            placeholder="Search..."
+            (input)="handleSearch($event)">
         </div>
       </div>
+
+      
   
 <div class="table-responsive">
 
@@ -93,16 +98,20 @@
       <tr>
    
         <th scope="col">Sr.No</th>
-        <th scope="col">Zone</th>
-        <th scope="col">State</th>
-        <th scope="col">City</th>
+        <th scope="col">Zone </th>
+        <th scope="col">State <i class="fa-solid fa-filter">  
+        </i>
+      
+      
+      
+      </th>
+        <th scope="col">City <i class="fa-solid fa-filter"></i></th>
         <th scope="col">Total Locations</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let zoneData of zonesList; let i = index">
-    
+      <tr *ngFor="let zoneData of filteredZones.length > 0 ? filteredZones : zonesList; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ zoneData.zone }}</td>
         <td>{{ zoneData.state }}</td>

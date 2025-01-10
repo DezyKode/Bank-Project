@@ -47,9 +47,8 @@ import { TaskTableComponent } from './components/task-table/task-table.component
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
-
-import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
+import { RouterModule } from '@angular/router';
 
 
 
