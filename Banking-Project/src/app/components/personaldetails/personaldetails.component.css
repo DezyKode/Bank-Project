@@ -36,3 +36,6 @@ form{
     border-bottom: 2px solid red; /* Adds a bottom border on hover */
     transform: scale(1.1); /* Slightly scales up the link */
 }
+.border-bottom{
+    width: 100vw;
+}

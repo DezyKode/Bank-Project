@@ -27,6 +27,8 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
+import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -50,35 +52,7 @@ const routes: Routes = [
   { path: 'verification', component: VerificationComponent },
   { path: 'master-zone', component: MasterZoneComponent },
   { path: 'tasks', component: TaskTableComponent },
-import { TaskReportComponent } from './components/task-report/task-report.component';
-
-const routes: Routes = [
-  {path:'tasks-report', component:TaskReportComponent},
-  {path:'login',component:LoginComponent},
-  {path:'managerlogin',component:ManagerLoginComponent},
-  {path:'registration',component:RegistrationComponent},
-  {path:'checkeligibility',component:CheckeligibilityComponent},
-  {path:'personalloan',component:PersonalloanComponent},
-  {path:'lead',component:LeadComponent},
-  {path:'newtask',component:NewtaskComponent},
-  {path:'verify',component:VreportComponent},
-  {path:'newtask',component:NewtaskComponent},
-{path:"invoice",component:InvoiceComponent},
-  {path:'comments',component:CommentsComponent},
-  {path:'Overview',component:OverviewComponent},
-  {path:"Application-details",component:AplicationDetailsComponent},
-  {path:'loan-details',component:LoanDetailsComponent}, 
-  {path:"bank",component:BankComponent},
-  {path:'documents',component:DocumentsComponent},
-  {path:'loan-offers',component:LoanOffersComponent},
-  {path:'newtask',component:NewtaskComponent},
-  {path:'verify',component:VreportComponent},
-  {path:'empdocuments',component:EmployeeDocumentsComponent},
-  {path:'vreport',component:VreportComponent},
-  {path:'documents-1',component:DocumentsComponents},
-  {path:'verification',component:VerificationComponent},
-  {path:'tasks', component:TaskTableComponent},
-  {path:'master-zone', component:MasterZoneComponent},
+  { path: '', redirectTo: 'verification', pathMatch: 'full' },
   {
     path: 'verification', component: VerificationComponent,
     children: [
@@ -95,10 +69,14 @@ const routes: Routes = [
 
   { path: 'tabelreport', component: TablereportComponent },
 
+
   {
     path:'personaldetails',component:PersonaldetailsComponent,
     children: [
       { path: 'pdetails', component: PdetailsComponent },
+      {path:'taxmaster',component:TaxmasterComponent},
+      {path:'changepassword',component:ChangepasswordComponent},
+
 
     ]
   },

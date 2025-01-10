@@ -49,9 +49,9 @@ import { PersonaldetailsComponent } from './components/personaldetails/personald
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 
-import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
-import { RouterModule } from '@angular/router';
+import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
 
 
@@ -99,6 +99,8 @@ import { RouterModule } from '@angular/router';
       PdetailsComponent,
 
     TaskReportComponent,
+      TaxmasterComponent,
+      ChangepasswordComponent,
 
 
 
