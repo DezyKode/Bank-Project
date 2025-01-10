@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef  } from '@angular/core';
 
 @Component({
   selector: 'app-master-zone',
@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MasterZoneComponent implements OnInit {
 
   states: { name: string, cities: string[] }[] = [];
+  constructor(private cdRef: ChangeDetectorRef) {}
   cities: string[] = [];
   selectedState: string = '';
   selectedCity: string = '';
@@ -19,6 +20,19 @@ export class MasterZoneComponent implements OnInit {
 
   
   editingZoneIndex: number | null = null; 
+
+
+
+  // for search
+
+  filteredZones: { zone: string, state: string, city: string, totalLocations: number }[] = [];
+  searchTerm: string = ''; // Holds the search term
+
+
+
+   filterState: string = '';  // State filter
+  filterCity: string = '';   // City filter
+
 
   ngOnInit(): void {
     // Initialize states and cities
@@ -61,6 +75,20 @@ export class MasterZoneComponent implements OnInit {
     this.isMiddleContainerVisible = !this.isMiddleContainerVisible;
   }
 
+
+
+ handleSearch(event: Event): void {
+    const searchValue = (event.target as HTMLInputElement).value.toLowerCase();
+    this.searchTerm = searchValue;
+
+    this.filteredZones = this.zonesList.filter(zone =>
+      zone.zone.toLowerCase().includes(this.searchTerm) ||
+      zone.state.toLowerCase().includes(this.searchTerm) ||
+      zone.city.toLowerCase().includes(this.searchTerm)
+    );
+  }
+
+
   // Handle form submission (Create Zone)
   createZone(): void {
     if (!this.zone || !this.selectedState || !this.selectedCity) {
@@ -87,7 +115,9 @@ export class MasterZoneComponent implements OnInit {
 
     this.resetForm();
     this.isMiddleContainerVisible = false;
- 
+
+    this.cdRef.detectChanges();
+  this.filteredZones = [...this.zonesList];
   }
 
   // Reset the form fields
@@ -108,6 +138,7 @@ export class MasterZoneComponent implements OnInit {
   deleteZone(index: number): void {
     if (confirm('Are you sure you want to delete this zone?')) {
       this.zonesList.splice(index, 1);
+      this.filteredZones = [...this.zonesList]; 
     }
   }
 

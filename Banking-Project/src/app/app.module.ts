@@ -57,11 +57,11 @@ import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
+
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
 // import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
 // import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
-
 
 
 
