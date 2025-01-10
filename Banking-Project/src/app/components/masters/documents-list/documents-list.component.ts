@@ -102,4 +102,18 @@ export class DocumentsListComponent {
       this.filterDocuments();
     }
   }
+
+  updateDocumentCount() {
+    this.editedDocument.totalDocuments = this.editedDocument.documents.length;
+  }
+
+  // Handle file upload for a specific document
+  uploadDocument(event: any, index: number) {
+    const file = event.target.files[0];
+    if (file) {
+      // You can process the file here, e.g., uploading to a server
+      console.log(`File uploaded for document ${index}:`, file.name);
+    }
+  }
+  
 }
