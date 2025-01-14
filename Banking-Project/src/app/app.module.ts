@@ -51,7 +51,7 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 import { TaskTableComponent } from './components/task-table/task-table.component';
 
 
-// import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
+import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 // import { CreateDocumentComponent } from './components/masters/create-document/create-document.component';
 import { DocumentsListComponent } from './components/masters/documents-list/documents-list.component';
 
@@ -63,6 +63,10 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
 
 import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { VerificationapiComponent } from './components/verificationapi/verificationapi.component';
+import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
+import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
+import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
 
 
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
@@ -89,7 +93,7 @@ import { ChangepasswordComponent } from './components/changepassword/changepassw
     PersonalloanComponent,
     LeadComponent,
     DocumentsListComponent,
-  //  CreateDocumentComponent,
+   CreateDocumentComponent,
 
     OverviewComponent,
     AplicationDetailsComponent,
@@ -125,6 +129,10 @@ import { ChangepasswordComponent } from './components/changepassword/changepassw
 
       TaxmasterComponent,
       ChangepasswordComponent,
+      VerificationapiComponent,
+      CreatenewcaseComponent,
+      LoanrequirementComponent,
+      ApplicantdetailsComponent,
 
 
 
