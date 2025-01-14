@@ -47,6 +47,10 @@ import { MasterZoneComponent } from './components/master-zone/master-zone.compon
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
 import { RouterModule } from '@angular/router';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
 
 
 
@@ -92,6 +96,10 @@ import { RouterModule } from '@angular/router';
     TaskTableComponent,
 
     TaskReportComponent,
+      LoanStaticsComponent,
+      LeadDumpReportComponent,
+      ImportFileComponent,
+      CreateLeadComponent,
 
 
 

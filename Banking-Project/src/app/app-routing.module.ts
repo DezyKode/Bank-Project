@@ -26,20 +26,22 @@ import { TablereportComponent } from './components/tablereport/tablereport.compo
 import { MasterZoneComponent } from './components/master-zone/master-zone.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskReportComponent } from './components/task-report/task-report.component';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
 
 
 const routes: Routes = [
 
-
-
- 
-  
-  
- 
-  
  
   {path:'tasks-report', component:TaskReportComponent},
 
+  {path:'loan-statics', component:LoanStaticsComponent},
+  {path:'task-table', component:TaskTableComponent},
+  {path:'leadDump-report', component:LeadDumpReportComponent},
+  {path:'import-File', component:ImportFileComponent},
+  {path:'create-lead', component:CreateLeadComponent},
 
 
   {path:'login',component:LoginComponent},

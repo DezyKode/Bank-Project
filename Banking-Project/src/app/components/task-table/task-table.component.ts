@@ -196,7 +196,8 @@ export class TaskTableComponent {
     status: 'asc',
     assignTo: 'asc',
     startDate: 'asc',
-    deadline: 'asc'
+    deadline: 'asc',
+    
   };
 
   sortTable(column: string) {
