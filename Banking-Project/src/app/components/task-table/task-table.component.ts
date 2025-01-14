@@ -95,6 +95,7 @@ export class TaskTableComponent {
   toggleFileType(fileType: string) {
     if (this.selectedFileTypes.has(fileType)) {
       this.selectedFileTypes.delete(fileType);
+      console.log("success")
     } else {
       this.selectedFileTypes.add(fileType);
     }
@@ -132,6 +133,7 @@ export class TaskTableComponent {
   toggleSelectAllFileTypes(event: any) {
     if (event.target.checked) {
       this.selectedFileTypes = new Set(this.fileTypes);
+      console.log("Success");
     } else {
       this.selectedFileTypes.clear();
     }

@@ -1,0 +1,67 @@
+<form action="" class="bg-light min-vh-100">
+  <div class="container bg-light">
+    <div class="row">
+      <div class="col-md-12 bg-primary" style="height: 100px">
+        <pre></pre>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div
+        class="col col-md-3 position-relative"
+        style="top: -20px; z-index: 1"
+      >
+        <div class="card py-3" style="border-radius: 5px">
+          <div class="figure text-center">
+            <img
+              class="figure-img rounded-pill"
+              width="100px"
+              height="100px"
+              src="https://www.w3schools.com/w3css/img_avatar3.png"
+              alt=""
+            />
+            <figcaption class="figure-caption text-right">
+              <h1 class="fs-4">DSA CRM</h1>
+            </figcaption>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col col-md-8 bg-white position-relative"
+        style="top: -20px; z-index: 1; border-radius: 5px"
+      >
+        <div class="form">
+          <div
+            class="container-fluid p-0 m-0 justify-content-start topnav navbar navbar-expand-lg navbar-dark"
+            style="height: 100%; overflow: hidden"
+          >
+            <nav class="topnav navbar navbar-expand-lg text-black ">
+              <div class="container-fluid">
+                <div class=" ">
+                  <ul class="navbar-nav ml-auto border-bottom">
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="pdetails">
+                        Personal Details</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="taxmaster">Tax Master</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="changepassword"> Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" routerLink="verificationapi">Verification API</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+            </nav>
+            
+          </div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

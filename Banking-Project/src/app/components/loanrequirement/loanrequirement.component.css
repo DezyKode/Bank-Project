@@ -1,0 +1,8 @@
+.color{
+    font-weight: bold;
+    color: rgb(5, 5, 102);
+    font-size: 20px;
+}
+.btn-primary{
+    background-color: rgb(5, 5, 102);
+}

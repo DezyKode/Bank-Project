@@ -1,0 +1,12 @@
+input[type="text"] {
+    width: 300px; /* Set the width of text input fields to 300px */
+}
+/* Customize your CSS here */
+.container {
+    margin-top: 20px;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  

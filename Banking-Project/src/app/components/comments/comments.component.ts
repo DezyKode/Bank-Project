@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+ 
 interface Comment {
   followupDate: any;
   timestamp: string;
@@ -14,7 +14,7 @@ interface Comment {
   isEditing: boolean;  // Flag for editing comment
   isReplyDisabled: boolean;  // Flag to disable the reply button (changed to boolean)
 }
-
+ 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
@@ -37,16 +37,16 @@ export class CommentsComponent {
       isReplyDisabled: false  // Initially, the reply button is enabled
     }
   ];
-
+ 
   todayDate: string;
   newCommentText: string = '';
   isEditingNewComment: boolean = false;  // Flag for editing new comment
-
+ 
   constructor() {
     const today = new Date();
     this.todayDate = today.toISOString().split('T')[0];  // Get date in YYYY-MM-DD format
   }
-
+ 
   // Get the current date and time in a readable format
   getCurrentDateTime(): string {
     const now = new Date();
@@ -54,49 +54,48 @@ export class CommentsComponent {
     const time = now.toLocaleTimeString();  // Format: "HH:MM:SS AM/PM"
     return `${date} ${time}`;
   }
-
+ 
   // Method to post a new comment or reply (to a comment or sub-reply)
   postNewComment(index?: number, replyToIndex?: number, subReplyIndex?: number): void {
-    const currentDateTime = this.getCurrentDateTime();  // Capture current date and time
+    const currentDateTime = this.getCurrentDateTime(); // Capture current date and time
     const newComment: Comment = {
       name: 'User',
-      text: index === undefined ? this.newCommentText : this.comments[index].replyText,
+      text: '',
       icon: 'icon.png',
       showReplySection: false,
       replyText: '',
-      timestamp: currentDateTime, // Use the current date and time
+      timestamp: currentDateTime,
       replies: [],
       followupDate: undefined,
       isEditing: false,
-      isReplyDisabled: false  // Reply button is enabled when a new comment is posted
+      isReplyDisabled: false,
     };
 
     if (index === undefined) {
       // Adding a new comment
+      newComment.text = this.newCommentText;
       this.comments.push(newComment);
-      this.newCommentText = '';  // Clear new comment text
+      this.newCommentText = ''; // Clear the new comment text
     } else {
-      // If replying to a comment or sub-reply
-      if (subReplyIndex !== undefined && replyToIndex !== undefined) {
-        // If replying to a sub-sub-reply (deep level)
-        this.comments[index].replies[replyToIndex].replies[subReplyIndex].replies.push(newComment);
-      } else if (replyToIndex !== undefined) {
-        // If replying to a sub-reply (second level)
-        this.comments[index].replies[replyToIndex].replies.push(newComment);
-      } else {
-        // Otherwise, reply to the main comment (first level)
-        this.comments[index].replies.push(newComment);
-      }
+      // Replying to an existing comment
+      const parentComment = this.comments[index];
 
-      // Clear the input field for the reply text
-      this.comments[index].replyText = '';
       if (subReplyIndex !== undefined && replyToIndex !== undefined) {
-        this.comments[index].replies[replyToIndex].replies[subReplyIndex].showReplySection = false;
+        // Sub-sub-reply (deep level)
+        const subReply = parentComment.replies[replyToIndex].replies[subReplyIndex];
+        newComment.text = subReply.replyText;
+        subReply.replies.push(newComment);
       } else if (replyToIndex !== undefined) {
-        this.comments[index].replies[replyToIndex].showReplySection = false;
+        // Sub-reply (second level)
+        const reply = parentComment.replies[replyToIndex];
+        newComment.text = reply.replyText;
+        reply.replies.push(newComment);
       } else {
-        this.comments[index].showReplySection = false;
+        // Reply to main comment (first level)
+        newComment.text = parentComment.replyText;
+        parentComment.replies.push(newComment);
       }
+      parentComment.replyText = ''; // Clear reply text
     }
   }
 
@@ -115,7 +114,7 @@ export class CommentsComponent {
     }
     this.comments[index].isReplyDisabled = true;  // Disable the "Reply" button when a reply section is visible
   }
-
+ 
   // Method to cancel a reply and hide the reply section
   cancelReply(index: number, replyIndex?: number, subReplyIndex?: number): void {
     if (subReplyIndex !== undefined && replyIndex !== undefined) {
@@ -130,7 +129,7 @@ export class CommentsComponent {
     }
     this.comments[index].isReplyDisabled = false;  // Re-enable the "Reply" button after canceling
   }
-
+ 
   // Method to toggle edit mode for the most recent comment
   toggleEditComment(): void {
     const lastComment = this.comments[this.comments.length - 1];
@@ -138,7 +137,7 @@ export class CommentsComponent {
       lastComment.isEditing = true;
     }
   }
-
+ 
   // Method to save the edited comment
   saveEditedComment(): void {
     const lastComment = this.comments[this.comments.length - 1];
@@ -146,4 +145,11 @@ export class CommentsComponent {
       lastComment.isEditing = false;  // Turn off editing mode after saving
     }
   }
+
 }
+
+
+
+
+
+  
