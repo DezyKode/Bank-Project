@@ -1,0 +1,131 @@
+/* General container styling */
+.container {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+ 
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* width: 600px; Set fixed width to 398.4px */
+  max-width: 100%;
+}
+
+/* Form styling */
+h5 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Form field styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.text-danger {
+  color: red;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Actions button section */
+.actions {
+  margin-top: 20px;
+  text-align: right; /* Aligns button to the right */
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  width: auto; /* Let the width adjust based on the content */
+  margin-left: auto; /* Ensures the button is aligned to the right */
+  margin-right: 0; /* Removes margin on the right */
+}
+
+button:disabled {
+  background-color: #dcdcdc;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .container {
+    margin: 10px;
+    padding: 15px;
+    width: 100%; /* Full width on very small screens */
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligns button to the right on smaller screens */
+  }
+
+  button {
+    width: auto; /* Button width adjusts based on content */
+    max-width: 100%; /* Button takes full width on smaller screens */
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .breadcrumb {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Additional styling for very small screens (e.g., mobile phones) */
+  h5 {
+    font-size: 16px;
+  }
+
+  .container {
+    margin: 5px;
+    padding: 10px;
+    width: 100%; /* Full width on very small screens */
+  }
+
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  input,
+  select {
+    font-size: 12px;
+  }
+}

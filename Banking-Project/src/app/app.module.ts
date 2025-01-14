@@ -61,6 +61,12 @@ import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
+import { RouterModule } from '@angular/router';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
+
 import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
 
@@ -131,6 +137,10 @@ import { ApplicantdetailsComponent } from './components/applicantdetails/applica
       PdetailsComponent,
 
     TaskReportComponent,
+      LoanStaticsComponent,
+      LeadDumpReportComponent,
+      ImportFileComponent,
+      CreateLeadComponent,
 
       TaxmasterComponent,
       ChangepasswordComponent,

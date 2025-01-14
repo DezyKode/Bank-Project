@@ -44,8 +44,24 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
 
 const routes: Routes = [
+
+
+ 
+  {path:'tasks-report', component:TaskReportComponent},
+
+  {path:'loan-statics', component:LoanStaticsComponent},
+  {path:'task-table', component:TaskTableComponent},
+  {path:'leadDump-report', component:LeadDumpReportComponent},
+  {path:'import-File', component:ImportFileComponent},
+  {path:'create-lead', component:CreateLeadComponent},
+
+
   {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
   {path:'managerlogin',component:ManagerLoginComponent},
