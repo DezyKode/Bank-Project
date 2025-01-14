@@ -36,6 +36,9 @@ import { PersonaldetailsComponent } from './components/personaldetails/personald
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
  import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { EditRoleComponent } from './components/edit-role/edit-role.component';
 const routes: Routes = [
   {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
@@ -47,7 +50,7 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'newtask',component:NewtaskComponent},
-{path:"invoice",component:InvoiceComponent},
+  {path:"invoice",component:InvoiceComponent},
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
@@ -63,8 +66,11 @@ const routes: Routes = [
   {path:'verification',component:VerificationComponent},
   {path:'tasks', component:TaskTableComponent},
   {path:'master-zone', component:MasterZoneComponent},
-   { path:"DocumentList",component:DocumentsListComponent},
+  {path:"DocumentList",component:DocumentsListComponent},
   {path:"create-modal",component:CreateDocumentComponent},
+  {path:"employee-list", component:EmployeeListComponent},
+  {path:"roles", component:RolesComponent},
+  {path:"edit-role", component:EditRoleComponent},
  
  
   {
@@ -89,8 +95,6 @@ const routes: Routes = [
       { path: 'pdetails', component: PdetailsComponent },
        {path:'taxmaster',component:TaxmasterComponent},
       {path:'changepassword',component:ChangepasswordComponent},
-
- 
     ]
   },
 ];

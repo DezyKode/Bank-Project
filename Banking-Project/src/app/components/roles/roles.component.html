@@ -1,0 +1,43 @@
+<div class="contain m-3">
+    <h3 class="h4 text-primary">ROLES</h3>
+    <div>
+        <div class="row" style="width: 100%; align-items: center;">
+            <!-- Search Input and Select in one row -->
+            <div class="col-12 col-md-3 d-flex flex-wrap align-items-center">
+                <div class="input-group m-1 flex-grow-1" >
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..."
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <!-- Buttons aligned to the right -->
+            <div class="col-12 col-md-9 text-center text-md-end mt-2 mt-md-0">
+                <button class="btn btn-primary m-1">+ Create Role</button>
+            </div>
+        </div>
+
+        <!-- Table Section with scrolling -->
+        <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+            <table class="table table-responsive table-striped">
+                <thead class="sticky-top">
+                    <tr>
+                        <th scope="col" >ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let role of filteredRoles()">
+                        <th scope="row">{{ role.id }}</th>
+                        <td>{{ role.name }}</td>
+                        <td>
+                            <button style="outline: none; background: none; border: none;"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                            <button class="ms-2" style="outline: none; background: none; border: none;"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
