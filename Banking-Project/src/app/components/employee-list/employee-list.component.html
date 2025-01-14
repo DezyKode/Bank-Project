@@ -1,0 +1,103 @@
+<div class="contain m-3">
+    <h3 class="h4 text-primary">EMPLOYEES</h3>
+    <div>
+        <div class="row" style="width: 100%; align-items: center;">
+            <!-- Search Input and Select in one row -->
+            <div class="col-12 col-md-6 d-flex flex-wrap align-items-center">
+                <div class="input-group m-1 flex-grow-1" style="min-width: 150px;">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..."
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <select class="form-select m-1" [(ngModel)]="statusFilter" aria-label="Default select example"
+                    style="width: 30%;">
+                    <option value="">All</option>
+                    <option value="ACTIVE">Active</option>
+                    <option value="INACTIVE">Inactive</option>
+                </select>
+            </div>
+
+            <!-- Buttons aligned to the right -->
+            <div class="col-12 col-md-6 text-center text-md-end mt-2 mt-md-0">
+                <button class="btn btn-primary m-1">Role</button>
+                <button class="btn btn-primary m-1">Incentive Structure</button>
+                <button class="btn btn-primary m-1">+ Create Employee</button>
+            </div>
+        </div>
+
+        <!-- Table Section with scrolling -->
+        <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+            <table class="table table-responsive">
+                <thead class="sticky-top">
+                    <tr>
+                        <th scope="col" class="text-center">ID</th>
+                        <th scope="col" class="text-center"></th>
+                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Mobile</th>
+                        <th scope="col" class="text-center">Gender</th>
+                        <th scope="col" class="text-center">Role</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Change Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of filteredEmployees()">
+                        <th class="text-center" scope="row">{{ employee.id }}</th>
+                        <td class="text-center"><i class="fa-solid fa-user"></i></td>
+                        <td class="text-center">{{ employee.name }}</td>
+                        <td class="text-center">{{ employee.email }}</td>
+                        <td class="text-center">{{ employee.mobile }}</td>
+                        <td class="text-center">{{ employee.gender }}</td>
+                        <td class="text-center">{{ employee.role }}</td>
+                        <td class="text-center">
+                            <p [ngStyle]="{
+                                'background-color': employee.status === 'ACTIVE' ? 'rgb(220, 228, 255)' : 'rgb(255, 220, 220)',
+                                'color': employee.status === 'ACTIVE' ? 'rgb(0, 8, 255)' : 'rgb(255, 0, 0)'
+                                }"
+                                style="border-radius: 5px; text-align: center; margin: 0; font-family: Arial, Helvetica, sans-serif;">
+                                {{ employee.status }}
+                            </p>
+                        </td>
+                        <td class="text-center">
+                            <!-- Button trigger modal -->
+                            <button class="border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                style="background: none;">
+                                <i class="fa-solid fa-lock"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Change Password</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter new password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Enter confirm password">
+                            </div>                  
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
