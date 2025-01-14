@@ -63,9 +63,15 @@ import { TaskReportComponent } from './components/task-report/task-report.compon
 
 import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { EditRoleComponent } from './components/edit-role/edit-role.component';
+import { VerificationapiComponent } from './components/verificationapi/verificationapi.component';
+import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
+import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
+import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+
 
 
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
@@ -131,6 +137,11 @@ import { EditRoleComponent } from './components/edit-role/edit-role.component';
       EmployeeListComponent,
       RolesComponent,
       EditRoleComponent,
+      VerificationapiComponent,
+      CreatenewcaseComponent,
+      LoanrequirementComponent,
+      ApplicantdetailsComponent,
+
 
 
 

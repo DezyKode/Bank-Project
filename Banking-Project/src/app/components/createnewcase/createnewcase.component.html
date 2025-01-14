@@ -1,0 +1,58 @@
+<form action="" class="bg-light min-vh-100">
+    <div class="container-fluid  pb-5">
+        <h1 class=" ml-12 fs-5 fw-bold p-3  "> <i class="fa fa-file-alt me-2"></i> CREATE NEW CASE</h1>
+        <div class="row justify-content-around">
+            <div class="col-md-3 bg-white">
+                <div class="">
+                    <ul class="list-style-type p-3">
+
+                        <a routerLink="loanrequirement">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-home me-2 p-2"></i> Loan Requirment
+                            </button>
+                          </a>
+                          
+                          <a routerLink="applicantdetails">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-cogs me-2 p-2"></i> Applicant Details
+                            </button>
+                          </a>
+                          
+                          <a routerLink="loan-details">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-credit-card me-2 p-2"></i> Loan Details
+                            </button>
+                          </a>
+                          
+                          <a routerLink="bank">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-university me-2 p-2"></i> Loan Offers 
+                            </button>
+                          </a>
+                          
+                          <a routerLink="empdoc">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-file-alt me-2 p-2"></i> Documents
+                            </button>
+                          </a>
+                          
+                          <a routerLink="loan-offers">
+                            <button class="p-1 border mb-3 bg-light text-start" style="width: 100%;">
+                              <i class="fa fa-money-bill-wave me-2 p-2"></i> Provisional Letters
+                            </button>
+                          </a>
+                           </ul>
+                </div>
+            </div>
+            <div class="col-md-8 bg-white">
+
+                <div class="form wh-100">
+                    <div class="container-fluid p-0 " style="height: 100%; overflow: hidden; ">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+
+</form>

@@ -36,9 +36,15 @@ import { PersonaldetailsComponent } from './components/personaldetails/personald
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
  import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { EditRoleComponent } from './components/edit-role/edit-role.component';
+import { VerificationapiComponent } from './components/verificationapi/verificationapi.component';
+import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
+import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
+import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+
 const routes: Routes = [
   {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
@@ -66,6 +72,7 @@ const routes: Routes = [
   {path:'verification',component:VerificationComponent},
   {path:'tasks', component:TaskTableComponent},
   {path:'master-zone', component:MasterZoneComponent},
+
   {path:"DocumentList",component:DocumentsListComponent},
   {path:"create-modal",component:CreateDocumentComponent},
   {path:"employee-list", component:EmployeeListComponent},
@@ -88,6 +95,7 @@ const routes: Routes = [
   },
  
   { path: 'tabelreport', component: TablereportComponent },
+
  
   {
     path:'personaldetails',component:PersonaldetailsComponent,
@@ -95,6 +103,17 @@ const routes: Routes = [
       { path: 'pdetails', component: PdetailsComponent },
        {path:'taxmaster',component:TaxmasterComponent},
       {path:'changepassword',component:ChangepasswordComponent},
+      {path:'verificationapi',component:VerificationapiComponent},
+
+    ]
+  },
+
+  {
+    path:'createnewcase',component:CreatenewcaseComponent,
+    children:[
+      {path:'loanrequirement',component:LoanrequirementComponent},
+      {path:'applicantdetails',component:ApplicantdetailsComponent},
+
     ]
   },
 ];
