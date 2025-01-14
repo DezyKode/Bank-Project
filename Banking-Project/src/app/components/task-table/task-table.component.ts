@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-task-table',
   templateUrl: './task-table.component.html',
-  styleUrl: './task-table.component.css'
+  styleUrls: ['./task-table.component.css']
 })
 export class TaskTableComponent {
+
   columnVisibility = {
     fileNo: true,
     fileType: true,
@@ -95,7 +96,6 @@ export class TaskTableComponent {
   toggleFileType(fileType: string) {
     if (this.selectedFileTypes.has(fileType)) {
       this.selectedFileTypes.delete(fileType);
-      console.log("success")
     } else {
       this.selectedFileTypes.add(fileType);
     }
@@ -133,7 +133,6 @@ export class TaskTableComponent {
   toggleSelectAllFileTypes(event: any) {
     if (event.target.checked) {
       this.selectedFileTypes = new Set(this.fileTypes);
-      console.log("Success");
     } else {
       this.selectedFileTypes.clear();
     }

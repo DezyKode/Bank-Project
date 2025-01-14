@@ -1,3 +1,16 @@
+<style>
+    .modal-backdrop {
+        opacity: 1 !important;
+    }
+
+    .offcanvas-backdrop.show {
+        opacity: 0.1 !important;
+    }
+
+    .offcanvas-backdrop.fade {
+        opacity: 0;
+    }
+</style>
 <div class="container">
     <div class="filters row">
         <!-- <div class="row"> -->
@@ -5,12 +18,13 @@
             <!-- Search Filter -->
             <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="applyFilters()">
         </div>
+
         <div class="col-md-auto">
             <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 [disabled]="!areButtonsEnabled" (click)="deleteSelectedTasks()">Delete
                 <i class="fa-regular fa-trash-can"></i>
             </button>
-            
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -317,7 +331,7 @@
                     <td *ngIf="columnVisibility.remark">{{ task.remark }}</td>
                     <td>
                         <!-- Action buttons -->
-                        <button class="border-0" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal2"
+                        <button data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal2"
                             title="Delete"><i class="fas fa-trash"></i></button>
 
                         <!-- Modal -->
@@ -343,7 +357,7 @@
                         </div>
 
                         &nbsp;
-                        <button class="border-0" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal3" title="Archive"><i
+                        <button data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal3" title="Archive"><i
                                 class="fas fa-archive"></i></button>
 
                         <!-- Modal -->
