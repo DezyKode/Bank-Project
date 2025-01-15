@@ -77,6 +77,7 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+import { UsersComponent } from './components/users/users.component';
 
 
 
@@ -151,6 +152,7 @@ import { ApplicantdetailsComponent } from './components/applicantdetails/applica
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
+      UsersComponent,
 
 
 
