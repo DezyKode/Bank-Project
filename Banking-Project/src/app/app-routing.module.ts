@@ -48,6 +48,7 @@ import { CreateLeadComponent } from './create-lead/create-lead/create-lead.compo
 import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
 import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
 
@@ -94,6 +95,7 @@ const routes: Routes = [
   {path:"employee-list", component:EmployeeListComponent},
   {path:"roles", component:RolesComponent},
   {path:"edit-role", component:EditRoleComponent},
+  {path:"users", component:UsersComponent},
  
  
   {
