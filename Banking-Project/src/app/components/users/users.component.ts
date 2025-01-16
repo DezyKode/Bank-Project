@@ -10,7 +10,7 @@ export class UsersComponent {
   searchText: string = '';
   statusFilter: string = '';
 
-  employees = [
+  user = [
     { id: 1, name: 'Mark', email: 'mark@gmail.com', mobile: '9874563210', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
     { id: 2, name: 'Jojo', email: 'jojo@gmail.com', mobile: '9856321745', gender: 'Male', role: 'Sales Officer', status: 'ACTIVE' },
     { id: 3, name: 'Virat', email: 'Virat@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Account Manager', status: 'ACTIVE' },
@@ -21,12 +21,12 @@ export class UsersComponent {
     { id: 8, name: 'Hardik', email: 'hardik@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' }
   ];
 
-  filteredEmployees() {
-    return this.employees.filter(employee => {
-      const matchesSearchText = this.searchText === '' || employee.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        employee.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        employee.mobile.includes(this.searchText);
-      const matchesStatus = this.statusFilter === '' || employee.status === this.statusFilter;
+  filteredUser() {
+    return this.user.filter(user => {
+      const matchesSearchText = this.searchText === '' || user.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      user.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      user.mobile.includes(this.searchText);
+      const matchesStatus = this.statusFilter === '' || user.status === this.statusFilter;
       return matchesSearchText && matchesStatus;
     });
   }

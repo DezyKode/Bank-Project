@@ -49,6 +49,8 @@ import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
 import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
 import { UsersComponent } from './components/users/users.component';
+import { BanksTableComponent } from './components/banks-table/banks-table.component';
+import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
 
 const routes: Routes = [
 
@@ -96,6 +98,8 @@ const routes: Routes = [
   {path:"roles", component:RolesComponent},
   {path:"edit-role", component:EditRoleComponent},
   {path:"users", component:UsersComponent},
+  {path:"bank-details", component:BanksTableComponent},
+  {path:"bank-criteria", component:BankCriteriaComponent},
  
  
   {

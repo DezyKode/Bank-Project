@@ -78,6 +78,8 @@ import { CreatenewcaseComponent } from './components/createnewcase/createnewcase
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
 import { UsersComponent } from './components/users/users.component';
+import { BanksTableComponent } from './components/banks-table/banks-table.component';
+import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
 
 
 
@@ -153,6 +155,8 @@ import { UsersComponent } from './components/users/users.component';
       LoanrequirementComponent,
       ApplicantdetailsComponent,
       UsersComponent,
+      BanksTableComponent,
+      BankCriteriaComponent,
 
 
 
