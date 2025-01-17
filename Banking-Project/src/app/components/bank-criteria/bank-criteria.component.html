@@ -15,7 +15,7 @@
                     <form class="row g-3">
                         <div class="col-md-3">
                             <label for="inputPayou4" class="form-label">Payout Percentage</label>
-                            <input type="text" class="form-control" id="inputPayout4">
+                            <input type="number" class="form-control" id="inputPayout4">
                         </div>
                         <div class="col-md-3">
                             <label for="inputStatus4" class="form-label">Status</label>
@@ -75,14 +75,14 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112);"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.salariedROI"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -109,12 +109,12 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.marginStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.marginEnd"></td>
-                                    <td><input type="text" class="form-control"
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.marginStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.marginEnd"></td>
+                                    <td><input type="Number" class="form-control"
                                             [(ngModel)]="row.marginloanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control"
+                                    <td><input type="Number" class="form-control"
                                             [(ngModel)]="row.marginloanRequirementEnd">
                                     </td>
                                 </tr>
@@ -143,11 +143,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -175,11 +175,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -207,11 +207,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -239,13 +239,13 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control"
+                                    <td><input type="Number" class="form-control"
                                             [(ngModel)]="row.businessRepaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -271,7 +271,7 @@
                     <form class="row g-3">
                         <div class="col-md-3">
                             <label for="inputPayou4" class="form-label">Payout Percentage</label>
-                            <input type="text" class="form-control" id="inputPayout4">
+                            <input type="Number" class="form-control" id="inputPayout4">
                         </div>
                         <div class="col-md-3">
                             <label for="inputStatus4" class="form-label">Status</label>
@@ -322,14 +322,14 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.salariedROI"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -356,11 +356,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -388,11 +388,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -416,7 +416,7 @@
                     <form class="row g-3">
                         <div class="col-md-3">
                             <label for="inputPayou4" class="form-label">Payout Percentage</label>
-                            <input type="text" class="form-control" id="inputPayout4">
+                            <input type="Number" class="form-control" id="inputPayout4">
                         </div>
                         <div class="col-md-3">
                             <label for="inputStatus4" class="form-label">Status</label>
@@ -473,14 +473,14 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.salariedROI"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -507,11 +507,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -539,11 +539,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -571,11 +571,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -603,13 +603,13 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control"
+                                    <td><input type="Number" class="form-control"
                                             [(ngModel)]="row.businessRepaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -635,7 +635,7 @@
                     <form class="row g-3">
                         <div class="col-md-3">
                             <label for="inputPayou4" class="form-label">Payout Percentage</label>
-                            <input type="text" class="form-control" id="inputPayout4">
+                            <input type="Number" class="form-control" id="inputPayout4">
                         </div>
                         <div class="col-md-3">
                             <label for="inputStatus4" class="form-label">Status</label>
@@ -686,14 +686,14 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.salariedROI"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -720,11 +720,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.incomeEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>
@@ -752,11 +752,11 @@
                                             style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
                                             (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentStart"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
                                     </td>
-                                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
                                     </td>
                                 </tr>
                             </tbody>

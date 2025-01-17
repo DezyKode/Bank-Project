@@ -80,6 +80,7 @@ import { ApplicantdetailsComponent } from './components/applicantdetails/applica
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 
 
 
@@ -157,6 +158,7 @@ import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
+      MISReportComponent,
 
 
 
