@@ -52,6 +52,7 @@ import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
 import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { LoansComponent } from './components/loans/loans.component';
 
 const routes: Routes = [
 
@@ -102,6 +103,7 @@ const routes: Routes = [
   {path:"bank-details", component:BanksTableComponent},
   {path:"bank-criteria", component:BankCriteriaComponent},
   {path:"mis-report", component:MISReportComponent},
+  {path:"loans", component:LoansComponent},
  
  
   {
