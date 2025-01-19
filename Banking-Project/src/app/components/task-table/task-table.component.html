@@ -1,5 +1,17 @@
+<style>
+    .modal-backdrop {
+        opacity: 1 !important;
+    }
 
-<div class="container">
+    .offcanvas-backdrop.show {
+        opacity: 0.1 !important;
+    }
+
+    .offcanvas-backdrop.fade {
+        opacity: 0;
+    }
+</style>
+<div class="" >
     <div class="filters row">
         <!-- <div class="row"> -->
         <div class="col">
@@ -319,8 +331,8 @@
                     <td *ngIf="columnVisibility.remark">{{ task.remark }}</td>
                     <td>
                         <!-- Action buttons -->
-                        <button class="border-0" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal2"
-                            title="Delete"><i class="fas fa-trash"></i></button>
+                        <button data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal2"
+                            title="Delete" style="background: none; border: none;"><i class="fas fa-trash"></i></button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -345,7 +357,8 @@
                         </div>
 
                         &nbsp;
-                        <button class="border-0" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal3" title="Archive"><i
+                        <button data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#exampleModal3"
+                            title="Archive" style="background: none; border: none;"><i
                                 class="fas fa-archive"></i></button>
 
                         <!-- Modal -->

@@ -61,8 +61,18 @@ import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
+import { RouterModule } from '@angular/router';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
+
 import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { EditRoleComponent } from './components/edit-role/edit-role.component';
 import { VerificationapiComponent } from './components/verificationapi/verificationapi.component';
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
@@ -78,6 +88,12 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { UsersComponent } from './components/users/users.component';
+import { BanksTableComponent } from './components/banks-table/banks-table.component';
+import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { LoansComponent } from './components/loans/loans.component';
+
 
 
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
@@ -137,9 +153,16 @@ import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.co
       PdetailsComponent,
 
     TaskReportComponent,
+      LoanStaticsComponent,
+      LeadDumpReportComponent,
+      ImportFileComponent,
+      CreateLeadComponent,
 
       TaxmasterComponent,
       ChangepasswordComponent,
+      EmployeeListComponent,
+      RolesComponent,
+      EditRoleComponent,
       VerificationapiComponent,
       CreatenewcaseComponent,
       LoanrequirementComponent,
@@ -155,6 +178,13 @@ import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.co
       DrivingmodalComponent,
       CinmodalComponent,
       PancardmodalComponent,
+
+      UsersComponent,
+      BanksTableComponent,
+      BankCriteriaComponent,
+      MISReportComponent,
+      LoansComponent,
+
 
 
 

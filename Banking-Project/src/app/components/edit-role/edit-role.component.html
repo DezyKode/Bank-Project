@@ -1,0 +1,225 @@
+<section class="m-3">
+    <div class="h5 text-primary">
+        EDIT ROLE
+    </div>
+    <div class="border border-2">
+        <div class="border-bottom">
+            <h6 class="m-3">Edit Role</h6>
+        </div>
+        <form class="m-3">
+            <div class="mb-3">
+                <label for="exampleInputText1" class="form-label">Name</label>
+                <input type="text" class="inputText" id="exampleInputText1" aria-describedby="textHelp"
+                    placeholder="Accountant" disabled>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+        </form>
+        <div class="m-3">
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isLeads" (change)="toggleChildCheckboxes()" /> Is Leads?
+                        </label>
+                    </div>
+                    <div *ngIf="isLeads">
+                        <div *ngFor="let child of childIsLeads">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isLoans" (change)="toggleChildCheckboxes()" /> Is Loans?
+                        </label>
+                    </div>
+                    <div *ngIf="isLoans">
+                        <div *ngFor="let child of childisLoans">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isInvoices" (change)="toggleChildisInvoices()" /> Is
+                            Invoices?
+                        </label>
+                    </div>
+                    <div *ngIf="isInvoices">
+                        <div *ngFor="let child of childisInvoices">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isPayout" (change)="toggleChildisPayout()" /> Is Payout?
+                        </label>
+                    </div>
+                    <div *ngIf="isPayout">
+                        <div *ngFor="let child of childisPayout">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isEmployees" (change)="toggleChildisEmployees()" /> Is
+                            Employees?
+                        </label>
+                    </div>
+                    <div *ngIf="isEmployees">
+                        <div *ngFor="let child of childisEmployees">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isBanks" (change)="toggleChildisBanks()" /> Is Banks?
+                        </label>
+                    </div>
+                    <div *ngIf="isBanks">
+                        <div *ngFor="let child of childisBanks">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isConnector" (change)="toggleChildisConnector()" /> Is
+                            Connector?
+                        </label>
+                    </div>
+                    <div *ngIf="isConnector">
+                        <div *ngFor="let child of childisConnector">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isUsers" /> Is Users?
+                        </label>
+                    </div>
+                    <!-- <div *ngIf="isUsers">
+                        <div *ngFor="let child of childisUsers">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isProjects" (change)="toggleChildisProjects()" /> Is
+                            Projects?
+                        </label>
+                    </div>
+                    <div *ngIf="isProjects">
+                        <div *ngFor="let child of childisProjects">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isLocation" (change)="toggleChildisLocation()" /> Is
+                            Location?
+                        </label>
+                    </div>
+                    <div *ngIf="isLocation">
+                        <div *ngFor="let child of childisLocation">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isRoles" (change)="toggleChildisRoles()" /> Is Roles?
+                        </label>
+                    </div>
+                    <div *ngIf="isRoles">
+                        <div *ngFor="let child of childisRoles">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isReports" (change)="toggleChildisReports()" /> Is
+                            Reports?
+                        </label>
+                    </div>
+                    <div *ngIf="isReports">
+                        <div *ngFor="let child of childisReports">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="isTasks" (change)="toggleChildisTasks()" /> Is Tasks?
+                        </label>
+                    </div>
+                    <div *ngIf="isTasks">
+                        <div *ngFor="let child of childisTasks">
+                            <label class="ms-3">
+                                <input type="checkbox" [(ngModel)]="child.checked" /> {{ child.name }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary m-3">Update</button>
+        </div>
+    </div>
+</section>

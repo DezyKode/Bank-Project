@@ -36,6 +36,10 @@ import { PersonaldetailsComponent } from './components/personaldetails/personald
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
  import { TaxmasterComponent } from './components/taxmaster/taxmaster.component';
 import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { EditRoleComponent } from './components/edit-role/edit-role.component';
 import { VerificationapiComponent } from './components/verificationapi/verificationapi.component';
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
@@ -51,7 +55,29 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
+import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
+import { ImportFileComponent } from './import-File/import-file/import-file.component';
+import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
+import { UsersComponent } from './components/users/users.component';
+import { BanksTableComponent } from './components/banks-table/banks-table.component';
+import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { LoansComponent } from './components/loans/loans.component';
+
 const routes: Routes = [
+
+
+ 
+  {path:'tasks-report', component:TaskReportComponent},
+
+  {path:'loan-statics', component:LoanStaticsComponent},
+  {path:'task-table', component:TaskTableComponent},
+  {path:'leadDump-report', component:LeadDumpReportComponent},
+  {path:'import-File', component:ImportFileComponent},
+  {path:'create-lead', component:CreateLeadComponent},
+
+
   {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
   {path:'managerlogin',component:ManagerLoginComponent},
@@ -62,7 +88,7 @@ const routes: Routes = [
   {path:'newtask',component:NewtaskComponent},
   {path:'verify',component:VreportComponent},
   {path:'newtask',component:NewtaskComponent},
-{path:"invoice",component:InvoiceComponent},
+  {path:"invoice",component:InvoiceComponent},
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
@@ -78,8 +104,17 @@ const routes: Routes = [
   {path:'verification',component:VerificationComponent},
   {path:'tasks', component:TaskTableComponent},
   {path:'master-zone', component:MasterZoneComponent},
-  { path:"DocumentList",component:DocumentsListComponent},
+
+  {path:"DocumentList",component:DocumentsListComponent},
   {path:"create-modal",component:CreateDocumentComponent},
+  {path:"employee-list", component:EmployeeListComponent},
+  {path:"roles", component:RolesComponent},
+  {path:"edit-role", component:EditRoleComponent},
+  {path:"users", component:UsersComponent},
+  {path:"bank-details", component:BanksTableComponent},
+  {path:"bank-criteria", component:BankCriteriaComponent},
+  {path:"mis-report", component:MISReportComponent},
+  {path:"loans", component:LoansComponent},
  
  
   {
@@ -126,8 +161,6 @@ const routes: Routes = [
     children:[
       {path:'loanrequirement',component:LoanrequirementComponent},
       {path:'applicantdetails',component:ApplicantdetailsComponent},
-
-
 
     ]
   },

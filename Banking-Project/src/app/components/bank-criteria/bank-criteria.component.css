@@ -1,0 +1,53 @@
+/* Add custom styles if required */
+table td, table th {
+    text-align: center;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+
+  .triangle-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.triangle-buttons button {
+    border-radius: 30px;
+}
+
+.triangle-buttons button:nth-child(1) {
+    margin-left: 0;
+}
+
+.triangle-buttons button:nth-child(2) {
+    margin-left: 50px;
+}
+
+.triangle-buttons button:nth-child(3) {
+    margin-left: 100px;
+}
+
+.triangle-buttons button:nth-child(4) {
+    margin-left: 50px;
+}
+
+.triangle-buttons button:nth-child(5) {
+    margin-left: 0;
+}
+
+.triangle-buttons button:nth-child(6) {
+    margin-left: -50px;
+}
+
+
+.table th, .table td {
+    white-space: nowrap;
+}
+
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+}

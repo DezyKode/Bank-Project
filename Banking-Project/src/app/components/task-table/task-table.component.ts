@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-task-table',
   templateUrl: './task-table.component.html',
-  styleUrl: './task-table.component.css'
+  styleUrls: ['./task-table.component.css']
 })
 export class TaskTableComponent {
+
   columnVisibility = {
     fileNo: true,
     fileType: true,
@@ -196,7 +197,8 @@ export class TaskTableComponent {
     status: 'asc',
     assignTo: 'asc',
     startDate: 'asc',
-    deadline: 'asc'
+    deadline: 'asc',
+    
   };
 
   sortTable(column: string) {
