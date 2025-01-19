@@ -1,0 +1,89 @@
+
+  <form (ngSubmit)="onSubmit()">
+    <!-- Modal Structure -->
+    <div
+      class="modal fade"
+      id="itrModal"
+      tabindex="-1"
+      aria-labelledby="itrModalLabel"
+      aria-hidden="true"
+      [ngClass]="{ show: isModalOpen }"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="itrModalLabel" class="form-label">
+              Verify ITR
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-bs-label="Close"
+              (click)="closeModal()"
+              routerLink="/verification/vreport"
+
+            ></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Username Input Section -->
+            <div class="form-group">
+              <label for="username" class="form-label"><b>Username</b></label>
+              <input
+                id="username"
+                type="text"
+                [(ngModel)]="username"
+                name="username"
+                placeholder="Enter your username"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': username && !username.trim()}"
+              />
+              <div *ngIf="username && !username.trim()" class="error-message text-danger">
+                Username cannot be empty!
+              </div>
+            </div>
+  
+            <!-- Password Input Section -->
+            <div class="form-group">
+              <label for="password" class="form-label"><b>Password</b></label>
+              <div class="password-container">
+                <input
+                  id="password"
+                  type="{{ passwordVisible ? 'text' : 'password' }}"
+                  [(ngModel)]="password"
+                  name="password"
+                  maxlength="16"
+                  placeholder="Enter your password"
+                  class="form-control"
+                  required
+                />
+                <i
+                  class="eye-icon"
+                  (click)="togglePasswordVisibility()"
+                  [ngClass]="{ 'fas fa-eye': passwordVisible, 'fa-regular fa-eye-slash': !passwordVisible }"></i>
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Submit</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="itrVerified" class="alert alert-success success-popup">
+    ITR Verified Successfully!
+  </div>

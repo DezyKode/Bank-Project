@@ -1,0 +1,64 @@
+<div class="col-md-12">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1 class="color">Inventory Availability</h1>
+      <button class="btn btn-outline-primary" (click)="show = !show">+ add</button>
+    </div>
+  </div>
+  
+  <div class="table-responsive">
+    <table class="table caption-top text-start">
+      <thead class="table-light">
+        <tr>
+          <th>SR. No</th>
+          <th>Flat NO</th>
+          <th>Floor No</th>
+          <th>Carpet Area</th>
+          <th>Status</th>
+          <th>Customer Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#</td>
+          <td>
+            <input type="text" class="form-control mb-2" placeholder="Flat No" [(ngModel)]="newInventory.Flatno" name="Flatno" required>
+          </td>
+          <td>
+            <input type="text" class="form-control mb-2" placeholder="Floor no" [(ngModel)]="newInventory.floorno" name="floorno" required>
+          </td>
+          <td>
+            <input type="text" class="form-control mb-2" placeholder="Carpet area" [(ngModel)]="newInventory.carpetArea" name="carpetarea" required>
+          </td>
+          <td>
+            <input type="text" class="form-control mb-2" placeholder="Status" [(ngModel)]="newInventory.status" name="status" required>
+          </td>
+          <td>
+            <input type="text" class="form-control mb-2" placeholder="Customer name" [(ngModel)]="newInventory.customername" name="customername" required>
+          </td>
+          <td>
+            <button class="btn btn-outline-success me-3" (click)="add()"><i class="fa fa-check"></i></button>
+            <button class="btn btn-outline-secondary" (click)="show = false"><i class="fa fa-trash"></i></button>
+          </td>
+        </tr>
+  
+        <tr *ngFor="let row of inventory; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row.Flatno }}</td>
+          <td>{{ row.floorno }}</td>
+          <td>{{ row.carpetArea }}</td>
+          <td>{{ row.status }}</td>
+          <td>{{ row.customername }}</td>
+          <td>
+            <button class="btn btn-outline-warning me-3" (click)="editInventory(i)">
+              <i class="fa fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-outline-danger" (click)="deleteInventory(i)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,74 @@
+
+  <form (ngSubmit)="onSubmit()">
+    <!-- Modal Structure -->
+    <div class="modal fade" id="licenseModal" tabindex="-1" aria-labelledby="licenseModalLabel" aria-hidden="true" [ngClass]="{ show: isModalOpen }">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="licenseModalLabel" class="form-label">
+              Verify Driving License
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close" (click)="closeModal()" routerLink="/verification/vreport"></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- License Input Section -->
+            <div class="form-group">
+              <label for="licenseNumber" class="form-label"><b>License No.</b></label>
+              <input
+                id="licenseNumber"
+                type="text"
+                [(ngModel)]="licenseNumber"
+                name="licenseNumber"
+                (input)="onInput($event)"
+                (keydown)="onKeyDown($event)"
+                maxlength="15"
+                placeholder="Enter License Number (e.g., MH1234567890123)"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': licenseNumber && !isValidLicense}"
+              />
+              <div *ngIf="licenseNumber && !isValidLicense" class="error-message text-danger">
+                Invalid License Number! Please use the format: MH1234567890123.
+              </div>
+            </div>
+  
+            <!-- Date of Birth Input Section -->
+            <div class="form-group">
+              <label for="dob" class="form-label"><b>Date of Birth</b></label>
+              <input
+                id="dob"
+                type="date"
+                [(ngModel)]="dob"
+                name="dob"
+                [max]="today"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': dob && !isValidDob}"
+              />
+              <div *ngIf="dob && !isValidDob" class="error-message text-danger">
+                Invalid Date of Birth! Please ensure it is in the correct format and valid.
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isFormValid()">Submit</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    License Verified Successfully!
+  </div>
