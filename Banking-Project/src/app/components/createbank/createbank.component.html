@@ -1,0 +1,102 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group position-relative">
+            <label class="form-label" for="bank">Bank Name <span style="color: red">*</span></label>
+            <input
+              type="text"
+              id="BankName"
+              class="form-control"
+              name="BankName"
+              [(ngModel)]="bankName"
+              #bankNameInput="ngModel"
+              required
+              [ngClass]="{
+                'is-invalid': bankNameInput.invalid && bankNameInput.touched,
+                'is-valid': bankNameInput.valid && bankNameInput.touched
+              }"
+            />
+            <div *ngIf="bankNameInput.invalid && bankNameInput.touched" class="position-absolute text-danger form-text">
+              <div *ngIf="bankNameInput.errors?.['required']">
+                Bank Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-group position-relative">
+            <label for="personalLoan" class="form-label">Payout Type <span style="color: red">*</span></label>
+            <select
+              id="personalLoan"
+              class="form-control form-select"
+              aria-label="Type Of Loan"
+              required
+              [(ngModel)]="payout"
+              name="personalLoan"
+              #personalLoanInput="ngModel"
+              [ngClass]="{
+                'is-invalid': personalLoanInput.invalid && personalLoanInput.touched,
+                'is-valid': personalLoanInput.valid && personalLoanInput.touched
+              }"
+            >
+              <option value="">Select loan type</option>
+              <option value="personal">Personal Loan</option>
+              <option value="home">Home Loan</option>
+              <option value="auto">Auto Loan</option>
+              <option value="other">Other</option>
+            </select>
+            <div *ngIf="personalLoanInput.invalid && personalLoanInput.touched" class="text-danger form-text position-absolute">
+              <div *ngIf="personalLoanInput.errors?.['required']">
+                Loan type is required
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-group position-relative">
+            <label class="form-label" for="fileInput">Logo <span style="color: red">*</span></label>
+            <div class="input-group">
+              <input
+                type="file"
+                class="form-control"
+                id="fileInput"
+                name="fileInput"
+                [(ngModel)]="file"
+                required
+                #fileInputControl="ngModel"
+                [ngClass]="{
+                  'is-invalid': fileInputControl.invalid && fileInputControl.touched,
+                  'is-valid': fileInputControl.valid && fileInputControl.touched
+                }"
+              />
+            </div>
+            <div *ngIf="fileInputControl.invalid && fileInputControl.touched" class="position-absolute text-danger form-text">
+              <div *ngIf="fileInputControl.errors?.['required']">
+                Please select a file.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="row py-5">
+        <div class="col-md-12 text-end">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </form>
+  
+    <!-- Success or Error message
+    <div *ngIf="formSubmitted" class="alert alert-success mt-3">
+      Form submitted successfully!
+    </div>
+  
+    <div *ngIf="formFailed" class="alert alert-danger mt-3">
+      Please fill out all required fields.
+    </div> -->
+  </div>
+  

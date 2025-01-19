@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="color">PROJECTS</h1>
+      </div>
+    </div>
+  
+    <!-- Search and Create Project Row -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <!-- Search Input Field -->
+        <input type="text" class="form-control" placeholder="Search Projects" [(ngModel)]="searchText" />
+      </div>
+      <div class="col-md-6 text-end">
+        <!-- Create Project Button -->
+        <button class="btn btn-outline-primary" 
+        routerLink="/mastersprojectform"
+        
+        >
+          Create Project
+        </button>
+      </div>
+    </div>
+  
+  
+  
+    <!-- Table Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table id="exportTable" class="table caption-top text-start">
+            <thead class="table-light">
+              <tr>
+                <th>SR.NO</th>
+                <th>Project Name</th>
+                <th>Developer Name</th>
+                <th>RERA No</th>
+                <th>RERA Completion Date</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Zone</th>
+                <th>Location</th>
+                <th>Area</th>
+                <th>Stage of Construction</th>
+                <th>Stage Date</th>
+                <th>Property Type</th>
+                <th>Total Flats</th>
+                <th>Total Shops</th>
+                <th>Total Inventory</th>
+                <th>Configuration</th>
+                <th>Payment Scheduled</th>
+                <th>Inventory Availability</th>
+                <th>APF No</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Loop through addedRows and display them in the table body -->
+              <tr *ngFor="let addedRow of addedRows; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ addedRow.projectName }}</td>
+                <td>{{ addedRow.developerName }}</td>
+                <td>{{ addedRow.reraNo }}</td>
+                <td>{{ addedRow.reraCompletionDate }}</td>
+                <td>{{ addedRow.state }}</td>
+                <td>{{ addedRow.city }}</td>
+                <td>{{ addedRow.zone }}</td>
+                <td>{{ addedRow.location }}</td>
+                <td>{{ addedRow.area }}</td>
+                <td>{{ addedRow.stageOfConstruction }}</td>
+                <td>{{ addedRow.stageDate }}</td>
+                <td>{{ addedRow.propertyType }}</td>
+                <td>{{ addedRow.totalFlats }}</td>
+                <td>{{ addedRow.totalShops }}</td>
+                <td>{{ addedRow.totalInventory }}</td>
+                <td>{{ addedRow.configuration }}</td>
+                <td>{{ addedRow.paymentScheduled }}</td>
+                <td>{{ addedRow.inventoryAvailability }}</td>
+                <td>{{ addedRow.apfNo }}</td>
+                <td class="d-flex">
+                  <!-- Edit Button -->
+                  <button class="btn btn-outline-warning me-3" (click)="editRow(i)">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <!-- Delete Button -->
+                  <button class="btn btn-outline-danger" (click)="deleteAddedRow(i)">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

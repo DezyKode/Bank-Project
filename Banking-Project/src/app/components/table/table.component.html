@@ -1,0 +1,71 @@
+<div class="col-md-12">
+    <!-- Payment Schedule Header and Add Button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="color">Payment Schedule</h1>
+        <button class="btn btn-outline-primary" (click)="show = !show">
+            Add
+        </button>
+    </div>
+
+    <!-- Table Section with Dynamic Stage and Percentage -->
+    <div class="table-responsive">
+        <table class="table caption-top text-start">
+            <thead class="table-light">
+                <tr>
+                    <th>SR. No</th>
+                    <th>Stage</th>
+                    <th>Percentage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Input Fields for Adding a New Payment Schedule -->
+                <tr *ngIf="show">
+                    <td>#</td>
+                    <td>
+                        <input
+                            type="text"
+                            class="form-control mb-2"
+                            placeholder="Stage"
+                            [(ngModel)]="newPaymentSchedule.stage"
+                            name="stage"
+                            required
+                        />
+                    </td>
+                    <td>
+                        <input
+                            type="number"
+                            class="form-control mb-2"
+                            placeholder="Percentage"
+                            [(ngModel)]="newPaymentSchedule.percentage"
+                            name="percentage"
+                            required
+                        />
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-success me-3" (click)="add()">
+                            <i class="fa fa-check "></i> 
+                            <!-- add -->
+                        </button>
+                        <button class="btn btn-outline-secondary" (click)="show = false">
+                            <i class="fa fa-trash"></i> 
+                            <!-- cancel -->
+                        </button>
+                    </td>
+                </tr>
+                <!-- Display added payment schedules -->
+                <tr *ngFor="let row of paymentSchedules1; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ row.stage }}</td>
+                    <td>{{ row.percentage }}</td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="deleteit(i)">
+                            <i class="fa fa-trash"></i> 
+                            <!-- Delete -->
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

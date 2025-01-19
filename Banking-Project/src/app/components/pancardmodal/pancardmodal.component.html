@@ -1,0 +1,80 @@
+
+  <form (ngSubmit)="onSubmit()">
+    <!-- Modal Structure -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+      [ngClass]="{ show: showModal }" 
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel" class="form-label">
+              Verify Pan Card
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-bs-label="Close"
+              (click)="closeModal()"
+              routerLink="/verification/vreport"
+            ></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body" >
+            <!-- PAN Input Section -->
+            <div class="form-group">
+              <label for="panInput" class="form-label"><b>Pan No.</b></label>
+              <input
+                id="panInput"
+                type="text"
+                [(ngModel)]="inputValue"
+                name="inputValue"
+                (keydown)="onKeyDown($event)"
+                (input)="onInput($event)"
+                maxlength="10"
+                placeholder="AAAA1234X"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': inputValue && !isValidPan}"
+              />
+              <div *ngIf="inputValue && !isValidPan" class="error-message text-danger">
+                Invalid PAN format! Please use the format: AAAAA9999A.
+              </div>
+            </div>
+  
+            <!-- Selected Files Display Section -->
+            <div *ngIf="selectedFileNames?.length > 0" class="selected-files d-flex">
+              <h5 class="me-3 text-center">Selected Files:</h5>
+              <div class="file-item me-2" *ngFor="let file of selectedFileNames">
+                <span class="me-2">{{ file }}</span>
+                <button class="btn btn-sm btn-danger btn-close modal-header" data-bs-dismiss="modal" aria-bs-label="close" (click)="removeSelectedFile(file)"></button>
+              </div>
+            </div>
+            
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isValidPan || !inputValue">Submit</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    Task added successfully!
+  </div>

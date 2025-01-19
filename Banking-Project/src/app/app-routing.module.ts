@@ -40,6 +40,17 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+import { CreatebankComponent } from './components/createbank/createbank.component';
+import { MastersprojectComponent } from './components/mastersproject/mastersproject.component';
+import { TableComponent } from './components/table/table.component';
+import { Table2Component } from './components/table2/table2.component';
+import { MastersprojectformComponent } from './components/mastersprojectform/mastersprojectform.component';
+import { AdharmodalComponent } from './components/adharmodal/adharmodal.component';
+import { GstinComponent } from './components/gstin/gstin.component';
+import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
+import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
+import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
+import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
 const routes: Routes = [
   {path:'tasks-report', component:TaskReportComponent},
   {path:'login',component:LoginComponent},
@@ -99,11 +110,23 @@ const routes: Routes = [
     ]
   },
 
+  {path:'createbank',component:CreatebankComponent},
+  {path:'mastersproject',component:MastersprojectComponent},
+  {path:'table',component:TableComponent},
+  {path:'table2',component:Table2Component},
+  {path:'mastersprojectform',component:MastersprojectformComponent},
+  {path:'adharmodal',component:AdharmodalComponent},
+  {path:'gstin',component:GstinComponent},
+  {path:'itrmodal',component:ItrmodalComponent},
+  {path:'drivingmodal',component:DrivingmodalComponent},
+  {path:'cinmodal',component:CinmodalComponent},
+  {path:'pancardmodal',component:PancardmodalComponent},
   {
     path:'createnewcase',component:CreatenewcaseComponent,
     children:[
       {path:'loanrequirement',component:LoanrequirementComponent},
       {path:'applicantdetails',component:ApplicantdetailsComponent},
+
 
 
     ]
