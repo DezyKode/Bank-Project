@@ -4,11 +4,11 @@
   <!-- Toggle Button -->
   <div class="search-add-container">
     <div class="search-container">
-      <label for="search">Search Documents:</label>
+     
       <input id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
     </div>
     <button (click)="toggleCreateDocument()" class="toggle-btn">
-      {{ showCreateDocument ? 'Cancel' : 'Add Document' }}
+      {{ showCreateDocument ? 'Cancel' : 'Create Document' }}
     </button>
   </div>
   
@@ -31,7 +31,8 @@
           <td>{{ document.employmentType }}</td>
           <td>{{ document.totalDocuments }}</td>
           <td>
-            <button class="edit-btn" (click)="handleEdit(i)">✏️</button>
+            <button class="edit-btn" [routerLink]="['/edit-document']">✏️</button>
+
             <button class="delete-btn" (click)="handleDelete(i)">🗑️</button>
           </td>
         </tr>
@@ -60,21 +61,4 @@
 </div>
 
 <!-- Edit Document Form (Popup) -->
-<div *ngIf="showEditForm" class="edit-popup">
-  <div class="edit-popup-content">
-    <h3>Edit Document</h3>
-    <form (ngSubmit)="saveEditedDocument(editedDocument)">
-      <label for="typeOfLoan">Type of Loan</label>
-      <input [(ngModel)]="editedDocument.typeOfLoan" id="typeOfLoan" name="typeOfLoan" required />
 
-      <label for="employmentType">Employment Type</label>
-      <input [(ngModel)]="editedDocument.employmentType" id="employmentType" name="employmentType" required />
-
-      <label for="totalDocuments">Total Documents</label>
-      <input [(ngModel)]="editedDocument.totalDocuments" id="totalDocuments" name="totalDocuments" type="number" required />
-
-      <button type="submit">Save</button>
-      <button type="button" (click)="closeEditForm()">Cancel</button>
-    </form>
-  </div>
-</div>

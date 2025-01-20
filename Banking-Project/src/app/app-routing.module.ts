@@ -62,15 +62,17 @@ import { LoanStaticsComponent } from './components/loan-statics/loan-statics.com
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-import { MISReportComponent } from './components/mis-report/mis-report.component';
+// import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
+import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
+import { DocumentListComponent } from './components/masters/document-list/document-list.component';
 
 const routes: Routes = [
 
 
  
   {path:'tasks-report', component:TaskReportComponent},
-
+  { path: 'edit-document', component: EditDocumentComponent },
   {path:'loan-statics', component:LoanStaticsComponent},
   {path:'task-table', component:TaskTableComponent},
   {path:'leadDump-report', component:LeadDumpReportComponent},
@@ -113,7 +115,8 @@ const routes: Routes = [
   {path:"users", component:UsersComponent},
   {path:"bank-details", component:BanksTableComponent},
   {path:"bank-criteria", component:BankCriteriaComponent},
-  {path:"mis-report", component:MISReportComponent},
+  {path:"DocumentListComponent",component:DocumentListComponent},
+  // {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
  
  

@@ -1,0 +1,19 @@
+<p>document-list works!</p>
+<div class="document-list-container">
+    <h2>Document List</h2>
+  
+    <ul>
+      <li *ngFor="let document of documents; let i = index">
+        <div>
+          <h3>{{ document.typeOfLoan }}</h3>
+          <p>Employment Type: {{ document.employmentType }}</p>
+          <p>Documents:</p>
+          <ul>
+            <li *ngFor="let doc of document.documents">{{ doc }}</li>
+          </ul>
+          <p>Total Documents: {{ document.documents.length }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,62 @@
+<div class="edit-document-container">
+  <h2>Edit Document</h2>
+
+  <form>
+      <div>
+          <div class="border border-1 p-3">
+              <div class="row">
+                  <div class="col-md-6">
+                      <b><label for="inputTypeOfLoan" class="form-label">Type of Loan</label></b>
+                      <select class="form-control" id="inputTypeOfLoan" name="TypeOfLoan">
+                          <option value="homeLoan">Home Loan</option>
+                          <option value="personalLoan">Personal Loan</option>
+                          <option value="carLoan">Car Loan</option>
+                          <option value="educationLoan">Education Loan</option>
+                      </select>
+                  </div>
+                  <div class="col-md-6">
+                      <b><label for="inputEmployeeType" class="form-label">Employee Type</label></b>
+                      <select class="form-control" id="inputEmployeeType" name="EmployeeType">
+                          <option value="salaried">Salaried</option>
+                          <option value="selfEmployed">Self Employed</option>
+                          <option value="contract">Contract</option>
+                          <option value="freelancer">Freelancer</option>
+                      </select>
+                  </div>
+              </div>
+              <br>
+              <table class="table">
+                  <thead class="table-secondary">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">name</th>
+                        
+                          
+                          <th scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                          <td>{{ i + 1 }}</td>
+                          <td><input type="text" class="form-control" ></td>
+                       
+                        
+                          <td>
+                              <button style="background: none; color: red; border: 1px solid red;" (click)="deleteRow(i)">
+                                  <i class="fa-solid fa-trash"></i>
+                              </button>&nbsp;
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <button style="background: none; border: orangered; color: orangered;" (click)="addRow()">
+                  <i class="fa-solid fa-plus"></i> Add Item
+              </button>
+          </div>
+
+          <div class="d-flex justify-content-end m-2">
+              <button class="btn btn-primary">Create</button>
+          </div>
+      </div>
+  </form>
+</div>

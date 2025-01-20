@@ -102,4 +102,5 @@ export class DocumentsListComponent {
       this.filterDocuments();
     }
   }
+  
 }
