@@ -252,3 +252,120 @@ button:hover {
         font-size: 12px;
     }
 }
+
+
+/* Container for the Create Document form */
+
+div[ngIf='showCreateDocument'] {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+/* Title */
+
+div[ngIf='showCreateDocument'] h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+/* Form container */
+
+div[ngIf='showCreateDocument'] form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Create 2 equal columns */
+    gap: 20px;
+    /* Add spacing between columns */
+    grid-template-rows: auto;
+    /* Allow rows to adjust based on content */
+    margin-top: 20px;
+}
+
+
+/* Form labels */
+
+div[ngIf='showCreateDocument'] label {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+    display: block;
+}
+
+
+/* Input fields */
+
+div[ngIf='showCreateDocument'] input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+
+/* Input fields when focused */
+
+div[ngIf='showCreateDocument'] input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+/* Submit button */
+
+div[ngIf='showCreateDocument'] button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Submit button hover effect */
+
+div[ngIf='showCreateDocument'] button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Optional responsiveness for smaller screens */
+
+@media (max-width: 600px) {
+    div[ngIf='showCreateDocument'] {
+        padding: 15px;
+        max-width: 90%;
+    }
+    div[ngIf='showCreateDocument'] h2 {
+        font-size: 20px;
+    }
+    div[ngIf='showCreateDocument'] label {
+        font-size: 14px;
+    }
+    div[ngIf='showCreateDocument'] input {
+        padding: 8px;
+        font-size: 14px;
+    }
+    div[ngIf='showCreateDocument'] button[type="submit"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+    /* Stack the fields vertically on smaller screens */
+    div[ngIf='showCreateDocument'] form {
+        grid-template-columns: 1fr;
+        /* Stack columns */
+    }
+}

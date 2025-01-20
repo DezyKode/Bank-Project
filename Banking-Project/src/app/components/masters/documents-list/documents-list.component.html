@@ -1,18 +1,19 @@
 <div class="documents-container">
-  <h2>Documents</h2>
+  <!-- Conditionally render title and search button -->
+  <h2 *ngIf="!showCreateDocument">Documents List</h2>
 
   <!-- Toggle Button -->
   <div class="search-add-container">
     <div class="search-container">
-     
-      <input id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
+      <!-- Conditionally render the search input and button -->
+      <input *ngIf="!showCreateDocument" id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
     </div>
     <button (click)="toggleCreateDocument()" class="toggle-btn">
       {{ showCreateDocument ? 'Cancel' : 'Create Document' }}
     </button>
   </div>
   
-  <!-- Conditional Rendering -->
+  <!-- Conditional Rendering for Documents List -->
   <div *ngIf="!showCreateDocument">
     <table>
       <thead>
@@ -32,7 +33,6 @@
           <td>{{ document.totalDocuments }}</td>
           <td>
             <button class="edit-btn" [routerLink]="['/edit-document']">✏️</button>
-
             <button class="delete-btn" (click)="handleDelete(i)">🗑️</button>
           </td>
         </tr>
@@ -42,23 +42,31 @@
 
   <!-- Create Document Form -->
   <div *ngIf="showCreateDocument">
+    <h2>Create Document</h2>
     <form (ngSubmit)="addDocument()">
       <div>
         <label for="typeOfLoan">Type of Loan:</label>
-        <input id="typeOfLoan" [(ngModel)]="newDocument.typeOfLoan" name="typeOfLoan" required />
-      </div>
-      <div>
+        <select id="typeOfLoan" [(ngModel)]="newDocument.typeOfLoan" name="typeOfLoan" required>
+          <option value="" disabled selected>Select </option>
+          <option value="Home">Home Loan</option>
+          <option value="Car">Car Loan</option>
+          <option value="Personal">Personal Loan</option>
+          <option value="Education">Education Loan</option>
+        </select>
+     
         <label for="employmentType">Employment Type:</label>
-        <input id="employmentType" [(ngModel)]="newDocument.employmentType" name="employmentType" required />
+        <select id="employmentType" [(ngModel)]="newDocument.employmentType" name="employmentType" required>
+          <option value="" disabled selected>Select </option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+          <option value="Freelancer">Freelancer</option>
+          <option value="Self-Employed">Self-Employed</option>
+          <option value="Retired">Retired</option>
+        </select>
       </div>
-      <div>
-        <label for="totalDocuments">Total Documents:</label>
-        <input id="totalDocuments" type="number" [(ngModel)]="newDocument.totalDocuments" name="totalDocuments" required />
-      </div>
+    
       <button type="submit"> + Create Document</button>
     </form>
+    
   </div>
 </div>
-
-<!-- Edit Document Form (Popup) -->
-
