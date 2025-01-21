@@ -1,20 +1,20 @@
 <div class="documents-container">
   <!-- Conditionally render title and search button -->
-  <h2 *ngIf="!showCreateDocument">Documents List</h2>
+  <h2 *ngIf="!showCreateDocument && !showEditDocument">Documents List</h2>
 
   <!-- Toggle Button -->
   <div class="search-add-container">
     <div class="search-container">
       <!-- Conditionally render the search input and button -->
-      <input *ngIf="!showCreateDocument" id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
+      <input *ngIf="!showCreateDocument && !showEditDocument" id="search" [(ngModel)]="searchQuery" (input)="filterDocuments()" placeholder="Search by loan type or employment type" />
     </div>
     <button (click)="toggleCreateDocument()" class="toggle-btn">
       {{ showCreateDocument ? 'Cancel' : 'Create Document' }}
     </button>
   </div>
-  
+
   <!-- Conditional Rendering for Documents List -->
-  <div *ngIf="!showCreateDocument">
+  <div *ngIf="!showCreateDocument && !showEditDocument">
     <table>
       <thead>
         <tr>
@@ -26,13 +26,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let document of documents; let i = index">
+        <tr *ngFor="let document of filterDocuments(); let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ document.typeOfLoan }}</td>
           <td>{{ document.employmentType }}</td>
           <td>{{ document.totalDocuments }}</td>
           <td>
-            <button class="edit-btn" [routerLink]="['/edit-document']">✏️</button>
+            <button class="edit-btn" (click)="editDocument(document)">✏️</button>
             <button class="delete-btn" (click)="handleDelete(i)">🗑️</button>
           </td>
         </tr>
@@ -41,22 +41,127 @@
   </div>
 
   <!-- Create Document Form -->
-  <div *ngIf="showCreateDocument">
-    <h2>Create Document</h2>
-    <form (ngSubmit)="addDocument()">
-      <div>
-        <label for="typeOfLoan">Type of Loan:</label>
-        <select id="typeOfLoan" [(ngModel)]="newDocument.typeOfLoan" name="typeOfLoan" required>
-          <option value="" disabled selected>Select </option>
+ <div *ngIf="showCreateDocument" class="container mt-5">
+  <h2>Create Document</h2>
+  <form #form="ngForm" (ngSubmit)="addDocument(form)" novalidate>
+    <div class="row mb-3">
+      <!-- Type of Loan Column -->
+      <div class="col-md-6">
+        <label for="typeOfLoan" class="form-label">Type of Loan:</label>
+        <select
+          id="typeOfLoan"
+          [(ngModel)]="newDocument.typeOfLoan"
+          name="typeOfLoan"
+          class="form-select"
+          required
+          #typeOfLoan="ngModel"
+        >
+          <option value="" disabled selected>Select</option>
           <option value="Home">Home Loan</option>
           <option value="Car">Car Loan</option>
           <option value="Personal">Personal Loan</option>
           <option value="Education">Education Loan</option>
         </select>
-     
-        <label for="employmentType">Employment Type:</label>
-        <select id="employmentType" [(ngModel)]="newDocument.employmentType" name="employmentType" required>
-          <option value="" disabled selected>Select </option>
+        <div *ngIf="typeOfLoan.invalid && typeOfLoan.touched" class="text-danger">
+          Type of Loan is required
+        </div>
+      </div>
+
+      <!-- Employment Type Column -->
+      <div class="col-md-6">
+        <label for="employmentType" class="form-label">Employment Type:</label>
+        <select
+          id="employmentType"
+          [(ngModel)]="newDocument.employmentType"
+          name="employmentType"
+          class="form-select"
+          required
+          #employmentType="ngModel"
+        >
+          <option value="" disabled selected>Select</option>
+          <option value="Full-Time">Full-Time</option>
+          <option value="Part-Time">Part-Time</option>
+          <option value="Freelancer">Freelancer</option>
+          <option value="Self-Employed">Self-Employed</option>
+          <option value="Retired">Retired</option>
+        </select>
+        <div *ngIf="employmentType.invalid && employmentType.touched" class="text-danger">
+          Employment Type is required
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Items Section -->
+    <div class="mb-3">
+      <label class="form-label">Items:</label>
+      <div *ngFor="let item of documentToEdit.items; let i = index" class="mb-2">
+        <input
+          type="text"
+          [(ngModel)]="documentToEdit.items[i]"
+          name="editItem-{{ i }}"
+          class="form-control"
+          placeholder="Enter item"
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-secondary mt-2"
+        (click)="addItem()"
+      >
+        + Add Item
+      </button>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      + Create Document
+    </button>
+  </form>
+</div>
+
+  
+  
+  <!-- Table to display documents -->
+
+  
+  <!-- Table to display documents -->
+ 
+  
+
+  <!-- Edit Document Form -->
+
+<div *ngIf="showEditDocument" class="container mt-5">
+  <h2>Edit Document</h2>
+  <form (ngSubmit)="updateDocument()">
+    <div class="row mb-3">
+      <!-- Type of Loan Column -->
+      <div class="col-md-6">
+        <label for="typeOfLoan" class="form-label">Type of Loan:</label>
+        <select
+          id="typeOfLoan"
+          [(ngModel)]="documentToEdit.typeOfLoan"
+          name="editTypeOfLoan"
+          class="form-select"
+          required
+        >
+          <option value="" disabled selected>Select</option>
+          <option value="Home">Home Loan</option>
+          <option value="Car">Car Loan</option>
+          <option value="Personal">Personal Loan</option>
+          <option value="Education">Education Loan</option>
+        </select>
+      </div>
+
+      <!-- Employment Type Column -->
+      <div class="col-md-6">
+        <label for="employmentType" class="form-label">Employment Type:</label>
+        <select
+          id="employmentType"
+          [(ngModel)]="documentToEdit.employmentType"
+          name="editEmploymentType"
+          class="form-select"
+          required
+        >
+          <option value="" disabled selected>Select</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
           <option value="Freelancer">Freelancer</option>
@@ -64,9 +169,49 @@
           <option value="Retired">Retired</option>
         </select>
       </div>
-    
-      <button type="submit"> + Create Document</button>
-    </form>
-    
-  </div>
+    </div>
+
+    <!-- Total Documents -->
+    <div class="mb-3">
+      <label for="totalDocuments" class="form-label">Total Documents:</label>
+      <input
+        type="number"
+        id="totalDocuments"
+        [(ngModel)]="documentToEdit.totalDocuments"
+        name="editTotalDocuments"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <!-- Add Item Section -->
+    <div class="mb-3">
+      <label class="form-label">Items:</label>
+      <div *ngFor="let item of documentToEdit.items; let i = index" class="mb-2">
+        <input
+          type="text"
+          [(ngModel)]="documentToEdit.items[i]"
+          name="editItem-{{ i }}"
+          class="form-control"
+          placeholder="Enter item"
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-secondary mt-2"
+        (click)="addItem()"
+      >
+        + Add Item
+      </button>
+    </div>
+
+    <!-- File Input Section -->
+ 
+
+    <!-- Form Buttons -->
+    <button type="submit" class="btn btn-primary">Update Document</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
+
 </div>
