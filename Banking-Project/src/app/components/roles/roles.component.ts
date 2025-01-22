@@ -10,14 +10,14 @@ export class RolesComponent {
   searchText: string = '';
 
   roles = [
-    { id: 1, name: 'Mark'},
-    { id: 2, name: 'Jojo'},
-    { id: 3, name: 'Virat'},
-    { id: 4, name: 'Dhoni'},
-    { id: 5, name: 'Rohit'},
-    { id: 6, name: 'Rahul'},
-    { id: 7, name: 'Don'},
-    { id: 8, name: 'Hardik'}
+    { id: 1, name: 'Accountant'},
+    { id: 2, name: 'Telecallers'},
+    { id: 3, name: 'Sales Officer'},
+    { id: 4, name: 'Sales Manager'},
+    { id: 5, name: 'Senior Manager'},
+    { id: 6, name: 'RM'},
+    { id: 7, name: 'Telecallers'},
+    { id: 8, name: 'Sales'}
   ];
 
   filteredRoles() {

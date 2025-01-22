@@ -1,0 +1,56 @@
+<!-- <div class="container-fluid">
+  <button class="btn btn-primary" (click)="openModal() " >Click to Open Aadhar Modal</button>
+</div> -->
+
+<!-- Modal Structure -->
+<form (ngSubmit)="onSubmit()" >
+  <div class="modal fade" id="aadharModal" tabindex="-1" aria-labelledby="aadharModalLabel" aria-hidden="true" [ngClass]="{ show: isModalOpen }">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="aadharModalLabel" class="form-label">Verify Aadhar Number</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close" (click)="closeModal()" routerLink="/verification/vreport"></button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Aadhar Input Section -->
+          <div class="form-group">
+            <label for="aadharInput" class="form-label"><b>Aadhar No.</b></label>
+            <input
+              id="aadharInput"
+              type="text"
+              [(ngModel)]="inputValue"
+              name="inputValue"
+              (keydown)="onKeyDown($event)"
+              (input)="onInput($event)"
+              maxlength="12"
+              placeholder="123412341234"
+              class="form-control"
+              required
+              [ngClass]="{'is-invalid': inputValue && !isValidAadhar}"
+            />
+            <div *ngIf="inputValue && !isValidAadhar" class="error-message text-danger">
+              Invalid Aadhar format! Please use the format: 123412341234.
+            </div>
+          </div>
+
+          <!-- Clear and Submit Buttons -->
+          <div class="button-group">
+            <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+            <button type="submit" class="btn btn-primary" [disabled]="!isValidAadhar || !inputValue" >Submit</button>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Success Popup -->
+<div *ngIf="taskAdded" class="alert alert-success success-popup">
+  Aadhar Verified Successfully!
+</div>

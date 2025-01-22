@@ -24,18 +24,18 @@ interface Comment {
 })
 export class CommentsComponent {
   comments: Comment[] = [
-    {
-      name: 'DSA CRM',
-      text: 'For process 1 doc',
-      icon: 'icon.png',
-      showReplySection: false,
-      replyText: '',
-      timestamp: this.getCurrentDateTime(),
-      replies: [],
-      followupDate: undefined,
-      isEditing: false,
-      isReplyDisabled: false  // Initially, the reply button is enabled
-    }
+    // {
+    //   name: 'DSA CRM',
+    //   text: 'For process 1 doc',
+    //   icon: 'icon.png',
+    //   showReplySection: false,
+    //   replyText: '',
+    //   timestamp: this.getCurrentDateTime(),
+    //   replies: [],
+    //   followupDate: undefined,
+    //   isEditing: false,
+    //   isReplyDisabled: false  // Initially, the reply button is enabled
+    // }
   ];
  
   todayDate: string;

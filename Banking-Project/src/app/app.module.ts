@@ -77,12 +77,33 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+
 import { ConnectorComponent } from './components/connector/connector.component';
 import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
 import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
 import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
 import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+
+import { CreatebankComponent } from './components/createbank/createbank.component';
+import { MastersprojectComponent } from './components/mastersproject/mastersproject.component';
+import { TableComponent } from './components/table/table.component';
+import { Table2Component } from './components/table2/table2.component';
+import { MastersprojectformComponent } from './components/mastersprojectform/mastersprojectform.component';
+import { AdharmodalComponent } from './components/adharmodal/adharmodal.component';
+import { GstinComponent } from './components/gstin/gstin.component';
+import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
+import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
+import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
+import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { UsersComponent } from './components/users/users.component';
+import { BanksTableComponent } from './components/banks-table/banks-table.component';
+import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
+// import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { LoansComponent } from './components/loans/loans.component';
+import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
+import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+
 
 
 
@@ -157,12 +178,34 @@ import { RevenueReconReportComponent } from './components/revenue-recon-report/r
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
+
       ConnectorComponent,
       PayoutStructureComponent,
       CreateConnectorComponent,
       EditBankPayoutComponent,
       LoanAgeingReportComponent,
       RevenueReconReportComponent,
+
+      CreatebankComponent,
+      MastersprojectComponent,
+      TableComponent,
+      Table2Component,
+      MastersprojectformComponent,
+      AdharmodalComponent,
+      GstinComponent,
+      ItrmodalComponent,
+      DrivingmodalComponent,
+      CinmodalComponent,
+      PancardmodalComponent,
+
+      UsersComponent,
+      BanksTableComponent,
+      BankCriteriaComponent,
+      // MISReportComponent,
+      LoansComponent,
+      EditDocumentComponent,
+      DocumentListComponent,
+
 
 
 

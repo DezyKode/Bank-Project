@@ -1,0 +1,58 @@
+
+  
+  <form (ngSubmit)="onSubmit()">
+    <!-- Modal Structure -->
+    <div class="modal fade" id="cinModal" tabindex="-1" aria-labelledby="cinModalLabel" aria-hidden="true" [ngClass]="{ show: isModalOpen }">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="cinModalLabel" class="form-label">
+              Verify CIN Number
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close"
+            routerLink="/verification/vreport"
+            (click)="closeModal()"></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="cinInput" class="form-label"><b>CIN No.</b></label>
+              <input
+                id="cinInput"
+                type="text"
+                [(ngModel)]="inputValue"
+                name="inputValue"
+                (keydown)="onKeyDown($event)"
+                (input)="onInput($event)"
+                maxlength="21"
+                placeholder="L12345MH1999PLC000001"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': inputValue && !isValidCin}"
+              />
+              <div *ngIf="inputValue && !isValidCin" class="error-message text-danger">
+                Invalid CIN format! Please use the correct format: L12345MH1999PLC000001.
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isValidCin || !inputValue">Submit</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    CIN Verified Successfully!
+  </div>

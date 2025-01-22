@@ -1,0 +1,73 @@
+<!-- <div class="container-fluid">
+    <button class="btn btn-primary" (click)="openModal()">Click to Open GST Modal</button>
+  </div> -->
+  
+  <form (ngSubmit)="onSubmit()">
+    <!-- Modal Structure -->
+    <div
+      class="modal fade"
+      id="gstModal"
+      tabindex="-1"
+      aria-labelledby="gstModalLabel"
+      aria-hidden="true"
+      [ngClass]="{ show: isModalOpen }"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="gstModalLabel" class="form-label">
+              Verify GST Number
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-bs-label="Close"
+              (click)="closeModal()"p
+              routerLink="/verification/vreport"
+            ></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- GST Input Section -->
+            <div class="form-group">
+              <label for="gstNumber" class="form-label"><b>GST No.</b></label>
+              <input
+                id="gstNumber"
+                type="text"
+                [(ngModel)]="gstNumber"
+                name="gstNumber"
+                (keydown)="onKeyDown($event)"
+                (input)="onInput($event)"
+                maxlength="15"
+                placeholder="Enter GST Number (e.g., 27AAAPL1234C1Z5)"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': gstNumber && !isValidGst}"
+              />
+              <div *ngIf="gstNumber && !isValidGst" class="error-message text-danger">
+                Invalid GST format! Please use the format: 27AAAPL1234C1Z5.
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button> &nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isValidGst || !gstNumber">Submit</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- 
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    GST Number verified successfully!
+  </div>
+   -->

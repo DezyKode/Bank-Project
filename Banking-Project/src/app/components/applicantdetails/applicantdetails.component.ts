@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './applicantdetails.component.css'
 })
 export class ApplicantdetailsComponent {
+leadSource: any;
+validateTenure() {
+throw new Error('Method not implemented.');
+}
 
   showCoApplicantForm = false; // Initial state is hidden
   personalLoan: string = ''; // Bind to loan type select
@@ -46,6 +50,7 @@ export class ApplicantdetailsComponent {
 emailInput: any;
 emailLocalPart: string = ''; // Local part of the email (before @)
 selectedDomain: string = ''; // Selected domain
+tenure: any;
 
 toggleCoApplicantForm() {
   this.showCoApplicantForm = !this.showCoApplicantForm; // Toggle visibility
@@ -232,11 +237,24 @@ toggleCoApplicantForm() {
     this.netSalary = '';
     this.rentIncome = '';
     this.pension = '';
+    this.tenure = '';
+    this.leadSource = '';
+    this.selectedDomain = '';
+    this.emailLocalPart = '';
+
 
     // Reset the form validations (You may need to set this based on your form control names)
     this.resetValidation();
   }
 
+  onLeadSourceChange() {
+    // Handle any logic needed when lead source is changed.
+    // You can clear/reset related fields if necessary.
+    if (this.leadSource !== 'calling') {
+      this.personalLoan = '';  // Clear the personal loan field if it's not 'calling'.
+    }
+  }
+  
   // Reset validation errors
   resetValidation() {
     // Reset the form control's validity
