@@ -97,5 +97,10 @@ export class DocumentsListComponent {
       console.log('Selected File:', file);
       // Additional logic to upload the file or store it temporarily
     }
+  }showCancelButton = true;
+
+  cancelCreation() {
+    this.showCreateDocument = false;
+    this.showCancelButton = false; // Optionally hide the cancel button after cancellation
   }
 }
