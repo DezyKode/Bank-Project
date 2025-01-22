@@ -1,0 +1,79 @@
+.num-yellow{
+    color: rgb(255, 166, 0);
+    background-color: rgb(255, 255, 202);
+}
+
+.num-blue{
+    color: rgb(0, 0, 123);
+    background-color: rgb(202, 202, 255)
+}
+
+.num-green{
+    color: green;
+    background-color: rgb(204, 255, 204);
+}
+
+.num-skyBlue{
+    color: rgb(0, 179, 255);
+    background-color: rgb(190, 236, 255);
+}
+
+.num-red{
+    color: red;
+    background-color: rgb(255, 196, 196);
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px;
+    color: blue;
+    background-color:white;
+   
+  }
+
+  
+/* export-button */
+
+.export-button {
+    background-color: #292d8a; /* Dark blue background */
+    color: white; /* White text color */
+    font-size: 10px; /* Adjust font size */
+    font-weight: bold;
+    padding: 10px 20px; /* Adjust padding for size */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    display: inline-flex; /* Flex to align icon and text */
+    align-items: center; /* Vertically align items */
+    justify-content: center; /* Center text and icon */
+    gap: 8px; /* Space between icon and text */
+    width: 70px; /* Adjust width if needed */
+    height: 30px; /* Adjust height if needed */
+    margin-right: 50px;
+  }
+  
+  .export-button:hover {
+    background-color: #1f2473; /* Slightly darker on hover */
+  }
+  
+  .export-button:active {
+    background-color: #1b1f5c; /* Even darker when clicked */
+  }
+  
+  .export-button span {
+    margin: 0; /* Adjust margin for text */
+  }
+  
+  /* Add this if you want an icon */
+  .export-button::before {
+    content: '\2B73'; /* Unicode for a download/arrow icon */
+    display: inline-block;
+    font-size: 16px; /* Match text size */
+  }
+  
+  

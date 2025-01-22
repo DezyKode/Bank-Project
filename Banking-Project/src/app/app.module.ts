@@ -77,6 +77,14 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+
+import { ConnectorComponent } from './components/connector/connector.component';
+import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
+import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
+import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
+import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
+import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+
 import { CreatebankComponent } from './components/createbank/createbank.component';
 import { MastersprojectComponent } from './components/mastersproject/mastersproject.component';
 import { TableComponent } from './components/table/table.component';
@@ -95,6 +103,7 @@ import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+
 
 
 
@@ -169,6 +178,14 @@ import { DocumentListComponent } from './components/masters/document-list/docume
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
+
+      ConnectorComponent,
+      PayoutStructureComponent,
+      CreateConnectorComponent,
+      EditBankPayoutComponent,
+      LoanAgeingReportComponent,
+      RevenueReconReportComponent,
+
       CreatebankComponent,
       MastersprojectComponent,
       TableComponent,
@@ -188,6 +205,7 @@ import { DocumentListComponent } from './components/masters/document-list/docume
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
+
 
 
 
