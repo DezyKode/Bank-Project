@@ -77,6 +77,12 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+import { ConnectorComponent } from './components/connector/connector.component';
+import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
+import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
+import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
+import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
+import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
 
 
 
@@ -151,6 +157,12 @@ import { ApplicantdetailsComponent } from './components/applicantdetails/applica
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
+      ConnectorComponent,
+      PayoutStructureComponent,
+      CreateConnectorComponent,
+      EditBankPayoutComponent,
+      LoanAgeingReportComponent,
+      RevenueReconReportComponent,
 
 
 

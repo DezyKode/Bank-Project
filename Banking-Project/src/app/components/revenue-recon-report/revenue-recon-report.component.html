@@ -1,0 +1,145 @@
+<div class="contain m-3">
+  <h3 class="h4 text-primary">REVENUE RECONCILTION REPORT</h3>
+  <div class="row mb-3">
+    <div class="col-md-3 d-flex flex-wrap align-items-center">
+      <div class="input-group m-1 flex-grow-1" style="min-width: 150px;">
+        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." aria-label="Username"
+          aria-describedby="basic-addon1">
+      </div>
+    </div>
+    <div class="col-md d-flex flex-wrap justify-content-end m-2">
+      <button class="export-button">
+        <span>Export</span>
+      </button>
+    </div>
+
+    <div style="max-height: 550px; overflow-y: auto; overflow-x: auto;">
+      <div style="overflow-x: auto;">
+        <table class="table table-responsive">
+          <thead class="table-secondary">
+            <tr class="border-bottom border-secondary">
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th class="text-center border-start border-end border-secondary" scope="col" colspan="3">Invoice Amount</th>
+              <th class="text-center border-start border-end border-secondary" scope="col" colspan="3">Amount Received</th>
+              <th class="text-center border-start border-end border-secondary" scope="col" colspan="3">Reconciliation</th>
+              <th class="text-center border-start border-end border-secondary" scope="col" colspan="3">Revenue Reconciliation</th>
+            </tr>
+            <tr class="border-bottom border-secondary">
+              <th scope="col" style="white-space: nowrap;">Sr No
+                <i (click)="sortTable('srno')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['srno'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['srno'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Case
+                <i (click)="sortTable('case')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['case'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['case'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Applicant Name
+                <i (click)="sortTable('applicantName')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['applicantName'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['applicantName'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Loan Type
+                <i (click)="sortTable('loantype')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['loantype'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['loantype'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Disbursement Amount
+                <i (click)="sortTable('disbursmentAmount')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['disbursmentAmount'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['disbursmentAmount'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Disbursement Date
+                <i (click)="sortTable('disbursmentDate')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['disbursmentDate'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['disbursmentDate'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Transaction Date
+                <i (click)="sortTable('transactionDate')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['transactionDate'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['transactionDate'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Invoice Generated
+                <i (click)="sortTable('invoiceGenerated')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['invoiceGenerated'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['invoiceGenerated'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th scope="col" style="white-space: nowrap;">Invoice Date
+                <i (click)="sortTable('invoiceDate')" class="fas ms-1" [class.fa-sort-asc]="sortDirection['invoiceDate'] === 'asc'"
+                  [class.fa-sort-desc]="sortDirection['invoiceDate'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Service Charge</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">GST</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Total</th>
+        
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Service Charge</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">TDS</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Total</th>
+        
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Is total of invoice amount = Amount Received</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Balance Outstanding</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Payout Sharing</th>
+        
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">If Yes-Name of Person with whom payout is to be shared</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Rate at which payout is to be shared</th>
+              <th class="border border-secondary" scope="col" style="white-space: nowrap;">Payout Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bank of paginatedBanks()">
+              <th scope="row">{{ bank.srno }}</th>
+              <th class="text-primary" style="font-weight: normal;">{{ bank.case }}</th>
+              <td>{{ bank.applicantName }}</td>
+              <td>{{ bank.loantype }}</td>
+              <td>{{ bank.disbursmentAmount }}</td>
+              <td>{{ bank.disbursmentDate }}</td>
+              <td>{{ bank.transactionDate }}</td>
+              <td>{{ bank.invoiceGenerated }}</td>
+              <td>{{ bank.invoiceDate }}</td>
+              <td>{{ bank.serviceCharge }}</td>
+              <td>{{ bank.gst }}</td>
+              <td>{{ bank.total }}</td>
+              <td>{{ bank.serviceCharge1 }}</td>
+              <td>{{ bank.tds }}</td>
+              <td>{{ bank.total1 }}</td>
+        
+              <td>{{ bank.amountReceived }}</td>
+              <td>{{ bank.balanceOutstd }}</td>
+              <td>{{ bank.payoutSharing }}</td>
+        
+              <td>{{ bank.nameofPerson }}</td>
+              <td>{{ bank.rateofPayout }}</td>
+              <td>{{ bank.payoutAmount }}</td>
+        
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+      
+    </div>
+
+    <!-- Dropdown for selecting items per page -->
+    <div class="filters col-2 d-flex justify-content-start align-items-center">
+      <label for="itemsPerPage" class="mr-2"></label>
+      <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+      </select>
+    </div>
+  </div>
+
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls d-flex justify-content-end m-2">
+    <button class="btn btn-secondary" [disabled]="currentPage === 1"
+      (click)="changePage(currentPage - 1)">Previous</button>
+    <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button class="btn btn-secondary" [disabled]="currentPage === totalPages"
+      (click)="changePage(currentPage + 1)">Next</button>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div style="color: blue;" class="p-3"><h4>EDIT BANK PAYOUT</h4></div>
+
+<div>
+    
+    <div class="border border-1 p-3">
+        <div class="h6">Edit Bank Payout</div>
+
+        <div class="col-md-3">
+            <b><label for="inputName4" class="form-label">Name</label></b>
+            <input type="Text" class="form-control" id="inputName4" placeholder="Name" name="Name">
+        </div>
+        <br>
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col" >#</th>
+                    <th scope="col">Type Of Loan</th>
+                    <th scope="col">Bank Name</th>
+                    <th scope="col">Minimum Eligibility</th>
+                    <th scope="col">Payout</th>
+                    <th scope="col"></th>
+                    <!-- <th scope="col">Non Salaried ROI</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                    <!-- Auto number the row with i+1 -->
+                    <td>{{ i + 1 }}</td>
+                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                    <td><input type="text" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementStart" placeholder="Minimum Eligibility"></td>
+                    <td><input type="text" class="form-control" [(ngModel)]="row.loanRequirementEnd" placeholder="Payout"></td>
+                    <!-- <td><input type="text" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                    <td><input type="text" class="form-control" [(ngModel)]="row.nonSalariedROI"></td> -->
+
+                    <td>
+                        <button style="background: none;color:red; border: 1px solid red;" (click)="deleteRow(i)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>&nbsp;
+                        <!-- <button style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;" (click)="saveRow(i)">
+                            <i class="fa-solid fa-check"></i>
+                        </button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button style="background: none; border: orangered; color:orangered;" (click)="addRow()">
+            <i class="fa-solid fa-plus"></i> Add Item
+        </button>
+    </div>
+
+    <div class="d-flex justify-content-end m-2">
+        <button class="btn btn-primary" >Create</button>
+    </div>
+</div>
