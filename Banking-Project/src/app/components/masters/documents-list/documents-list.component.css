@@ -27,6 +27,7 @@ body {
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 
@@ -242,9 +243,34 @@ button:hover {
         width: 100%;
         padding: 8px;
     }
-    .search-container input,
+    .search-add-container {
+        display: flex;
+        /* Align items in a row */
+        flex-wrap: wrap;
+        /* Allow wrapping for small screens */
+        align-items: center;
+        /* Align items vertically */
+        gap: 8px;
+        /* Add spacing between the search bar and button */
+    }
+    .search-container input {
+        flex: 1;
+        /* Allow search bar to take up remaining space */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
     .toggle-btn {
-        width: 100%;
+        flex: 0;
+        /* Prevent the button from stretching */
+        padding: 10px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        white-space: nowrap;
+        /* Prevent text wrapping inside the button */
     }
     th,
     td {
@@ -315,7 +341,7 @@ div[ngIf='showCreateDocument'] input {
 /* Input fields when focused */
 
 div[ngIf='showCreateDocument'] input:focus {
-    border-color: #007bff;
+    border-color: #0056b3;
     outline: none;
 }
 
@@ -323,7 +349,7 @@ div[ngIf='showCreateDocument'] input:focus {
 /* Submit button */
 
 div[ngIf='showCreateDocument'] button[type="submit"] {
-    background-color: #007bff;
+    background-color: #0056b3;
     color: white;
     padding: 12px 20px;
     font-size: 16px;
@@ -368,4 +394,93 @@ div[ngIf='showCreateDocument'] button[type="submit"]:hover {
         grid-template-columns: 1fr;
         /* Stack columns */
     }
+}
+
+
+/* General button styling */
+
+.toggle-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    /* Prevent full-width buttons */
+}
+
+
+/* Specific width for tablet view */
+
+
+/* Search bar styling */
+
+
+/* Button styling */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search-add-container {
+        flex-direction: row;
+        /* Ensure row layout */
+        width: 100%;
+        /* Ensure full width for the container */
+    }
+    .search-bar {
+        width: auto;
+        /* Allow it to shrink and fit alongside the button */
+    }
+    .toggle-btn {
+        width: auto;
+        /* Prevent full-width buttons */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-add-container {
+        display: flex;
+        /* Flexbox to align items in a row */
+        flex-wrap: nowrap;
+        /* Prevent wrapping to new lines */
+        justify-content: space-between;
+        /* Space between the buttons */
+        gap: 8px;
+        /* Add spacing between elements */
+    }
+    .search-container {
+        flex: 1;
+        /* Allow the search button to take equal space */
+    }
+    .search-container button {
+        width: 100%;
+        /* Full width for the search button */
+        padding: 10px;
+        /* Adjust padding for better usability */
+        background-color: #f8f9fa;
+        /* Light background for the search button */
+        color: #000;
+        /* Text color for the button */
+        border: 1px solid #ccc;
+        /* Border styling */
+        border-radius: 4px;
+        /* Rounded corners */
+        cursor: pointer;
+    }
+    .toggle-btn {
+        flex: 1;
+        /* Allow the create button to take equal space */
+        padding: 10px;
+        /* Adjust padding for better usability */
+        background-color: #0056b3;
+        /* Background color for the Create Document button */
+        color: #fff;
+        /* White text for the button */
+        border: none;
+        /* Remove border */
+        border-radius: 4px;
+        /* Rounded corners */
+        cursor: pointer;
+        white-space: nowrap;
+        /* Prevent text from wrapping */
+    }
+}
+
+.create-btn {
+    display: end;
 }
