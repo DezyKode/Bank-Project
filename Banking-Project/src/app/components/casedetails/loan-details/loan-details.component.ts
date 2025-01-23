@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './loan-details.component.html',
   styleUrl: './loan-details.component.css'
 })
-export class LoanDetailsComponent {
+export class LoanDetailsComponents {
   loanDetails = {
     loanAmount: 0,
     loanRequested: 60000,
