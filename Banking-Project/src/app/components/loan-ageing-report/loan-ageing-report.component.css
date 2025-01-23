@@ -1,0 +1,38 @@
+.num-yellow{
+    color: rgb(255, 166, 0);
+    background-color: rgb(255, 255, 202);
+}
+
+.num-blue{
+    color: rgb(0, 0, 123);
+    background-color: rgb(202, 202, 255)
+}
+
+.num-green{
+    color: green;
+    background-color: rgb(204, 255, 204);
+}
+
+.num-skyBlue{
+    color: rgb(0, 179, 255);
+    background-color: rgb(190, 236, 255);
+}
+
+.num-red{
+    color: red;
+    background-color: rgb(255, 196, 196);
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px;
+    color: blue;
+    background-color:white;
+   
+  }
+  

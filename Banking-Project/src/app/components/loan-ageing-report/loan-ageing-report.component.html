@@ -1,0 +1,134 @@
+<div class="contain m-3">
+    <h3 class="h4 text-primary">LOAN AGEING REPORT</h3>
+    <div class="row mb-3">
+      <div class="col-md-3 d-flex flex-wrap align-items-center">
+        <div class="input-group m-1 flex-grow-1" style="min-width: 150px;">
+          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+          <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..."
+            aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+  
+      
+  
+    <div style="max-height: 550px; overflow-y: auto; overflow-x: auto;">
+      <table class="table table-responsive">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th class="text-center" scope="col" colspan="4">Invoice Amount</th>
+          </tr>
+          <tr>
+            <th scope="col" (click)="sortTable('srno')">Sr No
+              <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['srno'] === 'asc'" [class.fa-sort-desc]="sortDirection['srno'] === 'desc'" style="cursor: pointer;"></i>
+            </th>
+            <th scope="col" (click)="sortTable('id')">Id
+              <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['id'] === 'asc'" [class.fa-sort-desc]="sortDirection['id'] === 'desc'" style="cursor: pointer;"></i>
+            </th>
+            <th scope="col" (click)="sortTable('applicantName')">Applicant Name
+              <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['applicantName'] === 'asc'" [class.fa-sort-desc]="sortDirection['applicantName'] === 'desc'" style="cursor: pointer;"></i>
+            </th>
+              <th scope="col" (click)="sortTable('leadProduct')">Lead Product
+                <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['leadProduct'] === 'asc'" [class.fa-sort-desc]="sortDirection['leadProduct'] === 'desc'" style="cursor: pointer;"></i>
+              </th>
+            <th scope="col" (click)="sortTable('caseDate')">Case Date
+              <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['caseDate'] === 'asc'" [class.fa-sort-desc]="sortDirection['caseDate'] === 'desc'" style="cursor: pointer;"></i>
+            </th>
+            <th scope="col" (click)="sortTable('accountManager')">Account Manager
+              <i class="fas ms-1" [class.fa-sort-asc]="sortDirection['accountManager'] === 'asc'" [class.fa-sort-desc]="sortDirection['accountManager'] === 'desc'" style="cursor: pointer;"></i>
+            </th>
+            <th scope="col">00-06</th>
+            <th scope="col">06-15</th>
+            <th scope="col">15-24</th>
+            <th scope="col">Above 24</th>
+          </tr>
+
+          <!-- <th scope="col">00-06</th>
+            <th scope="col">06-15</th>
+            <th scope="col">15-24</th>
+            <th scope="col">Above 24</th> -->
+        </thead>
+        <tbody>
+          <tr *ngFor="let bank of paginatedBanks()">
+            <th scope="row">{{ bank.srno }}</th>
+            <th class="text-primary" style="font-weight: normal;">{{ bank.id }}</th>
+            <td>{{ bank.applicantName }}</td>
+            <td>{{ bank.leadProduct }}</td>
+            <td>{{ bank.caseDate }}</td>
+            <td>{{ bank.accountManager }}</td>
+            <td>
+              <p [ngClass]="{
+                'num-yellow': bank.num06 === 'Login',
+                'num-blue': bank.num06 === 'To Be Login',
+                'num-green': bank.num06 === 'Disbursement',
+                'num-skyBlue': bank.num06 === 'Sanction',
+                'num-red': bank.num06 === 'Rejected'
+              }" style="display: inline; padding: 5px; border-radius: 5px; margin:0px; text-align: center;">
+                {{ bank.num06 }}
+              </p>
+            </td>
+            <td>
+              <p [ngClass]="{
+                'num-yellow': bank.num15 === 'Login',
+                'num-blue': bank.num15 === 'To Be Login',
+                'num-green': bank.num15 === 'Disbursement',
+                'num-skyBlue': bank.num15 === 'Sanction',
+                'num-red': bank.num15 === 'Rejected'
+              }" style="display: inline; padding:5px; border-radius: 5px; text-align: center;">
+                {{ bank.num15 }}
+              </p>
+            </td>
+            <td>
+              <p [ngClass]="{
+                'num-yellow': bank.num24 === 'Login',
+                'num-blue': bank.num24 === 'To Be Login',
+                'num-green': bank.num24 === 'Disbursement',
+                'num-skyBlue': bank.num24 === 'Sanction',
+                'num-red': bank.num24 === 'Rejected'
+              }" style="display: inline; padding:5px; border-radius: 5px; text-align: center;">
+                {{ bank.num24 }}
+              </p>
+            </td>
+            <td>
+              <p [ngClass]="{
+                'num-yellow': bank.numabove24 === 'Login',
+                'num-blue': bank.numabove24 === 'To Be Login',
+                'num-green': bank.numabove24 === 'Disbursement',
+                'num-skyBlue': bank.numabove24 === 'Sanction',
+                'num-red': bank.numabove24 === 'Rejected'
+              }" style="display: inline; padding:5px; border-radius: 5px; text-align: center;">
+                {{ bank.numabove24 }}
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+     <!-- Dropdown for selecting items per page -->
+  <div class="filters col-2 d-flex justify-content-start align-items-center">
+    <label for="itemsPerPage" class="mr-2"></label>
+    <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+    </select>
+  </div>
+</div>
+  
+  
+    <!-- Pagination Controls -->
+    <div class="pagination-controls d-flex justify-content-end m-2">
+      <button class="btn btn-secondary" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">Previous</button>
+      <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button class="btn btn-secondary" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">Next</button>
+    </div>
+  </div>
+
+ 

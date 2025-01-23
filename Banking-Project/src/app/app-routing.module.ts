@@ -66,11 +66,21 @@ import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+
 import {DetailsComponent} from './components/Admin/leads/details/details.component';
 import {LoanDetails} from './components/Admin/leads/loan-details/loan-details.component';
 import {ApplicationDetailsComponent} from './components/Admin/leads/application-details/application-details.component'
 import{OverViewComponent} from './components/Admin/leads/over-view/over-view.component';
 import{BankComponents} from './components/Admin/leads/bank/bank.component'
+
+
+import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
+import { ConnectorComponent } from './components/connector/connector.component';
+import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
+import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
+import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
+import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+
 const routes: Routes = [
 
 
@@ -83,6 +93,12 @@ const routes: Routes = [
   {path:'leadDump-report', component:LeadDumpReportComponent},
   {path:'import-File', component:ImportFileComponent},
   {path:'create-lead', component:CreateLeadComponent},
+  {path:'connector', component:ConnectorComponent},
+  {path:'payout-structure', component:PayoutStructureComponent},
+  {path:'create-connector', component:CreateConnectorComponent},
+  {path:'edit-bank-payout', component:EditBankPayoutComponent},
+  {path:'loan-ageing-report', component:LoanAgeingReportComponent},
+  {path:'revenue-recon-report', component:RevenueReconReportComponent},
 
 
   {path:'tasks-report', component:TaskReportComponent},

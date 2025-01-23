@@ -77,6 +77,14 @@ import { VerificationapiComponent } from './components/verificationapi/verificat
 import { CreatenewcaseComponent } from './components/createnewcase/createnewcase.component';
 import { LoanrequirementComponent } from './components/loanrequirement/loanrequirement.component';
 import { ApplicantdetailsComponent } from './components/applicantdetails/applicantdetails.component';
+
+import { ConnectorComponent } from './components/connector/connector.component';
+import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
+import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
+import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
+import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
+import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+
 import { CreatebankComponent } from './components/createbank/createbank.component';
 import { MastersprojectComponent } from './components/mastersproject/mastersproject.component';
 import { TableComponent } from './components/table/table.component';
@@ -99,6 +107,7 @@ import { DetailsComponent } from './components/Admin/leads/details/details.compo
 import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
 import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
 import{BankComponents} from './components/Admin/leads/bank/bank.component';
+
 
 
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
@@ -173,6 +182,14 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
+
+      ConnectorComponent,
+      PayoutStructureComponent,
+      CreateConnectorComponent,
+      EditBankPayoutComponent,
+      LoanAgeingReportComponent,
+      RevenueReconReportComponent,
+
       CreatebankComponent,
       MastersprojectComponent,
       TableComponent,
@@ -196,6 +213,7 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       OverViewComponent,
       ApplicationDetailsComponent,
       BankComponents
+
 
 
 

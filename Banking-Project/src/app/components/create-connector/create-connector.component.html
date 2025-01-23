@@ -1,0 +1,189 @@
+<div class="m-3">
+    <div class="h4" style="color: blue;">CREATE CONNECTOR</div>
+    <div class="border border-1 p-3">
+        <div class="h6  p-2">CREATE CONNECTOR</div>
+        <div class="row  p-3 border-top border-bottom">
+            <div class="col-6 border-end ">
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <b><label for="inputCpcode4" class="form-label"><span style="color: red;">*</span>CP Code</label></b>
+                        <input type="Text" class="form-control" id="inputCpcode4" placeholder="Enter Code" name="cpCode">
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputName4" class="form-label"><span style="color: red;">*</span>Name</label></b>
+                        <input type="Text" class="form-control" id="inputName4" placeholder="Enter Name" name="name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="mobileInput">Mobile Number</label>
+                        <input type="text" id="mobileInput" class="form-control" placeholder="Enter Mobile Number"
+                            [(ngModel)]="mobileValue" (input)="onInput($event, 'mobile')" (keydown)="onKeyDown($event, 'mobile')" maxlength="10" name="mobile">
+                        <div *ngIf="!isValidMobile" class="text-danger">
+                            Please enter a 10-digit number.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <b><label for="inputLoan4" class="form-label">Loan Payout Structure</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputLoan4" name="loanPayout">
+                            <option selected>Select Payout</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <b> <label for="inputRefer4" class="form-label">Refer Commission (in%)</label></b>
+                        <input type="text" class="form-control" id="inputRefer4" placeholder="Enter Refer Commission (in%)"
+                        [(ngModel)]="referCommissionValue" (input)="onInput($event, 'referCommission')"
+                        (keydown)="onKeyDown($event, 'referCommission')" name="referCommission">
+                        <div *ngIf="!isValidReferCommission" class="text-danger">
+                            Please enter a valid percentage (e.g., 25%).
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputPan4" class="form-label"><span style="color: red;">*</span>Pan No</label></b>
+                        <input type="text" class="form-control" id="inputPan4" placeholder="Enter Pan No" maxlength="10"
+                            [(ngModel)]="inputValue" (input)="onInput($event, 'pan')" (keydown)="onKeyDown($event, 'pan')" name="pan">
+                    </div>
+
+                    <div class="col-md-6">
+                        <b><label for="inputAadhar4" class="form-label"><span style="color: red;">*</span>Aadhar No</label></b>
+                        <input type="text" class="form-control" id="inputAadhar4" placeholder="Enter Aadhar No"
+                        [(ngModel)]="aadharValue" (input)="onInput($event, 'aadhar')" (keydown)="onKeyDown($event, 'aadhar')" maxlength="12" name="aadhar">
+                        <div *ngIf="!isValidAadhar" class="text-danger">
+                            Please enter a valid 12-digit Aadhar number.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputRera4" class="form-label">RERA No</label></b>
+                        <input type="text" class="form-control" id="inputRera4" placeholder="Enter RERA No"
+                            [(ngModel)]="reraValue" (input)="onInput($event, 'rera')" (keydown)="onKeyDown($event, 'rera')" name="rera">
+                        <div *ngIf="!isValidRera" class="text-danger">
+                           <!--  Please enter a valid RERA number (e.g., MH / 1234 / PRJ / 2023). -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputGST4" class="form-label">GST Number</label></b>
+                        <input type="Text" class="form-control" id="inputGST4" placeholder="Enter GST No" name="gst">
+                    </div>
+                </form>
+            </div>
+            <div class="col-6 ">
+                <b>
+                    <div class="h6">Bank Account Details</div>
+                </b>
+                <form class="row g-3 mb-3">
+                    <div class="col-12">
+                        <b><label for="inputBankAccount" class="form-label">Bank Account Name</label></b>
+                        <input type="text" class="form-control" id="inputBankAccount"
+                            placeholder="Enter Bank Account Name" name="bankAccountName">
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputBanknum4" class="form-label">Bank Account Number</label></b>
+                        <input type="Text" class="form-control" id="inputBankNum4"
+                            placeholder="Enter Bank Account Number" name="bankAccountNumber">
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputIfsc4" class="form-label">Bank Account IFSC Code</label></b>
+                        <input type="Text" class="form-control" id="inputIfsc4"
+                            placeholder="Enter Bank Account IFSC Code" name="bankIfscCode">
+                    </div>
+                    <b>
+                        <div class="h6">Authentication Details</div>
+                    </b>
+                    <div class="col-md-6">
+                        <b><label for="inputEmail4" class="form-label"><span
+                                    style="color: red;">*</span>Email</label></b>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Enter Email" name="email">
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputPassword4" class="form-label"><span
+                                    style="color: red;">*</span>Password</label></b>
+                        <input type="password" class="form-control" id="inputPassword4" placeholder="Enter Password" name="password">
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputStatus4" class="form-label"><span
+                                    style="color: red;">*</span>Status</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputStatus4" name="status">
+                            <option selected>Select Status</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row p-3 ">
+            <div class="col-6 border-end ">
+                <b>
+                    <div class="h6">Residential Address</div>
+                </b>
+                <form class="row g-3">
+                    <div class="col-12">
+                        <b><label for="inputAddress" class="form-label">Address</label></b>
+                        <textarea class="form-control" placeholder="Enter Billing Address" id="inputAddress" name="residentialAddress"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputState4" class="form-label">State</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputState4" name="residentialState">
+                            <option selected>Select State</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputCity4" class="form-label">City</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputCity4" name="residentialCity">
+                            <option selected>Select City</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputPin4" class="form-label">Pincode</label></b>
+                        <input type="Text" class="form-control" id="inputPin4" placeholder="Enter Pincode" name="residentialPincode">
+                    </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <b>
+                    <div class="h6">Office Address</div>
+                </b>
+                <form class="row g-3">
+                    <div class="col-12">
+                        <b><label for="inputAddress" class="form-label">Address</label></b>
+                        <textarea class="form-control" placeholder="Enter Billing Address" id="inputAddress" name="officeAddress"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputState4" class="form-label">State</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputState4" name="officeState">
+                            <option selected>Select State</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputCity4" class="form-label">City</label></b>
+                        <select class="form-select" aria-label="Default select example" id="inputCity4" name="officeCity">
+                            <option selected>Select City</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <b><label for="inputPin4" class="form-label">Pincode</label></b>
+                        <input type="Text" class="form-control" id="inputPin4" placeholder="Enter Pincode" name="officePincode">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end m-2">
+        <button class="btn btn-primary" [disabled]="!isFormValid()">Create</button>
+    </div>
+</div>

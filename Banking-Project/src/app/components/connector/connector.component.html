@@ -1,0 +1,440 @@
+<!-- <style>
+    .modal-backdrop {
+        opacity: 1 !important;
+    }
+
+    .offcanvas-backdrop.show {
+        opacity: 0.1 !important;
+    }
+
+    .offcanvas-backdrop.fade {
+        opacity: 0;
+    }
+</style -->
+<!-- <div class="container"> -->
+<div class="filters row">
+
+    <!-- <div class="row"> -->
+
+    <div class="col">
+        <!-- Search Filter -->
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="applyFilters()">
+    </div>
+
+
+    <div class="col-md-auto">
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <div class="modal-body">
+                        "Are you sure want to delete {{ rowSelectedCount }} records?"
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header p-3 mb-2 bg-primary">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel text-white">Archive</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        "Are you sure want to archive {{ rowSelectedCount }} records?"
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col col-lg-2">
+        <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight">Column Visibility <i class="fa-sharp fa-solid fa-filter"></i></button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+            data-bs-backdrop="static">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Column Visibility <i
+                        class="fa-sharp fa-solid fa-filter"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <hr>
+            <div class="offcanvas-body">
+                <div class="column-visibility">
+                    <!-- Select All Checkbox -->
+                    <div class="row mb-2">
+                        <div class="col" style="margin: 0%;">
+                            <label>
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"
+                                        [(ngModel)]="columnSelectAll" (change)="columnToggleSelectAll()">
+                                    <label class="btn btn-outline-primary" for="btncheck1">Select All</label>
+                                </div>
+                            </label>
+                        </div>
+                        <label class="col">
+                            <button class="btn btn-outline-primary" disabled>Selected: {{ columnSelectedCount }} of
+                                8</button>
+                        </label>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.fileNo"> SR
+                        </label>
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.fileType"> NAME
+                        </label>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.priority"> CONTACT NO
+                        </label>
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.status"> EMAIL
+                        </label>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.assignTo"> STATUS
+                        </label>
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.inSanction"> CHANGE PASSWARD
+
+                        </label>
+
+
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col">
+                            <input type="checkbox" [(ngModel)]="columnVisibility.Sanction"> ACTION
+
+                        </label>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sub-nav">
+        <h5 class="zone" style="color: blue;"><strong>CONNECTOR</strong></h5>
+    </div>
+    <div class="row">
+        <div class="tabs col-md-4">
+            <b><button type="button" class="text-warning border-bottom" style="border: none; background: none;"><b>All</b></button></b>&nbsp;
+            <button type="button" class="" style="border: none; background: none;">Regestration Pending</button>
+        </div>
+
+        <div class="col-md-4 offset-md-4" style="display: flex; flex-direction: row;">
+            <button class="export-button ">
+                <span>Payout Structure</span>
+            </button>
+            <button class="createbtn-button ">
+                <span>Create Connector</span>
+            </button>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<div class="table-wrapper fixed-height" style="max-height: 520px; overflow-y: auto;">
+    <table class="table table-striped">
+        <thead>
+            <tr class="sticky-top">
+                
+                <th *ngIf="columnVisibility.fileNo" scope="col">
+                    SR
+                </th>
+
+
+                <th *ngIf="columnVisibility.fileType" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>NAME</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+
+                            <form class="dropdown-menu p-4" style="max-height: 400px; overflow-y: auto;">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllFileTypes($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let fileType of fileTypes">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedFileTypes.has(fileType)"
+                                                (change)="toggleFileType(fileType)">
+                                            {{ fileType }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <i (click)="sortTable('fileNo')" class="fas ms-1"
+                                [class.fa-sort-asc]="sortDirection['fileNo'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['fileNo'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+
+                <th *ngIf="columnVisibility.priority" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>CONTACT NO</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllPriorities($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let priority of priorities">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedPriorities.has(priority)"
+                                                (change)="togglePriority(priority)">
+                                            {{ priority }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('priority')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['priority'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['priority'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+                <th *ngIf="columnVisibility.status" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>EMAIL</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllStatuses($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let status of statuses">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedStatuses.has(status)"
+                                                (change)="toggleStatus(status)">
+                                            {{ status }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('status')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['status'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['status'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+                <th *ngIf="columnVisibility.assignTo" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>STATUS</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllAssignTo($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let assignTo of assignToOptions">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedAssignToOptions.has(assignTo)"
+                                                (change)="toggleAssignTo(assignTo)">
+                                            {{ assignTo }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('assignTo')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['assignTo'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['assignTo'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+
+                <th *ngIf="columnVisibility.inSanction" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>CHANGE PASSWARD</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllInSanction($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let inSanctions of inSanction">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2"
+                                                [checked]="selectedInSanctionOption.has(inSanctions)"
+                                                (change)="toggleInSanctions(inSanctions)">
+                                            {{ inSanctions }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('InSanction')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['InSanction'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['InSanction'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+
+                <th *ngIf="columnVisibility.Sanction" scope="col">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>ACTION</div>
+                        <div class="dropdown">
+                            <button type="button" data-bs-toggle="dropdown"
+                                style="background: none; color: black; border: none;" aria-expanded="false"
+                                data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllSanction($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let Sanction of Sanction">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedSanctionOption.has(Sanction)"
+                                                (change)="toggleSanctions(Sanction)">
+                                            {{ Sanction }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('Sanction')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['Sanction'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['Sanction'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of paginatedTasks">
+                <!-- <td><input type="checkbox" [(ngModel)]="task.selected" (change)="updateSelectAll()" /></td> -->
+                <td *ngIf="columnVisibility.fileNo">{{ task.fileNo }}</td>
+                <td *ngIf="columnVisibility.fileType">{{ task.fileType }}</td>
+                <td *ngIf="columnVisibility.priority">{{ task.priority }}</td>
+                <td *ngIf="columnVisibility.status">{{ task.status }}</td>
+                <td *ngIf="columnVisibility.assignTo">
+                    <p [ngClass]="{
+                      'num-green': task.assignTo === 'Active',
+                      'num-red': task.assignTo === 'Inactive'
+                    }" style="display: inline; padding: 5px; border-radius: 5px; margin:0px; text-align: center;">
+                      {{ task.assignTo }}
+                    </p>
+                  </td>
+                <td *ngIf="columnVisibility.inSanction"><button style="background: none; border: none;"><i
+                            class="fas fa-lock" style="font-size: 14px; margin-right: 5px; "></i></button></td>
+                <td *ngIf="columnVisibility.Sanction"><button style="background: none; border: none; cursor: pointer;"
+                        title="Edit">
+                        <i class="fas fa-edit" style="font-size: 16px; color: #000000;"></i>
+                    </button> <button style="background: none; border: none; cursor: pointer;" title="Visible">
+                        <i class="fas fa-eye" style="font-size: 16px; color: #000000;"></i>
+                    </button><button style="background: none; border: none; cursor: pointer;" title="Delete">
+                        <i class="fas fa-trash" style="font-size: 16px; color: #dc3545;"></i>
+                    </button></td>
+                
+                <td>
+                   
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Pagination -->
+<div class="row mt-4">
+    <div class="pagination col-9">
+        <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+    <div class="filters col-2">
+        <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+    </div>
+</div>
+<!-- </div> -->
+
