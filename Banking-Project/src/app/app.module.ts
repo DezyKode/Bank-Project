@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LeadComponent } from './components/lead/LeadDashboard/lead.component';
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
-import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
+import { LoanDetailsComponents } from './components/casedetails/loan-details/loan-details.component';
 import { DocumentsComponent } from './components/casedetails/documents/documents.component';
 import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-offers.component';
 import { BankComponent } from './components/casedetails/bank/bank.component';
@@ -58,10 +58,10 @@ import { DocumentsListComponent } from './components/masters/documents-list/docu
 import { PersonaldetailsComponent } from './components/personaldetails/personaldetails.component';
 import { PdetailsComponent } from './components/pdetails/pdetails.component';
 
-
+import {LoanDetails} from './components/Admin/leads/loan-details/loan-details.component'
 import { TaskReportComponent } from './components/task-report/task-report.component';
 
-import { RouterModule } from '@angular/router';
+
 import { LoanStaticsComponent } from './components/loan-statics/loan-statics.component';
 import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
@@ -103,7 +103,10 @@ import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
-
+import { DetailsComponent } from './components/Admin/leads/details/details.component';
+import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
+import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
+import{BankComponents} from './components/Admin/leads/bank/bank.component';
 
 
 
@@ -121,6 +124,7 @@ import { DocumentListComponent } from './components/masters/document-list/docume
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LoginComponent,
     ManagerLoginComponent,
@@ -132,10 +136,10 @@ import { DocumentListComponent } from './components/masters/document-list/docume
     LeadComponent,
     DocumentsListComponent,
    CreateDocumentComponent,
-
+  
     OverviewComponent,
     AplicationDetailsComponent,
-    LoanDetailsComponent,
+    LoanDetailsComponents,
     DocumentsComponent,
     LoanOffersComponent,
     BankComponent,
@@ -143,7 +147,7 @@ import { DocumentListComponent } from './components/masters/document-list/docume
     CommentsComponent,
 
    
-
+    LoanDetails,
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
 
@@ -205,6 +209,10 @@ import { DocumentListComponent } from './components/masters/document-list/docume
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
+      DetailsComponent,
+      OverViewComponent,
+      ApplicationDetailsComponent,
+      BankComponents
 
 
 
@@ -216,7 +224,8 @@ import { DocumentListComponent } from './components/masters/document-list/docume
   ],
   
   imports: [
-    BrowserModule,
+  
+  BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

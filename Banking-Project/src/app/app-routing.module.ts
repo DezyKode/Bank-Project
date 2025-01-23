@@ -14,7 +14,7 @@ import { VerificationComponent } from './components/verification/verification.co
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
-import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
+import { LoanDetailsComponents } from './components/casedetails/loan-details/loan-details.component';
 import { BankComponent } from './components/casedetails/bank/bank.component';
 import { DocumentsComponent } from './components/casedetails/documents/documents.component';
 import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-offers.component';
@@ -67,6 +67,13 @@ import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
 
+import {DetailsComponent} from './components/Admin/leads/details/details.component';
+import {LoanDetails} from './components/Admin/leads/loan-details/loan-details.component';
+import {ApplicationDetailsComponent} from './components/Admin/leads/application-details/application-details.component'
+import{OverViewComponent} from './components/Admin/leads/over-view/over-view.component';
+import{BankComponents} from './components/Admin/leads/bank/bank.component'
+
+
 import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
 import { ConnectorComponent } from './components/connector/connector.component';
 import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
@@ -75,6 +82,7 @@ import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
 
 const routes: Routes = [
+
 
 
  
@@ -107,7 +115,7 @@ const routes: Routes = [
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
-  {path:'loan-details',component:LoanDetailsComponent},
+  // {path:'loan-details',component:LoanDetailsComponents},
   {path:"bank",component:BankComponent},
   {path:'documents',component:DocumentsComponent},
   {path:'loan-offers',component:LoanOffersComponent},
@@ -131,14 +139,20 @@ const routes: Routes = [
   {path:"DocumentListComponent",component:DocumentListComponent},
   // {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
- 
- 
+ {path:"DetailsComponent",component:DetailsComponent, 
+  children: [{path:"over-view",component:OverViewComponent},
+    {path:"application-details",component:ApplicationDetailsComponent},
+    {path:"loan-details",component:LoanDetails},
+    {path:"Bank",component:BankComponents}
+
+ ]}
+ ,
   {
     path: 'verification', component: VerificationComponent,
     children: [
       { path: 'Overview', component: OverviewComponent },
       { path: 'Application-details', component: AplicationDetailsComponent },
-      { path: 'loan-details', component: LoanDetailsComponent },
+      { path: 'loan-details', component: LoanDetailsComponents },
       { path: 'bank', component: BankComponent },
       { path: 'loan-offers', component: LoanOffersComponent },
       { path: 'comments', component: CommentsComponent },
