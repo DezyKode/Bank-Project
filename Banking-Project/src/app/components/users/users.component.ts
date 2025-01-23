@@ -21,6 +21,9 @@ export class UsersComponent {
     { id: 8, name: 'Hardik', email: 'hardik@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' }
   ];
 
+  currentPage: number = 1;
+  itemPerpage: number = 10;
+
   filteredUser() {
     return this.user.filter(user => {
       const matchesSearchText = this.searchText === '' || user.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
@@ -29,5 +32,55 @@ export class UsersComponent {
       const matchesStatus = this.statusFilter === '' || user.status === this.statusFilter;
       return matchesSearchText && matchesStatus;
     });
+  }
+
+  sortDirection: { [key: string]: 'asc' | 'desc' } = {
+    id: 'asc',
+    name: 'asc',
+  };
+
+  sortTable(column: string) {
+    const currentDirection = this.sortDirection[column] || 'asc';
+    const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
+    this.sortDirection[column] = newDirection; 
+
+    this.user = this.user.sort((a, b) => {
+      const prop = column as keyof typeof a;
+      if (newDirection === 'asc') {
+        return a[prop] > b[prop] ? 1 : -1;
+      } else {
+        return a[prop] < b[prop] ? 1 : -1;
+      }
+    });
+  }
+
+   // Pagination logic
+   get paginatedLoans() {
+    const filtered = this.filteredUser();
+    const startIndex = (this.currentPage - 1) * this.itemPerpage;
+    const endIndex = startIndex + this.itemPerpage;
+    return filtered.slice(startIndex, endIndex);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.filteredUser().length / this.itemPerpage);
+  }
+
+  setPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 }

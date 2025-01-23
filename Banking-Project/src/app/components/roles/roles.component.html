@@ -14,16 +14,64 @@
             <!-- Buttons aligned to the right -->
             <div class="col-12 col-md-9 text-center text-md-end mt-2 mt-md-0">
                 <button class="btn btn-primary m-1">+ Create Role</button>
+                <button class="btn btn-outline-success" (click)="refresh()">
+                    <i class="fa-solid fa-arrows-rotate" [ngClass]="{'spin': isSpinning}"></i> Refresh
+                </button>
             </div>
         </div>
 
         <!-- Table Section with scrolling -->
-        <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
+        <div class="fixed-height" style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
             <table class="table table-responsive table-striped">
                 <thead class="sticky-top">
                     <tr>
-                        <th scope="col" >ID</th>
-                        <th scope="col">Name</th>
+                        <th scope="col" >ID
+                            <i (click)="sortTable('id')" class="fas ms-2"
+                            [class.fa-arrow-up-a-z]="sortDirection['id'] === 'asc'"
+                            [class.fa-arrow-down-z-a]="sortDirection['id'] === 'desc'"
+                            style="cursor: pointer;">
+                        </i>
+                        </th>
+                        <th scope="col"><div style="display: flex; flex-direction: row;">
+                            <div>Name</div>
+                            <div class="dropdown">
+                                <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                    style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                    aria-expanded="false" data-bs-auto-close="outside">
+                                    <span *ngIf="selectedRole.size > 0"
+                                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                    <i class="fa-sharp fa-solid fa-filter"></i>
+                                </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox"
+                                                    class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectedAllRole($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let role of role">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox"
+                                                    class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2" [checked]="selectedRole.has(role)"
+                                                    (change)="toggleRole(role)">
+                                                {{ role}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('name')" class="fas ms-2"
+                                    [class.fa-arrow-up-a-z]="sortDirection['name'] === 'asc'"
+                                    [class.fa-arrow-down-z-a]="sortDirection['name'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div></th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -38,6 +86,13 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="pagination col-9">
+            <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
         </div>
     </div>
 </div>

@@ -52,49 +52,204 @@
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
-            <div class="col-md-2 d-flex flex-wrap align-items-center">
-                <div class="input-group m-1 flex-grow-1" style="min-width: 150px;">
-                    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Select Date"
-                        aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </div>
-            <div class="col-md-5 d-flex flex-wrap align-items-center">
-                <select class="form-select m-1" [(ngModel)]="statusFilter" aria-label="Default select example"
-                    style="width: 30%;">
-                    <option value="">All</option>
-                    <option value="To Be Login">To Be Login</option>
-                    <option value="Login">Login</option>
-                    <option value="Sanction">Sanction</option>
-                    <option value="Disbursement">Disbursement</option>
-                    <option value="Rejected">Rejected</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
-            <div class="col-md-2 d-flex flex-wrap justify-content-end">
-                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Case</button>
+            <div class="col-md-9 d-flex flex-wrap justify-content-end">
+                <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Case</button>&nbsp;
+                <!-- <button class="btn btn-outline-success"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button> -->
+                <button class="btn btn-outline-success" (click)="refresh()">
+                    <i class="fa-solid fa-arrows-rotate" [ngClass]="{'spin': isSpinning}"></i> Refresh
+                </button>
             </div>
         </div>
         <!-- Table Section with scrolling -->
-        <div style="max-height: 400px; overflow-y: auto; overflow-x: auto;">
-            <table class="table table-responsive">
+        <div class="fixed-height" style="max-height: 520px; overflow-y: auto;">
+            <table class="table table-responsive ">
                 <thead class="sticky-top table-secondary">
                     <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Applicant</th>
-                        <th scope="col">Account Manager</th>
-                        <th scope="col">Loan Requirement(In Lakh)</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Created By</th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                Id
+                                <div>
+                                    <i (click)="sortTable('id')" class="fa-sharp-duotone fa-solid  ms-2"
+                                        [class.fa-arrow-up-1-9]="sortDirection['id'] === 'asc'"
+                                        [class.fa-arrow-down-9-1]="sortDirection['id'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                Applicant
+                                <div>
+                                    <i (click)="sortTable('applicant')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['applicant'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['applicant'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                <div>Account Manager</div>
+                                <div class="dropdown">
+                                    <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                        style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                        aria-expanded="false" data-bs-auto-close="outside">
+                                        <span *ngIf="selectedAccountManager.size > 0"
+                                            class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                        <i class="fa-sharp fa-solid fa-filter"></i>
+                                    </button>
+                                    <form class="dropdown-menu p-4">
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <label>
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck1"
+                                                        (change)="toggleSelectAllAccountManager($event)">
+                                                    SelectAll
+                                                </label>
+                                            </div>
+                                            <div class="form-check" *ngFor="let accountManager of accountManager">
+                                                <label style="color: rgb(87, 85, 85);">
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck2"
+                                                        [checked]="selectedAccountManager.has(accountManager)"
+                                                        (change)="toggleAccountManager(accountManager)">
+                                                    {{ accountManager}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <i (click)="sortTable('accountManager')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['accountManager'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['accountManager'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                Loan Requirement(In Lakh)
+                                <div>
+                                    <i (click)="sortTable('loanRequirement')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['loanRequirement'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['loanRequirement'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                <div>Status</div>
+                                <div class="dropdown">
+                                    <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                        style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                        aria-expanded="false" data-bs-auto-close="outside">
+                                        <span *ngIf="selectedStatus.size > 0"
+                                            class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                        <i class="fa-sharp fa-solid fa-filter"></i>
+                                    </button>
+                                    <form class="dropdown-menu p-4">
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <label>
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck1" (change)="toggleSelectedAllStatus($event)">
+                                                    SelectAll
+                                                </label>
+                                            </div>
+                                            <div class="form-check" *ngFor="let status of status">
+                                                <label style="color: rgb(87, 85, 85);">
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck2" [checked]="selectedStatus.has(status)"
+                                                        (change)="toggleStatus(status)">
+                                                    {{ status}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <i (click)="sortTable('status')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['status'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['status'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                Date
+                                <div>
+                                    <i (click)="sortTable('date')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['date'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['date'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div style="display: flex; flex-direction: row;">
+                                <div>Created By</div>
+                                <div class="dropdown">
+                                    <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                        style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                        aria-expanded="false" data-bs-auto-close="outside">
+                                        <span *ngIf="selectedCreatedBy.size > 0"
+                                            class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                        <i class="fa-sharp fa-solid fa-filter"></i>
+                                    </button>
+                                    <form class="dropdown-menu p-4">
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <label>
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck1" (change)="toggleSelectAllCreatedBy($event)">
+                                                    SelectAll
+                                                </label>
+                                            </div>
+                                            <div class="form-check" *ngFor="let createdBY of createdBY">
+                                                <label style="color: rgb(87, 85, 85);">
+                                                    <input type="checkbox"
+                                                        class="form-check-input border border-secondary"
+                                                        id="dropdownCheck2" [checked]="selectedCreatedBy.has(createdBY)"
+                                                        (change)="toggleCreatedBy(createdBY)">
+                                                    {{ createdBY}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <i (click)="sortTable('createdBY')" class="fas ms-2"
+                                        [class.fa-arrow-up-a-z]="sortDirection['createdBY'] === 'asc'"
+                                        [class.fa-arrow-down-z-a]="sortDirection['createdBY'] === 'desc'"
+                                        style="cursor: pointer;">
+                                    </i>
+                                </div>
+                            </div>
+                        </th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let loan of filteredLoan()">
-                        <th scope="row">{{ loan.id }}</th>
-                        <td>{{ loan.applicant }}</td>
-                        <td>{{ loan.accountManager }}</td>
-                        <td>{{ loan.loanRequirement }}</td>
+                    <tr *ngFor="let loan of paginatedLoans">
+                        <th scope="row" class="text-secondary-emphasis" style="font-weight: normal;">{{ loan.id }}</th>
+                        <td class="text-secondary-emphasis">{{ loan.applicant }}</td>
+                        <td class="text-secondary-emphasis">{{ loan.accountManager }}</td>
+                        <td class="text-secondary-emphasis">{{ loan.loanRequirement }}</td>
                         <td>
                             <h6 [ngStyle]="{
                                 'background-color': loan.status === 'To Be Login' ? 'rgb(220, 228, 255)' :loan.status === 'Login' ? 'rgb(255, 255, 180)' :loan.status === 'Sanction' ? 'rgb(195, 255, 255)' :loan.status === 'Disbursement' ? 'rgb(188, 255, 188)' :loan.status === 'Completed' ? 'rgb(198, 198, 255)' : 'rgb(255, 220, 220)',
@@ -104,8 +259,8 @@
                                 {{ loan.status }}
                             </h6>
                         </td>
-                        <td>{{ loan.Date }}</td>
-                        <td>{{ loan.createdBy }}</td>
+                        <td class="text-secondary-emphasis">{{ loan.date }}</td>
+                        <td class="text-secondary-emphasis">{{ loan.createBy }}</td>
                         <td><button style="background: none; border: none;">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
@@ -113,6 +268,13 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="pagination col-9">
+            <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
         </div>
     </div>
 </div>
