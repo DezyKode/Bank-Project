@@ -1,0 +1,30 @@
+.fixed-height{height: 520px;}
+
+/* Define the spinning animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .spin {
+    animation: spin 0.7s linear infinite;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+  }
+  
+  .pagination button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    height: 45px;
+  }
+  
+  .pagination button:disabled {
+    cursor: not-allowed;
+  }

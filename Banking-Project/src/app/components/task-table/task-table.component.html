@@ -1,17 +1,4 @@
-<style>
-    .modal-backdrop {
-        opacity: 1 !important;
-    }
-
-    .offcanvas-backdrop.show {
-        opacity: 0.1 !important;
-    }
-
-    .offcanvas-backdrop.fade {
-        opacity: 0;
-    }
-</style>
-<div class="" >
+<div class="">
     <div class="filters row">
         <!-- <div class="row"> -->
         <div class="col">
@@ -138,28 +125,43 @@
             </div>
         </div>
     </div>
-    <!-- Table Wrapper with Horizontal Scroll -->
-    <div>
-        <label class="col">
-            <button class="btn btn-outline-primary" disabled>Selected: {{ rowSelectedCount }} of {{rowCount}}</button>
-        </label>
+
+    <div class="row mb-3">
+        <div class="col-md-5 d-flex flex-wrap">
+            <label>
+                <button class="btn btn-outline-primary" disabled>Selected: {{ rowSelectedCount }} of
+                    {{rowCount}}</button>
+            </label>
+        </div>
+        <div class="col-md-6 d-flex flex-wrap justify-content-end">
+            <button class="btn btn-outline-success" (click)="refresh()">
+                <i class="fa-solid fa-arrows-rotate" [ngClass]="{'spin': isSpinning}"></i> Refresh
+            </button>
+        </div>
     </div>
     <div class="table-wrapper fixed-height" style="max-height: 520px; overflow-y: auto;">
-        <table class="table table-striped">
-            <thead>
+        <table class="table">
+            <thead class="table-secondary">
                 <tr class="sticky-top">
                     <th># <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()" /></th>
-                    <th *ngIf="columnVisibility.fileNo" scope="col">File No</th>
+                    <th class="" *ngIf="columnVisibility.fileNo" scope="col">File No
+                        <i (click)="sortTable('fileNo')" class="fas ms-1"
+                            [class.fa-arrow-up-a-z]="sortDirection['fileNo'] === 'asc'"
+                            [class.fa-arrow-down-z-a]="sortDirection['fileNo'] === 'desc'" style="cursor: pointer;">
+                        </i>
+                    </th>
                     <th *ngIf="columnVisibility.fileType" scope="col">
                         <div style="display: flex; flex-direction: row;">
-
+                            <div>File Type</div>
                             <div class="dropdown">
-                                <button type="button" class="btn dropdown-toggle "
+                                <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
                                     style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
                                     aria-expanded="false" data-bs-auto-close="outside">
-                                    <strong>File Type</strong> <i
-                                        class="fa-sharp fa-solid fa-filter m-0 ms-2 p-0 text-secondary"
-                                        style="background: none; border: none;"></i>
+                                    <span *ngIf="selectedFileTypes.size > 0"
+                                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
+                                    <i class="fa-sharp fa-solid fa-filter"></i>
                                 </button>
                                 <form class="dropdown-menu p-4">
                                     <div class="mb-3">
@@ -180,9 +182,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <i (click)="sortTable('fileNo')" class="fas ms-1"
-                                    [class.fa-sort-asc]="sortDirection['fileNo'] === 'asc'"
-                                    [class.fa-sort-desc]="sortDirection['fileNo'] === 'desc'" style="cursor: pointer;">
+                                <i (click)="sortTable('fileType')" class="fas ms-2"
+                                    [class.fa-arrow-up-a-z]="sortDirection['fileType'] === 'asc'"
+                                    [class.fa-arrow-down-z-a]="sortDirection['fileType'] === 'desc'"
+                                    style="cursor: pointer;">
                                 </i>
                             </div>
                         </div>
@@ -191,10 +194,13 @@
                         <div style="display: flex; flex-direction: row;">
                             <div>Priority</div>
                             <div class="dropdown">
-                                <button type="button"
-                                    class="btn btn-primary dropdown-toggle m-0 ms-2 p-0 text-secondary"
+                                <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
                                     data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
                                     aria-expanded="false" data-bs-auto-close="outside">
+                                    <span *ngIf="selectedPriorities.size > 0"
+                                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
                                     <i class="fa-sharp fa-solid fa-filter"></i>
                                 </button>
                                 <form class="dropdown-menu p-4">
@@ -216,9 +222,9 @@
                                         </div>
                                     </div>
                                 </form>
-                                <i (click)="sortTable('priority')" class="fas ms-3"
-                                    [class.fa-sort-asc]="sortDirection['priority'] === 'asc'"
-                                    [class.fa-sort-desc]="sortDirection['priority'] === 'desc'"
+                                <i (click)="sortTable('priority')" class="fas ms-2"
+                                    [class.fa-arrow-up-a-z]="sortDirection['priority'] === 'asc'"
+                                    [class.fa-arrow-down-z-a]="sortDirection['priority'] === 'desc'"
                                     style="cursor: pointer;">
                                 </i>
                             </div>
@@ -226,12 +232,15 @@
                     </th>
                     <th *ngIf="columnVisibility.status" scope="col">
                         <div style="display: flex; flex-direction: row;">
-                            <div>Statuses</div>
+                            <div>Statuse</div>
                             <div class="dropdown">
-                                <button type="button"
-                                    class="btn btn-primary dropdown-toggle m-0 ms-2 p-0 text-secondary"
+                                <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
                                     data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
                                     aria-expanded="false" data-bs-auto-close="outside">
+                                    <span *ngIf="selectedStatuses.size > 0"
+                                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
                                     <i class="fa-sharp fa-solid fa-filter"></i>
                                 </button>
                                 <form class="dropdown-menu p-4">
@@ -253,9 +262,10 @@
                                         </div>
                                     </div>
                                 </form>
-                                <i (click)="sortTable('status')" class="fas ms-3"
-                                    [class.fa-sort-asc]="sortDirection['status'] === 'asc'"
-                                    [class.fa-sort-desc]="sortDirection['status'] === 'desc'" style="cursor: pointer;">
+                                <i (click)="sortTable('status')" class="fas ms-2"
+                                    [class.fa-arrow-up-a-z]="sortDirection['status'] === 'asc'"
+                                    [class.fa-arrow-down-z-a]="sortDirection['status'] === 'desc'"
+                                    style="cursor: pointer;">
                                 </i>
                             </div>
                         </div>
@@ -264,10 +274,13 @@
                         <div style="display: flex; flex-direction: row;">
                             <div>Assign To</div>
                             <div class="dropdown">
-                                <button type="button"
-                                    class="btn btn-primary dropdown-toggle m-0 ms-2 p-0 text-secondary"
+                                <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
                                     data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
                                     aria-expanded="false" data-bs-auto-close="outside">
+                                    <span *ngIf="selectedAssignToOptions.size > 0"
+                                        class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New alerts</span>
+                                    </span>
                                     <i class="fa-sharp fa-solid fa-filter"></i>
                                 </button>
                                 <form class="dropdown-menu p-4">
@@ -290,9 +303,9 @@
                                         </div>
                                     </div>
                                 </form>
-                                <i (click)="sortTable('assignTo')" class="fas ms-3"
-                                    [class.fa-sort-asc]="sortDirection['assignTo'] === 'asc'"
-                                    [class.fa-sort-desc]="sortDirection['assignTo'] === 'desc'"
+                                <i (click)="sortTable('assignTo')" class="fas ms-2"
+                                    [class.fa-arrow-up-a-z]="sortDirection['assignTo'] === 'asc'"
+                                    [class.fa-arrow-down-z-a]="sortDirection['assignTo'] === 'desc'"
                                     style="cursor: pointer;">
                                 </i>
                             </div>
@@ -300,19 +313,19 @@
                     </th>
                     <th *ngIf="columnVisibility.startDate" scope="col">
                         <label for="deadline">Sart Date</label>
-                        <input type="date" [(ngModel)]="selectedStartDate" (change)="applyFilters()"
-                            placeholder="Start Date" style="display: block;">
-                        <i (click)="sortTable('startDate')" class="fas"
-                            [class.fa-sort-asc]="sortDirection['startDate'] === 'asc'"
-                            [class.fa-sort-desc]="sortDirection['startDate'] === 'desc'" style="cursor: pointer;"></i>
+                        <!-- <input type="date" [(ngModel)]="selectedStartDate" (change)="applyFilters()"
+                            placeholder="Start Date" style="display: block;"> -->
+                        <i (click)="sortTable('startDate')" class="fas ms-2"
+                            [class.fa-arrow-up-a-z]="sortDirection['startDate'] === 'asc'"
+                            [class.fa-arrow-down-z-a]="sortDirection['startDate'] === 'desc'" style="cursor: pointer;"></i>
                     </th>
                     <th *ngIf="columnVisibility.deadline" scope="col">
                         <label for="deadline">Deadline</label>
-                        <input type="date" [(ngModel)]="selectedDeadline" (change)="applyFilters()"
-                            placeholder="Deadline" style="display: block;">
-                        <i (click)="sortTable('deadline')" class="fas"
-                            [class.fa-sort-asc]="sortDirection['deadline'] === 'asc'"
-                            [class.fa-sort-desc]="sortDirection['deadline'] === 'desc'" style="cursor: pointer;"></i>
+                        <!-- <input type="date" [(ngModel)]="selectedDeadline" (change)="applyFilters()"
+                            placeholder="Deadline" style="display: block;"> -->
+                        <i (click)="sortTable('deadline')" class="fas ms-2"
+                            [class.fa-arrow-up-a-z]="sortDirection['deadline'] === 'asc'"
+                            [class.fa-arrow-down-z-a]="sortDirection['deadline'] === 'desc'" style="cursor: pointer;"></i>
                     </th>
                     <th *ngIf="columnVisibility.remark" scope="col">Remark</th>
                     <th scope="col">Action</th>

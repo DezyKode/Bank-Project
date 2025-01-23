@@ -9,16 +9,102 @@
             </div>
         </div>
         <div class="col-md-9 d-flex justify-content-end">
-            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create Bank/NBFC</button>
+            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i> Create Bank/NBFC</button> &nbsp;
+            <button class="btn btn-outline-success" (click)="refresh()">
+                <i class="fa-solid fa-arrows-rotate" [ngClass]="{'spin': isSpinning}"></i> Refresh
+            </button>
         </div>
     </div>
-    <div style="max-height: 550px; overflow-y: auto; overflow-x: auto; ">
+    <div class="fixed-height" style="max-height: 550px; overflow-y: auto; overflow-x: auto; ">
         <table class="table table-striped table-responsive">
             <thead class="sticky-top">
                 <tr>
-                    <th scope="col">Sr No</th>
-                    <th scope="col">Banks/NBFC Name</th>
-                    <th scope="col">Payout</th>
+                    <th scope="col">Sr No
+                        <i (click)="sortTable('id')" class="fas ms-2"
+                                [class.fa-arrow-up-a-z]="sortDirection['id'] === 'asc'"
+                                [class.fa-arrow-down-z-a]="sortDirection['id'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                    </th>
+                    <th scope="col"><div style="display: flex; flex-direction: row;">
+                        <div>Banks/NBFC Name</div>
+                        <div class="dropdown">
+                            <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <span *ngIf="selectedBankName.size > 0"
+                                    class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                                <i class="fa-sharp fa-solid fa-filter"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox"
+                                                class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectedAllBankName($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let role of bankName">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox"
+                                                class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedBankName.has(role)"
+                                                (change)="toggleBankName(role)">
+                                            {{ role}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('bankName')" class="fas ms-2"
+                                [class.fa-arrow-up-a-z]="sortDirection['bankName'] === 'asc'"
+                                [class.fa-arrow-down-z-a]="sortDirection['bankName'] === 'desc'"
+                                style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div></th>
+                    <th scope="col"><div style="display: flex; flex-direction: row;">
+                        <div>Payout</div>
+                        <div class="dropdown">
+                            <button type="button" class="btn m-0 ms-2 p-0 text-secondary position-relative"
+                                style="background: none; border: none; color: black;" data-bs-toggle="dropdown"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <span *ngIf="selectedPayout.size > 0"
+                                    class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                                <i class="fa-sharp fa-solid fa-filter"></i>
+                            </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox"
+                                                class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectedAllPayout($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let role of payout">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox"
+                                                class="form-check-input border border-secondary"
+                                                id="dropdownCheck2" [checked]="selectedPayout.has(role)"
+                                                (change)="togglePayout(role)">
+                                            {{ role}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('payout')" class="fas ms-2"
+                                [class.fa-arrow-up-a-z]="sortDirection['payout'] === 'asc'"
+                                [class.fa-arrow-down-z-a]="sortDirection['payout'] === 'desc'"
+                                style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div></th>
                     <th scope="col" style="width: 20%; text-align: center;">Total RAC Branches</th>
                     <th scope="col">Criteria</th>
                 </tr>
@@ -42,5 +128,12 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div class="row mt-4">
+        <div class="pagination col-9">
+            <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
     </div>
 </div>
