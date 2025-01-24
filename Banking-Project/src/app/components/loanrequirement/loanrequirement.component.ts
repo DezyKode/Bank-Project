@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component ,EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-loanrequirement',
   templateUrl: './loanrequirement.component.html',
   styleUrls: ['./loanrequirement.component.css']
 })
+
 export class LoanrequirementComponent {
 
   personalLoan: any;
@@ -15,7 +16,7 @@ export class LoanrequirementComponent {
   tenureError: boolean = false;
   idvError: boolean = false;
   isFormValid: boolean = false;
-
+ 
   resetForm() {
     // Reset the fields
     this.personalLoan = '';
@@ -31,6 +32,11 @@ export class LoanrequirementComponent {
     // If you are using reactive forms, you can reset the form controls here
     alert('Form has been reset.');
   }
+  
+  constructor(private router: Router) {}
+  // constructor(private router: Router, private LoanrequirementComponent: LoanrequirementComponent) {}
+  @Output() formStatusChanged = new EventEmitter<boolean>();
+
 
   validateForm(): void {
     // Validate the form: Check if all required fields are filled and valid
@@ -43,11 +49,20 @@ export class LoanrequirementComponent {
       this.tenureError || 
       this.idvError
     ) {
+      this.formStatusChanged.emit(this.isFormValid);  // Emit failure
+
       alert('Please fill all the fields before proceeding!');
     } else {
       // If the form is valid, reset the form and show a success message
       this.resetForm();
       alert('Form proceeded successfully!');
+
+    // Navigate to the next page (e.g., applicant details form)
+    
+
+    this.router.navigate(['/createNewCase/applicantdetails']);
+
+
     }
   }
 
