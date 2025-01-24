@@ -14,7 +14,7 @@ import { VerificationComponent } from './components/verification/verification.co
 import { PersonalloanComponent } from './components/personalloan/personalloan.component';
 import { OverviewComponent } from './components/casedetails/overview/overview.component';
 import { AplicationDetailsComponent } from './components/casedetails/aplication-details/aplication-details.component';
-import { LoanDetailsComponent } from './components/casedetails/loan-details/loan-details.component';
+import { LoanDetailsComponents } from './components/casedetails/loan-details/loan-details.component';
 import { BankComponent } from './components/casedetails/bank/bank.component';
 import { DocumentsComponent } from './components/casedetails/documents/documents.component';
 import { LoanOffersComponent } from './components/casedetails/loan-offers/loan-offers.component';
@@ -55,6 +55,9 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { LoanComponent } from './components/loan/loan.component';
+import { CreatenewcaseDocumentComponent } from './components/createnewcase-document/createnewcase-document.component';
+import { CreatenewcaseProvisionalLetterComponent } from './components/createnewcase-provisional-letter/createnewcase-provisional-letter.component';
 import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
 import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
@@ -67,20 +70,39 @@ import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
 
+import {DetailsComponent} from './components/Admin/leads/details/details.component';
+import {LoanDetails} from './components/Admin/leads/loan-details/loan-details.component';
+import {ApplicationDetailsComponent} from './components/Admin/leads/application-details/application-details.component'
+import{OverViewComponent} from './components/Admin/leads/over-view/over-view.component';
+import{BankComponents} from './components/Admin/leads/bank/bank.component'
+
+
 import { PayoutStructureComponent } from './components/payout-structure/payout-structure.component';
 import { ConnectorComponent } from './components/connector/connector.component';
 import { CreateConnectorComponent } from './components/create-connector/create-connector.component';
 import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
 import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+
 import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
 import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
 import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
 import { NewRacComponent } from './components/new-rac/new-rac.component';
 
-
+import {LoandisburmentComponent} from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
+import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
+import {Application} from './components/Admin/LoanDisburment/application-details/application-details.component';
+import{OverView} from './components/Admin/LoanDisburment/over-view/over-view.component';
+import{Bank} from './components/Admin/LoanDisburment/bank/bank.component'
+import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
+// import {LoanRejected} from './components/Admin/LoanRejected/loanRejected/loan-rejected.component';
+import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/application-rejected/application-rejected.component';
+import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
+import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
+import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
 
 const routes: Routes = [
+
 
 
  
@@ -119,7 +141,7 @@ const routes: Routes = [
   {path:'comments',component:CommentsComponent},
   {path:'Overview',component:OverviewComponent},
   {path:"Application-details",component:AplicationDetailsComponent},
-  {path:'loan-details',component:LoanDetailsComponent},
+  // {path:'loan-details',component:LoanDetailsComponents},
   {path:"bank",component:BankComponent},
   {path:'documents',component:DocumentsComponent},
   {path:'loan-offers',component:LoanOffersComponent},
@@ -143,14 +165,34 @@ const routes: Routes = [
   {path:"DocumentListComponent",component:DocumentListComponent},
   // {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
- 
- 
+ {path:"DetailsComponent",component:DetailsComponent, 
+  children: [{path:"over-view",component:OverViewComponent},
+    {path:"application-details",component:ApplicationDetailsComponent},
+    {path:"loan-details",component:LoanDetails},
+    {path:"Bank",component:BankComponents}
+
+ ]}
+ ,{path:"loandisburment",component:LoandisburmentComponent, 
+  children: [{path:"over-view",component:OverView},
+    {path:"application-details",component:Application},
+    {path:"loan-details",component:Loan},
+    {path:"Bank",component:Bank}
+
+ ]}
+ ,{path:"LoanRejectedComponent",component:LoanRejectedComponent, 
+  children: [{path:"over-view",component:OverViewRejectedComponent},
+    {path:"application-details",component:ApplicationRejectedComponent},
+    {path:"loan-details",component:LoanDetailsRejectedComponent},
+    {path:"Bank",component:BankRejectedComponent}
+
+ ]}
+ ,
   {
     path: 'verification', component: VerificationComponent,
     children: [
       { path: 'Overview', component: OverviewComponent },
       { path: 'Application-details', component: AplicationDetailsComponent },
-      { path: 'loan-details', component: LoanDetailsComponent },
+      { path: 'loan-details', component: LoanDetailsComponents },
       { path: 'bank', component: BankComponent },
       { path: 'loan-offers', component: LoanOffersComponent },
       { path: 'comments', component: CommentsComponent },
@@ -184,19 +226,27 @@ const routes: Routes = [
   {path:'drivingmodal',component:DrivingmodalComponent},
   {path:'cinmodal',component:CinmodalComponent},
   {path:'pancardmodal',component:PancardmodalComponent},
+
   {
-    path:'createnewcase',component:CreatenewcaseComponent,
+    path:'createNewCase',component:CreatenewcaseComponent,
     children:[
       {path:'loanrequirement',component:LoanrequirementComponent},
       {path:'applicantdetails',component:ApplicantdetailsComponent},
+      {path:'loan',component:LoanComponent},
+      {path:'createnewcaseDocument',component:CreatenewcaseDocumentComponent},
+      {path:'createnewcaseProvisionalLetter',component:CreatenewcaseProvisionalLetterComponent},
+    
 
     ]
   },
+
+  {path:'createnewcase',component:CreatenewcaseComponent },
 ];
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
  

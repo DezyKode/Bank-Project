@@ -48,6 +48,8 @@ export class MISReportComponent {
     { id: 8, menmber: 'Raina',   toBeLoginCount: '1', toBeLoginAmount: '0', loginCount: '0', loginAmount: '1', toBeSanctionCount: '0', toBeSanctionAmount: '2', sanctionCount: '1', sanctionAmount: '2', toBeDisbursedCount: '0', toBeDisbursedAmount: '3', disbursedmentCount: '1', disbursedmentAmount: '3', disbursedCount: '1', disbursedAmount: '3', rejectedCount: '1', rejectedAmount: '3'}
   ];
 
+  currentPage: number = 1;
+  itemPerpage: number = 10;
 
   filteredMIS() {
     return this.misReport.filter(misReport => {
@@ -133,5 +135,35 @@ export class MISReportComponent {
     // });
 
     doc.save('MIS_Report.pdf');
+  }
+
+   // Pagination logic
+   get paginatedLoans() {
+    const filtered = this.filteredMIS();
+    const startIndex = (this.currentPage - 1) * this.itemPerpage;
+    const endIndex = startIndex + this.itemPerpage;
+    return filtered.slice(startIndex, endIndex);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.filteredMIS().length / this.itemPerpage);
+  }
+
+  setPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 }

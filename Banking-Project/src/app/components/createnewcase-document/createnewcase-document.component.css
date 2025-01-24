@@ -1,0 +1,8 @@
+.primary {
+    border-bottom: 1px solid transparent; /* Set initial border color to transparent */
+    transition: border-bottom 0.6s ease;  /* Add smooth transition to the border-bottom */
+}
+
+.primary:hover {
+    border-bottom: 3px outset lightblue; /* Border color will be applied on hover */
+}

@@ -1,51 +1,12 @@
-<form action="" id="isFormValid " #loanForm="ngForm">
+<form action="" id="isFormValid " #loanForm="ngForm" (ngSubmit)="submitForm()">
   <div class="container mt-10 mb-10">
-    <h1 class="text-start py-2 color">Check Eligibility</h1>
-    <!-- Type of Loan -->
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="personalLoan" class="form-label"
-            >Type Of Loan <span style="color: red">*</span></label
-          ><br />
-          <select
-            id="personalLoan"
-            class="form-control form-select"
-            aria-label="Type Of Loan"
-            required
-            [(ngModel)]="personalLoan"
-            name="personalLoan"
-            #personalLoanInput="ngModel"
-            (change)="validateForm()"
-            [ngClass]="{
-              'is-invalid':
-                personalLoanInput.invalid && personalLoanInput.touched,
-              'is-valid': personalLoanInput.valid && personalLoanInput.touched
-            }"
-          >
-            <option value="">Select loan type</option>
-            <option value="personal">Personal Loan</option>
-            <option value="home">Home Loan</option>
-            <option value="auto">Auto Loan</option>
-            <option value="other">Other</option>
-          </select>
-          <div
-            *ngIf="personalLoanInput.invalid && personalLoanInput.touched"
-            class="text-danger form-text position-absolute"
-          >
-            <div *ngIf="personalLoanInput.errors?.['required']">
-              Loan type is required
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="text-start py-2 color">Applicant Details</h1>     
 
     <!-- Primary Applicant -->
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <div class="row">
+          <div class="row ">
             <a href="" class="text-decoration-none">Primary Applicant</a>
             <hr
               style="
@@ -53,6 +14,7 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
               "
+              class="mt-0"
             />
           </div>
         </div>
@@ -322,9 +284,9 @@
         <!-- employment type -->
 
         <div class="form-group position-relative">
-          <label for="empType" class="form-label"
-            >Employment Type <span style="color: red">*</span></label
-          ><br />
+          <label for="empType" class="form-label">
+            Employment Type <span style="color: red">*</span>
+          </label><br />
           <select
             id="empType"
             class="form-control form-select"
@@ -354,6 +316,7 @@
             </div>
           </div>
         </div>
+        
       </div>
 
       <!-- 3rd column -->
@@ -429,7 +392,7 @@
             *ngIf="mobileInput.invalid && mobileInput.touched"
             class="text-danger invalid-feedback form-text position-absolute"
           >
-            Please enter a valid 10-digit mobile number.
+             enter a valid 10-digit mobile number.
           </span>
         </div>
 
@@ -487,7 +450,7 @@
     </div>
     <!-- 3rd row data -->
     <!-- 3rd row data -->
-    <div class="row">
+    <div class="row" *ngIf="empType === 'Salaried'">
       <div class="col-md-4">
         <!-- avg bonus of last three years -->
         <div class="form-group position-relative">
@@ -519,7 +482,7 @@
             >Please enter a valid bonus amount</small
           >
         </div>
-
+    
         <!-- future rent income -->
         <div class="form-group position-relative">
           <label for="futureIncome" class="form-label">
@@ -551,8 +514,8 @@
           >
         </div>
       </div>
-
-      <!-- 2nd colum -->
+    
+      <!-- 2nd column -->
       <div class="col-md-4">
         <!-- monthly gross salary -->
         <div class="form-group position-relative">
@@ -584,10 +547,9 @@
             >Please enter a valid monthly gross salary</small
           >
         </div>
-
       </div>
-
-      <!-- 3rd colum -->
+    
+      <!-- 3rd column -->
       <div class="col-md-4">
         <!-- monthly net sal -->
         <div class="form-group position-relative">
@@ -620,8 +582,214 @@
             Please enter a valid monthly net salary
           </small>
         </div>
+      </div>
+    </div>
 
-       
+    <!-- self employed mona-->
+    <div class="row"   *ngIf="empType === 'Self Employed'">
+      <div class="col-md-4">
+        <!-- employer type -->
+        <div class="form-group position-relative">
+          <label for="Employer1" class="form-label">
+            Employer Type <span style="color: red;">*</span>
+          </label><br />
+        
+          <!-- Employer Type dropdown -->
+          <div class="input-group">
+            <select 
+              id="Employer1" 
+              class="form-control" 
+              aria-label="Type Of Employment" 
+              required 
+              [(ngModel)]="Employer1" 
+              name="Employer1" 
+              (blur)="validateEmployer()" 
+              (change)="validateForm()" 
+              #employerInput="ngModel" 
+              [ngClass]="{
+                'is-invalid': employerInput.invalid && employerInput.touched, 
+                'is-valid': employerInput.valid && employerInput.touched
+              }"
+            >
+              <option value="">Select Employer Type</option>
+              <option value="salaried">one</option>
+              <option value="selfEmployed">two</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        
+          <!-- Error message for invalid selection -->
+          <div *ngIf="employerInput.invalid && employerInput.touched" class="text-danger mt-2 form-text position-absolute">
+            <div *ngIf="employerInput.errors?.['required']">
+              Employment Type is required.
+            </div>
+          </div>
+        </div>
+        
+        <!-- avg bonus of last three years -->
+        <div class="form-group position-relative">
+          <label for="averageBouns" class="form-label">
+            Average Bonus Of Last Three Years <span style="color: red;">*</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+  
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="averageBouns" name="averageBouns" [(ngModel)]="averageBonus"
+              (blur)="validateBonus()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': bonusError, 'is-valid': !bonusError && averageBonus !== '' }" />
+
+              
+          </div>
+          <small *ngIf="bonusError" id="bonusError" class=" text-danger form-text position-absolute">Please enter a valid bonus
+            amount</small>
+        </div>
+  
+        <!-- future rent income -->
+        <div class="form-group position-relative">
+          <label for="futureIncome" class="form-label">
+            Future Rent Income <span style="color: red;">*</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="futureIncome" name="futureIncome" [(ngModel)]="futureRent"
+              (blur)="validateFutureRent()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': futureRentError, 'is-valid': !futureRentError && futureRent !== '' }" />
+
+              
+          </div>
+          <small *ngIf="futureRentError" id="futureRentError" class="form-text position-absolute text-danger">Please enter a valid future
+            rent amount</small>
+        </div>
+  
+      </div>
+  
+      <!-- 2nd colum -->
+      <div class="col-md-4">
+        <!-- monthly gross salary -->
+        <div class="form-group position-relative">
+          <label for="grossSalary" class="form-label">
+            Monthly Gross Salary <span style="color: red;"> *</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend ">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="grossSalary" name="grossSalary" [(ngModel)]="monthSalary"
+              (blur)="validateMonthSalary()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': grossSalaryError, 'is-valid': !grossSalaryError && monthSalary !== '' }" />
+          </div>
+          <small *ngIf="grossSalaryError" id="grossSalaryError" class="form-text position-absolute text-danger">Please enter a valid monthly
+            gross salary</small>
+        </div>
+
+        <!-- avg monthly  incentive of last 6 month -->
+        <div class="form-group position-relative">
+          <label for="avgInsentive" class="form-label">
+            Average Monthly Incentive Of last 6 Month<span style="color: red;">*</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="avgInsentive" name="avgInsentive" [(ngModel)]="incentive"
+              (blur)="validateIncentive()"
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': incentiveError, 'is-valid': !incentiveError && incentive !== '' }" />
+
+              
+          </div>
+          <small *ngIf="incentiveError" id="incentiveError" class="form-text position-absolute text-danger">Please enter a valid average
+            last 6 month incentive</small>
+        </div>
+  
+        <!-- loan emi -->
+        <div class="form-group position-relative">
+          <label for="loan" class="form-label">
+            Loan EMI (Obligation)<span style="color: red;"> *</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="loan" name="loan" [(ngModel)]="loanEmi"
+              (blur)="validateLoanEmi()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': loanError, 'is-valid': !loanError && loanEmi !== '' }" />
+
+              
+          </div>
+          <small *ngIf="loanError" id="loanError" class="form-text position-absolute text-danger"> Please enter a valid Loan EMI
+            (Obligation)
+          </small>
+        </div>
+      </div>
+  
+      <!-- 3rd colum -->
+      <div class="col-md-4">
+        <!-- monthly net sal -->
+        <div class="form-group position-relative">
+          <label for="netsal" class="form-label">
+            Monthly Net Salary <span style="color: red;"> *</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="netsal" name="netsal" [(ngModel)]="netSalary"
+              (blur)="validateNetSal()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': netSalError, 'is-valid': !netSalError && netSalary !== ''}" />
+          </div>
+          <small *ngIf="netSalError" id="netSalError" class="form-text position-absolute text-danger">
+            Please enter a valid monthly net salary
+          </small>
+        </div>
+        
+        <!-- rent income -->
+        <div class="form-group position-relative">
+          <label for="income" class="form-label">
+            Rent Income <span style="color: red;"> *</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="income" name="income" [(ngModel)]="rentIncome"
+              (blur)="validateRentIncome()"
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': rentError, 'is-valid': !rentError && rentIncome !== ''}" />
+          </div>
+          <small *ngIf="rentError" id="rentError" class="form-text position-absolute text-danger">
+            Please enter a valid rent income
+          </small>
+        </div>
+        
+        <!--pension  -->
+        <div class="form-group position-relative">
+          <label for="Pension" class="form-label">
+            Pension <span style="color: red;"> *</span>
+          </label>
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+  
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" id="Pension" name="pension" [(ngModel)]="pension"
+              (blur)="validatePension()" 
+              (keypress)="restrictCharacter($event)"
+              [ngClass]="{'is-invalid': pensionError, 'is-valid': !pensionError && pension !== '' }" />
+              
+          </div>
+          <small *ngIf="pensionError" id="pensionError" class="form-text position-absolute text-danger"> Please enter a valid pension
+          </small>
+        </div>
       </div>
     </div>
     <!-- applicant -->
@@ -1083,7 +1251,7 @@
       </div>
       <!-- 3rd row data -->
       <!-- 3rd row data -->
-      <div class="row">
+      <div class="row" *ngIf="empType === 'Salaried'">
         <div class="col-md-4">
           <!-- avg bonus of last three years -->
           <div class="form-group position-relative">
@@ -1220,21 +1388,236 @@
          
         </div>
       </div>
+      <!-- self employed  -->
+      <div class="row"   *ngIf="empType === 'Self Employed'">
+        <div class="col-md-4">
+          <!-- employer type -->
+          <div class="form-group position-relative">
+            <label for="Employer1" class="form-label">
+              Employer Type <span style="color: red;">*</span>
+            </label><br />
+          
+            <!-- Employer Type dropdown -->
+            <div class="input-group">
+              <select 
+                id="Employer1" 
+                class="form-control" 
+                aria-label="Type Of Employment" 
+                required 
+                [(ngModel)]="Employer1" 
+                name="Employer1" 
+                (blur)="validateEmployer()" 
+                (change)="validateForm()" 
+                #employerInput="ngModel" 
+                [ngClass]="{
+                  'is-invalid': employerInput.invalid && employerInput.touched, 
+                  'is-valid': employerInput.valid && employerInput.touched
+                }"
+              >
+                <option value="">Select Employer Type</option>
+                <option value="salaried">Salaried</option>
+                <option value="selfEmployed">Self-Employed</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          
+            <!-- Error message for invalid selection -->
+            <div *ngIf="employerInput.invalid && employerInput.touched" class="text-danger mt-2 form-text position-absolute">
+              <div *ngIf="employerInput.errors?.['required']">
+                Employment Type is required.
+              </div>
+            </div>
+          </div>
+          
+          <!-- avg bonus of last three years -->
+          <div class="form-group position-relative">
+            <label for="averageBouns" class="form-label">
+              Average Bonus Of Last Three Years <span style="color: red;">*</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+    
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="averageBouns" name="averageBouns" [(ngModel)]="averageBonus"
+                (blur)="validateBonus()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': bonusError, 'is-valid': !bonusError && averageBonus !== '' }" />
+  
+                
+            </div>
+            <small *ngIf="bonusError" id="bonusError" class=" text-danger form-text position-absolute">Please enter a valid bonus
+              amount</small>
+          </div>
+    
+          <!-- future rent income -->
+          <div class="form-group position-relative">
+            <label for="futureIncome" class="form-label">
+              Future Rent Income <span style="color: red;">*</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="futureIncome" name="futureIncome" [(ngModel)]="futureRent"
+                (blur)="validateFutureRent()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': futureRentError, 'is-valid': !futureRentError && futureRent !== '' }" />
+  
+                
+            </div>
+            <small *ngIf="futureRentError" id="futureRentError" class="form-text position-absolute text-danger">Please enter a valid future
+              rent amount</small>
+          </div>
+    
+        </div>
+    
+        <!-- 2nd colum -->
+        <div class="col-md-4">
+          <!-- monthly gross salary -->
+          <div class="form-group position-relative">
+            <label for="grossSalary" class="form-label">
+              Monthly Gross Salary <span style="color: red;"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend ">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="grossSalary" name="grossSalary" [(ngModel)]="monthSalary"
+                (blur)="validateMonthSalary()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': grossSalaryError, 'is-valid': !grossSalaryError && monthSalary !== '' }" />
+            </div>
+            <small *ngIf="grossSalaryError" id="grossSalaryError" class="form-text position-absolute text-danger">Please enter a valid monthly
+              gross salary</small>
+          </div>
+  
+          <!-- avg monthly  incentive of last 6 month -->
+          <div class="form-group position-relative">
+            <label for="avgInsentive" class="form-label">
+              Average Monthly Incentive Of last 6 Month<span style="color: red;">*</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="avgInsentive" name="avgInsentive" [(ngModel)]="incentive"
+                (blur)="validateIncentive()"
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': incentiveError, 'is-valid': !incentiveError && incentive !== '' }" />
+  
+                
+            </div>
+            <small *ngIf="incentiveError" id="incentiveError" class="form-text position-absolute text-danger">Please enter a valid average
+              last 6 month incentive</small>
+          </div>
+    
+          <!-- loan emi -->
+          <div class="form-group position-relative">
+            <label for="loan" class="form-label">
+              Loan EMI (Obligation)<span style="color: red;"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="loan" name="loan" [(ngModel)]="loanEmi"
+                (blur)="validateLoanEmi()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': loanError, 'is-valid': !loanError && loanEmi !== '' }" />
+  
+                
+            </div>
+            <small *ngIf="loanError" id="loanError" class="form-text position-absolute text-danger"> Please enter a valid Loan EMI
+              (Obligation)
+            </small>
+          </div>
+        </div>
+    
+        <!-- 3rd colum -->
+        <div class="col-md-4">
+          <!-- monthly net sal -->
+          <div class="form-group position-relative">
+            <label for="netsal" class="form-label">
+              Monthly Net Salary <span style="color: red;"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="netsal" name="netsal" [(ngModel)]="netSalary"
+                (blur)="validateNetSal()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': netSalError, 'is-valid': !netSalError && netSalary !== ''}" />
+            </div>
+            <small *ngIf="netSalError" id="netSalError" class="form-text position-absolute text-danger">
+              Please enter a valid monthly net salary
+            </small>
+          </div>
+          
+          <!-- rent income -->
+          <div class="form-group position-relative">
+            <label for="income" class="form-label">
+              Rent Income <span style="color: red;"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="income" name="income" [(ngModel)]="rentIncome"
+                (blur)="validateRentIncome()"
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': rentError, 'is-valid': !rentError && rentIncome !== ''}" />
+            </div>
+            <small *ngIf="rentError" id="rentError" class="form-text position-absolute text-danger">
+              Please enter a valid rent income
+            </small>
+          </div>
+          
+          <!--pension  -->
+          <div class="form-group position-relative">
+            <label for="Pension" class="form-label">
+              Pension <span style="color: red;"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+    
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="text" class="form-control" id="Pension" name="pension" [(ngModel)]="pension"
+                (blur)="validatePension()" 
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{'is-invalid': pensionError, 'is-valid': !pensionError && pension !== '' }" />
+                
+            </div>
+            <small *ngIf="pensionError" id="pensionError" class="form-text position-absolute text-danger"> Please enter a valid pension
+            </small>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- btn -->
     <div class="row py-2">
       <div class="col-md-12">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          style="float: right; margin-right: 10px"
-          (click)="resetForm()"
-        >
-          Reset
-        </button>
-        <button type="submit" class="btn btn-primary me-3" style="float: right">
+        <div class="btn-group input-group-sm">
+          <div class="input-group-prepend">
+            <button class="btn " style="background-color: rgb(197, 195, 195);">
+              <i class="fa fa-arrow-left"></i>
+            </button>
+          </div>
+          <button class="btn bg-light fs-6" routerLink="/createNewCase/loanrequirement" > Back To Loan Requirement</button>
+        </div>       
+        <button type="submit" (click)="submitForm()" class="btn btn-primary me-3" style="float: right">
           Next <i class="fa fa-stars"></i>
         </button>
+        <button
+        type="button"
+        class="btn btn-secondary"
+        style="float: right; margin-right: 10px"
+        (click)="resetForm()"
+      >
+        Reset
+      </button>
       </div>
     </div>
   </div>
