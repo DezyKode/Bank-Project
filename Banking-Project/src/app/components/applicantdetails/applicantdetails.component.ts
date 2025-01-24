@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-applicantdetails',
@@ -12,8 +13,7 @@ throw new Error('Method not implemented.');
 }
 
   showCoApplicantForm = false; // Initial state is hidden
-  personalLoan: string = ''; // Bind to loan type select
-  isFormValid: boolean = false; // Form validation flag
+  isFormValid = true; // Form validation flag
   panNo: string = '';
   isValidPanNo: boolean = true;
   firstName: string = '';
@@ -57,22 +57,57 @@ toggleCoApplicantForm() {
 }
   // Validate the form to check if required fields are filled
   validateForm(): void {
-    this.isFormValid = 
-      this.personalLoan !== '' && // Check if loan type is selected
-      this.firstName.trim() !== '' && // Check if first name is not empty
-      this.lastName.trim() !== '' && // Check if last name is not empty
-      this.empType !== '' && // Check if employment type is selected
-      this.panNo.trim() !== '' && // Check if PAN number is not empty
-      this.isValidPanNo; // Check if PAN number is valid
+    // Common fields that are required for all types
+    this.isFormValid =
+      this.firstName.trim() !== '' && // Check for first name
+      this.lastName.trim() !== '' && // Check for last name
+      this.middleName.trim()!=='' &&
+      this.empType !== '' && // Employment type
+      this.panNo.trim() !== '' && // PAN number check
+      this.isValidPanNo &&  // Valid PAN check
       this.mobile.trim() !== '' && // Check if mobile number is not empty
-      !this.mobileError; // Ensure no mobile number errors
+      this.validateFullEmail() &&  // Ensure email is valid
+      this.dateOfBirth !== '' && // Date of birth check
+      this.leadSource !== ''; // Lead source check
+
+    // Additional validation based on employment type
+    if (this.empType === 'other') {
+      // If "Other" employment type, check only common fields
+      this.isFormValid = this.isFormValid;
+    } else if (this.empType === 'salaried') {
+      // If "Salaried", check all common fields plus specific fields
+      this.isFormValid =
+        this.isFormValid &&
+        this.averageBonus.trim() !== '' &&  // Bonus field check
+        !this.bonusError &&  // No bonus error
+        this.loanEmi.trim() !== '' &&  // Loan EMI check
+        this.rentIncome.trim() !== '' &&  // Rent check
+        this.futureRent.trim() !== ''; // Future rent check
+    } else if (this.empType === 'selfEmployed') {
+      // If "Self Employed", check all common fields plus specific fields
+      this.isFormValid =
+        this.isFormValid &&
+        this.Employer.trim() !== '' &&  // Employer type check
+        this.averageBonus.trim() !== '' &&  // Bonus check
+        !this.bonusError &&  // No bonus error
+        this.monthSalary.trim() !== '' &&  // Monthly Salary check
+        !this.grossSalaryError &&  // No gross salary error
+        this.incentive.trim() !== '' &&  // Incentive check
+        !this.incentiveError &&  // No incentive error
+        this.loanEmi.trim() !== '' &&  // Loan EMI check
+        this.netSalary.trim() !== '' &&  // Net Salary check
+        !this.netSalError &&  // No net salary error
+        this.pension.trim() !== '';  // Pension check
+    }
   }
+
+
 
   // PAN Number validation
   validatePanNo(): void {
     const panNoRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/; // Regular expression for valid PAN format
     this.isValidPanNo = panNoRegex.test(this.panNo); // Validate the PAN number format
-    this.validateForm(); // Revalidate the form when PAN number changes
+    // this.validateForm(); // Revalidate the form when PAN number changes
   }
   validateAge(dobInput: any) {
     const dob = new Date(this.dateOfBirth);
@@ -96,7 +131,7 @@ toggleCoApplicantForm() {
   
     const mobileRegex = /^d{10}$/;
     this.mobileError = mobileRegex.test(this.mobile);
-    this.validateForm(); // Revalidate the form when mobile number changes
+    // this.validateForm(); // Revalidate the form when mobile number changes
 
   }
   updateEmail() {
@@ -219,7 +254,6 @@ toggleCoApplicantForm() {
 
   
   resetForm() {
-    this.personalLoan = '';
     this.firstName = '';
     this.middleName = '';
     this.lastName = '';
@@ -251,7 +285,6 @@ toggleCoApplicantForm() {
     // Handle any logic needed when lead source is changed.
     // You can clear/reset related fields if necessary.
     if (this.leadSource !== 'calling') {
-      this.personalLoan = '';  // Clear the personal loan field if it's not 'calling'.
     }
   }
   
@@ -270,45 +303,210 @@ toggleCoApplicantForm() {
 
     // Repeat for all other controls (e.g., mobileInput, empTypeInput, etc.)
   }
-  // Submit the form to the backend
-  submitForm(): void {
-    if (this.isFormValid) {
-      const formData = {
-        typeOfLoan: this.personalLoan,
-        firstName: this.firstName,
-        middleName: this.middleName,
-        lastName: this.lastName,
-        email: this.email, 
-        employmentType: this.empType,
-        panNo: this.panNo,
-        mobileNo: this.mobile,
-        employerType: this.Employer1,
-        averageBonusOfLastThreeYears: this.averageBonus,
-        futureRentIncome: this.futureRent,
-        monthlyGrossSalary: this.monthSalary,
-        averageMonthlyIncentiveOfLast6Month: this.incentive,
-        loanEMI: this.loanEmi,
-        monthlyNetSalary: this.netSalary,
-        rentIncome: this.rentIncome,
-        pension: this.pension,
-        dateOfBirth: this.dateOfBirth
-      };
 
-      // Call the service to send data to the backend
-      this.elegibilityService.postElegibility(formData).subscribe({
-        next: (response: any) => {
-          console.log('Data sent successfully:', response);
-          alert("Data Sent Successfully")
-        },
-        error: (error: any) => {
-          console.error('Error sending data:', error);
+  constructor(private router: Router) {}
+
+  submitForm() {
+    // Check if empType is 'other'
+    if(this.empType === 'other'||this.empType === 'salaried')
+    {
+      if (this.empType === 'other') {
+        const requiredFields = [
+          { field: this.firstName, name: 'First Name' },
+          { field: this.middleName, name: 'Middle Name' },
+          { field: this.lastName, name: 'Last Name' },
+          { field: this.panNo, name: 'PAN Number' },
+          { field: this.mobile, name: 'Mobile Number' },
+          { field: this.dateOfBirth, name: 'Date of Birth' },
+          { field: this.leadSource, name: 'Lead Source' }
+        ];
+    
+        for (const { field, name } of requiredFields) {
+          if (!field || field.trim() === '') {
+            alert(`${name} is required.`);
+            return; // Exit if any required field is missing
+          }
         }
-      });
-    } else {
-      // console.error('Form is not valid');
-      alert("Form is not complete")
-    } 
+    
+        // Validate email input
+        const email = `${this.emailLocalPart}@${this.selectedDomain}`;
+        if (!this.emailLocalPart || !this.selectedDomain) {
+          alert('Please enter a complete email address.');
+          return; // Exit if email is incomplete
+        }
+    
+        if (!this.isValidEmail(email)) {
+          alert('Please enter a valid email address.');
+          return; // Exit if email is invalid
+        }
+    
+        // Form data for 'other'
+        const formData = {
+          firstName: this.firstName,
+          middleName: this.middleName,
+          lastName: this.lastName,
+          email: email,
+          employmentType: this.empType,
+          panNo: this.panNo,
+          mobileNo: this.mobile,
+          dateOfBirth: this.dateOfBirth,
+          leadSource: this.leadSource
+        };
+        
+        alert("Form submitted successfully!");
+        this.router.navigate(['/createNewCase/loan']); // Navigate to the success page
+
+      } 
+      // Check if empType is 'salaried'
+      else if (this.empType === 'salaried') {
+        const requiredFields = [
+          { field: this.firstName, name: 'First Name' },
+          { field: this.middleName, name: 'Middle Name' },
+          { field: this.lastName, name: 'Last Name' },
+          { field: this.panNo, name: 'PAN Number' },
+          { field: this.mobile, name: 'Mobile Number' },
+          { field: this.dateOfBirth, name: 'Date of Birth' },
+          { field: this.leadSource, name: 'Lead Source' },
+          { field: this.averageBonus, name: 'Average Bonus' },
+          { field: this.monthSalary, name: 'Gross Salary' },
+          { field: this.netSalary, name: 'Net Salary' },
+          { field: this.futureRent, name: 'Future Rent' }
+        ];
+    
+        for (const { field, name } of requiredFields) {
+          if (!field || field.trim() === '') {
+            alert(`${name} is required.`);
+            return; // Exit if any required field is missing
+          }
+        }
+    
+        // Validate email input
+        const email = `${this.emailLocalPart}@${this.selectedDomain}`;
+        if (!this.emailLocalPart || !this.selectedDomain) {
+          alert('Please enter a complete email address.');
+          return; // Exit if email is incomplete
+        }
+    
+        if (!this.isValidEmail(email)) {
+          alert('Please enter a valid email address.');
+          return; // Exit if email is invalid
+        }
+    
+        // Form data for 'salaried'
+        const formData = {
+          firstName: this.firstName,
+          middleName: this.middleName,
+          lastName: this.lastName,
+          email: email,
+          employmentType: this.empType,
+          panNo: this.panNo,
+          mobileNo: this.mobile,
+          dateOfBirth: this.dateOfBirth,
+          leadSource: this.leadSource,
+          averageBonus: this.averageBonus,
+          monthSalary: this.monthSalary,
+          netSalary: this.netSalary,
+          futureRent: this.futureRent
+        };
+    
+        alert("Form submitted successfully!");
+      }
+      else{
+        alert("plz select any type ")
+      }
+    }
+  
+    // Handle other cases (if needed)
+    else {
+      alert("Please fill in all required data.");
+    }
   }
+  
+  
+  // Email validation function (basic email format check)
+  isValidEmail(email: string): boolean {
+    // Regular expression for basic email validation
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+  }
+  
+ 
+    
+  
+  
+  
+  
+  // Submit the form to the backend
+  // submitForm(): void {
+
+  //   console.log('isFormValid:', this.isFormValid);
+  //   console.log('Employment Type:', this.empType);
+  
+  //   if (this.isFormValid) {
+  //     const formData = {
+  //       firstName: this.firstName,
+  //       middleName: this.middleName,
+  //       lastName: this.lastName,
+  //       // email: this.email,
+  //       employmentType: this.empType,
+  //       panNo: this.panNo,
+  //       mobileNo: this.mobile,
+  //       // employerType: this.Employer1,
+  //       averageBonusOfLastThreeYears: this.averageBonus,
+  //       futureRentIncome: this.futureRent,
+  //       monthlyGrossSalary: this.monthSalary,
+  //       averageMonthlyIncentiveOfLast6Month: this.incentive,
+  //       loanEMI: this.loanEmi,
+  //       monthlyNetSalary: this.netSalary,
+  //       rentIncome: this.rentIncome,
+  //       pension: this.pension,
+  //       dateOfBirth: this.dateOfBirth,
+  //       leadSource: this.leadSource
+  //     };
+  
+  //     // Handle specific conditions based on employment type
+  //     if (this.empType === 'other') {
+  //       // For "Other", only basic fields should be checked
+  //       const otherRequiredFields = this.firstName && this.lastName && this.middleName && this.email && this.mobile && this.panNo && this.dateOfBirth && this.leadSource;
+  //       if (!otherRequiredFields) {
+  //         alert('Please complete the form with valid information for "Other" employment type.');
+  //         return; // Prevent submission if fields are missing
+  //       }
+  //     } else if (this.empType === 'salaried') {
+  //       // For "Salaried", additional fields should be required
+  //       const salariedRequiredFields = this.firstName && this.middleName &&  this.lastName && this.email && this.mobile && this.panNo && this.dateOfBirth && this.leadSource && this.loanEmi && this.rentIncome && this.futureRent && this.averageBonus;
+  //       if (!salariedRequiredFields) {
+  //         alert('Please complete the form with valid information for "Salaried" employment type.');
+  //         return; // Prevent submission if fields are missing
+  //       }
+  //     } else if (this.empType === 'selfEmployed') {
+  //       // For "Self Employed", additional fields related to business and salary are required
+  //       const selfEmployedRequiredFields = this.firstName && this.lastName  &&  this.middleName && this.email && this.mobile && this.panNo && this.dateOfBirth && this.leadSource && this.Employer1 && this.averageBonus && this.monthSalary && this.incentive && this.loanEmi && this.netSalary && this.rentIncome && this.pension;
+  //       if (!selfEmployedRequiredFields) {
+  //         alert('Please complete the form with valid information for "Self Employed" employment type.');
+  //         return; // Prevent submission if fields are missing
+  //       }
+  //     } else {
+  //       alert('Please select a valid employment type.');
+  //       return; // Prevent submission if no valid employment type is selected
+  //     }
+  
+  //     // If everything is valid, send data to the backend
+  //     this.elegibilityService.postElegibility(formData).subscribe({
+  //       next: (response: any) => {
+  //         console.log('Data sent successfully:', response);
+  //         alert('Data Sent Successfully');
+  //       },
+  //       error: (error: any) => {
+  //         console.error('Error sending data:', error);
+  //       }
+  //     });
+  //   } else {
+  //     alert('Please complete the form with valid information.');
+  //   }
+  // }
+  
+
 }
 
 

@@ -55,6 +55,9 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { LoanComponent } from './components/loan/loan.component';
+import { CreatenewcaseDocumentComponent } from './components/createnewcase-document/createnewcase-document.component';
+import { CreatenewcaseProvisionalLetterComponent } from './components/createnewcase-provisional-letter/createnewcase-provisional-letter.component';
 import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
 import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
@@ -210,14 +213,21 @@ const routes: Routes = [
   {path:'drivingmodal',component:DrivingmodalComponent},
   {path:'cinmodal',component:CinmodalComponent},
   {path:'pancardmodal',component:PancardmodalComponent},
+
   {
-    path:'createnewcase',component:CreatenewcaseComponent,
+    path:'createNewCase',component:CreatenewcaseComponent,
     children:[
       {path:'loanrequirement',component:LoanrequirementComponent},
       {path:'applicantdetails',component:ApplicantdetailsComponent},
+      {path:'loan',component:LoanComponent},
+      {path:'createnewcaseDocument',component:CreatenewcaseDocumentComponent},
+      {path:'createnewcaseProvisionalLetter',component:CreatenewcaseProvisionalLetterComponent},
+    
 
     ]
   },
+
+  {path:'createnewcase',component:CreatenewcaseComponent },
 ];
  
 @NgModule({

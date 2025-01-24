@@ -1,0 +1,24 @@
+/* Optional CSS */
+.btn-success {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: red;
+    color: white;
+  }
+/* When the button is active */
+.active-link button {
+  border-color: green !important; /* Change to your active border color */
+  color: orangered; /* Text color when active */
+  transition: all 0.3s ease; /* Smooth transition for both color and border */
+}
+
+/* When hovering over the button */
+.active-link button:hover {
+  color: orangered; /* Text color when hovered */
+  border-color: green !important; /* Border color on hover */
+}
+
+  
