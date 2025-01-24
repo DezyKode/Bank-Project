@@ -107,13 +107,22 @@ import { DetailsComponent } from './components/Admin/leads/details/details.compo
 import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
 import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
 import{BankComponents} from './components/Admin/leads/bank/bank.component';
+import { LoandisburmentComponent } from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
+import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
+import {OverView} from './components/Admin/LoanDisburment/over-view/over-view.component';
+import {Bank} from './components/Admin/LoanDisburment/bank/bank.component';
+// import { LoanDetailsComponent } from './components/Admin/LoanRejected/loan-details/loan-details.component';
+// import { LoanRejectedComponent } from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
+// import{Apllication} from './components/Admin/LoanDisburment/application-details/application-details.component';
+import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
 
+import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 
-
-// import { ParentComponent } from './components/ashanka/parent/parent.component';
-// import { ParentComponent } from './components/ashanka/parent/parent.component';
-// import { CreateDocumentComponents } from './components/ashanka/create-document/create-document.component';
-// import { DocumentsListComponentss } from './components/ashanka/documents-list/documents-list.component';
+// import { BankrejectedComponent } from './components/Admin/LoanRejected/bankrjected/bankrejected.component';
+import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
+import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
+import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
+import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/application-rejected/application-rejected.component'
 
 
 
@@ -136,7 +145,7 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
     LeadComponent,
     DocumentsListComponent,
    CreateDocumentComponent,
-  
+  Loan,OverView,Bank,
     OverviewComponent,
     AplicationDetailsComponent,
     LoanDetailsComponents,
@@ -145,34 +154,23 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
     BankComponent,
     VerificationReportsComponent,
     CommentsComponent,
-
-   
     LoanDetails,
     EmployeeDocumentsComponent,
     BrowseempdocumentsComponent,
-
     VerificationComponent,
     VreportComponent,
     CommentsComponent,
     InvoiceComponent,
     TablereportComponent,
-
     MasterZoneComponent,
-
     TaskTableComponent,
-   
-   
- 
-
       PersonaldetailsComponent,
       PdetailsComponent,
-
     TaskReportComponent,
       LoanStaticsComponent,
       LeadDumpReportComponent,
       ImportFileComponent,
       CreateLeadComponent,
-
       TaxmasterComponent,
       ChangepasswordComponent,
       EmployeeListComponent,
@@ -182,14 +180,12 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       CreatenewcaseComponent,
       LoanrequirementComponent,
       ApplicantdetailsComponent,
-
       ConnectorComponent,
       PayoutStructureComponent,
       CreateConnectorComponent,
       EditBankPayoutComponent,
       LoanAgeingReportComponent,
       RevenueReconReportComponent,
-
       CreatebankComponent,
       MastersprojectComponent,
       TableComponent,
@@ -201,7 +197,6 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       DrivingmodalComponent,
       CinmodalComponent,
       PancardmodalComponent,
-
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
@@ -212,19 +207,21 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       DetailsComponent,
       OverViewComponent,
       ApplicationDetailsComponent,
-      BankComponents
-
-
-
-
-
+      BankComponents,
+      LoandisburmentComponent,
+      // LoanDetailsComponent,
+      LoanRejectedComponent,
+      BankRejectedComponent,
+      LoanOffersRejectedComponent,
+      OverViewRejectedComponent,
+      LoanDetailsRejectedComponent,
+      ApplicationRejectedComponent,
       // ParentComponent,
-
-
   ],
   
   imports: [
-  
+
+
   BrowserModule,
     AppRoutingModule,
     FormsModule,

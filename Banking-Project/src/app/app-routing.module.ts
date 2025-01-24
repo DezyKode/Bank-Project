@@ -80,7 +80,17 @@ import { CreateConnectorComponent } from './components/create-connector/create-c
 import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
 import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
-
+import {LoandisburmentComponent} from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
+import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
+import {Application} from './components/Admin/LoanDisburment/application-details/application-details.component';
+import{OverView} from './components/Admin/LoanDisburment/over-view/over-view.component';
+import{Bank} from './components/Admin/LoanDisburment/bank/bank.component'
+import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
+// import {LoanRejected} from './components/Admin/LoanRejected/loanRejected/loan-rejected.component';
+import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/application-rejected/application-rejected.component';
+import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
+import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
+import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
 const routes: Routes = [
 
 
@@ -146,6 +156,20 @@ const routes: Routes = [
     {path:"Bank",component:BankComponents}
 
  ]}
+ ,{path:"loandisburment",component:LoandisburmentComponent, 
+  children: [{path:"over-view",component:OverView},
+    {path:"application-details",component:Application},
+    {path:"loan-details",component:Loan},
+    {path:"Bank",component:Bank}
+
+ ]}
+ ,{path:"LoanRejectedComponent",component:LoanRejectedComponent, 
+  children: [{path:"over-view",component:OverViewRejectedComponent},
+    {path:"application-details",component:ApplicationRejectedComponent},
+    {path:"loan-details",component:LoanDetailsRejectedComponent},
+    {path:"Bank",component:BankRejectedComponent}
+
+ ]}
  ,
   {
     path: 'verification', component: VerificationComponent,
@@ -198,7 +222,8 @@ const routes: Routes = [
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
  
