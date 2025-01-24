@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -78,6 +78,12 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { CreateNewCaseComponent } from './components/create-new-case/create-new-case.component';
+import { LoanComponent } from './components/loan/loan.component';
+import { CreatenewcaseDocumentComponent } from './components/createnewcase-document/createnewcase-document.component';
+import { CreatenewcaseProvisionalLetterComponent } from './components/createnewcase-provisional-letter/createnewcase-provisional-letter.component';
+import { CreanewcaseApplicantDerailsComponent } from './components/createnewcaseApplicantDetails/creanewcase-applicant-derails.component';
+import { CreateApplicantComponent } from './components/create-applicant/create-applicant.component';
 
 
 // import { ParentComponent } from './components/ashanka/parent/parent.component';
@@ -155,6 +161,12 @@ import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.co
       DrivingmodalComponent,
       CinmodalComponent,
       PancardmodalComponent,
+      CreateNewCaseComponent,
+      LoanComponent,
+      CreatenewcaseDocumentComponent,
+      CreatenewcaseProvisionalLetterComponent,
+      CreanewcaseApplicantDerailsComponent,
+      CreateApplicantComponent,
 
 
 
@@ -178,6 +190,8 @@ import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.co
   providers: [
     provideClientHydration()
   ],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

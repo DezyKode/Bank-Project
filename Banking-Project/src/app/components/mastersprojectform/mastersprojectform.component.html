@@ -1,594 +1,624 @@
   <!-- Create Project Form (appears when button is clicked) -->
-  <div  class="row mb-4 py-3 px-3" style="width: 100%;" >
-    <div class="col-md-12 ">
-      <div class="">
-        <h5 class="color">{{ editIndex === -1 ? 'Create New Project' : 'Edit Project' }}</h5>
-        <form (ngSubmit)="addProject()">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group ">
-                <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Project Name"
-                [(ngModel)]="newProject.projectName"
-                name="projectName"
-                required
-                #projectName="ngModel"
+ <div class="container-fluid bg-light">
+  <a class="color py-5 mb-3" style="margin-left: 100px;">project</a>
+  <div class="container bg-white">
+    <div  class="row mb-4 py-3 px-3 " style="width: 100%;" >
+      <div class="col-md-12 ">
+        <div class="">
+          <!-- <h5 class="color">{{ editIndex === -1 ? 'Create New Project' : 'Edit Project' }}</h5> -->
+          <form (ngSubmit)="addProject()" #projectForm="ngForm">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group ">
+                  <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Project Name"
+                  [(ngModel)]="newProject.projectName"
+                  name="projectName"
+                  required
+                  #projectName="ngModel"
+                  
+                />
+                <div *ngIf="projectName.invalid && projectName.touched" class="text-danger form-text ">
+                  Project Name is required.
+                </div>
+                </div>
                 
-              />
-              <div *ngIf="projectName.invalid && projectName.touched" class="text-danger form-text ">
-                Project Name is required.
               </div>
+            
+              <!-- Developer Name -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Developer Name"
+                  [(ngModel)]="newProject.developerName"
+                  name="developerName"
+                  required
+                  #developerName="ngModel"
+                />
+                <div *ngIf="developerName.invalid && developerName.touched" class="text-danger">
+                  Developer Name is required.
+                </div>
               </div>
+            
+              <!-- RERA No -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="RERA No"
+                  [(ngModel)]="newProject.reraNo"
+                  name="reraNo"
+                  required
+                  #reraNo="ngModel"
+                />
+                <div *ngIf="reraNo.invalid && reraNo.touched" class="text-danger">
+                  RERA No is required.
+                </div>
+              </div>
+            
+              <!-- RERA Completion Date -->
+              <div class="col-md-4">
+                <input
+                  type="date"
+                  class="form-control mb-2"
+                  placeholder="RERA Completion Date"
+                  [(ngModel)]="newProject.reraCompletionDate"
+                  name="reraCompletionDate"
+                  required
+                  #reraCompletionDate="ngModel"
+                />
+                <div *ngIf="reraCompletionDate.invalid && reraCompletionDate.touched" class="text-danger">
+                  RERA Completion Date is required.
+                </div>
+              </div>
+            
+              <!-- State -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="State"
+                  [(ngModel)]="newProject.state"
+                  name="state"
+                  required
+                  #state="ngModel"
+                />
+                <div *ngIf="state.invalid && state.touched" class="text-danger">
+                  State is required.
+                </div>
+              </div>
+            
+              <!-- City -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="City"
+                  [(ngModel)]="newProject.city"
+                  name="city"
+                  required
+                  #city="ngModel"
+                />
+                <div *ngIf="city.invalid && city.touched" class="text-danger">
+                  City is required.
+                </div>
+              </div>
+            
+              <!-- Zone -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Zone"
+                  [(ngModel)]="newProject.zone"
+                  name="zone"
+                  required
+                  #zone="ngModel"
+                />
+                <div *ngIf="zone.invalid && zone.touched" class="text-danger">
+                  Zone is required.
+                </div>
+              </div>
+            
+              <!-- Location -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Location"
+                  [(ngModel)]="newProject.location"
+                  name="location"
+                  required
+                  #location="ngModel"
+                />
+                <div *ngIf="location.invalid && location.touched" class="text-danger">
+                  Location is required.
+                </div>
+              </div>
+            
+              <!-- Area -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Area"
+                  [(ngModel)]="newProject.area"
+                  name="area"
+                  required
+                  #area="ngModel"
+                />
+                <div *ngIf="area.invalid && area.touched" class="text-danger">
+                  Area is required.
+                </div>
+              </div>
+            
+              <!-- Stage of Construction -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Stage of Construction"
+                  [(ngModel)]="newProject.stageOfConstruction"
+                  name="stageOfConstruction"
+                  required
+                  #stageOfConstruction="ngModel"
+                />
+                <div *ngIf="stageOfConstruction.invalid && stageOfConstruction.touched" class="text-danger">
+                  Stage of Construction is required.
+                </div>
+              </div>
+            
+              <!-- Stage Date -->
+              <div class="col-md-4">
+                <input
+                  type="date"
+                  class="form-control mb-2"
+                  placeholder="Stage Date"
+                  [(ngModel)]="newProject.stageDate"
+                  name="stageDate"
+                  required
+                  #stageDate="ngModel"
+                />
+                <div *ngIf="stageDate.invalid && stageDate.touched" class="text-danger">
+                  Stage Date is required.
+                </div>
+              </div>
+            
+              <!-- Property Type -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Property Type"
+                  [(ngModel)]="newProject.propertyType"
+                  name="propertyType"
+                  required
+                  #propertyType="ngModel"
+                />
+                <div *ngIf="propertyType.invalid && propertyType.touched" class="text-danger">
+                  Property Type is required.
+                </div>
+              </div>
+            
+              <!-- Total Flats -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Total Flats"
+                  [(ngModel)]="newProject.totalFlats"
+                  name="totalFlats"
+                  required
+                  #totalFlats="ngModel"
+                />
+                <div *ngIf="totalFlats.invalid && totalFlats.touched" class="text-danger">
+                  Total Flats is required.
+                </div>
+              </div>
+            
+              <!-- Total Shops -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="Total Shops"
+                  [(ngModel)]="newProject.totalShops"
+                  name="totalShops"
+                  required
+                  #totalShops="ngModel"
+                />
+                <div *ngIf="totalShops.invalid && totalShops.touched" class="text-danger">
+                  Total Shops is required.
+                </div>
+              </div>
+            
+        
+            
+  
+              <!-- APF No -->
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  placeholder="APF No"
+                  [(ngModel)]="newProject.apfNo"
+                  name="apfNo"
+                  required
+                  #apfNo="ngModel"
+                />
+                <div *ngIf="apfNo.invalid && apfNo.touched" class="text-danger">
+                  APF No is required.
+                </div>
+              </div>
+            
+              <!-- File Upload -->
+              <div class="col-md-4">
+                <input
+                  type="file"
+                  class="form-control mb-2"
+                  placeholder="File"
+                  [(ngModel)]="newProject.file"
+                  name="file"
+                  required
+                  #file="ngModel"
+                />
+                <div *ngIf="file.invalid && file.touched" class="text-danger">
+                  File is required.
+                </div>
+              </div>
+            <!-- checkbox -->
+            <div class="col-md-12">
+              <label for="">Configuration <span class="text-danger">*</span></label>
               
-            </div>
-          
-            <!-- Developer Name -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Developer Name"
-                [(ngModel)]="newProject.developerName"
-                name="developerName"
-                required
-                #developerName="ngModel"
-              />
-              <div *ngIf="developerName.invalid && developerName.touched" class="text-danger">
-                Developer Name is required.
+              <div class="d-flex py-3">
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'1RK'" /> 
+                  1RK
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'2RK'" /> 
+                  2RK
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'3RK'" /> 
+                  3RK
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'4RK'" /> 
+                  4RK
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'shops'" /> 
+                  Shops
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'12rbk'" /> 
+                  12rbk
+                </label>
+                <label class="me-3">
+                  <input type="checkbox" 
+                         [(ngModel)]="newProject.selectedConfigurations"
+                         [value]="'sma'" /> 
+                  SMA
+                </label>
               </div>
             </div>
-          
-            <!-- RERA No -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="RERA No"
-                [(ngModel)]="newProject.reraNo"
-                name="reraNo"
-                required
-                #reraNo="ngModel"
-              />
-              <div *ngIf="reraNo.invalid && reraNo.touched" class="text-danger">
-                RERA No is required.
+            
+            
+            
+            
+            
+            
+              <hr>
+            <!-- payment shedule -->
+            <div class="col-md-12">
+              <!-- Payment Schedule Header and Add Button -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="color">Payment Schedule</h1>
+                <button class="btn btn-outline-primary" (click)="show = !show" type="button">
+                 + Add
+                </button>
+              </div>
+            
+              <!-- Table Section with Dynamic Stage and Percentage -->
+              <div class="table-responsive">
+                <table class="table caption-top text-start">
+                  <thead class="table-light">
+                    <tr>
+                      <th>SR. No</th>
+                      <th>Stage</th>
+                      <th>Percentage</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Input Fields for Adding a New Payment Schedule -->
+                    <tr *ngIf="show">
+                      <td>#</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control mb-2"
+                          placeholder="Stage"
+                          [(ngModel)]="newPaymentSchedule1.stage"
+                          name="stage"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          class="form-control mb-2"
+                          placeholder="Percentage"
+                          [(ngModel)]="newPaymentSchedule1.percentage"
+                          name="percentage"
+                          required
+                        />
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-outline-success me-3" (click)="add()">
+                          <i class="fa fa-check"></i> 
+                          <!-- Add -->
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" (click)="show = false">
+                          <i class="fa fa-trash"></i> 
+                          <!-- Cancel -->
+                        </button>
+                      </td>
+                    </tr>
+            
+                    <!-- Display added payment schedules -->
+                    <tr *ngFor="let row of paymentSchedules1; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ row.stage }}</td>
+                      <td>{{ row.percentage }}</td>
+                      <td>
+                        <button class="btn btn-outline-danger" (click)="deleteit(i)">
+                          <i class="fa fa-trash"></i> Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-          
-            <!-- RERA Completion Date -->
-            <div class="col-md-4">
-              <input
-                type="date"
-                class="form-control mb-2"
-                placeholder="RERA Completion Date"
-                [(ngModel)]="newProject.reraCompletionDate"
-                name="reraCompletionDate"
-                required
-                #reraCompletionDate="ngModel"
-              />
-              <div *ngIf="reraCompletionDate.invalid && reraCompletionDate.touched" class="text-danger">
-                RERA Completion Date is required.
-              </div>
-            </div>
-          
-            <!-- State -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="State"
-                [(ngModel)]="newProject.state"
-                name="state"
-                required
-                #state="ngModel"
-              />
-              <div *ngIf="state.invalid && state.touched" class="text-danger">
-                State is required.
-              </div>
-            </div>
-          
-            <!-- City -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="City"
-                [(ngModel)]="newProject.city"
-                name="city"
-                required
-                #city="ngModel"
-              />
-              <div *ngIf="city.invalid && city.touched" class="text-danger">
-                City is required.
-              </div>
-            </div>
-          
-            <!-- Zone -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Zone"
-                [(ngModel)]="newProject.zone"
-                name="zone"
-                required
-                #zone="ngModel"
-              />
-              <div *ngIf="zone.invalid && zone.touched" class="text-danger">
-                Zone is required.
-              </div>
-            </div>
-          
-            <!-- Location -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Location"
-                [(ngModel)]="newProject.location"
-                name="location"
-                required
-                #location="ngModel"
-              />
-              <div *ngIf="location.invalid && location.touched" class="text-danger">
-                Location is required.
-              </div>
-            </div>
-          
-            <!-- Area -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Area"
-                [(ngModel)]="newProject.area"
-                name="area"
-                required
-                #area="ngModel"
-              />
-              <div *ngIf="area.invalid && area.touched" class="text-danger">
-                Area is required.
-              </div>
-            </div>
-          
-            <!-- Stage of Construction -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Stage of Construction"
-                [(ngModel)]="newProject.stageOfConstruction"
-                name="stageOfConstruction"
-                required
-                #stageOfConstruction="ngModel"
-              />
-              <div *ngIf="stageOfConstruction.invalid && stageOfConstruction.touched" class="text-danger">
-                Stage of Construction is required.
-              </div>
-            </div>
-          
-            <!-- Stage Date -->
-            <div class="col-md-4">
-              <input
-                type="date"
-                class="form-control mb-2"
-                placeholder="Stage Date"
-                [(ngModel)]="newProject.stageDate"
-                name="stageDate"
-                required
-                #stageDate="ngModel"
-              />
-              <div *ngIf="stageDate.invalid && stageDate.touched" class="text-danger">
-                Stage Date is required.
-              </div>
-            </div>
-          
-            <!-- Property Type -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Property Type"
-                [(ngModel)]="newProject.propertyType"
-                name="propertyType"
-                required
-                #propertyType="ngModel"
-              />
-              <div *ngIf="propertyType.invalid && propertyType.touched" class="text-danger">
-                Property Type is required.
-              </div>
-            </div>
-          
-            <!-- Total Flats -->
-            <div class="col-md-4">
-              <input
-                type="number"
-                class="form-control mb-2"
-                placeholder="Total Flats"
-                [(ngModel)]="newProject.totalFlats"
-                name="totalFlats"
-                required
-                #totalFlats="ngModel"
-              />
-              <div *ngIf="totalFlats.invalid && totalFlats.touched" class="text-danger">
-                Total Flats is required.
-              </div>
-            </div>
-          
-            <!-- Total Shops -->
-            <div class="col-md-4">
-              <input
-                type="number"
-                class="form-control mb-2"
-                placeholder="Total Shops"
-                [(ngModel)]="newProject.totalShops"
-                name="totalShops"
-                required
-                #totalShops="ngModel"
-              />
-              <div *ngIf="totalShops.invalid && totalShops.touched" class="text-danger">
-                Total Shops is required.
-              </div>
-            </div>
-          
-            <!-- Total Inventory -->
-            <div class="col-md-4">
-              <input
-                type="number"
-                class="form-control mb-2"
-                placeholder="Total Inventory"
-                [(ngModel)]="newProject.totalInventory"
-                name="totalInventory"
-                required
-                #totalInventory="ngModel"
-              />
-              <div *ngIf="totalInventory.invalid && totalInventory.touched" class="text-danger">
-                Total Inventory is required.
-              </div>
-            </div>
-          
-            <!-- Configuration -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Configuration"
-                [(ngModel)]="newProject.configuration"
-                name="configuration"
-                required
-                #configuration="ngModel"
-              />
-              <div *ngIf="configuration.invalid && configuration.touched" class="text-danger">
-                Configuration is required.
-              </div>
-            </div>
-          
-            <!-- Payment Scheduled -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Payment Scheduled"
-                [(ngModel)]="newProject.paymentScheduled"
-                name="paymentScheduled"
-                required
-                readonly
-                #paymentScheduled="ngModel"
-              />
-              <div *ngIf="paymentScheduled.invalid && paymentScheduled.touched" class="text-danger">
-                Payment Scheduled is required.
-              </div>
-            </div>
-          
-            <!-- Inventory Availability -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="Inventory Availability"
-                [(ngModel)]="newProject.inventoryAvailability"
-                name="inventoryAvailability"
-                required
-                readonly
-                #inventoryAvailability="ngModel"
-              />
-              <div *ngIf="inventoryAvailability.invalid && inventoryAvailability.touched" class="text-danger">
-                Inventory Availability is required.
-              </div>
-            </div>
-          
-            <!-- APF No -->
-            <div class="col-md-4">
-              <input
-                type="text"
-                class="form-control mb-2"
-                placeholder="APF No"
-                [(ngModel)]="newProject.apfNo"
-                name="apfNo"
-                required
-                #apfNo="ngModel"
-              />
-              <div *ngIf="apfNo.invalid && apfNo.touched" class="text-danger">
-                APF No is required.
-              </div>
-            </div>
-          
-            <!-- File Upload -->
-            <div class="col-md-4">
-              <input
-                type="file"
-                class="form-control mb-2"
-                placeholder="File"
-                [(ngModel)]="newProject.file"
-                name="file"
-                required
-                #file="ngModel"
-              />
-              <div *ngIf="file.invalid && file.touched" class="text-danger">
-                File is required.
-              </div>
-            </div>
-          <!-- checkbox -->
-          <div class="col-md-12">
-            <label for="configuration">Configuration <span class="text-danger">*</span></label>
-          
-            <div class="d-flex py-3">
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'1RK'" name="configuration" /> 1RK
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'2RK'" name="configuration" /> 2RK
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'3RK'" name="configuration" /> 3RK
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'4RK'" name="configuration" /> 4RK
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'shops'" name="configuration" /> Shops
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'12rbk'" name="configuration" /> 12rbk
-              </label>
-              <label class="me-3">
-                <input type="radio" [(ngModel)]="newProject1.selectedConfiguration" [value]="'sma'" name="configuration" /> SMA
-              </label>
-            </div>
-          </div>
-          
-          
+            
+            
             <hr>
-          <!-- payment shedule -->
-          <div class="col-md-12">
-            <!-- Payment Schedule Header and Add Button -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h1 class="color">Payment Schedule</h1>
-              <button class="btn btn-outline-primary" (click)="show = !show">
-                Add
-              </button>
+            <!-- inventory -->
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="color">Inventory Availability</h1>
+                <button class="btn btn-outline-primary" 
+                (click)="showinventory = !showinventory" type="button">+ add</button>
+              </div>
+            
+              <div class="table-responsive">
+                <table class="table caption-top text-start">
+                  <thead class="table-light">
+                    <tr>
+                      <th>SR. No</th>
+                      <th>Flat NO</th>
+                      <th>Floor No</th>
+                      <th>Carpet Area</th>
+                      <th>Status</th>
+                      <th>Customer Name</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Form Row for Adding or Editing an Inventory -->
+                    <tr *ngIf="showinventory">
+                      <td>#</td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Flat No" [(ngModel)]="newInventory.Flatno" name="Flatno" required>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Floor no" [(ngModel)]="newInventory.floorno" name="floorno" required>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Carpet area" [(ngModel)]="newInventory.carpetArea" name="carpetarea" required>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Status" [(ngModel)]="newInventory.status" name="status" required>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Customer name" [(ngModel)]="newInventory.customername" name="customername" required>
+                      </td>
+                      <td class="d-flex">
+                        <button class="btn btn-outline-success me-3 mb-2" (click)="addinventory()">
+                          <i class="fa fa-check"></i>
+                          <!-- Save -->
+                        </button>
+                        <button class="btn btn-outline-secondary mb-2" (click)="showinventory = false">
+                          <i class="fa fa-trash"></i>
+                          <!-- Cancel -->
+                        </button>
+                      </td>
+                    </tr>
+            
+                    <!-- Displaying the Inventory -->
+                    <tr *ngFor="let row of inventorySchedules; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ row.Flatno }}</td>
+                      <td>{{ row.floorno }}</td>
+                      <td>{{ row.carpetArea }}</td>
+                      <td>{{ row.status }}</td>
+                      <td>{{ row.customername }}</td>
+                      <td>
+                        <button class="btn btn-outline-danger" (click)="deleteInventory(i)">
+                          <i class="fa fa-trash"></i>
+                          <!-- Delete -->
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          
-            <!-- Table Section with Dynamic Stage and Percentage -->
-            <div class="table-responsive">
-              <table class="table caption-top text-start">
-                <thead class="table-light">
-                  <tr>
-                    <th>SR. No</th>
-                    <th>Stage</th>
-                    <th>Percentage</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Input Fields for Adding a New Payment Schedule -->
-                  <tr *ngIf="show">
-                    <td>#</td>
-                    <td>
-                      <input
-                        type="text"
-                        class="form-control mb-2"
-                        placeholder="Stage"
-                        [(ngModel)]="newPaymentSchedule1.stage"
-                        name="stage"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        class="form-control mb-2"
-                        placeholder="Percentage"
-                        [(ngModel)]="newPaymentSchedule1.percentage"
-                        name="percentage"
-                        required
-                      />
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-outline-success me-3" (click)="add()">
-                        <i class="fa fa-check"></i> 
-                        <!-- Add -->
-                      </button>
-                      <button type="button" class="btn btn-outline-secondary" (click)="show = false">
-                        <i class="fa fa-trash"></i> 
-                        <!-- Cancel -->
-                      </button>
-                    </td>
-                  </tr>
-          
-                  <!-- Display added payment schedules -->
-                  <tr *ngFor="let row of paymentSchedules1; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ row.stage }}</td>
-                    <td>{{ row.percentage }}</td>
-                    <td>
-                      <button class="btn btn-outline-danger" (click)="deleteit(i)">
-                        <i class="fa fa-trash"></i> Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            
+              <hr>
+            <!-- apf details -->
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="color">APF Details</h1>
+                <button class="btn btn-outline-primary" type="button" (click)="toggleShowApf($event)">+ add</button>
+              </div>
+            
+              <div class="table-responsive">
+                <table class="table caption-top text-start">
+                  <thead class="table-light">
+                    <tr>
+                      <th>SR. No</th>
+                      <th>APF NO</th>
+                      <th>Bank</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Form Row for Adding APF -->
+                    <tr *ngIf="showapf">
+                      <td>#</td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="APF No" [(ngModel)]="newapf.apfno" name="apfno" required>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control mb-2" placeholder="Bank" [(ngModel)]="newapf.bank" name="bank" required>
+                      </td>
+                      <td class="d-flex">
+                        <button class="btn btn-outline-success me-3 mb-2" (click)="addapf()">
+                          <i class="fa fa-check"></i> 
+                          <!-- Save -->
+                        </button>
+                        <button class="btn btn-outline-secondary mb-2" (click)="showapf = false">
+                          <i class="fa fa-trash"></i> 
+                          <!-- Cancel -->
+                        </button>
+                      </td>
+                    </tr>
+            
+                    <!-- Displaying the APF Details -->
+                    <tr *ngFor="let row of apf; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ row.apfno }}</td>
+                      <td>{{ row.bank }}</td>
+                      <td>
+                        <button class="btn btn-outline-danger" (click)="deleteapf(i)">
+                          <i class="fa fa-trash"></i> 
+                          <!-- Delete -->
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-          
-          
+            
           <hr>
-          <!-- inventory -->
-          <div class="col-md-12">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h1 class="color">Inventory Availability</h1>
-              <button class="btn btn-outline-primary" (click)="showinventory = !showinventory">+ add</button>
+            <h1 class="color"> Area bank details</h1>
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Enter RERA bank name"
+                [(ngModel)]="newProject.rerabankname"
+                name="rerabankname"
+                #rerabankname="ngModel"
+                required
+              />
+              <div *ngIf="rerabankname.invalid && rerabankname.touched" class="text-danger">
+                RERA bank name is required.
+              </div>
             </div>
-          
-            <div class="table-responsive">
-              <table class="table caption-top text-start">
-                <thead class="table-light">
-                  <tr>
-                    <th>SR. No</th>
-                    <th>Flat NO</th>
-                    <th>Floor No</th>
-                    <th>Carpet Area</th>
-                    <th>Status</th>
-                    <th>Customer Name</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Form Row for Adding or Editing an Inventory -->
-                  <tr *ngIf="showinventory">
-                    <td>#</td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Flat No" [(ngModel)]="newInventory.Flatno" name="Flatno" required>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Floor no" [(ngModel)]="newInventory.floorno" name="floorno" required>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Carpet area" [(ngModel)]="newInventory.carpetArea" name="carpetarea" required>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Status" [(ngModel)]="newInventory.status" name="status" required>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Customer name" [(ngModel)]="newInventory.customername" name="customername" required>
-                    </td>
-                    <td class="d-flex ">
-                      <button class="btn btn-outline-success me-3 mb-2" (click)="addinventory()">
-                        <i class="fa fa-check"></i> 
-                        <!-- Save -->
-                      </button>
-                      <button class="btn btn-outline-secondary mb-2" (click)="showinventory = false">
-                        <i class="fa fa-trash"></i> 
-                        <!-- Cancel -->
-                      </button>
-                    </td>
-                  </tr>
-          
-                  <!-- Displaying the Inventory -->
-                  <tr *ngFor="let row of inventory; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ row.Flatno }}</td>
-                    <td>{{ row.floorno }}</td>
-                    <td>{{ row.carpetArea }}</td>
-                    <td>{{ row.status }}</td>
-                    <td>{{ row.customername }}</td>
-                    <td>
-                      <!-- <button class="btn btn-outline-warning me-3" (click)="editInventory(i)">
-                        <i class="fa fa-edit"></i> Edit
-                      </button> -->
-                      <button class="btn btn-outline-danger" (click)="deleteInventory(i)">
-                        <i class="fa fa-trash"></i> 
-                        <!-- Delete -->
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Enter RERA bank holder name"
+                [(ngModel)]="newProject.rerabankholdername"
+                name="rerabankholdername"
+                #rerabankholdername="ngModel"
+                required
+              />
+              <div *ngIf="rerabankholdername.invalid && rerabankholdername.touched" class="text-danger">
+                RERA bank holder name is required.
+              </div>
             </div>
-          </div>
-            <hr>
-          <!-- apf details -->
-          <div class="col-md-12">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h1 class="color">APF Details</h1>
-              <button class="btn btn-outline-primary" (click)="showapf = !showapf">+ add</button>
+        
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Enter bank account number"
+                [(ngModel)]="newProject.bankacno"
+                name="bankacno"
+                #bankacno="ngModel"
+                required
+                pattern="^[0-9]*$"
+              />
+              <div *ngIf="bankacno.invalid && bankacno.touched" class="text-danger">
+                Bank account number is required and must be numeric.
+              </div>
             </div>
-          
-            <div class="table-responsive">
-              <table class="table caption-top text-start">
-                <thead class="table-light">
-                  <tr>
-                    <th>SR. No</th>
-                    <th>APF NO</th>
-                    <th>Bank</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Form Row for Adding APF -->
-                  <tr *ngIf="showapf">
-                    <td>#</td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="APF No" [(ngModel)]="newapf.apfno" name="apfno" required>
-                    </td>
-                    <td>
-                      <input type="text" class="form-control mb-2" placeholder="Bank" [(ngModel)]="newapf.bank" name="bank" required>
-                    </td>
-                    <td class="d-flex">
-                      <button class="btn btn-outline-success me-3 mb-2" (click)="addapf()">
-                        <i class="fa fa-check"></i> 
-                        <!-- Save -->
-                      </button>
-                      <button class="btn btn-outline-secondary mb-2" (click)="showapf = false">
-                        <i class="fa fa-trash"></i> 
-                        <!-- Cancel -->
-                      </button>
-                    </td>
-                  </tr>
-          
-                  <!-- Displaying the APF Details -->
-                  <tr *ngFor="let row of apf; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ row.apfno }}</td>
-                    <td>{{ row.bank }}</td>
-                    <td>
-                      <button class="btn btn-outline-danger" (click)="deleteapf(i)">
-                        <i class="fa fa-trash"></i> 
-                        <!-- Delete -->
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Enter IFSC code"
+                [(ngModel)]="newProject.ifsccode"
+                name="ifsccode"
+                #ifsccode="ngModel"
+                required
+                pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$"
+              />
+              <div *ngIf="ifsccode.invalid && ifsccode.touched" class="text-danger">
+                IFSC code is required and must be in the correct format.
+              </div>
             </div>
-          </div>
-          
-        <hr>
-          <h1 class="color"> Area bank details</h1>
-          <div class="col-md-4">
-            <input type="text" class="form-control mb-2" placeholder="enter RERA bank name" [(ngModel)]="newProject.rerabankname" name="rerabankname" required />
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control mb-2" placeholder="enter RERA bank holder name" [(ngModel)]="newProject.rerabankholdername" name="rerabankholdername" required />
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control mb-2" placeholder="enter bank account number" [(ngModel)]="newProject.bankacno" name="bankacno" required />
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control mb-2" placeholder="enter IFSC code" [(ngModel)]="newProject.ifsccode" name="ifsccode" required />
-          </div>
-          <div class="col-md-4">
-            <input type="text" class="form-control mb-2" placeholder="enter CF details" [(ngModel)]="newProject.cfdetails" name="cfdetails" required />
-          </div>
-              
-            <!-- Save Button -->
-            <div class="col-md-12 text-end mt-3">
-              <button type="submit" class="btn btn-success">{{ editIndex === -1 ? 'Save Project' : 'Update Project' }}</button>
+        
+            <div class="col-md-4">
+              <input
+                type="text"
+                class="form-control mb-2"
+                placeholder="Enter CF details"
+                [(ngModel)]="newProject.cfdetails"
+                name="cfdetails"
+                #cfdetails="ngModel"
+                required
+              />
+              <div *ngIf="cfdetails.invalid && cfdetails.touched" class="text-danger">
+                CF details are required.
+              </div>
+              </div>
+                
+              <!-- Save Button -->
+              <div class="col-md-12 text-end mt-3">
+                <!-- <button type="submit" class="btn btn-success" >{{ editIndex === -1 ? 'Save Project' : 'Update Project' }}</button> -->
+                <button type="submit" class="btn btn-success me-2" [disabled]="!projectForm.form.valid">Save Project</button>
+                <button type="submit" class="btn btn-success" >update project</button>
+  
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+ </div>
