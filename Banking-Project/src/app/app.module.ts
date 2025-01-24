@@ -105,10 +105,17 @@ import { CreateApplicantComponent } from './components/create-applicant/create-a
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-// import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+
+import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
+import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
+import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
+import { NewRacComponent } from './components/new-rac/new-rac.component';
+// import { AddShortCloseComponent } from './componenets/add-short-close/add-short-close.component';
+
 import { DetailsComponent } from './components/Admin/leads/details/details.component';
 import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
 import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
@@ -121,6 +128,7 @@ import {Bank} from './components/Admin/LoanDisburment/bank/bank.component';
 // import { LoanRejectedComponent } from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
 // import{Apllication} from './components/Admin/LoanDisburment/application-details/application-details.component';
 import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
+
 
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 
@@ -216,10 +224,22 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
-      // MISReportComponent,
+      MISReportComponent,
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
+
+      AddDisbursementComponent,
+      SubmitRemarkComponent,
+      AddShortCloseComponent,
+      NewRacComponent,
+      /* AddShortCloseComponent, */
+
+
+
+
+
+
       DetailsComponent,
       OverViewComponent,
       ApplicationDetailsComponent,
@@ -232,6 +252,7 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       OverViewRejectedComponent,
       LoanDetailsRejectedComponent,
       ApplicationRejectedComponent,
+
       // ParentComponent,
   ],
   
