@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <button class="btn btn-primary" (click)="openModal()">Click to Open Disbursement Modal</button>
+  </div>
+  
+  <!-- Modal Structure -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="disbursementModal" tabindex="-1" aria-labelledby="disbursementModalLabel" aria-hidden="true" [ngClass]="{ show: isModalOpen }">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="disbursementModalLabel" class="form-label">Add Disbursement</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close" (click)="closeModal()"></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Disbursement Amount Input Section (Required) -->
+            <div class="form-group">
+              <label for="disbursementInput" class="form-label"><span style="color: red;">*</span><b>Disbursement Amount </b></label>
+              <input
+                id="disbursementInput"
+                type="text"
+                [(ngModel)]="inputValue"
+                name="inputValue"
+                (keydown)="onKeyDown($event)"
+                (input)="onInput($event)"
+                maxlength="5"
+                placeholder="12345"
+                class="form-control"
+                required
+                [ngClass]="{'is-invalid': inputValue && !isValidAmount}"
+              />
+              <div *ngIf="inputValue && !isValidAmount" class="error-message text-danger">
+                Invalid Amount format! Please enter exactly 5 digits.
+              </div>
+            </div>
+  
+            <!-- Sanction On Input Section (Required) -->
+            <div class="form-group">
+             
+                <span style="color: red;">*</span> <b>Disbursement Date</b>
+              
+              <input
+                id="sanctionOn"
+                type="date"
+                class="form-control"
+                [(ngModel)]="sanctionOn"
+                name="sanctionOn"
+                required
+                [max]="today"
+                [min]="minDate"
+                #sanctionOnCtrl="ngModel"
+              />
+              <div *ngIf="sanctionOnCtrl?.invalid && sanctionOnCtrl?.touched" class="error-message">
+                Please select a valid date.
+              </div>
+            </div>
+  
+            <!-- Loan Account No. Input Section (Not Required) -->
+            <div class="form-group">
+            
+                <label for="loanAcNo">
+                  <b>Loan Ac No.</b>
+                </label>
+             
+              <input
+                id="loanAcNo"
+                type="text"
+                class="form-control"
+                [(ngModel)]="loanAcNo"
+                name="loanAcNo"
+                (input)="validateNumber($event, 'loanAcNo')"
+                maxlength="10"
+                #loanAcNoCtrl="ngModel"
+              />
+              <div *ngIf="loanAcNoCtrl?.invalid && loanAcNoCtrl?.touched" class="error-message">
+                Loan Account No. should be alphanumeric.
+              </div>
+            </div>
+  
+            <!-- UTR No. Input Section (Not Required) -->
+            <div class="form-group">
+            
+                <label for="utrNo">
+                  <b>UTR No.</b>
+                </label>
+   
+              <input
+                id="utrNo"
+                type="text"
+                class="form-control"
+                [(ngModel)]="utrNo"
+                name="utrNo"
+                (input)="validateNumber($event, 'utrNo')"
+                maxlength="14"
+                #utrNoCtrl="ngModel"
+              />
+              <div *ngIf="utrNoCtrl?.invalid && utrNoCtrl?.touched" class="error-message">
+                UTR No. should be alphanumeric.
+              </div>
+            </div>
+  
+            <!-- Sanction Letter (File Upload) (Not Required) -->
+            <div class="form-group">
+           
+                <label for="sanctionLetter">
+                  <b>Reference Document</b>
+                </label>
+        
+              <input
+                id="sanctionLetter"
+                type="file"
+                class="form-control"
+                #sanctionLetterInput
+                (change)="onFileChange($event)"
+              />
+              <!-- Validation Error Message for File -->
+              <div *ngIf="fileError" class="error-message text-danger">
+                {{ fileError }}
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!isValidAmount || !sanctionOnCtrl?.valid || !inputValue || !sanctionOn">Add</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    Disbursement Added Successfully!
+  </div>
+  

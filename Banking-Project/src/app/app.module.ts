@@ -103,6 +103,11 @@ import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
+import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
+import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
+import { NewRacComponent } from './components/new-rac/new-rac.component';
+// import { AddShortCloseComponent } from './componenets/add-short-close/add-short-close.component';
 
 
 
@@ -205,6 +210,11 @@ import { DocumentListComponent } from './components/masters/document-list/docume
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
+      AddDisbursementComponent,
+      SubmitRemarkComponent,
+      AddShortCloseComponent,
+      NewRacComponent,
+      /* AddShortCloseComponent, */
 
 
 
