@@ -1,0 +1,63 @@
+<div class="edit-document-container">
+  <h2>Edit Document</h2>
+
+  <form (ngSubmit)="updateDocument()" #editForm="ngForm">
+      <div>
+          <div class="border border-1 p-3">
+              <div class="row">
+                  <div class="col-md-6">
+                      <b><label for="inputTypeOfLoan" class="form-label">Type of Loan</label></b>
+                      <select class="form-control" id="inputTypeOfLoan" name="TypeOfLoan" [(ngModel)]="document.typeOfLoan" required #typeOfLoan="ngModel">
+                          <option value="" disabled selected>Select Loan Type</option>
+                          <option value="homeLoan">Home Loan</option>
+                          <option value="personalLoan">Personal Loan</option>
+                          <option value="carLoan">Car Loan</option>
+                          <option value="educationLoan">Education Loan</option>
+                      </select>
+                      <div *ngIf="typeOfLoan.invalid && typeOfLoan.touched" class="text-danger">This field is required.</div>
+                  </div>
+                  <div class="col-md-6">
+                      <b><label for="inputEmployeeType" class="form-label">Employee Type</label></b>
+                      <select class="form-control" id="inputEmployeeType" name="EmployeeType" [(ngModel)]="document.employeeType" required #employeeType="ngModel">
+                          <option value="" disabled selected>Select Employee Type</option>
+                          <option value="salaried">Salaried</option>
+                          <option value="selfEmployed">Self Employed</option>
+                          <option value="contract">Contract</option>
+                          <option value="freelancer">Freelancer</option>
+                      </select>
+                      <div *ngIf="employeeType.invalid && employeeType.touched" class="text-danger">This field is required.</div>
+                  </div>
+              </div>
+              <br>
+              <table class="table">
+                  <thead class="table-secondary">
+                      <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name</th>
+                          <th scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                          <td>{{ i + 1 }}</td>
+                          <td><input type="text" class="form-control"  name="loanCriteriaName{{i}}" required></td>
+                          <td>
+                              <button style="background: none; color: red; border: 1px solid red;" (click)="deleteRow(i)">
+                                  <i class="fa-solid fa-trash"></i>
+                              </button>&nbsp;
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <button style="background: none; border: orangered; color: orangered;" (click)="addRow()">
+                  <i class="fa-solid fa-plus"></i> Add Item
+              </button>
+          </div>
+
+          <div class="d-flex justify-content-end m-2">
+              <!-- Update Button, enabled only if both fields are filled -->
+              <button class="btn btn-warning" type="submit" [disabled]="editForm.invalid">Update</button>
+          </div>
+      </div>
+  </form>
+</div>

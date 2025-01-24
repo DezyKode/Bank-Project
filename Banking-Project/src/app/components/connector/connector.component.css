@@ -1,0 +1,164 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .filters input,
+  .filters select {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    /* margin-top: 1rem; */
+  }
+  
+  .pagination button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    height: 45px;
+  }
+  
+  .pagination button:disabled {
+    cursor: not-allowed;
+  }
+
+  .column-visibility {
+    margin-bottom: 20px;
+}
+
+/* .column-visibility label {
+    margin-right: 15px;
+} */
+
+/* Ensure that the table wrapper allows horizontal scrolling */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on touch devices */
+  margin-bottom: 15px; /* Adds some space below the table */
+}
+.fixed-height{height: 520px;}
+/* Hide the horizontal scrollbar on larger screens */
+@media (min-width: 768px) {
+  .table-wrapper {
+    overflow-x: hidden;
+  }
+}
+.modal-backdrop{
+  opacity: 0.1 !important;
+}
+
+/* export-button */
+
+.export-button {
+  background-color: #292d8a; /* Dark blue background */
+  color: white; /* White text color */
+  font-size: 10px; /* Adjust font size */
+  font-weight: bold;
+  padding: 10px 20px; /* Adjust padding for size */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  display: inline-flex; /* Flex to align icon and text */
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Center text and icon */
+  gap: 8px; /* Space between icon and text */
+  width: 120px; /* Adjust width if needed */
+  height: 30px; /* Adjust height if needed */
+  margin-right: 50px;
+}
+
+.export-button:hover {
+  background-color: #1f2473; /* Slightly darker on hover */
+}
+
+.export-button:active {
+  background-color: #1b1f5c; /* Even darker when clicked */
+}
+
+.export-button span {
+  margin: 0; /* Adjust margin for text */
+}
+
+/* Add this if you want an icon */
+.export-button::before {
+ /*  content: '\2B73'; */ /* Unicode for a download/arrow icon */
+  display: inline-block;
+  font-size: 16px; /* Match text size */
+}
+
+
+/* createbtn-button */
+
+.createbtn-button {
+  background-color: #292d8a; /* Dark blue background */
+  color: white; /* White text color */
+  font-size: 10px; /* Adjust font size */
+  font-weight: bold;
+  padding: 10px 20px; /* Adjust padding for size */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  display: inline-flex; /* Flex to align icon and text */
+  align-items: center; /* Vertically align items */
+  justify-content: center; /* Center text and icon */
+  gap: 8px; /* Space between icon and text */
+  width: 141px; /* Adjust width if needed */
+  height: 30px; /* Adjust height if needed */
+  margin-right: 50px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.tab.active {
+  border-bottom: 2px solid orange;
+  font-weight: bold;
+  color: orange;
+}
+
+
+.createbtn-button:hover {
+  background-color: #1f2473; /* Slightly darker on hover */
+}
+
+.createbtn-button:active {
+  background-color: #1b1f5c; /* Even darker when clicked */
+}
+
+.createbtn-button span {
+  margin: 0; /* Adjust margin for text */
+}
+
+/* Add this if you want an icon */
+.createbtn-button::before {
+  content: '\002B'; /* Unicode for a download/arrow icon */
+  display: inline-block;
+  font-size: 16px; /* Match text size */
+}
+
+.reg
+{
+  border-bottom: 2px solid orange;
+  font-weight: bold;
+}
+
+.num-green {
+  background-color: rgb(179, 255, 191);
+  color: green;
+}
+
+.num-red {
+  background-color: rgb(255, 206, 206);
+  color: rgb(227, 8, 8);
+}

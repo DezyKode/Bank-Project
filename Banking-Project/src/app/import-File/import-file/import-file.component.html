@@ -1,0 +1,73 @@
+<div class="m-3" >
+   
+  <div class="sub-nav">
+    <h5 class="zone" style="color: blue;"><strong>LOAN STATISTICS REPORT</strong></h5>
+  </div>
+    
+  
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+    <div class="actions">
+      <button class="btn" (click)="downloadSample()">Download Sample</button>
+      <button class="btn" (click)="downloadSampleWithExample()">Download Sample With Example</button>
+    </div>
+  
+    <div class="import-section">
+      <div class="upload-box">
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          class="file-input"
+          id="fileInput"
+          hidden
+        />
+        <label for="fileInput" class="upload-area">
+          Drag and drop file here, or click to select file
+        </label>
+      </div>
+      
+      <div class="auto-allocate-section">
+        <input
+          type="checkbox"
+          id="autoAllocate"
+          [(ngModel)]="autoAllocate"
+        />
+        <label for="autoAllocate">Employee Auto Allocation</label>
+      </div>
+      
+      <div class="d-flex justify-content-end m-2">
+        <button class="btn btn-primary" >Import</button>
+    </div>
+    </div>
+  
+    <div class="history-section">
+      <h3>Import History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>SR</th>
+            <th>Date</th>
+            <th>Total Records</th>
+            <th>Inserted Records</th>
+            <th>Records with Errors</th>
+            <th>Error File</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of importHistory; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.totalRecords }}</td>
+            <td>{{ record.insertedRecords }}</td>
+            <td>{{ record.errors }}</td>
+            <td>
+              <a *ngIf="record.errorFile" href="{{ record.errorFile }}" download>Download</a>
+            </td>
+            <td>{{ record.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

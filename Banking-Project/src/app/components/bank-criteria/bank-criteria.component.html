@@ -1,0 +1,772 @@
+<div class="m-3">
+    <div class="h5">
+        SBI
+    </div>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Home Loan Criteria
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="inputPayou4" class="form-label">Payout Percentage</label>
+                            <input type="number" class="form-control" id="inputPayout4">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputStatus4" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example" id="inputStatus4">
+                                <option selected>Status</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" style="margin-top: 30px;">Update</button>
+                        </div>
+                    </form>
+
+                    <!-- Triangle Layout for Buttons -->
+                    <div class="triangle-buttons">
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'cibil', 'btn-secondary': activeTable !== 'cibil'}"
+                            (click)="showTable('cibil')">Cibil Score</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'margin', 'btn-secondary': activeTable !== 'margin'}"
+                            (click)="showTable('margin')">Margin Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'income', 'btn-secondary': activeTable !== 'income'}"
+                            (click)="showTable('income')">Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'repayment', 'btn-secondary': activeTable !== 'repayment'}"
+                            (click)="showTable('repayment')">Repayment Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'businessIncome', 'btn-secondary': activeTable !== 'businessIncome'}"
+                            (click)="showTable('businessIncome')">Business Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'businessRepayment', 'btn-secondary': activeTable !== 'businessRepayment'}"
+                            (click)="showTable('businessRepayment')">Business Repayment Criteria</button>
+                    </div>
+
+                    <!-- Cibil Score Table -->
+                    <div *ngIf="activeTable === 'cibil'" class="table-responsive table-striped">
+                        <table class="table ">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Cibil Score Start</th>
+                                    <th scope="col">Cibil Score End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                    <th scope="col">Salaried ROI</th>
+                                    <th scope="col">Non Salaried ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112);"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Margin Criteria Table -->
+                    <div *ngIf="activeTable === 'margin'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Margin Start</th>
+                                    <th scope="col">Margin End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of marginCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.marginStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.marginEnd"></td>
+                                    <td><input type="Number" class="form-control"
+                                            [(ngModel)]="row.marginloanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control"
+                                            [(ngModel)]="row.marginloanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Income Criteria Table -->
+                    <div *ngIf="activeTable === 'income'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Income Start</th>
+                                    <th scope="col">Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of incomeCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Repayment Criteria Table -->
+                    <div *ngIf="activeTable === 'repayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Repayment Start</th>
+                                    <th scope="col">Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of repaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Business Income Criteria -->
+                    <div *ngIf="activeTable === 'businessIncome'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Business Income Start</th>
+                                    <th scope="col">Business Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of businessCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Business Repayment Criteria -->
+                    <div *ngIf="activeTable === 'businessRepayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Business Repayment Start</th>
+                                    <th scope="col">Business Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of BusinessRepaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control"
+                                            [(ngModel)]="row.businessRepaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button style="background: none; border: 1px solid orangered; color:orangered;" (click)="addRow()">
+                        <i class="fa-solid fa-plus"></i> Add Item
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Loan Criteria -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Personal Loan Criteria
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="inputPayou4" class="form-label">Payout Percentage</label>
+                            <input type="Number" class="form-control" id="inputPayout4">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputStatus4" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example" id="inputStatus4">
+                                <option selected>Status</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" style="margin-top: 30px;">Update</button>
+                        </div>
+                    </form>
+
+                    <!-- Triangle Layout for Buttons -->
+                    <div class="triangle-buttons">
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'cibil', 'btn-secondary': activeTable !== 'cibil'}"
+                            (click)="showTable('cibil')">Cibil Score</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'income', 'btn-secondary': activeTable !== 'income'}"
+                            (click)="showTable('income')">Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'repayment', 'btn-secondary': activeTable !== 'repayment'}"
+                            (click)="showTable('repayment')">Repayment Criteria</button>
+                    </div>
+
+                    <!-- Cibil Score Table -->
+                    <div *ngIf="activeTable === 'cibil'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Cibil Score Start</th>
+                                    <th scope="col">Cibil Score End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                    <th scope="col">Salaried ROI</th>
+                                    <th scope="col">Non Salaried ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Income Criteria Table -->
+                    <div *ngIf="activeTable === 'income'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Income Start</th>
+                                    <th scope="col">Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of incomeCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Repayment Criteria Table -->
+                    <div *ngIf="activeTable === 'repayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Repayment Start</th>
+                                    <th scope="col">Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of repaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button style="background: none; border: 1px solid orangered; color:orangered;" (click)="addRow()">
+                        <i class="fa-solid fa-plus"></i> Add Item
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Car Loan Criteria
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="inputPayou4" class="form-label">Payout Percentage</label>
+                            <input type="Number" class="form-control" id="inputPayout4">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputStatus4" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example" id="inputStatus4">
+                                <option selected>Status</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" style="margin-top: 30px;">Update</button>
+                        </div>
+                    </form>
+
+                    <!-- Triangle Layout for Buttons -->
+                    <div class="triangle-buttons">
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'cibil', 'btn-secondary': activeTable !== 'cibil'}"
+                            (click)="showTable('cibil')">Cibil Score</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'income', 'btn-secondary': activeTable !== 'income'}"
+                            (click)="showTable('income')">Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'repayment', 'btn-secondary': activeTable !== 'repayment'}"
+                            (click)="showTable('repayment')">Repayment Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'businessIncome', 'btn-secondary': activeTable !== 'businessIncome'}"
+                            (click)="showTable('businessIncome')">Business Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'businessRepayment', 'btn-secondary': activeTable !== 'businessRepayment'}"
+                            (click)="showTable('businessRepayment')">Business Repayment Criteria</button>
+                    </div>
+
+                    <!-- Cibil Score Table -->
+                    <div *ngIf="activeTable === 'cibil'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Cibil Score Start</th>
+                                    <th scope="col">Cibil Score End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                    <th scope="col">Salaried ROI</th>
+                                    <th scope="col">Non Salaried ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Income Criteria Table -->
+                    <div *ngIf="activeTable === 'income'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Income Start</th>
+                                    <th scope="col">Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of incomeCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Repayment Criteria Table -->
+                    <div *ngIf="activeTable === 'repayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Repayment Start</th>
+                                    <th scope="col">Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of repaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Business Income Criteria -->
+                    <div *ngIf="activeTable === 'businessIncome'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Business Income Start</th>
+                                    <th scope="col">Business Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of businessCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Business Repayment Criteria -->
+                    <div *ngIf="activeTable === 'businessRepayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Business Repayment Start</th>
+                                    <th scope="col">Business Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of BusinessRepaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control"
+                                            [(ngModel)]="row.businessRepaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.businessRepaymentEnd">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button style="background: none; border: 1px solid orangered; color:orangered;" (click)="addRow()">
+                        <i class="fa-solid fa-plus"></i> Add Item
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Loan Criteria -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Business Loan Criteria
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="inputPayou4" class="form-label">Payout Percentage</label>
+                            <input type="Number" class="form-control" id="inputPayout4">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputStatus4" class="form-label">Status</label>
+                            <select class="form-select" aria-label="Default select example" id="inputStatus4">
+                                <option selected>Status</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" style="margin-top: 30px;">Update</button>
+                        </div>
+                    </form>
+
+                    <!-- Triangle Layout for Buttons -->
+                    <div class="triangle-buttons">
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'cibil', 'btn-secondary': activeTable !== 'cibil'}"
+                            (click)="showTable('cibil')">Cibil Score</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'income', 'btn-secondary': activeTable !== 'income'}"
+                            (click)="showTable('income')">Income Criteria</button>
+                        <button class="btn m-1"
+                            [ngClass]="{'btn-primary': activeTable === 'repayment', 'btn-secondary': activeTable !== 'repayment'}"
+                            (click)="showTable('repayment')">Repayment Criteria</button>
+                    </div>
+
+                    <!-- Cibil Score Table -->
+                    <div *ngIf="activeTable === 'cibil'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Cibil Score Start</th>
+                                    <th scope="col">Cibil Score End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                    <th scope="col">Salaried ROI</th>
+                                    <th scope="col">Non Salaried ROI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of loanCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.cibilScoreEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.salariedROI"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.nonSalariedROI"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Income Criteria Table -->
+                    <div *ngIf="activeTable === 'income'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Income Start</th>
+                                    <th scope="col">Income End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of incomeCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.incomeEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Repayment Criteria Table -->
+                    <div *ngIf="activeTable === 'repayment'" class="table-responsive table-striped">
+                        <table class="table">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th scope="col">Action</th>
+                                    <th scope="col">Repayment Start</th>
+                                    <th scope="col">Repayment End</th>
+                                    <th scope="col">Loan Requirement Start</th>
+                                    <th scope="col">Loan Requirement End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of repaymentCriteriaRows; let i = index">
+                                    <td>
+                                        <button style="background: none;color:red; border: 1px solid red;"
+                                            (click)="deleteRow(i)"><i class="fa-solid fa-trash"></i></button>&nbsp;
+                                        <button
+                                            style="background: none; border:1px solid rgb(112, 237, 112); color:rgb(112, 237, 112); outline: none;"
+                                            (click)="saveRow(i)"><i class="fa-solid fa-check"></i></button>
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentStart"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.repaymentEnd"></td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementStart">
+                                    </td>
+                                    <td><input type="Number" class="form-control" [(ngModel)]="row.loanRequirementEnd">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button style="background: none; border: 1px solid orangered; color:orangered;" (click)="addRow()">
+                        <i class="fa-solid fa-plus"></i> Add Item
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

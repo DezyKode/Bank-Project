@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-task-table',
   templateUrl: './task-table.component.html',
-  styleUrl: './task-table.component.css'
+  styleUrls: ['./task-table.component.css']
 })
 export class TaskTableComponent {
+
   columnVisibility = {
     fileNo: true,
     fileType: true,
@@ -196,7 +197,8 @@ export class TaskTableComponent {
     status: 'asc',
     assignTo: 'asc',
     startDate: 'asc',
-    deadline: 'asc'
+    deadline: 'asc',
+    
   };
 
   sortTable(column: string) {
@@ -289,5 +291,27 @@ export class TaskTableComponent {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     return this.filteredTasks.slice(startIndex, endIndex);
+  }
+
+  isSpinning = false;
+
+  refresh() {
+    // Start the spinning animation
+    this.isSpinning = true;
+
+    // Stop the spinning animation after 1 second (or as per the animation duration)
+    setTimeout(() => {
+      this.isSpinning = false;
+    }, 1000); // 1000 ms is the same as the animation duration
+
+    // Reset the filters to their initial/default values
+    this.searchQuery = '';
+    this.selectedAssignToOptions.clear();
+    this.selectedFileTypes.clear();
+    this.selectedPriorities.clear();
+    this.selectedStatuses.clear();
+
+    // Optionally, you can call the filteredLoan method here to update the displayed list
+    this.  applyFilters();
   }
 }

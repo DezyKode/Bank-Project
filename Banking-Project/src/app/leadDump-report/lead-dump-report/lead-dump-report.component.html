@@ -1,0 +1,783 @@
+<style>
+    .modal-backdrop {
+        opacity: 1 !important;
+    }
+
+    .offcanvas-backdrop.show {
+        opacity: 0.1 !important;
+    }
+
+    .offcanvas-backdrop.fade {
+        opacity: 0;
+    }
+    
+</style>
+<!-- <div class="container"> -->
+    <div class="filters row">
+
+        <!-- <div class="row"> -->
+
+        <div class="col">
+            <!-- Search Filter -->
+            <input type="text" [(ngModel)]="searchQuery" placeholder="Search" (input)="applyFilters()">
+        </div>
+       
+
+        <div class="col-md-auto">
+            <!-- <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                [disabled]="!areButtonsEnabled" (click)="deleteSelectedTasks()">Delete
+                <i class="fa-regular fa-trash-can"></i>
+            </button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- <div class="modal-header p-3 mb-2 bg-danger">
+                            <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Delete</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> -->
+                        <div class="modal-body">
+                            "Are you sure want to delete {{ rowSelectedCount }} records?"
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <button type="button" class="btn btn-primary me-2 ms-2" data-bs-toggle="modal"
+                data-bs-target="#exampleModal1" [disabled]="!areButtonsEnabled" (click)="archiveSelectedTasks()">Archive
+                <i class="fa-solid fa-box-archive"></i>
+            </button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header p-3 mb-2 bg-primary">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel text-white">Archive</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            "Are you sure want to archive {{ rowSelectedCount }} records?"
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-lg-2">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">Column Visibility <i class="fa-sharp fa-solid fa-filter"></i></button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+                data-bs-backdrop="static">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Column Visibility <i
+                            class="fa-sharp fa-solid fa-filter"></i></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr>
+                <div class="offcanvas-body">
+                    <div class="column-visibility">
+                        <!-- Select All Checkbox -->
+                        <div class="row mb-2">
+                            <div class="col" style="margin: 0%;">
+                                <label>
+                                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off"
+                                            [(ngModel)]="columnSelectAll" (change)="columnToggleSelectAll()">
+                                        <label class="btn btn-outline-primary" for="btncheck1">Select All</label>
+                                    </div>
+                                </label>
+                            </div>
+                            <label class="col">
+                                <button class="btn btn-outline-primary" disabled>Selected: {{ columnSelectedCount }} of
+                                    8</button>
+                            </label>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.fileNo"> SR
+                            </label>
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.fileType"> Bank Name
+                            </label>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.priority"> Total Cases
+                            </label>
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.status"> To Be Login
+                            </label>
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.assignTo"> Login
+                            </label>
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.inSanction"> In Sanction
+                            </label>
+                           
+                            
+                        </div>
+                        <div class="row mb-2">
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.Sanction"> Sanction
+                            </label>
+                            <!-- <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.inDisbursed"> In Disbursed
+                            </label> </div> -->
+
+                            <div class="row mb-2">
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.Disbursement
+                                "> Disbursement
+
+                            </label>
+                            <label class="col">
+                                <input type="checkbox" [(ngModel)]="columnVisibility.Rejected"> Rejected </label></div> 
+                            
+                                <label class="col">
+
+                                <input type="checkbox" [(ngModel)]="columnVisibility.Completed
+                                "> Completed
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-nav">
+            <h5 class="zone" style="color: blue;"><strong>LEAD DUMP REPORT</strong></h5>
+            </div>
+      </div>
+
+      <button class="export-button">
+        <span>Export</span>
+      </button>
+      
+    <!-- Table Wrapper with Horizontal Scroll -->
+    <!-- <div>
+        <label class="col">
+            <button class="btn btn-outline-primary" disabled>Selected: {{ rowSelectedCount }} of {{rowCount}}</button>
+        </label>
+    </div> -->
+    <div class="table-wrapper fixed-height table-responsive overflow-x: auto;"  >
+        <div style="overflow-x: auto;">
+
+        
+        <table class="table table-striped ">
+            <thead>
+                <tr class="sticky-top">
+                    <th *ngIf="columnVisibility.fileNo" scope="col">
+                        SR
+                    </th>
+               
+                    
+                    <th *ngIf="columnVisibility.fileType" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Applicant Name</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                        data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                        aria-expanded="false" data-bs-auto-close="outside">
+                                    <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                                </button>
+                    
+                                <form class="dropdown-menu p-4" style="max-height: 400px; overflow-y: auto;">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                       id="dropdownCheck1" (change)="toggleSelectAllFileTypes($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let fileType of fileTypes">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                       id="dropdownCheck2" [checked]="selectedFileTypes.has(fileType)"
+                                                       (change)="toggleFileType(fileType)">
+                                                {{ fileType }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                    
+                                <i (click)="sortTable('fileNo')" class="fas ms-1"
+                                   [class.fa-sort-asc]="sortDirection['fileNo'] === 'asc'"
+                                   [class.fa-sort-desc]="sortDirection['fileNo'] === 'desc'" style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+                    
+                    <th *ngIf="columnVisibility.priority" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div >File No</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllPriorities($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let priority of priorities">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2" [checked]="selectedPriorities.has(priority)"
+                                                    (change)="togglePriority(priority)">
+                                                {{ priority }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('priority')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['priority'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['priority'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+                    <th *ngIf="columnVisibility.status" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Loan A/C No</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllStatuses($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let status of statuses">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2" [checked]="selectedStatuses.has(status)"
+                                                    (change)="toggleStatus(status)">
+                                                {{ status }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('status')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['status'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['status'] === 'desc'" style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+                    <th *ngIf="columnVisibility.assignTo" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Loan Type</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllAssignTo($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let assignTo of assignToOptions">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedAssignToOptions.has(assignTo)"
+                                                    (change)="toggleAssignTo(assignTo)">
+                                                {{ assignTo }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('assignTo')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['assignTo'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['assignTo'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th *ngIf="columnVisibility.inSanction" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Case ID</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllInSanction($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let inSanctions of inSanction">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedInSanctionOption.has(inSanctions)"
+                                                    (change)="toggleInSanctions(inSanctions)">
+                                                {{ inSanctions }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('InSanction')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['InSanction'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['InSanction'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th *ngIf="columnVisibility.Sanction" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Case Date</div>    
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllSanction($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let Sanction of Sanction">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedSanctionOption.has(Sanction)"
+                                                    (change)="toggleSanctions(Sanction)">
+                                                {{ Sanction }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('Sanction')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['Sanction'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['Sanction'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                     
+
+                    <th *ngIf="columnVisibility.Disbursement" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Loan Amount</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllDisbursement($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let Disbursement of Disbursement">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedDisbursementOption.has(Disbursement)"
+                                                    (change)="toggleDisbursement(Disbursement)">
+                                                {{ Disbursement }}
+                                            </label>    
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('Disbursement')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['Disbursement'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['Disbursement'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th *ngIf="columnVisibility.Rejected" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>To Be Login Date</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllRejected($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let Rejected of Rejected">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedRejectedOption.has(Rejected)"
+                                                    (change)="toggleRejected(Rejected)">
+                                                {{ Rejected }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('Rejected')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['Rejected'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['Rejected'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th *ngIf="columnVisibility.Completed" scope="col" style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Login Date</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllCompleted($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let Completed of Completed">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedCompletedOption.has(Completed)"
+                                                    (change)="toggleCompleted(Completed)">
+                                                {{ Completed }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('Completed')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['Completed'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['Completed'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th *ngIf="columnVisibility.sanctionDate" scope="col" style="white-space: nowrap;">
+
+                        
+
+                        <div style="display: flex; flex-direction: row;">
+                            <div>Sanction Date</div>
+                            <div class="dropdown">
+                                <button type="button"
+                                    
+                                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                                <form class="dropdown-menu p-4">
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck1" (change)="toggleSelectAllsanctionDate($event)">
+                                                SelectAll
+                                            </label>
+                                        </div>
+                                        <div class="form-check" *ngFor="let sanctionDate of sanctionDate">
+                                            <label style="color: rgb(87, 85, 85);">
+                                                <input type="checkbox" class="form-check-input border border-secondary"
+                                                    id="dropdownCheck2"
+                                                    [checked]="selectedsanctionDateOption.has(sanctionDate)"
+                                                    (change)="toggleCompleted(sanctionDate)">
+                                                {{ sanctionDate }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <i (click)="sortTable('sanctionDate')" class="fas ms-3"
+                                    [class.fa-sort-asc]="sortDirection['sanctionDate'] === 'asc'"
+                                    [class.fa-sort-desc]="sortDirection['sanctionDate'] === 'desc'"
+                                    style="cursor: pointer;">
+                                </i>
+                            </div>
+                        </div>
+                    </th>
+
+                    <th style="white-space: nowrap;">
+                        <div style="display: flex; flex-direction: row;">
+                        <div>Sanction Amount</div>
+                        <div class="dropdown">
+                            <button type="button"
+                                
+                            data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                            aria-expanded="false" data-bs-auto-close="outside">
+                            <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                        </button>
+                            <form class="dropdown-menu p-4">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck1" (change)="toggleSelectAllsanctionAmount($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let sanctionAmount of sanctionAmount">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                id="dropdownCheck2"
+                                                [checked]="selectedsanctionAmountOption.has(sanctionAmount)"
+                                                (change)="toggleCompleted(sanctionAmount)">
+                                            {{ sanctionAmount }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <i (click)="sortTable('sanctionAmount')" class="fas ms-3"
+                                [class.fa-sort-asc]="sortDirection['sanctionAmount'] === 'asc'"
+                                [class.fa-sort-desc]="sortDirection['sanctionAmount'] === 'desc'"
+                                style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+
+
+                <th *ngIf="columnVisibility.fileType" scope="col" style="white-space: nowrap;">
+                    <div style="display: flex; flex-direction: row;">
+                        <div>Bank Name</div>
+                        <div class="dropdown">
+                            <button type="button"
+                                    data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                                    aria-expanded="false" data-bs-auto-close="outside">
+                                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                            </button>
+                
+                            <form class="dropdown-menu p-4" style="max-height: 400px; overflow-y: auto;">
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <label>
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                   id="dropdownCheck1" (change)="toggleSelectAllbankName($event)">
+                                            SelectAll
+                                        </label>
+                                    </div>
+                                    <div class="form-check" *ngFor="let bankName of bankName">
+                                        <label style="color: rgb(87, 85, 85);">
+                                            <input type="checkbox" class="form-check-input border border-secondary"
+                                                   id="dropdownCheck2" [checked]="selectedFileTypes.has(bankName)"
+                                                   (change)="togglebankName(bankName)">
+                                            {{ bankName }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                
+                            <i (click)="sortTable('bankName')" class="fas ms-1"
+                               [class.fa-sort-asc]="sortDirection['bankName'] === 'asc'"
+                               [class.fa-sort-desc]="sortDirection['bankName'] === 'desc'" style="cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </th>
+                
+            <th style="white-space: nowrap;">
+                <div style="display: flex; flex-direction: row;">
+                <div>Disbursement Date</div>
+                <div class="dropdown">
+                    <button type="button"
+                        
+                    data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                    aria-expanded="false" data-bs-auto-close="outside">
+                    <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+                </button>
+                    <form class="dropdown-menu p-4">
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <label>
+                                    <input type="checkbox" class="form-check-input border border-secondary"
+                                        id="dropdownCheck1" (change)="toggleSelectAlldisbursementDate($event)">
+                                    SelectAll
+                                </label>
+                            </div>
+                            <div class="form-check" *ngFor="let disbursementDate of disbursementDate">
+                                <label style="color: rgb(87, 85, 85);">
+                                    <input type="checkbox" class="form-check-input border border-secondary"
+                                        id="dropdownCheck2"
+                                        [checked]="selecteddisbursementDateOption.has(disbursementDate)"
+                                        (change)="toggleCompleted(disbursementDate)">
+                                    {{ disbursementDate }}
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                    <i (click)="sortTable('disbursementDate')" class="fas ms-3"
+                        [class.fa-sort-asc]="sortDirection['disbursementDate'] === 'asc'"
+                        [class.fa-sort-desc]="sortDirection['disbursementDate'] === 'desc'"
+                        style="cursor: pointer;">
+                    </i>
+                </div>
+            </div>
+        </th>
+
+
+        <th style="white-space: nowrap;">
+            <div style="display: flex; flex-direction: row;">
+            <div>Disbursement Amount</div>
+            <div class="dropdown">
+                <button type="button"
+                    
+                data-bs-toggle="dropdown" style="background: none; color: black; border: none;"
+                aria-expanded="false" data-bs-auto-close="outside">
+                <i class="fa-sharp fa-solid fa-filter" style="font-size: 13px;"></i>
+            </button>
+                <form class="dropdown-menu p-4">
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" class="form-check-input border border-secondary"
+                                    id="dropdownCheck1" (change)="toggleSelectAlldisbursementAmount($event)">
+                                SelectAll
+                            </label>
+                        </div>
+                        <div class="form-check" *ngFor="let disbursementAmount of disbursementAmount">
+                            <label style="color: rgb(87, 85, 85);">
+                                <input type="checkbox" class="form-check-input border border-secondary"
+                                    id="dropdownCheck2"
+                                    [checked]="selecteddisbursementAmountOption.has(disbursementAmount)"
+                                    (change)="toggledisbursementAmount(disbursementAmount)">
+                                {{ disbursementAmount }}
+                            </label>
+                            
+                        </div>
+                    </div>
+                </form>
+                <i (click)="sortTable('disbursementAmount')" class="fas ms-3"
+                    [class.fa-sort-asc]="sortDirection['disbursementAmount'] === 'asc'"
+                    [class.fa-sort-desc]="sortDirection['disbursementAmount'] === 'desc'"
+                    style="cursor: pointer;">
+                </i>
+            </div>
+        </div>
+    </th>
+
+
+
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of paginatedTasks">
+                    <!-- <td><input type="checkbox" [(ngModel)]="task.selected" (change)="updateSelectAll()" /></td> -->
+                    <td *ngIf="columnVisibility.fileNo" class="text-center">{{ task.fileNo }}</td>
+                    <td *ngIf="columnVisibility.fileType">{{ task.fileType }}</td>
+                    <td *ngIf="columnVisibility.priority" class="text-center">{{ task.priority }}</td>
+                    <td *ngIf="columnVisibility.status" class="text-center">{{ task.status }}</td>
+                    <td *ngIf="columnVisibility.assignTo" class="text-center">{{ task.assignTo }}</td>
+                    <td *ngIf="columnVisibility.inSanction" class="text-center">{{ task.inSanction }}</td>
+                    <td *ngIf="columnVisibility.Sanction" class="text-center">{{ task.Sanction }}</td>
+                    <!-- <td *ngIf="columnVisibility.inDisbursed" class="text-center">{{ task.inDisbursed }}</td> -->
+                    <td *ngIf="columnVisibility.Disbursement" class="text-center">{{ task.Disbursement }}</td>
+                    <td *ngIf="columnVisibility.Rejected" class="text-center">{{ task.Rejected }}</td>
+                    <td *ngIf="columnVisibility.Completed" class="text-center">{{ task.Completed }}</td>
+                    <td *ngIf="columnVisibility.sanctionDate" class="text-center">{{ task.sanctionDate }}</td>
+                    <td *ngIf="columnVisibility.sanctionAmount" class="text-center">{{ task.sanctionAmount }}</td>
+                    <td *ngIf="columnVisibility.bankName" class="text-center">{{ task.bankName }}</td>
+                    <td *ngIf="columnVisibility.disbursementDate" class="text-center">{{ task.disbursementDate }}</td>
+                    <td *ngIf="columnVisibility.disbursementAmount" class="text-center">{{ task.disbursementAmount }}</td>
+                    
+                    <td>
+                       
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <!-- Pagination -->
+    <div class="row mt-4">
+        <div class="pagination col-9">
+            <button class="btn btn-primary" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn btn-primary" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+        </div>
+        <div class="filters col-2">
+            <select [(ngModel)]="itemsPerPage" (change)="onItemsPerPageChange()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+    </div>
+<!-- </div> -->
