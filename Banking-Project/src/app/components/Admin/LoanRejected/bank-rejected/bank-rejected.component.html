@@ -1,1 +1,37 @@
-<p>bank-rejected works!</p>
+<div class="bank-table">
+    <!-- Header with Bank Name and Actions Buttons -->
+    <div class="bank-header">
+      <div class="bank-name">Bank</div>
+      
+      <div class="bank-actions">
+        <button (click)="performAction('LoginAll')" class="btn btn-primary">Mark All as Login</button>
+        <button (click)="performAction('RejectAll')" class="btn btn-danger">Mark All as Reject</button>
+      </div>
+    </div>
+    <hr>
+    
+    <!-- Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Bank Name</th>
+          <th>Status</th>
+          <th>Interest Rate</th>
+          <th>EMI</th>
+          <th>Loan Requirement</th>
+          <th>Sanction Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bank of banks">
+          <td>{{ bank.name }}</td>
+          <td><span class="status">{{ bank.status }}</span></td>
+          <td>{{ bank.interestRate }}</td>
+          <td>₹ {{ bank.emi }}</td>
+          <td>₹ {{ bank.loanRequirement }}</td>
+          <td>₹ {{ bank.sanctionAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
