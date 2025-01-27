@@ -1,53 +1,235 @@
-<div class="container-loan">
-    <!-- Loan Details Section -->
-    <main class="details">
-    <!-- HTML -->
-  <h2>Loan Requirement</h2>
-  <hr>
-  
-  <div class="loan-details">
-  <div class="custom-card">
-    <div class="custom-icon">
-      <i class="fas fa-money-bill-alt"></i> <!-- Icon for Loan Amount -->
-    </div>
-    <div class="card-content">
-      <h3 class="card-title">Loan Amount</h3>
-      <p class="card-text">Rs. 0</p>
-    </div>
+<div class="application-details-container">
+  <div class="details-section">
+      <h3 class="section-title">Applicant Details</h3>
+      <hr>
+      <div class="detail">
+          <button class="primary-applicant-button">Primary Applicant</button>
+      </div>
+      <div class="details-grid">
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Name</h3>
+                <p class="card-text">{{ applicantDetails.name }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-birthday-cake"></i> <!-- Icon for Date of Birth -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Date of Birth</h3>
+                <p class="card-text">{{ applicantDetails.dob }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-envelope"></i> <!-- Icon for Email -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Email</h3>
+                <p class="card-text">{{ applicantDetails.email }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-phone"></i> <!-- Icon for Mobile No -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Mobile No</h3>
+                <p class="card-text">{{ applicantDetails.mobile }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-id-card"></i> <!-- Icon for PAN No -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">PAN No</h3>
+                <p class="card-text">{{ applicantDetails.pan }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-briefcase"></i> <!-- Icon for Employment Type -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Employment Type</h3>
+                <p class="card-text">{{ applicantDetails.employmentType }}</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+                <i class="fas fa-calendar-alt"></i> <!-- Icon for Period of Employment -->
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Period of Employment</h3>
+                <p class="card-text">{{ applicantDetails.employmentPeriod }} Years</p>
+            </div>
+        </div>
+        
+        <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-user-clock"></i> <!-- Icon for Retirement Age -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Retirement Age</h3>
+              <p class="card-text">{{ applicantDetails.retirementAge }} Years</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-share-alt"></i> <!-- Icon for Lead Source -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Lead Source</h3>
+              <p class="card-text">{{ applicantDetails.leadsource }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-wallet"></i> <!-- Icon for Monthly Net Salary -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Monthly Net Salary</h3>
+              <p class="card-text">{{ applicantDetails.netSalary }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-chart-line"></i> <!-- Icon for Average Bonus -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Average Bonus of Last 3 Years</h3>
+              <p class="card-text">{{ applicantDetails.AverageBonusOfLast3Years }}</p>
+            </div>
+          </div>
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-user-clock"></i> <!-- Icon for Retirement Age -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Retirement Age</h3>
+              <p class="card-text">{{ applicantDetails.retirementAge }} Years</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-share-alt"></i> <!-- Icon for Lead Source -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Lead Source</h3>
+              <p class="card-text">{{ applicantDetails.leadsource }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-wallet"></i> <!-- Icon for Monthly Net Salary -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Monthly Net Salary</h3>
+              <p class="card-text">{{ applicantDetails.netSalary }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-chart-line"></i> <!-- Icon for Average Bonus -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Average Bonus of Last 3 Years</h3>
+              <p class="card-text">{{ applicantDetails.AverageBonusOfLast3Years }}</p>
+            </div>
+          </div>
+                    
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-chart-line"></i> <!-- Icon for Average Bonus -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Average Bonus of Last 3 Years</h3>
+              <p class="card-text">{{ applicantDetails.AverageBonusOfLast3Years }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-calendar-alt"></i> <!-- Icon for Average Monthly Incentive -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Average Monthly Incentive of Last 6 Months</h3>
+              <p class="card-text">{{ applicantDetails.AverageMonthlyIncentiveOfLast6Months }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-home"></i> <!-- Icon for Rent Income -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Rent Income</h3>
+              <p class="card-text">{{ applicantDetails.rentIncome }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-credit-card"></i> <!-- Icon for Loan EMI -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Loan EMI (Obligations)</h3>
+              <p class="card-text">{{ applicantDetails.loanEmi }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-building"></i> <!-- Icon for Future Rent Income -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Future Rent Income</h3>
+              <p class="card-text">{{ applicantDetails.futureRentIncome }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-briefcase"></i> <!-- Icon for Pension -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">Pension</h3>
+              <p class="card-text">{{ applicantDetails.pension }}</p>
+            </div>
+          </div>
+          
+          <div class="custom-card">
+            <div class="custom-icon">
+              <i class="fas fa-id-card"></i> <!-- Icon for CIBIL Score -->
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">CIBIL Score</h3>
+              <p class="card-text">
+                {{ applicantDetails.cibilScore }}
+                <a href="#" class="view-report-link">View Report</a>
+              </p>
+            </div>
+          </div>
+          
+      </div>
   </div>
-  
-  <div class="custom-card">
-    <div class="custom-icon">
-      <i class="fas fa-hand-holding-usd"></i> <!-- Icon for Loan Requested -->
-    </div>
-    <div class="card-content">
-      <h3 class="card-title">Loan Requested</h3>
-      <p class="card-text">Rs. 60,000</p>
-    </div>
-  </div>
-  
-  <div class="custom-card">
-    <div class="custom-icon">
-      <i class="fas fa-hourglass-half"></i> <!-- Icon for Tenure -->
-    </div>
-    <div class="card-content">
-      <h3 class="card-title">Tenure</h3>
-      <p class="card-text">1 Year</p>
-    </div>
-  </div>
-  
-  <div class="custom-card">
-    <div class="custom-icon">
-      <i class="fas fa-home"></i> <!-- Icon for Loan Type -->
-    </div>
-    <div class="card-content">
-      <h3 class="card-title">Loan Type</h3>
-      <p class="card-text">Home Loan</p>
-    </div>
-  </div>
-  
-  </div>
-  
-    </main>
-  </div>
+</div>
+
   

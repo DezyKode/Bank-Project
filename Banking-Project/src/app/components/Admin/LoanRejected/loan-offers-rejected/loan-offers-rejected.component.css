@@ -1,148 +1,36 @@
-    /* Container Styling */
-    
-    .container-loan {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        /* background-color: #f8f8f8; */
-        font-family: Arial, sans-serif;
-        width: 100%;
-    }
-    /* Main Content Styling */
-    
-    .details {
-        width: 100%;
-        /* max-width: 800px; */
-    }
-    
-    h2 {
-        text-align: start;
-        /* margin: 20px; */
-        /* font-size: 24px; */
-        padding: 10px;
-        /* font-size: 1.5rem; */
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-    /* Grid Layout for Loan Details */
-    
-    .loan-details {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        /* Four columns by default */
-        gap: 20px;
-        margin: 10px;
-        /* Space between grid items */
-    }
-    /* Styling for Individual Loan Items */
-    
-    .loan-item {
-        font-size: 14px;
-        line-height: 1.6;
-        text-align: center;
-        padding: 10px;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .loan-item strong {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    
-    .loan-item span {
-        color: #555;
-    }
-    /* Media Query for Responsiveness */
-    
-    @media (max-width: 768px) {
-        .loan-details {
-            grid-template-columns: repeat(2, 1fr);
-            /* Two columns for tablets */
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .loan-details {
-            grid-template-columns: 1fr;
-            /* One column for smaller screens */
-        }
-        h2 {
-            font-size: 20px;
-            /* Adjust heading size for smaller screens */
-            text-align: center;
-            /* Center align the heading */
-        }
-        .loan-item {
-            font-size: 12px;
-            /* Adjust font size for smaller screens */
-        }
-    }
-    /* CSS */
-    
-    hr {
-        border: none;
-        border-top: 2px solid #000;
-        /* Thickness and color of the line */
-        margin: 10px 0;
-        /* Space above and below the line */
-        width: 100%;
-        /* Make the line stretch across the container */
-    }
-    
-    @media (max-width: 1440px) {
-        .container {
-            width: 100%;
-        }
-    }
-    
-    .custom-card {
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-    }
-    
-    .custom-icon {
-        flex-shrink: 0;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        /* Makes the icon's background circular */
-        background-color: #e0f7fa;
-        /* Light blue background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        /* Icon size */
-        color: #007bff;
-    }
-    
-    .card-content {
-        margin-left: 15px;
-    }
-    
-    .card-title {
-        margin: 0;
-        font-size: 18px;
-        font-weight: bold;
-    }
-    
-    .card-text {
-        margin: 5px 0 0;
-        font-size: 14px;
-        color: #666;
-    }
-    
-    .custom-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-    }
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #000;
+    /* Thickness and color of the line */
+    margin: 10px 0;
+    /* Space above and below the line */
+    width: 100%;
+    /* Make the line stretch across the container */
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+thead th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}

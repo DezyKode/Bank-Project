@@ -100,7 +100,7 @@ import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/appl
 import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
-
+import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
 const routes: Routes = [
 
 
@@ -183,7 +183,8 @@ const routes: Routes = [
   children: [{path:"over-view",component:OverViewRejectedComponent},
     {path:"application-details",component:ApplicationRejectedComponent},
     {path:"loan-details",component:LoanDetailsRejectedComponent},
-    {path:"Bank",component:BankRejectedComponent}
+    {path:"Bank",component:BankRejectedComponent},
+    {path:"loan-offers",component:LoanOffersRejectedComponent}
 
  ]}
  ,

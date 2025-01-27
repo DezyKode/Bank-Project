@@ -105,7 +105,7 @@ import { CreateApplicantComponent } from './components/create-applicant/create-a
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-import { MISReportComponent } from './components/mis-report/mis-report.component';
+// import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
@@ -224,7 +224,7 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
-      MISReportComponent,
+      // MISReportComponent,
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
