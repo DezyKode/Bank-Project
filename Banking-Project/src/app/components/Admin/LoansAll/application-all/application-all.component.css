@@ -1,0 +1,203 @@
+.application-details-container {
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+    font-family: Arial, sans-serif;
+    color: #333;
+    /* background-color: #f9f9f9; */
+    /* border: 1px solid #ccc; */
+    /* border-radius: 8px; */
+}
+
+.section-title {
+    font-size: 1.5rem;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #000;
+    /* Thickness and color of the line */
+    margin: 10px 0;
+    /* Space above and below the line */
+    width: 100%;
+    /* Make the line stretch across the container */
+}
+
+.details-header {
+    /* background-color: #4c6ef5; */
+    /* color: white; */
+    /* padding: 10px; */
+    /* font-weight: bold; */
+    /* border-radius: 4px 4px 0 0; */
+    /* margin-bottom: 15px; */
+    text-align: center;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.detail-item {
+    padding: 10px;
+    /* background-color: white; */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.detail-item strong {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.detail-item span {
+    font-size: 0.9rem;
+}
+
+.detail-item a {
+    color: #4c6ef5;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.detail-item a:hover {
+    text-decoration: underline;
+}
+
+.primary-applicant {
+    font-size: 1.2rem;
+    /* Slightly larger font size */
+    /* text-transform: uppercase; */
+    /* Make text uppercase */
+    letter-spacing: 1px;
+    /* Add spacing between letters */
+}
+
+.primary-applicant-button {
+    display: inline-block;
+    width: 190px;
+    /* Adjust width */
+    /* height: 50px; */
+    /* Adjust height */
+    background-color: #053697;
+    /* Light gray base color */
+    color: #ebedf1;
+    /* Dark gray text */
+    font-size: 16px;
+    /* font-weight: bold; */
+    text-align: center;
+    line-height: 30px;
+    /* border-radius: 20px 20px 0px 0px; */
+    /* Centers the text vertically */
+    border: none;
+    clip-path: polygon(10% 0, 90% 0, 100% 90%, 100% 100%, 90% 100%, 0% 100%, 0 90%);
+    /* Right corner */
+    /* Diamond shape */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.primary-applicant-button:hover {
+    background-color: #4C51BF;
+    /* Darker purple on hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+}
+
+.primary-applicant-button:active {
+    background-color: #434190;
+    /* Even darker purple when active */
+    transform: translateY(0);
+    /* Reset lift on click */
+}
+
+.detail {
+    padding-bottom: 10px;
+}
+
+.primary-applicant-button {
+    margin-bottom: 20px;
+    /* Adds space below the button */
+}
+
+
+/* Style for Detail Item */
+
+
+/* Custom Card Styling */
+
+.custom-card {
+    /* max-width: 200px; */
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    /* Card background */
+}
+
+
+/* Icon styling inside the card */
+
+.custom-icon {
+    /* Icon color */
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Makes the icon's background circular */
+    background-color: #e0f7fa;
+    /* Light blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    /* Icon size */
+    color: #007bff;
+}
+
+
+/* Card content container */
+
+.card-content {
+    margin-left: 15px;
+    /* Space between icon and content */
+}
+
+
+/* Card title styling */
+
+.card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Card text styling */
+
+.card-text {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+    /* Text color */
+}
+
+
+/* Optional: Add hover effect to the card */
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
