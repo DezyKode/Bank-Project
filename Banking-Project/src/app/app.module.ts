@@ -148,7 +148,12 @@ import { LoanDetailsCompletedComponent } from './components/Admin/LoansCompleted
 import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
 import { OverviewCompletedComponent } from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
 import { LoansCompletedComponent } from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
-import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/overviewall.component'
+import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/overviewall.component';
+import { LoansLoginComponent } from './components/Admin/LoansLogin/loans-login/loans-login.component';
+import { OverViewLoginComponent } from './components/Admin/LoansLogin/over-view-login/over-view-login.component';
+import { ApplicationDetailsLoginComponent } from './components/Admin/LoansLogin/application-details-login/application-details-login.component';
+import { LoanDetailsLoginComponent } from './components/Admin/LoansLogin/loan-details-login/loan-details-login.component';
+import { BanksLoginComponent } from './components/Admin/LoansLogin/banks-login/banks-login.component'
 
 
 
@@ -276,6 +281,11 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
       OverviewCompletedComponent,
       LoansCompletedComponent,
       OverviewallComponent,
+      LoansLoginComponent,
+      OverViewLoginComponent,
+      ApplicationDetailsLoginComponent,
+      LoanDetailsLoginComponent,
+      BanksLoginComponent,
 
       // ParentComponent,
   ],

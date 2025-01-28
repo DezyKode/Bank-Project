@@ -1,0 +1,30 @@
+<p>over-view-login works!</p>
+
+<div class="outer">
+    <div class="inner vertical"></div>
+    <div class="inner horizontal">
+      <div class="card-header">
+        <div class="centered">Overview</div>
+      </div>
+      <hr />
+      <div class="inner-div">
+  
+        <div class='custom-card' *ngFor="let item of applicantDetails">
+            <div class="card-left">
+                <div class="custom-icon">
+                    <i class="{{ item.icon }}"></i> 
+                </div>
+            </div>
+            <div class="card-right">
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class='card-text'>{{ item.value }}</p>
+            </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  

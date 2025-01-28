@@ -115,6 +115,12 @@ import {OverviewCompletedComponent} from './components/Admin/LoansCompleted/over
 import  {LoanOffersCompletedComponent} from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
 import {LoanDetailsCompletedComponent} from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
 import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
+import {LoansLoginComponent} from './components/Admin/LoansLogin/loans-login/loans-login.component';
+import{OverViewLoginComponent} from "./components/Admin/LoansLogin/over-view-login/over-view-login.component";
+import {LoanDetailsLoginComponent} from './components/Admin/LoansLogin/loan-details-login/loan-details-login.component';
+import {BanksLoginComponent} from './components/Admin/LoansLogin/banks-login/banks-login.component';
+import {ApplicationDetailsLoginComponent} from'./components/Admin/LoansLogin/application-details-login/application-details-login.component';
+
 const routes: Routes = [
 
 
@@ -216,6 +222,14 @@ const routes: Routes = [
     {path:"loan-details",component:LoanDetailsCompletedComponent},
     {path:"Bank",component:BankCompletedComponent},
     {path:"loan-offers",component:LoanOffersCompletedComponent}
+
+ ]}
+ ,{path:"LoansLoginComponent",component:LoansLoginComponent, 
+  children: [{path:"over-view",component:OverViewLoginComponent},
+    {path:"application-details",component:ApplicationDetailsLoginComponent},
+    {path:"loan-details",component:LoanDetailsLoginComponent},
+    {path:"Bank",component:BanksLoginComponent},
+    // {path:"loan-offers",component:LoanOffersCompletedComponent}
 
  ]}
  ,
