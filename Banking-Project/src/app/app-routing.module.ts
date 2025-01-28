@@ -101,6 +101,20 @@ import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
 import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
+import {LoansallComponent} from'./components/Admin/LoansAll/loansall/loansall.component'
+import {OverviewallComponent} from './components/Admin/LoansAll/overviewall/overviewall.component'
+import{LoanOffersAllComponent} from "./components/Admin/LoansAll/loan-offers-all/loan-offers-all.component"
+import{LoanDetailsAllComponent} from './components/Admin/LoansAll/loan-details-all/loan-details-all.component';
+import {BankallComponent} from "./components/Admin/LoansAll/bankall/bankall.component";
+
+import { ApplicationAllComponent } from "./components/Admin/LoansAll/application-all/application-all.component";
+
+import{LoansCompletedComponent} from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
+import { ApplicationCompletedComponent } from  './components/Admin/LoansCompleted/application-completed/application-completed.component'
+import {OverviewCompletedComponent} from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
+import  {LoanOffersCompletedComponent} from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
+import {LoanDetailsCompletedComponent} from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
+import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
 const routes: Routes = [
 
 
@@ -185,6 +199,23 @@ const routes: Routes = [
     {path:"loan-details",component:LoanDetailsRejectedComponent},
     {path:"Bank",component:BankRejectedComponent},
     {path:"loan-offers",component:LoanOffersRejectedComponent}
+
+ ]}
+ ,{path:"LoansallComponent",component:LoansallComponent, 
+  children: [{path:"over-view",component:OverviewallComponent},
+    {path:"application-details",component:ApplicationAllComponent},
+    {path:"loan-details",component:LoanDetailsAllComponent},
+    {path:"Bank",component:BankallComponent},
+    {path:"loan-offers",component:LoanOffersAllComponent}
+
+ ]}
+ 
+ ,{path:"LoansCompletedComponent",component:LoansCompletedComponent, 
+  children: [{path:"over-view",component:OverviewCompletedComponent},
+    {path:"application-details",component:ApplicationCompletedComponent},
+    {path:"loan-details",component:LoanDetailsCompletedComponent},
+    {path:"Bank",component:BankCompletedComponent},
+    {path:"loan-offers",component:LoanOffersCompletedComponent}
 
  ]}
  ,

@@ -136,7 +136,19 @@ import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-reje
 import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
 import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
-import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/application-rejected/application-rejected.component'
+import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/application-rejected/application-rejected.component';
+import { ApplicationAllComponent } from './components/Admin/LoansAll/application-all/application-all.component';
+import { LoansallComponent } from './components/Admin/LoansAll/loansall/loansall.component';
+import { BankallComponent } from './components/Admin/LoansAll/bankall/bankall.component';
+import { LoanDetailsAllComponent } from './components/Admin/LoansAll/loan-details-all/loan-details-all.component';
+import { LoanOffersAllComponent } from './components/Admin/LoansAll/loan-offers-all/loan-offers-all.component';
+import { ApplicationCompletedComponent } from './components/Admin/LoansCompleted/application-completed/application-completed.component';
+import { LoanOffersCompletedComponent } from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
+import { LoanDetailsCompletedComponent } from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
+import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
+import { OverviewCompletedComponent } from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
+import { LoansCompletedComponent } from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
+import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/overviewall.component'
 
 
 
@@ -252,6 +264,18 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       OverViewRejectedComponent,
       LoanDetailsRejectedComponent,
       ApplicationRejectedComponent,
+      ApplicationAllComponent,
+      LoansallComponent,
+      BankallComponent,
+      LoanDetailsAllComponent,
+      LoanOffersAllComponent,
+      ApplicationCompletedComponent,
+      LoanOffersCompletedComponent,
+      LoanDetailsCompletedComponent,
+      BankCompletedComponent,
+      OverviewCompletedComponent,
+      LoansCompletedComponent,
+      OverviewallComponent,
 
       // ParentComponent,
   ],
