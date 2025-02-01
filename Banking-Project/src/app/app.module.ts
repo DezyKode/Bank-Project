@@ -99,7 +99,7 @@ import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.co
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-// import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
@@ -107,6 +107,8 @@ import { DetailsComponent } from './components/Admin/leads/details/details.compo
 import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
 import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
 import{BankComponents} from './components/Admin/leads/bank/bank.component';
+import { ReceiptsComponent } from './components/receipts/receipts.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
 
 
@@ -205,14 +207,16 @@ import{BankComponents} from './components/Admin/leads/bank/bank.component';
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
-      // MISReportComponent,
+      MISReportComponent,
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
       DetailsComponent,
       OverViewComponent,
       ApplicationDetailsComponent,
-      BankComponents
+      BankComponents,
+      ReceiptsComponent,
+      EmployeeDetailsComponent
 
 
 

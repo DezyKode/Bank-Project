@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddEmpService } from '../../../Service/AddEmployee/add-emp.service';
 
 
 @Component({
@@ -7,15 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './registration.component.css'
 })
 export class RegistrationComponent {
-  tempAddress: string = '';  // Temporary address
-  permAddress: string = '';  // Permanent address
-  isAddressSame: boolean = false;  // Checkbox state
-  Pincode:string=''
-  State:string=''
-  City:string=''
-  permAddress1:String=''
-  empID:string=''
-
+  tempAddress: string = '';
+  permAddress: string = '';
+  isAddressSame: boolean = false;
+  Pincode: string = ''
+  State: string = ''
+  City: string = ''
+  permAddress1: String = ''
+  empID: string = ''
   name: string = '';
   email_ID: string = '';
   mobile_No: string = '';
@@ -24,44 +24,33 @@ export class RegistrationComponent {
   passward: string = '';
   confirm_Passward: string = '';
   upload_Photo: string = '';
+  permState: string = ''
+  permCity: string = ''
+  permPinCode: string = ''
+  tempAddress1: any;
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
-  permState:string=''
-  permCity:string=''
-  permPinCode:string=''
-tempAddress1: any;
+  constructor(private addEmpService: AddEmpService) { }
 
-
-// passward: string ;
-// confirm_Passward: string;
-showPassword: boolean = false; // Flag to toggle password visibility
-showConfirmPassword: boolean = false; // Flag to toggle confirm password visibility
-
-togglePasswordVisibility(field: string): void {
-  if (field === 'password') {
-    this.showPassword = !this.showPassword;
-    const passwordField = document.getElementById('password') as HTMLInputElement;
-    passwordField.type = this.showPassword ? 'text' : 'password';
-  } else if (field === 'confirm-password') {
-    this.showConfirmPassword = !this.showConfirmPassword;
-    const confirmPasswordField = document.getElementById('confirm-password') as HTMLInputElement;
-    confirmPasswordField.type = this.showConfirmPassword ? 'text' : 'password';
+  togglePasswordVisibility(field: string): void {
+    if (field === 'password') {
+      this.showPassword = !this.showPassword;
+    } else if (field === 'confirm-password') {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
   }
-}
 
-  // Synchronize addresses when checkbox is clicked
   syncAddresses(): void {
     if (this.isAddressSame) {
       this.permAddress = this.tempAddress;
     }
   }
 
-  // id validation
   validateID(event: any): void {
     let inputValue = event.target.value;
 
     console.log('Before validation:', inputValue);
-
-    // inputValue = inputValue.replace(/[^0-9]/g, '');
 
     if (inputValue.length > 5) {
       inputValue = inputValue.slice(0, 5);
@@ -71,86 +60,42 @@ togglePasswordVisibility(field: string): void {
     console.log('After validation:', inputValue);
   }
 
-  // number valid
   mobile_No1: string = '';
   isValidMobile: boolean = true;
 
   validateNumber(event: any): void {
     let inputValue = event.target.value;
-
-    // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
-
-    // Restrict to exactly 10 digits
     if (inputValue.length > 10) {
       inputValue = inputValue.slice(0, 10);
     }
 
-    // Update the input field and model
     this.mobile_No1 = inputValue;
     this.isValidMobile = inputValue.length === 10;
-
-    // Reflect changes in the input field
     event.target.value = inputValue;
   }
 
-
-  // validate Name
   validateName(event: any): void {
     let inputValue = event.target.value;
-
-    // Remove any non-letter characters (including numbers and special characters)
     event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
-}
+  }
 
 
 
   handleAdd(): void {
-
-    
-        if (!this.isValidEmail) {
-          alert('Please enter a valid email address.');
-          return; // Stop the function execution if the email is invalid
-        }
-
-    if (!this.isValidMobile || this.mobile_No1.length !== 10) {
-      alert('Please enter a valid 10-digit mobile number.');
-      return; // Stop the function execution if the mobile number is invalid
+    // Basic validation
+    if (this.passward !== this.confirm_Passward) {
+      alert('Passwords do not match!');
+      return;
     }
 
-    
-    if (
-this.empID===''||
-      this.name === ''||
-      this.email_ID===''||
-      this.mobile_No===''||
-      this.gender===''|| this.role===''||
-      this.passward===''||
+    if (!this.fileToUpload) {
+      alert('Please upload a profile photo');
+      return;
+    }
 
-      this.confirm_Passward===''||this.tempAddress===''||this.permAddress===''||
-      this.State===''||this.City===''|| this.permAddress1===''||this.Pincode===''||
-      this.permState===''|| this.permCity===''||this.permPinCode===''
-    
-
-     
-      
-    
-      
-
-    ) {
-      // If any field is empty, show an alert to fill in all the details
-      alert('Please fill in all details');
-      return; // Stop the function execution if fields are empty
-    }else{
-
-      
-      alert('Add button clicked!');
-
-      
-      // Logging form data before sending
-    
-    const formData = {
-     empID:this.empID,
+    const employeeData = {
+      employee_Id: this.empID,
       name: this.name,
       email_ID: this.email_ID,
       mobile_No: this.mobile_No,
@@ -158,23 +103,28 @@ this.empID===''||
       role: this.role,
       passward: this.passward,
       confirm_Passward: this.confirm_Passward,
-      upload_Photo: this.upload_Photo,
-      tempAddress: this.tempAddress,
-      tempAddress1:this.tempAddress1,
-      State:this.State,
-      City:this.City,
-      Pincode:this.Pincode,
-      permAddress: this.permAddress,
-      permAddress1: this.permAddress1,
-      permState:this.permState,
-      permCity:this.permCity,
-      permPinCode: this.permPinCode
-      
+      temporary_address: this.tempAddress,
+      permanent_address: this.permAddress,
+      state: this.State,
+      city: this.City,
+      pin_code: this.Pincode,
+      perm_State: this.permState,
+      perm_City: this.permCity,
+      perm_Pincode: this.permPinCode
     };
-    // Log the form data
-    console.log('Form Data:', formData);
+
+    this.addEmpService.postEmployee(employeeData, this.fileToUpload).subscribe({
+      next: (res) => {
+        alert('Employee added successfully!');
+        this.handleReset();
+      },
+      error: (err) => {
+        console.error('Error adding employee:', err);
+        alert('Error adding employee. Please check console for details.');
+      }
+    });
   }
-  }
+
 
   handleCancel(): void {
     alert('Cancel button clicked!');
@@ -182,123 +132,88 @@ this.empID===''||
 
   handleReset(): void {
     alert('Reset button clicked!');
-    this.empID=''
-    this.name = '';        // Reset Name
-    this.email_ID = '';    // Reset Email ID
-    this.mobile_No = '';   // Reset Mobile Number
-    this.gender = '';      // Reset Gender
-    this.role = '';        // Reset Role
-    this.passward = '';    // Reset Password
-    this.confirm_Passward = ''; // Reset Confirm Password
-    this.upload_Photo = '';    // Reset uploaded photo URL
-    this.tempAddress = '';    // Reset Temporary Address
-    this.permAddress = ''; 
-    this.permAddress1=''   // Reset Permanent Address
-
-    this.Pincode=''
-    this.State=''
-    this.City=''
-
-    this.permState='',
-    this.permCity='',
-    this.permPinCode=''
-  
-    // Reset the background image
+    this.empID = ''
+    this.name = '';
+    this.email_ID = '';
+    this.mobile_No = '';
+    this.gender = '';
+    this.role = '';
+    this.passward = '';
+    this.confirm_Passward = '';
+    this.upload_Photo = '';
+    this.tempAddress = '';
+    this.permAddress = '';
+    this.permAddress1 = ''
+    this.Pincode = ''
+    this.State = ''
+    this.City = ''
+    this.permState = '',
+    this.permCity = '',
+    this.permPinCode = ''
     this.backgroundImage = '';
-  
-    // Reset the checkbox state for "Temporary address same as permanent"
     this.isAddressSame = false;
-  
-    // Reset the email validation flag if needed
     this.isValidEmail = true;
-    
-    
-  }
 
+
+  }
 
   backgroundImage: string = '';
 
-  isEditMode: boolean = false;  // Flag to trigger file input visibility
-  // Function to handle the image upload
+  isEditMode: boolean = false;
   upload(event: any): void {
-    const file = event.target.files[0]; // Get the selected file
-    
+    const file = event.target.files[0];
+
     if (file) {
-      // Validate the file size (256KB = 262144 bytes)
-      const maxSize = 256 * 1024; // 256KB in bytes
-      
+      const maxSize = 256 * 1024;
+
       if (file.size > maxSize) {
         alert('File size exceeds 256KB. Please choose a smaller file.');
-        return; // Stop further processing if file is too large
+        return;
       }
-      
-      // Optional: Validate file type (e.g., only images)
+
       const allowedTypes = ['image/jpeg', 'image/png'];
       if (!allowedTypes.includes(file.type)) {
         alert('Invalid file type. Please upload a JPG, PNG, or GIF image.');
         return;
       }
-      
-      // If validation passes, display the image
+
       const reader = new FileReader();
       reader.onload = () => {
-        this.backgroundImage = reader.result as string; // Set the image URL
+        this.backgroundImage = reader.result as string;
       };
-      reader.readAsDataURL(file); // Convert file to base64 format
+      reader.readAsDataURL(file);
     }
   }
 
-  // Function to reset the uploaded image
-
-
-  // resetImage(): void {
-  //   const fileInput = document.getElementById('profile') as HTMLInputElement;
-  //   if (fileInput) {
-  //     fileInput.click();  // Open file input dialog to select a new image
-  //   }
-  // }
-
-
-  // backgroundImage: string = 'https://via.placeholder.com/150'; // Default image URL
-
-  // Opens file input dialog to select a new image
   resetImage(): void {
     const fileInput = document.getElementById('profile') as HTMLInputElement;
     if (fileInput) {
-      fileInput.value = ''; // Clear the value to allow re-upload of the same file
-      fileInput.click();    // Open file input dialog
+      fileInput.value = '';
+      fileInput.click();
     }
   }
 
-  // Handles file selection and updates the background image
+
   onImageUpload(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
       const reader = new FileReader();
       reader.onload = () => {
-        this.backgroundImage = reader.result as string; // Update the background image
+        this.backgroundImage = reader.result as string;
       };
       reader.readAsDataURL(file);
     }
   }
- 
 
 
-  // validate email
-
-  isValidEmail: boolean = true;   // Flag to track if email is valid
+  isValidEmail: boolean = true;
 
   validateEmail(event: any): void {
     const inputValue = event.target.value;
-
-    // Regular expression for email validation
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-    // Test if the input matches the email pattern
     this.isValidEmail = emailPattern.test(inputValue);
   }
-
 
   isFormInvalid(): boolean {
     return (
@@ -311,26 +226,29 @@ this.empID===''||
       !this.confirm_Passward ||
       !this.tempAddress ||
       !this.permAddress ||
-      !this.isValidEmail || // Ensure email is valid
-      this.passward !== this.confirm_Passward // Ensure passwords match
+      !this.isValidEmail ||
+      this.passward !== this.confirm_Passward
     );
   }
 
-
-  
   validatePincode(event: any): void {
     let inputValue = event.target.value;
-  
-    // Allow only numeric characters
     inputValue = inputValue.replace(/[^0-9]/g, '');
-  
-    // Restrict to exactly 10 digits
     if (inputValue.length > 6) {
       inputValue = inputValue.slice(0, 6);
     }
-  
-    // Update the input field
     event.target.value = inputValue;
   }
-  
+
+  fileToUpload: File | null = null;  // To store the uploaded file
+
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.fileToUpload = file;  // Assign the file to the fileToUpload variable
+      console.log('Selected file:', file);
+    } else {
+      this.fileToUpload = null;  // If no file selected, reset the fileToUpload
+    }
+  }
 }
