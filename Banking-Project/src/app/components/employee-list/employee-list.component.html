@@ -9,19 +9,13 @@
                     <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..."
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <!-- <select class="form-select m-1" [(ngModel)]="statusFilter" aria-label="Default select example"
-                    style="width: 30%;">
-                    <option value="">All</option>
-                    <option value="ACTIVE">Active</option>
-                    <option value="INACTIVE">Inactive</option>
-                </select> -->
             </div>
 
             <!-- Buttons aligned to the right -->
             <div class="col-md-9 text-center text-md-end mt-2 mt-md-0">
-                <button class="btn btn-primary m-1">Role</button>
+                <button class="btn btn-primary m-1" routerLink="/roles">Role</button>
                 <button class="btn btn-primary m-1">Incentive Structure</button>
-                <button class="btn btn-primary m-1">+ Create Employee</button>
+                <button class="btn btn-primary m-1" routerLink="/registration">+ Create Employee</button>
                 <button class="btn btn-outline-success" (click)="refresh()">
                     <i class="fa-solid fa-arrows-rotate" [ngClass]="{'spin': isSpinning}"></i> Refresh
                 </button>
@@ -38,7 +32,7 @@
                                 [class.fa-arrow-down-z-a]="sortDirection['id'] === 'desc'" style="cursor: pointer;">
                             </i>
                         </th>
-                        <th scope="col"></th>
+                        <!-- <th scope="col"></th> -->
                         <th scope="col">Name
                             <i (click)="sortTable('name')" class="fas ms-2"
                                 [class.fa-arrow-up-a-z]="sortDirection['name'] === 'asc'"
@@ -133,33 +127,39 @@
                             </div>
                         </th>
                         <th scope="col">Change Password</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of paginatedLoans">
-                        <th scope="row">{{ employee.id }}</th>
-                        <td><i class="fa-solid fa-user"></i></td>
+                        <th scope="row">{{ employee.employee_Id }}</th>
+                        <!-- <td><i class="fa-solid fa-user"></i></td> -->
                         <td>{{ employee.name }}</td>
-                        <td>{{ employee.email }}</td>
-                        <td>{{ employee.mobile }}</td>
+                        <td>{{ employee.email_ID }}</td>
+                        <td>{{ employee.mobile_No }}</td>
                         <td>{{ employee.gender }}</td>
-                        <td>{{ employee.role }}</td>
+                        <!-- <td><img src="data:image/jpeg;base64,{{employee.upload_Photo}}" height="50px" width="50px"/></td> -->
+                        <td>{{ employee.role}}</td>
                         <td>
                             <p [ngStyle]="{
                                 'background-color': employee.status === 'ACTIVE' ? 'rgb(220, 228, 255)' : 'rgb(255, 220, 220)',
                                 'color': employee.status === 'ACTIVE' ? 'rgb(0, 8, 255)' : 'rgb(255, 0, 0)'
                                 }"
-                                style="border-radius: 5px; text-align: center; margin: 0; font-family: Arial, Helvetica, sans-serif;">
+                                style="border-radius: 5px; text-align: center; margin: 0; font-family: Arial, Helvetica, sans-serif; cursor: pointer;"
+                                (click)="toggledStatus(employee)">
                                 {{ employee.status }}
                             </p>
                         </td>
                         <td>
                             <!-- Button trigger modal -->
                             <button class="border-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                style="background: none;">
+                                style="background: none;" (click)="openModal(employee.id)">
                                 <i class="fa-solid fa-lock"></i>
                             </button>
                         </td>
+                        <td><button style="background: none; border:none;"><i
+                                    [routerLink]="['/employee-details', employee.id]"
+                                    class="fa-solid fa-eye"></i></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -174,24 +174,55 @@
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Change Password</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form>
+                    <form (ngSubmit)="updatePassword(passwordForm)" #passwordForm="ngForm">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Enter new password">
+                                <label for="newPassword" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <input type="{{passwordVisible ? 'text' : 'password'}}" 
+                                           class="form-control" 
+                                           id="newPassword" 
+                                           name="newPassword" 
+                                           [(ngModel)]="newPassword" 
+                                           placeholder="Enter new password" 
+                                           required>
+                                    <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+                                        <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+                                    </button>
+                                </div>
                             </div>
+                    
                             <div class="mb-3">
-                                <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2"
-                                    placeholder="Enter confirm password">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <input type="{{confirmPasswordVisible ? 'text' : 'password'}}" 
+                                           class="form-control" 
+                                           id="confirmPassword" 
+                                           name="confirmPassword" 
+                                           [(ngModel)]="confirmPassword" 
+                                           placeholder="Confirm new password" 
+                                           required>
+                                    <button type="button" class="btn btn-outline-secondary" (click)="toggleConfirmPasswordVisibility()">
+                                        <i class="bi" [ngClass]="confirmPasswordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+                                    </button>
+                                </div>
+                            </div>
+                    
+                            <!-- Error message -->
+                            <div *ngIf="errorMessage" class="alert alert-danger">
+                                {{ errorMessage }}
+                            </div>
+                            <div *ngIf="successMessage" class="alert alert-success">
+                                {{ successMessage }}
                             </div>
                         </div>
+                    
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>

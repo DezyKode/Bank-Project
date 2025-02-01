@@ -30,9 +30,6 @@ interface MISReport {
   styleUrls: ['./mis-report.component.css']
 })
 
-
-
-
 export class MISReportComponent {
 
   searchText: string = '';

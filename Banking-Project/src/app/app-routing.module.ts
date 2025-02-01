@@ -65,7 +65,7 @@ import { LoanStaticsComponent } from './components/loan-statics/loan-statics.com
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-// import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
@@ -83,6 +83,8 @@ import { CreateConnectorComponent } from './components/create-connector/create-c
 import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
 import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+import { ReceiptsComponent } from './components/receipts/receipts.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
 import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
 import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
@@ -177,9 +179,13 @@ const routes: Routes = [
   {path:"bank-details", component:BanksTableComponent},
   {path:"bank-criteria", component:BankCriteriaComponent},
   {path:"DocumentListComponent",component:DocumentListComponent},
-  // {path:"mis-report", component:MISReportComponent},
+  {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
- {path:"DetailsComponent",component:DetailsComponent, 
+  {path:"receipts", component:ReceiptsComponent},
+  {path:"employee-details/:id", component:EmployeeDetailsComponent},
+
+
+  {path:"DetailsComponent",component:DetailsComponent, 
   children: [{path:"over-view",component:OverViewComponent},
     {path:"application-details",component:ApplicationDetailsComponent},
     {path:"loan-details",component:LoanDetails},

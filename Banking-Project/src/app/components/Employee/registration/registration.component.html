@@ -1,4 +1,3 @@
-
 <div class="Container">
   <div class="register-text">
     <p>Employee Registration</p>
@@ -10,8 +9,8 @@
       </h1>
 
       <!-- Show the uploaded image when there is one -->
-      <input class="file-uploader" type="file" (change)="upload($event)" accept="image/*" id="profile"
-        *ngIf="!backgroundImage" />
+      <input class="file-uploader form-control" type="file" (change)="onFileChange($event)" accept="image/*"
+        id="uploadPhoto" *ngIf="!backgroundImage" />
 
       <!-- Show the edit button when an image is uploaded -->
 
@@ -32,93 +31,72 @@
 
 
 
-    
-      <!-- Hidden file input -->
-      <input
-        id="profile"
-        type="file"
-        accept="image/*"
-        style="display: none"
-        (change)="onImageUpload($event)"
-      />
 
-    </div>  
+    <!-- Hidden file input -->
+    <input id="profile" type="file" accept="image/*" style="display: none" (change)="onImageUpload($event)" />
 
   </div>
-  <div class="form">
-    <form>
-      <!-- First Row -->
-      <div class="form-row">
-        <div class="form-group">
-          <label for="id">Employee ID:</label>
-          <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)" [(ngModel)]="empID" name="empID">
-        </div>
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name"
-            (input)="validateName($event)">
-        </div>
-        <div class="form-group">
-          <label for="email">Email ID:</label>
+
+</div>
+<div class="form">
+  <form>
+    <!-- First Row -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="id">Employee ID:</label>
+        <input type="text" placeholder="Enter Employee ID" id="id" required (input)="validateID($event)"
+          [(ngModel)]="empID" name="empID">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" placeholder="Enter Name" id="name" required [(ngModel)]="name" name="name"
+          (input)="validateName($event)">
+      </div>
+      <div class="form-group">
+        <label for="email">Email ID:</label>
 
 
-          <input
-            type="email"
-            placeholder="Enter Email"
-            id="email"
-            required
-            [(ngModel)]="email_ID"
-            name="email_ID"
-            (input)="validateEmail($event)"
-            [class.invalid]="!isValidEmail"
-          />
-          <!-- Error message -->
-          <small *ngIf="!isValidEmail" class="error-text">Invalid email format</small>
-        </div>
-        
-
+        <input type="email" placeholder="Enter Email" id="email" required [(ngModel)]="email_ID" name="email_ID"
+          (input)="validateEmail($event)" [class.invalid]="!isValidEmail" />
+        <!-- Error message -->
+        <small *ngIf="!isValidEmail" class="error-text">Invalid email format</small>
       </div>
 
-      <!-- Second Row -->
-      <div class="form-row">
-        <div class="form-group">
-          <label for="mobile">Mobile:</label>
-      
-          <input
-            type="text"
-            placeholder="Enter Mobile Number"
-            id="mobile"
-            required
-            (input)="validateNumber($event)"
-            [(ngModel)]="mobile_No"
-            name="mobile_No"
-            [class.invalid]="!isValidMobile"
-          />
-          <!-- Error message -->
-          <small *ngIf="!isValidMobile" class="error-text">
-            Mobile number must be exactly 10 digits.
-          </small>
-        </div>
-        
 
+    </div>
 
-        <div class="form-group">
-          <label for="gender">Gender:</label>
-          <select name="gender" id="gender" required [(ngModel)]="gender" name="gender">
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="role">Role:</label>
-          <input type="text" placeholder="Enter Role" id="role" required required [(ngModel)]="role" name="role">
-        </div>
+    <!-- Second Row -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="mobile">Mobile:</label>
+
+        <input type="text" placeholder="Enter Mobile Number" id="mobile" required (input)="validateNumber($event)"
+          [(ngModel)]="mobile_No" name="mobile_No" [class.invalid]="!isValidMobile" />
+        <!-- Error message -->
+        <small *ngIf="!isValidMobile" class="error-text">
+          Mobile number must be exactly 10 digits.
+        </small>
       </div>
 
-      <!-- Third Row -->
-      <!-- <div class="form-row1">
+
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" required [(ngModel)]="gender" name="gender">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="role">Role:</label>
+        <input type="text" placeholder="Enter Role" id="role" required required [(ngModel)]="role" name="role">
+      </div>
+    </div>
+
+    <!-- Third Row -->
+    <!-- <div class="form-row1">
         <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" id="password" required placeholder="Enter Password" [(ngModel)]="passward"
@@ -133,8 +111,6 @@
             [(ngModel)]="confirm_Passward" name="confirm_Passward">
             
         </div>
-
-
       </div> -->
 
       <div class="form-row1">
@@ -142,131 +118,134 @@
           <label for="password">Password:</label>
           <div class="password-container">
             <input 
-              type="password" 
+              type="{{ showPassword ? 'text' : 'password' }}" 
               id="password" 
               required 
               placeholder="Enter Password" 
-              [(ngModel)]="passward"
-              name="passward">
+              [(ngModel)]="passward" 
+              name="passward" />
             <img 
               src="https://gimgs2.nohat.cc/thumb/f/640/open-eye-vector-show-hide-password-icon--m2i8A0Z5d3A0H7G6.jpg" 
-              alt="eye icon"
-            
-              class="eye"
-          
-              (click)="togglePasswordVisibility('password')"
-            />
+              alt="eye icon" 
+              class="eye" 
+              (click)="togglePasswordVisibility('password')" />
           </div>
         </div>
-
+    
         <div class="form-group">
           <label for="confirm-password">Confirm Password:</label>
           <div class="password-container">
-  <input 
-    type="password" 
-    id="confirm-password" 
-    required 
-    placeholder="Confirm Password"
-    [(ngModel)]="confirm_Passward"
-    name="confirm_Passward"
-  />
-  <img 
-    src="https://gimgs2.nohat.cc/thumb/f/640/open-eye-vector-show-hide-password-icon--m2i8A0Z5d3A0H7G6.jpg" 
-    alt="eye icon"
-    class="eye"
-    (click)="togglePasswordVisibility('confirm-password')"
-  />
-</div>
-
+            <input 
+              type="{{ showConfirmPassword ? 'text' : 'password' }}" 
+              id="confirm-password" 
+              required 
+              placeholder="Confirm Password" 
+              [(ngModel)]="confirm_Passward" 
+              name="confirm_Passward" />
+            <img 
+              src="https://gimgs2.nohat.cc/thumb/f/640/open-eye-vector-show-hide-password-icon--m2i8A0Z5d3A0H7G6.jpg" 
+              alt="eye icon" 
+              class="eye" 
+              (click)="togglePasswordVisibility('confirm-password')" />
+          </div>
         </div>
       </div>
+      
 
-<strong>
-  <h3 style="margin-top: 13px; margin-bottom: 10px;">Temporary Address: </h3>
-</strong>
-      <div class="form-row1">
-        <div class="form-group">
-          <label for="address">Address Line 1</label>
-          <input type="text" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">  
-          <!-- <span id="note">Temporary address same as permanant address.</span>
+    <strong>
+      <h3 style="margin-top: 13px; margin-bottom: 10px;">Temporary Address: </h3>
+    </strong>
+    <div class="form-row1">
+      <div class="form-group">
+        <label for="address">Address Line 1</label>
+        <input type="text" id="address" placeholder="Temporary Address" [(ngModel)]="tempAddress" name="tempAddress">
+        <!-- <span id="note">Temporary address same as permanant address.</span>
             <input type="checkbox" class="tick"  width="40px"/> -->
-        </div>
-
-        <div class="form-group">
-          <label for="p-address">Address Line 2</label>
-
-
-          <input type="text"  id="p-address" placeholder="Permanant Address" [(ngModel)]="tempAddress1" name="permAddress1">
-
-        </div>
       </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="State">State:</label>
-          <input type="text" placeholder="State" id="State" required (input)="validateName($event)" [(ngModel)]="State" name="State">
-        </div>
-        <div class="form-group">
-          <label for="City">City:</label>
-          <input type="text" placeholder="City" id="City" required (input)="validateName($event)" [(ngModel)]="City" name="City">
-        </div>
-        <div class="form-group">
-          <label for="PinCode">PinCode:</label>
-          <input type="text"  id="PinCode" required placeholder="PinCode"  [(ngModel)]="Pincode" name="PinCode" (input)="validatePincode($event)" name="PinCode">
-        </div>
+      <div class="form-group">
+        <label for="p-address">Address Line 2</label>
+
+
+        <input type="text" id="p-address" placeholder="Permanant Address" [(ngModel)]="tempAddress1"
+          name="permAddress1">
+
       </div>
-
-
-      <div class="permAdd_is_sameAs_tempAdd">
-        <input type="checkbox" class="tick"  width="40px" id="tick"/>
-        <label id="note" for="tick">Permanant address same as temparary address.</label>
-      </div>
-<strong>
-  <h3 style="margin-top: 13px; margin-bottom: 10px;">Permanant Address: </h3>
-</strong>
-      <div class="form-row6">
-        <div class="form-group">
-          <label for="permAddress">Address Line 1</label>
-          <input type="text" id="permAddress" placeholder="Temporary Address" [(ngModel)]="permAddress" name="tempAddress">  
-          <!-- <span id="note">Temporary address same as permanant address.</span>
-            <input type="checkbox" class="tick"  width="40px"/> -->
-        </div>
-
-        <div class="form-group">
-          <label for="permAddress1">Address Line 2</label>
-
-
-          <input type="text"  id="permAddress1" placeholder="Permanant Address" [(ngModel)]="permAddress1" name="permAddress1">
-
-        </div>
-     
-      </div>
-
-
-      <div class="form-row5">
-        <div class="form-group">
-          <label for="permState">State:</label>
-          <input type="text" placeholder="State" id="permState" required (input)="validateName($event)" [(ngModel)]="permState" name="permState">
-        </div>
-        <div class="form-group">
-          <label for="permCity">City:</label>
-          <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)" [(ngModel)]="permCity" name="permCity">
-        </div>
-        <div class="form-group">
-          <label for="permPinCode">PinCode:</label>
-          <input type="text"  id="permPinCode" required placeholder="PinCode"  [(ngModel)]="permPinCode"  (input)="validatePincode($event)" name="permPinCode">
-        </div>
-      </div>
-
-
-
-
-      <!-- Buttons -->
-      <div class="button-container">
-        <button type="button" (click)="handleCancel()">Cancel</button>
-        <button type="button" (click)="handleReset()">Reset</button>
-        <button type="button" (click)="handleAdd()">Add</button>
-      </div>
-    </form>
     </div>
 
+    <div class="form-row">
+      <div class="form-group">
+        <label for="State">State:</label>
+        <input type="text" placeholder="State" id="State" required (input)="validateName($event)" [(ngModel)]="State"
+          name="State">
+      </div>
+      <div class="form-group">
+        <label for="City">City:</label>
+        <input type="text" placeholder="City" id="City" required (input)="validateName($event)" [(ngModel)]="City"
+          name="City">
+      </div>
+      <div class="form-group">
+        <label for="PinCode">PinCode:</label>
+        <input type="text" id="PinCode" required placeholder="PinCode" [(ngModel)]="Pincode" name="PinCode"
+          (input)="validatePincode($event)" name="PinCode">
+      </div>
+    </div>
+
+
+    <div class="permAdd_is_sameAs_tempAdd">
+      <input type="checkbox" class="tick" width="40px" id="tick" />
+      <label id="note" for="tick">Permanant address same as temparary address.</label>
+    </div>
+    <strong>
+      <h3 style="margin-top: 13px; margin-bottom: 10px;">Permanant Address: </h3>
+    </strong>
+    <div class="form-row6">
+      <div class="form-group">
+        <label for="permAddress">Address Line 1</label>
+        <input type="text" id="permAddress" placeholder="Temporary Address" [(ngModel)]="permAddress"
+          name="tempAddress">
+        <!-- <span id="note">Temporary address same as permanant address.</span>
+            <input type="checkbox" class="tick"  width="40px"/> -->
+      </div>
+
+      <div class="form-group">
+        <label for="permAddress1">Address Line 2</label>
+
+
+        <input type="text" id="permAddress1" placeholder="Permanant Address" [(ngModel)]="permAddress1"
+          name="permAddress1">
+
+      </div>
+
+    </div>
+
+
+    <div class="form-row5">
+      <div class="form-group">
+        <label for="permState">State:</label>
+        <input type="text" placeholder="State" id="permState" required (input)="validateName($event)"
+          [(ngModel)]="permState" name="permState">
+      </div>
+      <div class="form-group">
+        <label for="permCity">City:</label>
+        <input type="text" placeholder="City" id="permCity" required (input)="validateName($event)"
+          [(ngModel)]="permCity" name="permCity">
+      </div>
+      <div class="form-group">
+        <label for="permPinCode">PinCode:</label>
+        <input type="text" id="permPinCode" required placeholder="PinCode" [(ngModel)]="permPinCode"
+          (input)="validatePincode($event)" name="permPinCode">
+      </div>
+    </div>
+
+
+
+
+    <!-- Buttons -->
+    <div class="button-container">
+      <button type="button" (click)="handleCancel()">Cancel</button>
+      <button type="button" (click)="handleReset()">Reset</button>
+      <button type="button" (click)="handleAdd()">Add</button>
+    </div>
+  </form>
+</div>
