@@ -102,5 +102,12 @@ export class DocumentsListComponent {
   cancelCreation() {
     this.showCreateDocument = false;
     this.showCancelButton = false; // Optionally hide the cancel button after cancellation
+  }deleteItem(index: number): void {
+    // Ensure this method is working on the correct data (documentToEdit.items array)
+    if (this.documentToEdit.items && this.documentToEdit.items.length > 0) {
+      this.documentToEdit.items.splice(index, 1); // Remove the item at the given index
+    }
   }
+  
+  
 }

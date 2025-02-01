@@ -55,6 +55,9 @@ import { ItrmodalComponent } from './components/itrmodal/itrmodal.component';
 import { DrivingmodalComponent } from './components/drivingmodal/drivingmodal.component';
 import { CinmodalComponent } from './components/cinmodal/cinmodal.component';
 import { PancardmodalComponent } from './components/pancardmodal/pancardmodal.component';
+import { LoanComponent } from './components/loan/loan.component';
+import { CreatenewcaseDocumentComponent } from './components/createnewcase-document/createnewcase-document.component';
+import { CreatenewcaseProvisionalLetterComponent } from './components/createnewcase-provisional-letter/createnewcase-provisional-letter.component';
 import { CreateLeadComponent } from './create-lead/create-lead/create-lead.component';
 import { LeadDumpReportComponent } from './leadDump-report/lead-dump-report/lead-dump-report.component';
 import { ImportFileComponent } from './import-File/import-file/import-file.component';
@@ -83,6 +86,37 @@ import { RevenueReconReportComponent } from './components/revenue-recon-report/r
 import { ReceiptsComponent } from './components/receipts/receipts.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
+import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
+import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
+import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
+import { NewRacComponent } from './components/new-rac/new-rac.component';
+
+import {LoandisburmentComponent} from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
+import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
+import {Application} from './components/Admin/LoanDisburment/application-details/application-details.component';
+import{OverView} from './components/Admin/LoanDisburment/over-view/over-view.component';
+import{Bank} from './components/Admin/LoanDisburment/bank/bank.component'
+import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
+// import {LoanRejected} from './components/Admin/LoanRejected/loanRejected/loan-rejected.component';
+import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/application-rejected/application-rejected.component';
+import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
+import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
+import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
+import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
+import {LoansallComponent} from'./components/Admin/LoansAll/loansall/loansall.component'
+import {OverviewallComponent} from './components/Admin/LoansAll/overviewall/overviewall.component'
+import{LoanOffersAllComponent} from "./components/Admin/LoansAll/loan-offers-all/loan-offers-all.component"
+import{LoanDetailsAllComponent} from './components/Admin/LoansAll/loan-details-all/loan-details-all.component';
+import {BankallComponent} from "./components/Admin/LoansAll/bankall/bankall.component";
+
+import { ApplicationAllComponent } from "./components/Admin/LoansAll/application-all/application-all.component";
+
+import{LoansCompletedComponent} from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
+import { ApplicationCompletedComponent } from  './components/Admin/LoansCompleted/application-completed/application-completed.component'
+import {OverviewCompletedComponent} from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
+import  {LoanOffersCompletedComponent} from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
+import {LoanDetailsCompletedComponent} from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
+import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
 const routes: Routes = [
 
 
@@ -101,6 +135,12 @@ const routes: Routes = [
   {path:'edit-bank-payout', component:EditBankPayoutComponent},
   {path:'loan-ageing-report', component:LoanAgeingReportComponent},
   {path:'revenue-recon-report', component:RevenueReconReportComponent},
+  {path:'add-disbursement', component:AddDisbursementComponent},
+  {path:'submit-remark', component:SubmitRemarkComponent},
+  {path:'add-short-close', component:AddShortCloseComponent},
+  {path:'new-rac', component:NewRacComponent},
+  
+  
 
 
   {path:'tasks-report', component:TaskReportComponent},
@@ -152,6 +192,38 @@ const routes: Routes = [
     {path:"Bank",component:BankComponents}
 
  ]}
+ ,{path:"loandisburment",component:LoandisburmentComponent, 
+  children: [{path:"over-view",component:OverView},
+    {path:"application-details",component:Application},
+    {path:"loan-details",component:Loan},
+    {path:"Bank",component:Bank}
+
+ ]}
+ ,{path:"LoanRejectedComponent",component:LoanRejectedComponent, 
+  children: [{path:"over-view",component:OverViewRejectedComponent},
+    {path:"application-details",component:ApplicationRejectedComponent},
+    {path:"loan-details",component:LoanDetailsRejectedComponent},
+    {path:"Bank",component:BankRejectedComponent},
+    {path:"loan-offers",component:LoanOffersRejectedComponent}
+
+ ]}
+ ,{path:"LoansallComponent",component:LoansallComponent, 
+  children: [{path:"over-view",component:OverviewallComponent},
+    {path:"application-details",component:ApplicationAllComponent},
+    {path:"loan-details",component:LoanDetailsAllComponent},
+    {path:"Bank",component:BankallComponent},
+    {path:"loan-offers",component:LoanOffersAllComponent}
+
+ ]}
+ 
+ ,{path:"LoansCompletedComponent",component:LoansCompletedComponent, 
+  children: [{path:"over-view",component:OverviewCompletedComponent},
+    {path:"application-details",component:ApplicationCompletedComponent},
+    {path:"loan-details",component:LoanDetailsCompletedComponent},
+    {path:"Bank",component:BankCompletedComponent},
+    {path:"loan-offers",component:LoanOffersCompletedComponent}
+
+ ]}
  ,
   {
     path: 'verification', component: VerificationComponent,
@@ -192,19 +264,27 @@ const routes: Routes = [
   {path:'drivingmodal',component:DrivingmodalComponent},
   {path:'cinmodal',component:CinmodalComponent},
   {path:'pancardmodal',component:PancardmodalComponent},
+
   {
-    path:'createnewcase',component:CreatenewcaseComponent,
+    path:'createNewCase',component:CreatenewcaseComponent,
     children:[
       {path:'loanrequirement',component:LoanrequirementComponent},
       {path:'applicantdetails',component:ApplicantdetailsComponent},
+      {path:'loan',component:LoanComponent},
+      {path:'createnewcaseDocument',component:CreatenewcaseDocumentComponent},
+      {path:'createnewcaseProvisionalLetter',component:CreatenewcaseProvisionalLetterComponent},
+    
 
     ]
   },
+
+  {path:'createnewcase',component:CreatenewcaseComponent },
 ];
  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
  
