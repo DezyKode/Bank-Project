@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './applicantdetails.component.css'
 })
 export class ApplicantdetailsComponent {
-leadSource: any;
+leadSource: string='';
 validateTenure() {
 throw new Error('Method not implemented.');
 }
@@ -17,6 +18,7 @@ throw new Error('Method not implemented.');
   panNo: string = '';
   isValidPanNo: boolean = true;
   firstName: string = '';
+  firstName1:string='';
   middleName: string = '';
   lastName: string = '';
   email: string = '';
@@ -29,12 +31,14 @@ throw new Error('Method not implemented.');
   futureRent:string = '';
   futureRentError:boolean=false;
   monthSalary:string= '';
+  grossSalary:string= '';
   grossSalaryError:boolean=false;
   incentive:string = '';
   incentiveError:boolean=false;
   loanEmi:string= '';
   loanError:boolean=false;
   netSalary:string = '';
+  monthlyNetSalary:string = '';
   netSalError:boolean=false;
   rentIncome:string = '';
   rentError:boolean=false;
@@ -95,7 +99,7 @@ toggleCoApplicantForm() {
         this.incentive.trim() !== '' &&  // Incentive check
         !this.incentiveError &&  // No incentive error
         this.loanEmi.trim() !== '' &&  // Loan EMI check
-        this.netSalary.trim() !== '' &&  // Net Salary check
+        this.monthlyNetSalary.trim() !== '' &&  // Net Salary check
         !this.netSalError &&  // No net salary error
         this.pension.trim() !== '';  // Pension check
     }
@@ -194,11 +198,11 @@ toggleCoApplicantForm() {
   validateMonthSalary(): void {
     const salary = parseFloat(this.monthSalary); // convert string to number
     
-    if (isNaN(salary) || salary <= 0) {
-      this.grossSalaryError = true;
-    } else {
-      this.grossSalaryError = false;
-    }
+    // if (isNaN(salary) || salary <= 0) {
+    //   this.grossSalaryError = true;
+    // } else {
+    //   this.grossSalaryError = false;
+    // }
   }
   
 
@@ -253,7 +257,7 @@ toggleCoApplicantForm() {
   }
 
   
-  resetForm() {
+  resetForm(loanForm: NgForm):void {
     this.firstName = '';
     this.middleName = '';
     this.lastName = '';
@@ -276,9 +280,9 @@ toggleCoApplicantForm() {
     this.selectedDomain = '';
     this.emailLocalPart = '';
 
-
+    alert("form is reset");
     // Reset the form validations (You may need to set this based on your form control names)
-    this.resetValidation();
+    this.resetValidation(loanForm);
   }
 
   onLeadSourceChange() {
@@ -289,7 +293,7 @@ toggleCoApplicantForm() {
   }
   
   // Reset validation errors
-  resetValidation() {
+  resetValidation(loanForm: NgForm):void {
     // Reset the form control's validity
     // If you're using template-driven form with ngModel, you can set the ngModel to untouched and pristine
     this.firstNameInput?.control?.markAsPristine();
@@ -300,127 +304,177 @@ toggleCoApplicantForm() {
     this.firstNameInput?.control?.setErrors(null);
     this.lastNameInput?.control?.setErrors(null);
     this.emailInput?.control?.setErrors(null);
+    loanForm.reset();
 
     // Repeat for all other controls (e.g., mobileInput, empTypeInput, etc.)
   }
 
   constructor(private router: Router) {}
 
-  submitForm() {
-    // Check if empType is 'other'
-    if(this.empType === 'other'||this.empType === 'salaried')
-    {
-      if (this.empType === 'other') {
-        const requiredFields = [
-          { field: this.firstName, name: 'First Name' },
-          { field: this.middleName, name: 'Middle Name' },
-          { field: this.lastName, name: 'Last Name' },
-          { field: this.panNo, name: 'PAN Number' },
-          { field: this.mobile, name: 'Mobile Number' },
-          { field: this.dateOfBirth, name: 'Date of Birth' },
-          { field: this.leadSource, name: 'Lead Source' }
-        ];
-    
-        for (const { field, name } of requiredFields) {
-          if (!field || field.trim() === '') {
-            alert(`${name} is required.`);
-            return; // Exit if any required field is missing
-          }
-        }
-    
-        // Validate email input
-        const email = `${this.emailLocalPart}@${this.selectedDomain}`;
-        if (!this.emailLocalPart || !this.selectedDomain) {
-          alert('Please enter a complete email address.');
-          return; // Exit if email is incomplete
-        }
-    
-        if (!this.isValidEmail(email)) {
-          alert('Please enter a valid email address.');
-          return; // Exit if email is invalid
-        }
-    
-        // Form data for 'other'
-        const formData = {
-          firstName: this.firstName,
-          middleName: this.middleName,
-          lastName: this.lastName,
-          email: email,
-          employmentType: this.empType,
-          panNo: this.panNo,
-          mobileNo: this.mobile,
-          dateOfBirth: this.dateOfBirth,
-          leadSource: this.leadSource
-        };
-        
-        alert("Form submitted successfully!");
-        this.router.navigate(['/createNewCase/loan']); // Navigate to the success page
+  submitForm(loanForm: NgForm):void {
+    console.log("Selected Employment Type:", this.empType); // Debugging
 
-      } 
-      // Check if empType is 'salaried'
-      else if (this.empType === 'salaried') {
-        const requiredFields = [
-          { field: this.firstName, name: 'First Name' },
-          { field: this.middleName, name: 'Middle Name' },
-          { field: this.lastName, name: 'Last Name' },
-          { field: this.panNo, name: 'PAN Number' },
-          { field: this.mobile, name: 'Mobile Number' },
-          { field: this.dateOfBirth, name: 'Date of Birth' },
-          { field: this.leadSource, name: 'Lead Source' },
-          { field: this.averageBonus, name: 'Average Bonus' },
-          { field: this.monthSalary, name: 'Gross Salary' },
-          { field: this.netSalary, name: 'Net Salary' },
-          { field: this.futureRent, name: 'Future Rent' }
-        ];
-    
-        for (const { field, name } of requiredFields) {
-          if (!field || field.trim() === '') {
-            alert(`${name} is required.`);
-            return; // Exit if any required field is missing
-          }
+    // Check if empType is 'other', 'Salaried', or 'Self Employed'
+    if (this.empType.toLowerCase() === 'other' || this.empType.toLowerCase() === 'salaried' || this.empType.toLowerCase() === 'self employed') {
+
+        if (this.empType.toLowerCase() === 'other') {
+            console.log("Processing 'Other' Employment Type...");
+
+            const requiredFields = [
+                { field: this.firstName, name: 'First Name' },
+                { field: this.middleName, name: 'Middle Name' },
+                { field: this.lastName, name: 'Last Name' },
+                { field: this.panNo, name: 'PAN Number' },
+                { field: this.mobile, name: 'Mobile Number' },
+                { field: this.dateOfBirth, name: 'Date of Birth' },
+                { field: this.leadSource, name: 'Lead Source' }
+            ];
+
+            for (const { field, name } of requiredFields) {
+                if (!field || field.trim() === '') {
+                    alert(`${name} is required.`);
+                    return;
+                }
+            }
+
+            const email = `${this.emailLocalPart}@${this.selectedDomain}`;
+            if (!this.emailLocalPart || !this.selectedDomain || !this.isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            const formData = {
+                firstName: this.firstName,
+                middleName: this.middleName,
+                lastName: this.lastName,
+                email: email,
+                employmentType: this.empType,
+                panNo: this.panNo,
+                mobileNo: this.mobile,
+                dateOfBirth: this.dateOfBirth,
+                leadSource: this.leadSource
+            };
+
+            alert("Form submitted successfully!");
+            this.router.navigate(['/createNewCase/loan']);
+
+        } else if (this.empType.toLowerCase() === 'salaried') {
+            console.log("Processing 'Salaried' Employment Type...");
+
+            const requiredFields = [
+                { field: this.firstName, name: 'First Name' },
+                { field: this.middleName, name: 'Middle Name' },
+                { field: this.lastName, name: 'Last Name' },
+                { field: this.panNo, name: 'PAN Number' },
+                { field: this.mobile, name: 'Mobile Number' },
+                { field: this.dateOfBirth, name: 'Date of Birth' },
+                { field: this.leadSource, name: 'Lead Source' },
+                { field: this.averageBonus, name: 'Average Bonus' },
+                { field: this.grossSalary, name: 'Gross Salary' },
+                { field: this.netSalary, name: 'Net Salary' },
+                { field: this.futureRent, name: 'Future Rent' }
+            ];
+
+            for (const { field, name } of requiredFields) {
+                if (!field || field.trim() === '') {
+                    alert(`${name} is required.`);
+                    return;
+                }
+            }
+
+            const email = `${this.emailLocalPart}@${this.selectedDomain}`;
+            if (!this.emailLocalPart || !this.selectedDomain || !this.isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            const formData = {
+                firstName: this.firstName,
+                middleName: this.middleName,
+                lastName: this.lastName,
+                email: email,
+                employmentType: this.empType,
+                panNo: this.panNo,
+                mobileNo: this.mobile,
+                dateOfBirth: this.dateOfBirth,
+                leadSource: this.leadSource,
+                averageBonus: this.averageBonus,
+                grossSalary: this.grossSalary,
+                netSalary: this.netSalary,
+                futureRent: this.futureRent
+            };
+
+            alert("Salaried employee form submitted successfully! 🎉");
+            this.router.navigate(['/createNewCase/loan']);
+
+        } else if (this.empType.toLowerCase() === 'self employed') {
+            console.log("Processing 'Self Employed' Employment Type...");
+
+            const requiredFields = [
+                { field: this.firstName, name: 'First Name' },
+                { field: this.middleName, name: 'Middle Name' },
+                { field: this.lastName, name: 'Last Name' },
+                { field: this.panNo, name: 'PAN Number' },
+                { field: this.mobile, name: 'Mobile Number' },
+                { field: this.dateOfBirth, name: 'Date of Birth' },
+                { field: this.leadSource, name: 'Lead Source' },
+                { field: this.Employer1, name: 'Employer Type' },
+                { field: this.monthSalary, name: 'Monthly Gross Salary' },
+                { field: this.netSalary, name: 'Monthly Net Salary' },
+                { field: this.averageBonus, name: 'Average Bonus Of Last Three Years' },
+                { field: this.incentive, name: 'Average Monthly Incentive Of Last 6 Months' },
+                // { field: this.grossSalary, name: ' rentIncome' },
+                { field: this.netSalary, name: 'Future Rent Income' },
+                { field: this.futureRent, name: 'Loan EMI (Obligations)' },
+                { field: this.pension, name: 'Pension' }
+            ];
+
+            for (const { field, name } of requiredFields) {
+                if (!field || field.trim() === '') {
+                    alert(`${name} is required.`);
+                    return;
+                }
+            }
+
+            const email = `${this.emailLocalPart}@${this.selectedDomain}`;
+            if (!this.emailLocalPart || !this.selectedDomain || !this.isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            const formData = {
+                firstName: this.firstName,
+                middleName: this.middleName,
+                lastName: this.lastName,
+                email: email,
+                employmentType: this.empType,
+                panNo: this.panNo,
+                mobileNo: this.mobile,
+                dateOfBirth: this.dateOfBirth,
+                leadSource: this.leadSource,
+                Employer1: this.Employer1,
+                monthSalary: this.monthSalary,
+                netSalary: this.netSalary,
+                averageBonus: this.averageBonus,
+                incentive: this.incentive,
+                grossSalary: this.grossSalary,
+                futureRent: this.futureRent,
+                pension: this.pension
+            };
+
+            alert("Self-employed employee form submitted successfully! 🎉");
+            this.router.navigate(['/createNewCase/loan']);
         }
-    
-        // Validate email input
-        const email = `${this.emailLocalPart}@${this.selectedDomain}`;
-        if (!this.emailLocalPart || !this.selectedDomain) {
-          alert('Please enter a complete email address.');
-          return; // Exit if email is incomplete
-        }
-    
-        if (!this.isValidEmail(email)) {
-          alert('Please enter a valid email address.');
-          return; // Exit if email is invalid
-        }
-    
-        // Form data for 'salaried'
-        const formData = {
-          firstName: this.firstName,
-          middleName: this.middleName,
-          lastName: this.lastName,
-          email: email,
-          employmentType: this.empType,
-          panNo: this.panNo,
-          mobileNo: this.mobile,
-          dateOfBirth: this.dateOfBirth,
-          leadSource: this.leadSource,
-          averageBonus: this.averageBonus,
-          monthSalary: this.monthSalary,
-          netSalary: this.netSalary,
-          futureRent: this.futureRent
-        };
-    
-        alert("Form submitted successfully!");
-      }
-      else{
-        alert("plz select any type ")
-      }
+
+    } else {
+        alert("Please select an employment type.");
+        Object.values(loanForm.controls).forEach(control => {
+          control.markAsTouched();  // This will mark each control as touched
+        });
     }
-  
-    // Handle other cases (if needed)
-    else {
-      alert("Please fill in all required data.");
-    }
-  }
+}
+
+
   
   
   // Email validation function (basic email format check)

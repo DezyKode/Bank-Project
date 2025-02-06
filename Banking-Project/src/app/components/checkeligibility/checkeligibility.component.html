@@ -12,21 +12,37 @@
   
     <div class="row">
       <!-- Mobile Number Input -->
-      <div class="col-md-4">
+
+      <div class="col-md-4 icon-field" >
         <label for="mobile">Mobile <span style="color: red;">*</span></label><br>
+        <div class="form-group position-relative">
+          <span class="icon">
+            <i class="fa fa-save"></i>
+          </span>
         <input 
           type="tel" 
           id="mobile" 
+          placeholder="enter 10 digit mobile number"
           class="form-control mt-2" 
           required 
           [(ngModel)]="mobile"  
           name="mobile" 
           (input)="validateMobile()"  
           maxlength="10" 
+          #mobileNumber="ngModel"
+
+          [ngClass]="{ 'is-invalid': mobileNumber.invalid && mobileNumber.touched,
+                'is-valid': mobileNumber.valid && mobileNumber.touched}"
         />
+        </div>
         <!-- Show error message if mobile validation fails -->
-        <span *ngIf="mobileError" style="color: red; display: block;">Please enter a valid 10-digit mobile number.</span>
+
+        <div *ngIf="mobileNumber.invalid && mobileNumber.touched" class="text-danger form-text position-absolute">
+          <span *ngIf="mobileNumber" style="color: red; display: block;">Please enter a valid 10-digit mobile number.</span>
+          
+        </div>
       </div>
+      
   
       <!-- Loan Type Dropdown -->
       <div class="col-md-4">
@@ -34,12 +50,18 @@
         <div class="dropdown mt-2">
           <select 
             id="loan" 
-            class="form-control" 
+            class="form-control form-select" 
             aria-label="Type Of Loan" 
             required 
             [(ngModel)]="loanType"  
+            #loanTypeInput="ngModel"
             name="loanType" 
-            (change)="validateForm()"  
+            (change)="validateForm()" 
+            
+            [ngClass]="{
+              'is-invalid' : loanTypeInput.touched && loanTypeInput.invalid,
+              'is-valid'    :loanTypeInput.touched && loanTypeInput.valid
+            }"
           >
             <option value="">Select loan type</option>
             <option value="personal">Personal Loan</option>
@@ -47,6 +69,10 @@
             <option value="auto">Auto Loan</option>
             <option value="other">Other</option>
           </select>
+          <div *ngIf="loanTypeInput.invalid && loanTypeInput.touched" class="text-danger form-text position-absolute">
+            <span *ngIf="loanTypeInput" style="color: red; display: block;">Please select option.</span>
+            
+          </div>
         </div>
       </div>
   

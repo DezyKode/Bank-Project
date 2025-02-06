@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-invoice',
@@ -14,6 +16,9 @@ export class InvoiceComponent {
   invoiceForm:FormGroup;
   today!: string;
 formcontrols: any;
+// for subtotal
+subTotal:string='';
+inValidSubTotal:boolean=true;
 
 constructor(private fb:FormBuilder){
   this.invoiceForm=this.fb.group({
@@ -37,6 +42,11 @@ ngOnInit() {
   // Set today to the current date in YYYY-MM-DD format
   const currentDate = new Date();
   this.today = currentDate.toISOString().split('T')[0];
+
+  flatpickr("#date", {
+    dateFormat: "Y-m-d",  // Format the date as YYYY-MM-DD
+    allowInput: true,      // Allow manual input as well
+  });
 }
 
 validateInvoiceNo(event: any): void {
@@ -47,6 +57,7 @@ validateInvoiceNo(event: any): void {
   }
 }
 resetForm(){
+  alert("form is reset");
   this.invoiceForm.reset();
     // If you want to reset the form with specific values, you can pass an object here
     // Example: this.invoiceForm.reset({ invoiceNo: '123', poNo: 'PO123', ... });
@@ -69,3 +80,10 @@ get formControls() {
   return this.invoiceForm.controls;
 }
 }
+function flatpickr(arg0: string, arg1: {
+  dateFormat: string; // Format the date as YYYY-MM-DD
+  allowInput: boolean;
+}) {
+  throw new Error('Function not implemented.');
+}
+

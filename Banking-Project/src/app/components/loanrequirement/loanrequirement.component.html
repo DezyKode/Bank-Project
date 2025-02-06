@@ -2,167 +2,179 @@
   <div class="row">
     <h2 class="text-start py-2 color">Loan Requirment</h2>
   </div>
-
-  <div class="row py-2">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label for="personalLoan" class="form-label"
-          >Type Of Loan <span style="color: red">*</span></label
-        ><br />
-        <select
-          id="personalLoan"
-          class="form-control form-select"
-          aria-label="Type Of Loan"
-          required
-          [(ngModel)]="personalLoan"
-          name="personalLoan"
-          #personalLoanInput="ngModel"
-          (change)="validateForm()"
-          [ngClass]="{
-            'is-invalid':
-              personalLoanInput.invalid && personalLoanInput.touched,
-            'is-valid': personalLoanInput.valid && personalLoanInput.touched
-          }"
-        >
-          <option value="">Select loan type</option>
-          <option value="personal">Personal Loan</option>
-          <option value="home">Home Loan</option>
-          <option value="auto">Auto Loan</option>
-          <option value="other">Other</option>
-        </select>
-        <div
-          *ngIf="personalLoanInput.invalid && personalLoanInput.touched"
-          class="text-danger form-text position-absolute"
-        >
-          <div *ngIf="personalLoanInput.errors?.['required']">
-            Loan type is required
+  <form #loanForm="ngForm" (ngSubmit)="validateForm()">
+    <div class="row py-2">
+      <div class="col-md-4">
+        <div class="form-group icon-field position-relative">
+          <label for="personalLoan" class="form-label"
+            >Type Of Loan <span style="color: red">*</span></label
+          ><br />
+          <div class="form-group position-relative">
+            <span class="icon">
+              <i class="fa fa-save"></i>
+            </span>
+          <select
+            id="personalLoan"
+            class="form-control form-select"
+            aria-label="Type Of Loan"
+            required
+            [(ngModel)]="personalLoan"
+            name="personalLoan"
+            #personalLoanInput="ngModel"
+            (change)="validateForm()"
+            [ngClass]="{
+              'is-invalid':
+                personalLoanInput.invalid && personalLoanInput.touched,
+              'is-valid': personalLoanInput.valid && personalLoanInput.touched
+            }"
+          >
+            <option value="">Select loan type</option>
+            <option value="personal">Personal Loan</option>
+            <option value="home">Home Loan</option>
+            <option value="auto">Auto Loan</option>
+            <option value="other">Other</option>
+          </select>
+         
+          </div>
+          <div
+            *ngIf="personalLoanInput.invalid && personalLoanInput.touched"
+            class="text-danger form-text position-absolute"
+          >
+            <div *ngIf="personalLoanInput.errors?.['required']">
+              Loan type is required
+            </div>
           </div>
         </div>
+      </div>
+      <!--  -->
+      <div class="col-md-4">
+          <!-- monthly gross salary -->
+          <div class="form-group position-relative ">
+            <label for="grossSalary" class="form-label">
+              Required Loan Amount <span style="color: red"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="text"
+                placeholder=" Required Loan Amount"
+                class="form-control"
+                id="grossSalary"
+                name="grossSalary"
+                [(ngModel)]="monthSalary"
+                #grossSalary="ngModel"  
+                (blur)="validateMonthSalary()"
+                (keypress)="restrictCharacter($event)"
+                [ngClass]="{
+                  'is-invalid': grossSalary.invalid && grossSalary.touched, 
+                  'is-valid': !grossSalary.invalid && grossSalary.touched
+                }"
+                required  
+              />
+            </div>
+            <small
+              *ngIf="grossSalary.invalid && grossSalary.touched"
+              class="form-text position-absolute text-danger"
+            >
+              Please enter a valid loan amount
+            </small>
+          </div>
+        </div>
+        
+      <!--  -->
+      <div class="col-md-4">
+          <!-- Required Tenure in years -->
+          <div class="form-group position-relative">
+            <label for="tenure" class="form-label">
+              Required Tenure in years <span style="color: red"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <input
+                type="text"
+                placeholder="enter Required Tenure in years"
+                class="form-control"
+                id="tenure"
+                name="tenure"
+                [(ngModel)]="tenure"  
+                #tenureInput="ngModel"  
+                (blur)="validateTenure()" 
+                (keypress)="restrictCharacter($event)"  
+                required  
+                [ngClass]="{
+                  'is-invalid': tenureInput.invalid && tenureInput.touched,  
+                  'is-valid': tenureInput.valid && tenureInput.touched  
+                }"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">Years</span>
+              </div>
+            </div>
+            <small
+              *ngIf="tenureInput.invalid && tenureInput.touched"
+              id="tenureError"
+              class="form-text position-absolute text-danger"
+            >
+              Please enter a valid tenure in years (positive number).
+            </small>
+          </div>
+        </div>
+        
+    </div>
+  
+    <!--  -->
+    <div class="row py-2 mt-2">
+      <div class="col-md-4">
+          <!-- IDV -->
+          <div class="form-group position-relative">
+            <label for="idv" class="form-label">
+              IDV <span style="color: red"> *</span>
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input
+                type="text"
+                placeholder="enter IDV "
+                class="form-control"
+                id="idv"
+                name="idv"
+                [(ngModel)]="idv"  
+                #idvInput="ngModel" 
+                (blur)="validateIDV()"  
+                (keypress)="restrictCharacter($event)"  
+                required  
+                [ngClass]="{
+                  'is-invalid': idvInput.invalid && idvInput.touched, 
+                  'is-valid': idvInput.valid && idvInput.touched 
+                }"
+              />
+            </div>
+            <small
+              *ngIf="idvInput.invalid && idvInput.touched"
+              id="idvError"
+              class="form-text position-absolute text-danger"
+            >
+              Please enter a valid IDV amount (positive number).
+            </small>
+          </div>
+        
+        
+    </div>
+  </div>
+  
+     <!-- btn -->
+     <div class="row py-4">
+      <div class="col-md-12">
+          <button type="button" class="btn btn-primary" 
+          style="float: right; margin-right: 10px;" 
+          [disabled]="!loanForm.valid"
+          (click)="validateForm()">Save & Proceed <i class="fa fa-arrow-right"></i></button>
+        
       </div>
     </div>
-    <!--  -->
-    <div class="col-md-4">
-        <!-- monthly gross salary -->
-        <div class="form-group position-relative">
-          <label for="grossSalary" class="form-label">
-            Required Loan Amount <span style="color: red"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              id="grossSalary"
-              name="grossSalary"
-              [(ngModel)]="monthSalary"
-              #grossSalary="ngModel"  
-              (blur)="validateMonthSalary()"
-              (keypress)="restrictCharacter($event)"
-              [ngClass]="{
-                'is-invalid': grossSalary.invalid && grossSalary.touched, 
-                'is-valid': !grossSalary.invalid && grossSalary.touched
-              }"
-              required  
-            />
-          </div>
-          <small
-            *ngIf="grossSalary.invalid && grossSalary.touched"
-            class="form-text position-absolute text-danger"
-          >
-            Please enter a valid loan amount
-          </small>
-        </div>
-      </div>
-      
-    <!--  -->
-    <div class="col-md-4">
-        <!-- Required Tenure in years -->
-        <div class="form-group position-relative">
-          <label for="tenure" class="form-label">
-            Required Tenure in years <span style="color: red"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <input
-              type="text"
-              class="form-control"
-              id="tenure"
-              name="tenure"
-              [(ngModel)]="tenure"  
-              #tenureInput="ngModel"  
-              (blur)="validateTenure()" 
-              (keypress)="restrictCharacter($event)"  
-              required  
-              [ngClass]="{
-                'is-invalid': tenureInput.invalid && tenureInput.touched,  
-                'is-valid': tenureInput.valid && tenureInput.touched  
-              }"
-            />
-            <div class="input-group-append">
-              <span class="input-group-text">Years</span>
-            </div>
-          </div>
-          <small
-            *ngIf="tenureInput.invalid && tenureInput.touched"
-            id="tenureError"
-            class="form-text position-absolute text-danger"
-          >
-            Please enter a valid tenure in years (positive number).
-          </small>
-        </div>
-      </div>
-      
-  </div>
-
-  <!--  -->
-  <div class="row py-2 mt-2">
-    <div class="col-md-4">
-        <!-- IDV -->
-        <div class="form-group position-relative">
-          <label for="idv" class="form-label">
-            IDV <span style="color: red"> *</span>
-          </label>
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text">$</span>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              id="idv"
-              name="idv"
-              [(ngModel)]="idv"  
-              #idvInput="ngModel" 
-              (blur)="validateIDV()"  
-              (keypress)="restrictCharacter($event)"  
-              required  
-              [ngClass]="{
-                'is-invalid': idvInput.invalid && idvInput.touched, 
-                'is-valid': idvInput.valid && idvInput.touched 
-              }"
-            />
-          </div>
-          <small
-            *ngIf="idvInput.invalid && idvInput.touched"
-            id="idvError"
-            class="form-text position-absolute text-danger"
-          >
-            Please enter a valid IDV amount (positive number).
-          </small>
-        </div>
-      
-      
-  </div>
-</div>
-
-   <!-- btn -->
-   <div class="row py-4">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-primary" 
-        style="float: right; margin-right: 10px;" 
-        (click)="validateForm()">Save & Proceed <i class="fa fa-arrow-right"></i></button>
-      
-    </div>
-  </div>
+  </form>
+ 
 </div>

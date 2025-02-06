@@ -94,6 +94,7 @@ import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/appl
 import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 const routes: Routes = [
 
 
@@ -150,7 +151,7 @@ const routes: Routes = [
   {path:"bank-details", component:BanksTableComponent},
   {path:"bank-criteria", component:BankCriteriaComponent},
   {path:"DocumentListComponent",component:DocumentListComponent},
-  // {path:"mis-report", component:MISReportComponent},
+  {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
  {path:"DetailsComponent",component:DetailsComponent, 
   children: [{path:"over-view",component:OverViewComponent},

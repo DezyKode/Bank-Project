@@ -2,14 +2,18 @@
     <div class="container bg-white">
         <div class="row py-3">
             <!-- Contact Person Name Section -->
-            <div class="col col-md-6">
-        <div class="row py-3 ">
+          <div class="row py-3 ">
             <!-- Contact Person Name Section -->
             <div class="col col-sm-6 col-12 ">
-                <div class="form-group position-relative">
+                <div class="form-group position-relative icon-field">
                     <label for="pname" class="mb-2 form-label">Contact Person Name</label>
+                    <div class="form-group position-relative">
+                        <span class="icon">
+                          <i class="fa fa-save"></i>
+                        </span>
                     <input type="text"
                            class="form-control"
+                           placeholder="enter contact person name"
                            id="pname"
                            required
                            [(ngModel)]="pname"
@@ -23,6 +27,7 @@
                              'is-invalid': pnameInput.invalid && pnameInput.touched,
                              'is-valid': pnameInput.valid && pnameInput.touched
                            }">
+                           </div>
                     <div *ngIf="pnameInput.invalid && pnameInput.touched" class="text-danger form-text position-absolute">
                       <div *ngIf="pnameInput.errors?.['required']">Please enter contact person name</div>
                       <div *ngIf="pnameInput.errors?.['pattern']">Only letters and spaces allowed</div>
@@ -31,7 +36,6 @@
             </div>
 
             <!-- Email Section -->
-            <div class="col col-md-6">
             <div class="col col-sm-6 col-12">
                 <div class="form-group position-relative">
                     <label for="emailInput" class="form-label">Email</label>
@@ -75,13 +79,18 @@
 
         <!-- Mobile Number Section -->
         <div class="row py-3">
-            <div class="col col-md-6">
-                <div class="form-group position-relative">
+            <div class="col col-sm-6 col-12">
+                <div class="form-group position-relative icon-field">
                     <label for="mobile">Mobile No.</label><br />
+                    <div class="form-group position-relative">
+                        <span class="icon">
+                          <i class="fa fa-save"></i>
+                        </span>
                     <input type="tel" id="mobile" class="form-control" required [(ngModel)]="mobile" name="mobile"
-                           (input)="validateMobile()" maxlength="10" pattern="^\d{10}$" #mobileInput="ngModel"
+                           (input)="validateMobile()" placeholder="enter 10 digit mobile number" maxlength="10" pattern="^\d{10}$" #mobileInput="ngModel"
                            (keypress)="restrictCharacter($event)"
                            [ngClass]="{'is-invalid': mobileInput.invalid && mobileInput.touched, 'is-valid': mobileInput.valid && mobileInput.touched}" />
+                           </div>
                     <span *ngIf="mobileInput.invalid && mobileInput.touched" class="text-danger invalid-feedback form-text position-absolute">
                       Please enter a valid 10-digit mobile number.
                     </span>

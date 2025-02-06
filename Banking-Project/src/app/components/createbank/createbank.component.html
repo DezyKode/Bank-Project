@@ -2,10 +2,15 @@
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="row">
         <div class="col-md-4">
-          <div class="form-group position-relative">
+          <div class="form-group position-relative icon-field">
             <label class="form-label" for="bank">Bank Name <span style="color: red">*</span></label>
+            <div class="form-group position-relative">
+              <span class="icon">
+                <i class="fa fa-save"></i>
+              </span>
             <input
               type="text"
+              placeholder="enter bank name"
               id="BankName"
               class="form-control"
               name="BankName"
@@ -17,6 +22,7 @@
                 'is-valid': bankNameInput.valid && bankNameInput.touched
               }"
             />
+            </div>
             <div *ngIf="bankNameInput.invalid && bankNameInput.touched" class="position-absolute text-danger form-text">
               <div *ngIf="bankNameInput.errors?.['required']">
                 Bank Name is required.
@@ -26,7 +32,7 @@
         </div>
   
         <div class="col-md-4">
-          <div class="form-group position-relative">
+          <div class="form-group position-relative ">
             <label for="personalLoan" class="form-label">Payout Type <span style="color: red">*</span></label>
             <select
               id="personalLoan"
@@ -85,7 +91,7 @@
       <!-- Submit Button -->
       <div class="row py-5">
         <div class="col-md-12 text-end">
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Create</button>
         </div>
       </div>
     </form>
