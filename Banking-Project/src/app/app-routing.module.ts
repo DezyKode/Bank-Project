@@ -65,7 +65,7 @@ import { LoanStaticsComponent } from './components/loan-statics/loan-statics.com
 import { UsersComponent } from './components/users/users.component';
 import { BanksTableComponent } from './components/banks-table/banks-table.component';
 import { BankCriteriaComponent } from './components/bank-criteria/bank-criteria.component';
-// import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
@@ -83,6 +83,14 @@ import { CreateConnectorComponent } from './components/create-connector/create-c
 import { EditBankPayoutComponent } from './components/edit-bank-payout/edit-bank-payout.component';
 import { LoanAgeingReportComponent } from './components/loan-ageing-report/loan-ageing-report.component';
 import { RevenueReconReportComponent } from './components/revenue-recon-report/revenue-recon-report.component';
+import { ReceiptsComponent } from './components/receipts/receipts.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+
+import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
+import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
+import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
+import { NewRacComponent } from './components/new-rac/new-rac.component';
+
 import {LoandisburmentComponent} from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
 import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
 import {Application} from './components/Admin/LoanDisburment/application-details/application-details.component';
@@ -95,6 +103,21 @@ import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
 import { MISReportComponent } from './components/mis-report/mis-report.component';
+import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
+import {LoansallComponent} from'./components/Admin/LoansAll/loansall/loansall.component'
+import {OverviewallComponent} from './components/Admin/LoansAll/overviewall/overviewall.component'
+import{LoanOffersAllComponent} from "./components/Admin/LoansAll/loan-offers-all/loan-offers-all.component"
+import{LoanDetailsAllComponent} from './components/Admin/LoansAll/loan-details-all/loan-details-all.component';
+import {BankallComponent} from "./components/Admin/LoansAll/bankall/bankall.component";
+
+import { ApplicationAllComponent } from "./components/Admin/LoansAll/application-all/application-all.component";
+
+import{LoansCompletedComponent} from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
+import { ApplicationCompletedComponent } from  './components/Admin/LoansCompleted/application-completed/application-completed.component'
+import {OverviewCompletedComponent} from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
+import  {LoanOffersCompletedComponent} from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
+import {LoanDetailsCompletedComponent} from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
+import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
 const routes: Routes = [
 
 
@@ -113,6 +136,12 @@ const routes: Routes = [
   {path:'edit-bank-payout', component:EditBankPayoutComponent},
   {path:'loan-ageing-report', component:LoanAgeingReportComponent},
   {path:'revenue-recon-report', component:RevenueReconReportComponent},
+  {path:'add-disbursement', component:AddDisbursementComponent},
+  {path:'submit-remark', component:SubmitRemarkComponent},
+  {path:'add-short-close', component:AddShortCloseComponent},
+  {path:'new-rac', component:NewRacComponent},
+  
+  
 
 
   {path:'tasks-report', component:TaskReportComponent},
@@ -153,7 +182,11 @@ const routes: Routes = [
   {path:"DocumentListComponent",component:DocumentListComponent},
   {path:"mis-report", component:MISReportComponent},
   {path:"loans", component:LoansComponent},
- {path:"DetailsComponent",component:DetailsComponent, 
+  {path:"receipts", component:ReceiptsComponent},
+  {path:"employee-details/:id", component:EmployeeDetailsComponent},
+
+
+  {path:"DetailsComponent",component:DetailsComponent, 
   children: [{path:"over-view",component:OverViewComponent},
     {path:"application-details",component:ApplicationDetailsComponent},
     {path:"loan-details",component:LoanDetails},
@@ -171,7 +204,25 @@ const routes: Routes = [
   children: [{path:"over-view",component:OverViewRejectedComponent},
     {path:"application-details",component:ApplicationRejectedComponent},
     {path:"loan-details",component:LoanDetailsRejectedComponent},
-    {path:"Bank",component:BankRejectedComponent}
+    {path:"Bank",component:BankRejectedComponent},
+    {path:"loan-offers",component:LoanOffersRejectedComponent}
+
+ ]}
+ ,{path:"LoansallComponent",component:LoansallComponent, 
+  children: [{path:"over-view",component:OverviewallComponent},
+    {path:"application-details",component:ApplicationAllComponent},
+    {path:"loan-details",component:LoanDetailsAllComponent},
+    {path:"Bank",component:BankallComponent},
+    {path:"loan-offers",component:LoanOffersAllComponent}
+
+ ]}
+ 
+ ,{path:"LoansCompletedComponent",component:LoansCompletedComponent, 
+  children: [{path:"over-view",component:OverviewCompletedComponent},
+    {path:"application-details",component:ApplicationCompletedComponent},
+    {path:"loan-details",component:LoanDetailsCompletedComponent},
+    {path:"Bank",component:BankCompletedComponent},
+    {path:"loan-offers",component:LoanOffersCompletedComponent}
 
  ]}
  ,

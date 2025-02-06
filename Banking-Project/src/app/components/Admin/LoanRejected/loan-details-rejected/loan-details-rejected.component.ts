@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrl: './loan-details-rejected.component.css'
 })
 export class LoanDetailsRejectedComponent {
+  loanDetails = {
+    loanAmount: 0,
+    loanRequested: 60000,
+    tenure: 1,
+    loanType: 'Home Loan',
+    property: 'Other',
+    buildingName: 'd',
+    flatNo: 4,
+    state: 'Maharashtra',
+    city: 'Jalna',
+    zone: 'Central',
+    location: 'Rajur',
+    costOfProperty: 1000000
+  };
 
 }
+
+
+
+

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AddEmpService } from '../../Service/AddEmployee/add-emp.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-list',
@@ -7,60 +9,136 @@ import { Component } from '@angular/core';
 })
 export class EmployeeListComponent {
 
+  constructor(private addEmpService: AddEmpService) { }
+
   searchText: string = '';
   statusFilter: string = '';
 
-  employees = [
-    { id: 1, name: 'Mark', email: 'mark@gmail.com', mobile: '9874563210', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 2, name: 'Jojo', email: 'jojo@gmail.com', mobile: '9856321745', gender: 'Male', role: 'Sales Officer', status: 'ACTIVE' },
-    { id: 3, name: 'Virat', email: 'Virat@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Account Manager', status: 'ACTIVE' },
-    { id: 4, name: 'Dhoni', email: 'dhoni@gmail.com', mobile: '7896541230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 5, name: 'Rohit', email: 'rohit@gmail.com', mobile: '8596321047', gender: 'Female', role: 'Telecallers', status: 'INACTIVE' },
-    { id: 6, name: 'Rahul', email: 'rahul@gmail.com', mobile: '9856320147', gender: 'Female', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 7, name: 'Don', email: 'don@gmail.com', mobile: '8569320147', gender: 'Male', role: 'Telecallers', status: 'INACTIVE' },
-    { id: 8, name: 'Hardik', email: 'hardik@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 9, name: 'Mark', email: 'mark@gmail.com', mobile: '9874563210', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 10, name: 'Jojo', email: 'jojo@gmail.com', mobile: '9856321745', gender: 'Male', role: 'Sales Officer', status: 'ACTIVE' },
-    { id: 11, name: 'Virat', email: 'Virat@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Account Manager', status: 'ACTIVE' },
-    { id: 12, name: 'Dhoni', email: 'dhoni@gmail.com', mobile: '7896541230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 13, name: 'Rohit', email: 'rohit@gmail.com', mobile: '8596321047', gender: 'Female', role: 'Telecallers', status: 'INACTIVE' },
-    { id: 14, name: 'Rahul', email: 'rahul@gmail.com', mobile: '9856320147', gender: 'Female', role: 'Telecallers', status: 'ACTIVE' },
-    { id: 15, name: 'Don', email: 'don@gmail.com', mobile: '8569320147', gender: 'Male', role: 'Telecallers', status: 'INACTIVE' },
-    { id: 16, name: 'Hardik', email: 'hardik@gmail.com', mobile: '8965471230', gender: 'Male', role: 'Telecallers', status: 'ACTIVE' }
-  ];
+  employeeId: number = 0; // You should set this when selecting an employee
+  newPassword: string = '';
+  confirmPassword: string = '';
+  errorMessage: string = '';
+  successMessage: string = '';
+
+  employees: any[] = [];
+
+  ngOnInit() {
+    this.getAllEmployee();
+  }
 
   currentPage: number = 1;
   itemsPerPage: number = 10;
 
-  get role(){
+  getAllEmployee() {
+    this.addEmpService.getEmployees().subscribe((res) => {
+      this.employees = res;
+    })
+  }
+
+  // Function to open the modal and set the employeeId
+  openModal(id: number): void {
+    this.employeeId = id;
+    this.newPassword = '';
+    this.confirmPassword = '';
+    this.successMessage = '';
+    this.errorMessage = '';
+  }
+
+  passwordVisible: boolean = false;
+  confirmPasswordVisible: boolean = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
+  }
+
+  // Function to submit the password change
+  updatePassword(form: NgForm): void {
+    if (this.newPassword !== this.confirmPassword) {
+      this.errorMessage = 'Passwords do not match!';
+      this.successMessage = '';
+      return;
+    }
+
+    const employee = {
+      password: this.newPassword, // Pass the new password here
+      confirm_password: this.confirmPassword
+    };
+
+    if (this.newPassword !== '' && this.confirmPassword !== '') {
+      this.addEmpService.updateEmpPassword(this.employeeId, employee).subscribe(
+        response => {
+          // Handle successful response
+          console.log('Password updated successfully!', response);
+          this.successMessage = 'Password updated successfully!';
+          this.newPassword = '';
+          this.confirmPassword = '';
+          this.errorMessage = '';
+          // Close the modal here if needed
+        },
+        error => {
+          // Handle error response
+          console.error('Error updating password', error);
+          this.errorMessage = 'An error occurred while updating the password.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Enter Password and Confirm Password'
+    }
+  }
+
+  // Toggle employee status between ACTIVE and INACTIVE
+  toggledStatus(employee: any): void {
+    if (confirm("You want to upadate Status")) {
+      const updatedEmployee = { ...employee }; // Create a copy of the employee object
+      updatedEmployee.status = updatedEmployee.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE'; // Toggle the status
+      // Call the update service to update the status on the backend
+      this.addEmpService.updateEmpStatus(updatedEmployee.id, updatedEmployee).subscribe(
+        response => {
+          console.log('Status updated successfully', response);
+          this.getAllEmployee();
+          // Optionally, update the UI with the new status if needed
+        },
+        error => {
+          console.error('Error updating status', error);
+          // Handle error, maybe show an alert
+        }
+      );
+    }
+  }
+
+  get role() {
     return [...new Set(this.employees.map(employees => employees.role))];
   }
 
-  get status(){
+  get status() {
     return [...new Set(this.employees.map(employees => employees.status))];
   }
 
   selectedRole: Set<string> = new Set();
   selectedStatus: Set<string> = new Set();
 
-  toggleRole(role: string){
-    if(this.selectedRole.has(role)){
+  toggleRole(role: string) {
+    if (this.selectedRole.has(role)) {
       this.selectedRole.delete(role);
     } else {
       this.selectedRole.add(role);
     }
   }
 
-  toggleStatus(status: string){
-    if(this.selectedStatus.has(status)){
+  toggleStatus(status: string) {
+    if (this.selectedStatus.has(status)) {
       this.selectedStatus.delete(status);
     } else {
       this.selectedStatus.add(status);
     }
   }
 
-  toggleSelectedAllRole(event: any){
-    if(event.target.checked){
+  toggleSelectedAllRole(event: any) {
+    if (event.target.checked) {
       this.selectedRole = new Set(this.role);
     } else {
       this.selectedRole.clear();
@@ -68,8 +146,8 @@ export class EmployeeListComponent {
     this.filteredEmployees();
   }
 
-  toggleSelectedAllStatus(event: any){
-    if(event.target.checked){
+  toggleSelectedAllStatus(event: any) {
+    if (event.target.checked) {
       this.selectedStatus = new Set(this.status)
     } else {
       this.selectedStatus.clear();
@@ -80,12 +158,12 @@ export class EmployeeListComponent {
   filteredEmployees() {
     return this.employees.filter(employee => {
       const matchesSearchText = this.searchText === '' || employee.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        employee.email.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        employee.mobile.includes(this.searchText);
+        employee.email_ID.toLowerCase().includes(this.searchText.toLowerCase()) ||
+        employee.mobile_No.includes(this.searchText);
       const matchesStatus = this.statusFilter === '' || employee.status === this.statusFilter;
       return (matchesSearchText && matchesStatus &&
-        (this.selectedRole.size > 0 ? this.selectedRole.has(employee.role): true) &&
-        (this.selectedStatus.size > 0 ? this.selectedStatus.has(employee.status): true)
+        (this.selectedRole.size > 0 ? this.selectedRole.has(employee.role) : true) &&
+        (this.selectedStatus.size > 0 ? this.selectedStatus.has(employee.status) : true)
       );
     });
   }
@@ -102,7 +180,7 @@ export class EmployeeListComponent {
   sortTable(column: string) {
     const currentDirection = this.sortDirection[column] || 'asc';
     const newDirection = currentDirection === 'asc' ? 'desc' : 'asc';
-    this.sortDirection[column] = newDirection; 
+    this.sortDirection[column] = newDirection;
 
     this.employees = this.employees.sort((a, b) => {
       const prop = column as keyof typeof a;

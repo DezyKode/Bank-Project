@@ -109,10 +109,21 @@ import { MISReportComponent } from './components/mis-report/mis-report.component
 import { LoansComponent } from './components/loans/loans.component';
 import { EditDocumentComponent } from './components/masters/edit-document/edit-document.component';
 import { DocumentListComponent } from './components/masters/document-list/document-list.component';
+
+import { AddDisbursementComponent } from './components/add-disbursement/add-disbursement.component';
+import { SubmitRemarkComponent } from './components/submit-remark/submit-remark.component';
+import { AddShortCloseComponent } from './components/add-short-close/add-short-close.component';
+import { NewRacComponent } from './components/new-rac/new-rac.component';
+// import { AddShortCloseComponent } from './componenets/add-short-close/add-short-close.component';
+
 import { DetailsComponent } from './components/Admin/leads/details/details.component';
 import { OverViewComponent } from './components/Admin/leads/over-view/over-view.component';
 import { ApplicationDetailsComponent } from './components/Admin/leads/application-details/application-details.component';
 import{BankComponents} from './components/Admin/leads/bank/bank.component';
+
+import { ReceiptsComponent } from './components/receipts/receipts.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+
 import { LoandisburmentComponent } from './components/Admin/LoanDisburment/loandisburment/loandisburment.component';
 import {Loan} from './components/Admin/LoanDisburment/loan-details/loan-details.component';
 import {OverView} from './components/Admin/LoanDisburment/over-view/over-view.component';
@@ -122,13 +133,27 @@ import {Bank} from './components/Admin/LoanDisburment/bank/bank.component';
 // import{Apllication} from './components/Admin/LoanDisburment/application-details/application-details.component';
 import {LoanRejectedComponent} from './components/Admin/LoanRejected/loan-rejected/loan-rejected.component'
 
+
+
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 
 // import { BankrejectedComponent } from './components/Admin/LoanRejected/bankrjected/bankrejected.component';
 import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
 import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
-import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/application-rejected/application-rejected.component'
+import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/application-rejected/application-rejected.component';
+import { ApplicationAllComponent } from './components/Admin/LoansAll/application-all/application-all.component';
+import { LoansallComponent } from './components/Admin/LoansAll/loansall/loansall.component';
+import { BankallComponent } from './components/Admin/LoansAll/bankall/bankall.component';
+import { LoanDetailsAllComponent } from './components/Admin/LoansAll/loan-details-all/loan-details-all.component';
+import { LoanOffersAllComponent } from './components/Admin/LoansAll/loan-offers-all/loan-offers-all.component';
+import { ApplicationCompletedComponent } from './components/Admin/LoansCompleted/application-completed/application-completed.component';
+import { LoanOffersCompletedComponent } from './components/Admin/LoansCompleted/loan-offers-completed/loan-offers-completed.component';
+import { LoanDetailsCompletedComponent } from './components/Admin/LoansCompleted/loan-details-completed/loan-details-completed.component';
+import { BankCompletedComponent } from './components/Admin/LoansCompleted/bank-completed/bank-completed.component';
+import { OverviewCompletedComponent } from './components/Admin/LoansCompleted/overview-completed/overview-completed.component';
+import { LoansCompletedComponent } from './components/Admin/LoansCompleted/loans-completed/loans-completed.component';
+import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/overviewall.component'
 
 
 
@@ -216,6 +241,27 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       LoansComponent,
       EditDocumentComponent,
       DocumentListComponent,
+
+      DetailsComponent,
+      OverViewComponent,
+      ApplicationDetailsComponent,
+      BankComponents,
+      ReceiptsComponent,
+      EmployeeDetailsComponent,
+
+
+      AddDisbursementComponent,
+      SubmitRemarkComponent,
+      AddShortCloseComponent,
+      NewRacComponent,
+      /* AddShortCloseComponent, */
+
+
+
+
+
+
+
       DetailsComponent,
       OverViewComponent,
       ApplicationDetailsComponent,
@@ -228,6 +274,19 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
       OverViewRejectedComponent,
       LoanDetailsRejectedComponent,
       ApplicationRejectedComponent,
+      ApplicationAllComponent,
+      LoansallComponent,
+      BankallComponent,
+      LoanDetailsAllComponent,
+      LoanOffersAllComponent,
+      ApplicationCompletedComponent,
+      LoanOffersCompletedComponent,
+      LoanDetailsCompletedComponent,
+      BankCompletedComponent,
+      OverviewCompletedComponent,
+      LoansCompletedComponent,
+      OverviewallComponent,
+
       // ParentComponent,
   ],
 
@@ -237,13 +296,12 @@ import { ApplicationRejectedComponent } from './components/Admin/LoanRejected/ap
 
   BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     // NgChartsModule,
     CommonModule,
-    FormsModule, // If using forms
+    
    
   ],
   providers: [

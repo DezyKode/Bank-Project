@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <button class="btn btn-primary" (click)="openModal()">Click to Open Add Short Close Model</button>
+  </div>
+  
+  <!-- Modal Structure -->
+  <form (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="disbursementModal" tabindex="-1" aria-labelledby="disbursementModalLabel" aria-hidden="true" [ngClass]="{ show: isModalOpen }">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="disbursementModalLabel" class="form-label">Add Short Close</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-bs-label="Close" (click)="closeModal()"></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Loan Account No. Input Section (Not Required) -->
+            <div class="form-group">
+              <label for="loanAcNo"><b>Reference Document Number.</b></label>
+              <input
+                id="loanAcNo"
+                type="text"
+                class="form-control"
+                [(ngModel)]="loanAcNo"
+                name="loanAcNo"
+                (input)="validateNumber($event, 'loanAcNo')"
+                maxlength="70"
+                #loanAcNoCtrl="ngModel"
+              />
+              <div *ngIf="loanAcNoCtrl?.invalid && loanAcNoCtrl?.touched" class="error-message">
+                Loan Account No. should be alphanumeric.
+              </div>
+            </div>
+  
+            <!-- Sanction Letter (File Upload) (Not Required) -->
+            <div class="form-group">
+              <label for="sanctionLetter"><b>Reference Document</b></label>
+              <input
+                id="sanctionLetter"
+                type="file"
+                class="form-control"
+                #sanctionLetterInput
+                (change)="onFileChange($event)"
+              />
+              <!-- Validation Error Message for File -->
+              <div *ngIf="fileError" class="error-message text-danger">
+                {{ fileError }}
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!loanAcNo || !sanctionLetter">Add</button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success Popup -->
+  <div *ngIf="taskAdded" class="alert alert-success success-popup">
+    Added Successfully!
+  </div>
+  

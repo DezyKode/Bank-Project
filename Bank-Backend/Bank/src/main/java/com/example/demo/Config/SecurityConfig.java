@@ -22,7 +22,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                                  authorizeRequests
                                         .requestMatchers("/addemployee/**" ).permitAll()
-                                        .requestMatchers("/elegibility/**").permitAll()// Public POST requests
+                                        .requestMatchers("/elegibility/**").permitAll()
+                                        .requestMatchers("/create/**").permitAll()
+                                        .requestMatchers("/bankdetails/**").permitAll()// Public POST requests
 
                                         .anyRequest().authenticated() // Authenticate all other requests
                 )

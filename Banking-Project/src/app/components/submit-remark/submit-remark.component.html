@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <button class="btn btn-primary" (click)="openModal()">Click to Open Remark Modal</button>
+  </div>
+  
+  <!-- Modal Structure -->
+  <form (ngSubmit)="onSubmit()">
+    <div
+      class="modal fade"
+      id="remarkModal"
+      tabindex="-1"
+      aria-labelledby="remarkModalLabel"
+      aria-hidden="true"
+      [ngClass]="{ show: isModalOpen }"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="remarkModalLabel">Submit Remark</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-bs-label="Close"
+              (click)="closeModal()"
+            ></button>
+          </div>
+  
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Remark Input Section -->
+            <div class="form-group">
+              <label for="remark" class="form-label"><b>Remark</b></label>
+              <textarea
+                id="remark"
+                class="form-control"
+              rows="10"
+                [(ngModel)]="remark"
+                name="remark"
+                placeholder="Enter your remark"
+                required
+              ></textarea>
+            </div>
+  
+           
+  
+            <!-- Rejected By Radio Buttons Section -->
+            <div class="form-group">
+              <label><b>Rejected By</b></label>
+              <br>
+              <div class="form-check-inline">
+                <input
+                  type="radio"
+                  id="customer"
+                  name="rejectedBy"
+                  [(ngModel)]="rejectedBy"
+                  value="Customer"
+                  class="form-check-input"
+                  required
+                />
+                <label for="customer" class="form-check-label">Customer</label>
+              </div>
+              <div class="form-check-inline">
+                <input
+                  type="radio"
+                  id="bank"
+                  name="rejectedBy"
+                  [(ngModel)]="rejectedBy"
+                  value="Bank"
+                  class="form-check-input"
+                  required
+                />
+                <label for="bank" class="form-check-label">Bank</label>
+              </div>
+            </div>
+  
+            <!-- Clear and Submit Buttons -->
+            <div class="button-group">
+              <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>&nbsp;
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!isFormValid()"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+  
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  

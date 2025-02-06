@@ -1,0 +1,285 @@
+<!-- <div>
+    <div class="h5 bg-secondary p-3">
+        Receipts
+    </div>
+    <div class="" style="width: 300px;">
+        <div class=" input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                aria-describedby="addon-wrapping">
+        </div>
+    </div>
+    <div>
+        <table class="table table-secondary mt-2">
+            <thead>
+              <tr>
+                <th scope="col">Receipt No.</th>
+                <th scope="col">Invoice</th>
+                <th scope="col">Case</th>
+                <th scope="col">Amount</th>
+                <th scope="col">TDS</th>
+              </tr>
+            </thead>
+          </table>
+    </div>
+</div> -->
+
+<!-- <div>
+  <div class="row p-2" style="background-color: rgb(38, 178, 38);">
+    <div class="col-10 h3">
+      Send Documents to RAC Branch
+    </div>
+    <div class="col-2">
+      <button class="" style="background: none; outline: none; border: none;" (click)="closePopup()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+  <div class="m-3 form-floating">
+    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" [(ngModel)]="selectedBranch" required>
+      <option value="1">RAC Branch 1</option>
+      <option value="2">RAC Branch 2</option>
+      <option value="3">RAC Branch 3</option>
+    </select>
+    <label for="floatingSelect">Select RAC Branch</label>
+  </div>
+  <div class="h4 text-warning border-3 border-bottom border-warning m-3 p-3" style="width: 230px;">
+    Primary Applicant
+  </div>
+  <div class="m-2">
+    <div class="form-check m-2">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="document1" id="flexCheckDefault">
+      <label class="form-check-label" for="flexCheckDefault">Document 1</label>
+    </div>
+    <div class="form-check m-2">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="document2" id="flexCheckChecked">
+      <label class="form-check-label" for="flexCheckChecked">Document 2</label>
+    </div>
+    <div class="form-check m-2">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="document3" id="flexCheckDefault1">
+      <label class="form-check-label" for="flexCheckDefault1">Document 3</label>
+    </div>
+  </div>
+  <div>
+    <div class="m-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" [(ngModel)]="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@example.com" required>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end m-3">
+    <button class="btn btn-secondary" (click)="clearForm()">Clear</button> &nbsp;
+    <button class="btn btn-primary" (click)="submitForm()">Send Email</button>
+  </div>
+
+  <div *ngIf="showSuccess" class="popup-success">
+    <div class="popup-content">
+      <p>Form submitted successfully!</p>
+      <button (click)="closePopup()">Close</button>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="container">
+  <h1>Registration Form</h1>
+  <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <form [formGroup]="form">
+
+      <div class="d-flex justify-content-end">
+        <div class="profile-picture">
+          <input class="file-uploader form-control" type="file" accept="image/*" id="uploadPhoto" formControlName="photoUpload" (change)="onFileChange($event)" #fileInput />
+          <label *ngIf="!imageUrl" for="profile" (click)="fileInput.click()">Upload image</label>
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="Profile Image" class="preview-img" (click)="fileInput.click()" />
+        </div>
+      </div>
+      <div class="text-danger d-flex justify-content-end" *ngIf="form.get('photoUpload')?.invalid && form.get('photoUpload')?.touched">
+        Profile Photo is required.
+      </div>
+      <div class="text-danger d-flex justify-content-end" *ngIf="form.get('photoUpload')?.hasError('sizeExceed') && form.get('photoUpload')?.touched">
+        File size cannot exceed 500KB.
+      </div>      
+
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="empId">Employee Id:</label>
+          <input id="name" class="form-control" maxlength="4" formControlName="empId" type="text" />
+          <div class="text-danger" *ngIf="form.get('empId')?.invalid && form.get('empId')?.touched">
+            <div *ngIf="form.get('empId')?.hasError('required')">Employee Id is required.</div>
+            <div *ngIf="form.get('empId')?.hasError('pattern')">Employee Id is required.(should be 4 digit)</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="name">Name:</label>
+          <input id="name" class="form-control" formControlName="name" type="text" />
+          <div class="text-danger" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            Name is required.
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="name">Email:</label>
+          <input id="email" class="form-control" formControlName="email" type="text" />
+          <div class="text-danger" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            <div *ngIf="form.get('email')?.hasError('required')">Email is required.</div>
+            <div *ngIf="form.get('email')?.hasError('email')">Invalid email address.</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="mobile">Mobile:</label>
+          <input id="mobile" class="form-control" maxlength="10" formControlName="mobile" type="text" />
+          <div class="text-danger" *ngIf="form.get('mobile')?.invalid && form.get('mobile')?.touched">
+            <div *ngIf="form.get('mobile')?.hasError('required')">Mobile is required.</div>
+            <div *ngIf="form.get('mobile')?.hasError('pattern')">Invalid mobile number (should be 10 digits).</div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="gender">Gender:</label>
+          <select class="form-select" aria-label="Default select example" formControlName="gender">
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="text-danger" *ngIf="form.get('gender')?.invalid && form.get('gender')?.touched">
+            Gender is required.
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="role">Role:</label>
+          <input id="role" class="form-control" formControlName="role" type="text" />
+          <div class="text-danger" *ngIf="form.get('role')?.invalid && form.get('role')?.touched">
+            Role is required.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="password">Password:</label>
+          <div class="input-group">
+            <input id="password" class="form-control" formControlName="password"
+              type="{{passwordVisible ? 'text' : 'password'}}">
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+              <i class="bi" [ngClass]="passwordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </button>
+          </div>
+          <div class="text-danger" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+            Password is required
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label for="confirm_password">Confirm Password:</label>
+          <div class="input-group">
+            <input id="confirm_password" class="form-control" formControlName="confirm_password"
+              type="{{confirmPasswordVisible ? 'text' : 'password'}}">
+            <button type="button" class="btn btn-outline-secondary" (click)="toggleConfirmPasswordVisibility()">
+              <i class="bi" [ngClass]="confirmPasswordVisible ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </button>
+          </div>
+          <div class="text-danger"
+            *ngIf="form.get('confirm_password')?.invalid && form.get('confirm_password')?.touched">
+            Confirm Password is required
+          </div>
+          <div class="text-danger" *ngIf="form.errors?.['passwordMismatch'] && form.get('confirm_password')?.touched">
+            Passwords do not match.
+          </div>
+        </div>
+      </div>
+      <div class="h3 mt-2">Temporary Address</div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="tAddress1">Address Line 1</label>
+          <input type="text" class="form-control" id="tAddress1" formControlName="tAddress1">
+          <div class="text-danger" *ngIf="form.get('tAddress1')?.invalid && form.get('tAddress1')?.touched">
+            Address Line 1 is required
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label for="tAddress2">Address Line 2</label>
+          <input type="text" class="form-control" id="tAddress2" formControlName="tAddress2">
+          <div class="text-danger" *ngIf="form.get('tAddress2')?.invalid && form.get('tAddress2')?.touched">
+            Address Line 2 is required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="tState">State</label>
+          <input type="text" class="form-control" id="tState" formControlName="tState">
+          <div class="text-danger" *ngIf="form.get('tState')?.invalid && form.get('tState')?.touched">
+            State is required
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="tCity">City</label>
+          <input type="text" class="form-control" id="tCity" formControlName="tCity">
+          <div class="text-danger" *ngIf="form.get('tCity')?.invalid && form.get('tCity')?.touched">
+            City is required
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="tPincode">Pincode</label>
+          <input type="text" class="form-control" id="tPincode" maxlength="6" formControlName="tPincode">
+          <div class="text-danger" *ngIf="form.get('tPincode')?.invalid && form.get('tPincode')?.touched">
+            <div *ngIf="form.get('tPincode')?.hasError('required')">Pincode is required</div>
+            <div *ngIf="form.get('tPincode')?.hasError('pattern')">Pincode is required (should be 6 digits).</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-check mt-2 mb-2">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" formControlName="copyToPermanent"
+          (change)="copyAddress($event)">
+        <label class="form-check-label" for="flexCheckChecked">
+          Permanant address same as temparary address.
+        </label>
+      </div>
+      <div class="h3">Permanant Address</div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="pAddress1">Address Line 1</label>
+          <input type="text" class="form-control" id="pAddress1" formControlName="pAddress1"> 
+          <div class="text-danger" *ngIf="form.get('pAddress1')?.invalid && form.get('pAddress1')?.touched">
+            Address Line 1 is required
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label for="pAddress2">Address Line 2</label>
+          <input type="text" class="form-control" id="pAddress2" formControlName="pAddress2">
+          <div class="text-danger" *ngIf="form.get('pAddress2')?.invalid && form.get('pAddress2')?.touched">
+            Address Line 2 is required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="pState">State</label>
+          <input type="text" class="form-control" id="pState" formControlName="pState">
+          <div class="text-danger" *ngIf="form.get('pState')?.invalid && form.get('pState')?.touched">
+            State is required
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="pCity">City</label>
+          <input type="text" class="form-control" id="pCity" formControlName="pCity">
+          <div class="text-danger" *ngIf="form.get('pCity')?.invalid && form.get('pCity')?.touched">
+            City is required
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label for="pPincode">Pincode</label>
+          <input type="text" class="form-control" id="pPincode" maxlength="6" formControlName="pPincode">
+          <div class="text-danger" *ngIf="form.get('pPincode')?.invalid && form.get('pPincode')?.touched">
+            <div *ngIf="form.get('pPincode')?.hasError('required')">Pincode is required</div>
+            <div *ngIf="form.get('pPincode')?.hasError('pattern')">Pincode is required (should be 6 digits).</div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-end mt-5 mb-2 me-3">
+        <button class="col-sm-1 btn btn-danger">Cancel</button>&nbsp;
+        <button class="col-sm-1 btn btn-primary">Reset</button>&nbsp;
+        <button type="submit" class="col-sm-1 btn btn-success" (click)="onSubmit()"
+          [disabled]="form.invalid">Add</button>
+      </div>
+    </form>
+  </div>
+</div> -->
