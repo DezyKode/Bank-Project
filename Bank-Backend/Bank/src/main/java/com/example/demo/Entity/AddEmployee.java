@@ -1,11 +1,12 @@
 package com.example.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,16 +18,16 @@ public class AddEmployee {
     private int id;
 
     @Column(name="employee_id")
-    private int Employee_Id;
+    private int empId;
 
     @Column(name="employee_name")
     private String Name;
 
     @Column(name="employee_email")
-    private String Email_ID;
+    private String email;
 
     @Column(name="mobile_number")
-    private long Mobile_No;
+    private long mobile;
 
     @Column(name="employee_gender")
     private String Gender;
@@ -35,123 +36,222 @@ public class AddEmployee {
     private String Role;
 
     @Column(name="password")
-    private String Passward;
+    private String Password;
 
     @Column(name="confirm_password")
-    private String Confirm_Passward;
+    private String Confirm_password;
 
-    @Column(name="upload_photo")
-    private String Upload_Photo; 
+    @Column(name="upload_photo")	
+    private String photoUpload; 
 
     @Column(name="temporary_address")
-    private String Temporary_address;
+    private String tAddress1;
+    
+    @Column(name = "temporary_Address2")
+    private String tAddress2;
+    
+    @Column(name = "temporary_State")
+    private String tState;
+    
+    @Column(name = "temporary_City")
+    private String tCity;
+    
+    @Column(name = "temporary_PinCode")
+    private String tPincode;
+    
+    @Column(name="permanent_Address")
+    private String pAddress1;
+    
+    @Column(name = "permanent_Address2")
+    private String pAddress2;
+    
+    @Column(name = "Permanant_State")
+    private String pState;
+    
+    @Column(name = "Permanant_City")
+    private String pCity;
+    
+    @Column(name = "Permanant_Pincode")
+    private String pPincode;
+    
+    @Column(name = "status")
+    private String Status = "ACTIVE";
 
-    @Column(name="permanent_address")
-    private String Permanent_address;
+	public int getId() {
+		return id;
+	}
 
-    // Getters and Setters
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getEmpId() {
+		return empId;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
 
-    public int getEmployee_Id() {
-        return Employee_Id;
-    }
+	public String getName() {
+		return Name;
+	}
 
-    public void setEmployee_Id(int employee_Id) {
-        Employee_Id = employee_Id;
-    }
+	public void setName(String name) {
+		Name = name;
+	}
 
-    public String getName() {
-        return Name;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setName(String name) {
-        Name = name;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getEmail_ID() {
-        return Email_ID;
-    }
+	public long getMobile() {
+		return mobile;
+	}
 
-    public void setEmail_ID(String email_ID) {
-        Email_ID = email_ID;
-    }
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
+	}
 
-    public long getMobile_No() {
-        return Mobile_No;
-    }
+	public String getGender() {
+		return Gender;
+	}
 
-    public void setMobile_No(long mobile_No) {
-        Mobile_No = mobile_No;
-    }
+	public void setGender(String gender) {
+		Gender = gender;
+	}
 
-    public String getGender() {
-        return Gender;
-    }
+	public String getRole() {
+		return Role;
+	}
 
-    public void setGender(String gender) {
-        Gender = gender;
-    }
+	public void setRole(String role) {
+		Role = role;
+	}
 
-    public String getRole() {
-        return Role;
-    }
+	public String getPassword() {
+		return Password;
+	}
 
-    public void setRole(String role) {
-        Role = role;
-    }
+	public void setPassword(String password) {
+		Password = password;
+	}
 
-    public String getPassward() {
-        return Passward;
-    }
+	public String getConfirm_password() {
+		return Confirm_password;
+	}
 
-    public void setPassward(String passward) {
-        Passward = passward;
-    }
+	public void setConfirm_password(String confirm_password) {
+		Confirm_password = confirm_password;
+	}
 
-    public String getConfirm_Passward() {
-        return Confirm_Passward;
-    }
+	public String getPhotoUpload() {
+		return photoUpload;
+	}
 
-    public void setConfirm_Passward(String confirm_Passward) {
-        Confirm_Passward = confirm_Passward;
-    }
+	public void setPhotoUpload(String photoUpload) {
+		this.photoUpload = photoUpload;
+	}
 
-    public String getUpload_Photo() {
-        return Upload_Photo;
-    }
+	public String gettAddress1() {
+		return tAddress1;
+	}
 
-    public void setUpload_Photo(String upload_Photo) {
-        Upload_Photo = upload_Photo;
-    }
+	public void settAddress1(String tAddress1) {
+		this.tAddress1 = tAddress1;
+	}
 
-    public String getTemporary_address() {
-        return Temporary_address;
-    }
+	public String gettAddress2() {
+		return tAddress2;
+	}
 
-    public void setTemporary_address(String temporary_address) {
-        Temporary_address = temporary_address;
-    }
+	public void settAddress2(String tAddress2) {
+		this.tAddress2 = tAddress2;
+	}
 
-    public String getPermanent_address() {
-        return Permanent_address;
-    }
+	public String gettState() {
+		return tState;
+	}
 
-    public void setPermanent_address(String permanent_address) {
-        Permanent_address = permanent_address;
-    }
+	public void settState(String tState) {
+		this.tState = tState;
+	}
 
-    @Override
-    public String toString() {
-        return "AddEmployee [id=" + id + ", Employee_Id=" + Employee_Id + ", Name=" + Name + ", Email_ID=" + Email_ID
-                + ", Mobile_No=" + Mobile_No + ", Gender=" + Gender + ", Role=" + Role + ", Passward=" + Passward
-                + ", Confirm_Passward=" + Confirm_Passward + ", Upload_Photo=" + Upload_Photo + ", Temporary_address="
-                + Temporary_address + ", Permanent_address=" + Permanent_address + "]";
-    }
+	public String gettCity() {
+		return tCity;
+	}
+
+	public void settCity(String tCity) {
+		this.tCity = tCity;
+	}
+
+	public String gettPincode() {
+		return tPincode;
+	}
+
+	public void settPincode(String tPincode) {
+		this.tPincode = tPincode;
+	}
+
+	public String getpAddress1() {
+		return pAddress1;
+	}
+
+	public void setpAddress1(String pAddress1) {
+		this.pAddress1 = pAddress1;
+	}
+
+	public String getpAddress2() {
+		return pAddress2;
+	}
+
+	public void setpAddress2(String pAddress2) {
+		this.pAddress2 = pAddress2;
+	}
+
+	public String getpState() {
+		return pState;
+	}
+
+	public void setpState(String pState) {
+		this.pState = pState;
+	}
+
+	public String getpCity() {
+		return pCity;
+	}
+
+	public void setpCity(String pCity) {
+		this.pCity = pCity;
+	}
+
+	public String getpPincode() {
+		return pPincode;
+	}
+
+	public void setpPincode(String pPincode) {
+		this.pPincode = pPincode;
+	}
+
+	public String getStatus() {
+		return Status;
+	}
+
+	public void setStatus(String status) {
+		Status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "AddEmployee [id=" + id + ", empId=" + empId + ", Name=" + Name + ", email=" + email + ", mobile="
+				+ mobile + ", Gender=" + Gender + ", Role=" + Role + ", Password=" + Password + ", Confirm_password="
+				+ Confirm_password + ", photoUpload=" + photoUpload + ", tAddress1=" + tAddress1 + ", tAddress2="
+				+ tAddress2 + ", tState=" + tState + ", tCity=" + tCity + ", tPincode=" + tPincode + ", pAddress1="
+				+ pAddress1 + ", pAddress2=" + pAddress2 + ", pState=" + pState + ", pCity=" + pCity + ", pPincode="
+				+ pPincode + ", Status=" + Status + "]";
+	}
 }
