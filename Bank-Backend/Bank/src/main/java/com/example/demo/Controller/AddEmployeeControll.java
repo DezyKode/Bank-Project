@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/addemployee")
@@ -28,5 +30,25 @@ public class AddEmployeeControll {
 
         // Process and save the employee with the file
         return employeeServ.addEmployee(employee, file);
+    }
+    
+    @GetMapping("/get")
+    public List<AddEmployee> getEmployee(){
+    	return employeeServ.getEmployee();
+    }
+    
+    @GetMapping("/get/{id}")
+    public Optional<AddEmployee> getEmployeeById(@PathVariable int id) {
+        return employeeServ.getEmployeeById(id);
+    }
+    
+    @PutMapping("/updatepass/{id}")
+    public AddEmployee updatePassword(@PathVariable int id, @RequestBody AddEmployee empDetails) {
+    	return employeeServ.updatePassword(id, empDetails);
+    }
+    
+    @PutMapping("/updatestatus/{id}")
+    public AddEmployee updateStatus(@PathVariable int id, @RequestBody AddEmployee empDetails) {
+    	return employeeServ.updateStatus(id, empDetails);
     }
 }
