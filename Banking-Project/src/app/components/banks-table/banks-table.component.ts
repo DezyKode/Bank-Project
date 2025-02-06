@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BankPayoutService } from '../../Service/BankPayout/bank-payout.service';
 
 @Component({
   selector: 'app-banks-table',
@@ -9,16 +10,30 @@ export class BanksTableComponent {
 
   searchText: string = '';
 
-  Banks = [
-    { id: 1, bankName: 'SBI Bank', payout: 'Disbursement Basic Payout', totalRAC: '1'},
-    { id: 2, bankName: 'Axix Bank', payout: 'One Time Payout', totalRAC: '0'},
-    { id: 3, bankName: 'HDFC Bank', payout: 'Disbursement Basic Payout', totalRAC: '2'},
-    { id: 4, bankName: 'Kotak Bank', payout: 'One Time Payout', totalRAC: '1'},
-    { id: 5, bankName: 'Union Bank', payout: 'Disbursement Basic Payout', totalRAC: '0'},
-    { id: 6, bankName: 'AU Bank', payout: 'One Time Payout', totalRAC: '2'},
-    { id: 7, bankName: 'Maharashtra Bank', payout: 'Disbursement Basic Payout', totalRAC: '1'},
-    { id: 8, bankName: 'ICICI Bank', payout: 'One Time Payout', totalRAC: '0'}
-  ];
+  constructor(private bankService: BankPayoutService){}
+
+  Banks: any[] = [];
+
+  // Banks = [
+  //   { id: 1, bankName: 'SBI Bank', payout: 'Disbursement Basic Payout', totalRAC: '1'},
+  //   { id: 2, bankName: 'Axix Bank', payout: 'One Time Payout', totalRAC: '0'},
+  //   { id: 3, bankName: 'HDFC Bank', payout: 'Disbursement Basic Payout', totalRAC: '2'},
+  //   { id: 4, bankName: 'Kotak Bank', payout: 'One Time Payout', totalRAC: '1'},
+  //   { id: 5, bankName: 'Union Bank', payout: 'Disbursement Basic Payout', totalRAC: '0'},
+  //   { id: 6, bankName: 'AU Bank', payout: 'One Time Payout', totalRAC: '2'},
+  //   { id: 7, bankName: 'Maharashtra Bank', payout: 'Disbursement Basic Payout', totalRAC: '1'},
+  //   { id: 8, bankName: 'ICICI Bank', payout: 'One Time Payout', totalRAC: '0'}
+  // ];
+
+  ngOnInit(){
+    this.getAllBankDetails();
+  }
+
+  getAllBankDetails(){
+    this.bankService.getBankDetails().subscribe((res)=>{
+      this.Banks = res;
+    })
+  }
 
   currentPage: number = 1;
   itemPerpage: number = 10;

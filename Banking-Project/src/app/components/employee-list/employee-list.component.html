@@ -26,7 +26,7 @@
             <table class="table table-responsive">
                 <thead class="sticky-top">
                     <tr>
-                        <th scope="col">ID
+                        <th scope="col">Employee Id
                             <i (click)="sortTable('id')" class="fas ms-2"
                                 [class.fa-arrow-up-a-z]="sortDirection['id'] === 'asc'"
                                 [class.fa-arrow-down-z-a]="sortDirection['id'] === 'desc'" style="cursor: pointer;">
@@ -132,11 +132,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of paginatedLoans">
-                        <th scope="row">{{ employee.employee_Id }}</th>
+                        <th scope="row">{{ employee.empId }}</th>
                         <!-- <td><i class="fa-solid fa-user"></i></td> -->
                         <td>{{ employee.name }}</td>
-                        <td>{{ employee.email_ID }}</td>
-                        <td>{{ employee.mobile_No }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.mobile }}</td>
                         <td>{{ employee.gender }}</td>
                         <!-- <td><img src="data:image/jpeg;base64,{{employee.upload_Photo}}" height="50px" width="50px"/></td> -->
                         <td>{{ employee.role}}</td>
