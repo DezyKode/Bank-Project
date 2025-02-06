@@ -1,254 +1,160 @@
 import { Component } from '@angular/core';
 import { AddEmpService } from '../../../Service/AddEmployee/add-emp.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.css'
+  styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
-  tempAddress: string = '';
-  permAddress: string = '';
-  isAddressSame: boolean = false;
-  Pincode: string = ''
-  State: string = ''
-  City: string = ''
-  permAddress1: String = ''
-  empID: string = ''
-  name: string = '';
-  email_ID: string = '';
-  mobile_No: string = '';
-  gender: string = '';
-  role: string = '';
-  passward: string = '';
-  confirm_Passward: string = '';
-  upload_Photo: string = '';
-  permState: string = ''
-  permCity: string = ''
-  permPinCode: string = ''
-  tempAddress1: any;
-  showPassword: boolean = false;
-  showConfirmPassword: boolean = false;
+  form: FormGroup;
+  permanentAddressSameAsTemporary = false;
+  errorMessage: string = '';
+  imageUrl: string | ArrayBuffer | null = null;
+  selectedFile: File | null = null;
 
-  constructor(private addEmpService: AddEmpService) { }
-
-  togglePasswordVisibility(field: string): void {
-    if (field === 'password') {
-      this.showPassword = !this.showPassword;
-    } else if (field === 'confirm-password') {
-      this.showConfirmPassword = !this.showConfirmPassword;
-    }
-  }
-
-  syncAddresses(): void {
-    if (this.isAddressSame) {
-      this.permAddress = this.tempAddress;
-    }
-  }
-
-  validateID(event: any): void {
-    let inputValue = event.target.value;
-
-    console.log('Before validation:', inputValue);
-
-    if (inputValue.length > 5) {
-      inputValue = inputValue.slice(0, 5);
-    }
-
-    event.target.value = inputValue;
-    console.log('After validation:', inputValue);
-  }
-
-  mobile_No1: string = '';
-  isValidMobile: boolean = true;
-
-  validateNumber(event: any): void {
-    let inputValue = event.target.value;
-    inputValue = inputValue.replace(/[^0-9]/g, '');
-    if (inputValue.length > 10) {
-      inputValue = inputValue.slice(0, 10);
-    }
-
-    this.mobile_No1 = inputValue;
-    this.isValidMobile = inputValue.length === 10;
-    event.target.value = inputValue;
-  }
-
-  validateName(event: any): void {
-    let inputValue = event.target.value;
-    event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
-  }
-
-
-
-  handleAdd(): void {
-    // Basic validation
-    if (this.passward !== this.confirm_Passward) {
-      alert('Passwords do not match!');
-      return;
-    }
-
-    if (!this.fileToUpload) {
-      alert('Please upload a profile photo');
-      return;
-    }
-
-    const employeeData = {
-      employee_Id: this.empID,
-      name: this.name,
-      email_ID: this.email_ID,
-      mobile_No: this.mobile_No,
-      gender: this.gender,
-      role: this.role,
-      passward: this.passward,
-      confirm_Passward: this.confirm_Passward,
-      temporary_address: this.tempAddress,
-      permanent_address: this.permAddress,
-      state: this.State,
-      city: this.City,
-      pin_code: this.Pincode,
-      perm_State: this.permState,
-      perm_City: this.permCity,
-      perm_Pincode: this.permPinCode
-    };
-
-    this.addEmpService.postEmployee(employeeData, this.fileToUpload).subscribe({
-      next: (res) => {
-        alert('Employee added successfully!');
-        this.handleReset();
-      },
-      error: (err) => {
-        console.error('Error adding employee:', err);
-        alert('Error adding employee. Please check console for details.');
-      }
-    });
-  }
-
-
-  handleCancel(): void {
-    alert('Cancel button clicked!');
-  }
-
-  handleReset(): void {
-    alert('Reset button clicked!');
-    this.empID = ''
-    this.name = '';
-    this.email_ID = '';
-    this.mobile_No = '';
-    this.gender = '';
-    this.role = '';
-    this.passward = '';
-    this.confirm_Passward = '';
-    this.upload_Photo = '';
-    this.tempAddress = '';
-    this.permAddress = '';
-    this.permAddress1 = ''
-    this.Pincode = ''
-    this.State = ''
-    this.City = ''
-    this.permState = '',
-    this.permCity = '',
-    this.permPinCode = ''
-    this.backgroundImage = '';
-    this.isAddressSame = false;
-    this.isValidEmail = true;
-
-
-  }
-
-  backgroundImage: string = '';
-
-  isEditMode: boolean = false;
-  upload(event: any): void {
-    const file = event.target.files[0];
-
-    if (file) {
-      const maxSize = 256 * 1024;
-
-      if (file.size > maxSize) {
-        alert('File size exceeds 256KB. Please choose a smaller file.');
-        return;
-      }
-
-      const allowedTypes = ['image/jpeg', 'image/png'];
-      if (!allowedTypes.includes(file.type)) {
-        alert('Invalid file type. Please upload a JPG, PNG, or GIF image.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.backgroundImage = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  resetImage(): void {
-    const fileInput = document.getElementById('profile') as HTMLInputElement;
-    if (fileInput) {
-      fileInput.value = '';
-      fileInput.click();
-    }
-  }
-
-
-  onImageUpload(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.backgroundImage = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-
-  isValidEmail: boolean = true;
-
-  validateEmail(event: any): void {
-    const inputValue = event.target.value;
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    this.isValidEmail = emailPattern.test(inputValue);
-  }
-
-  isFormInvalid(): boolean {
-    return (
-      !this.name ||
-      !this.email_ID ||
-      !this.mobile_No ||
-      !this.gender ||
-      !this.role ||
-      !this.passward ||
-      !this.confirm_Passward ||
-      !this.tempAddress ||
-      !this.permAddress ||
-      !this.isValidEmail ||
-      this.passward !== this.confirm_Passward
+  constructor(private fb: FormBuilder, private addEmpService: AddEmpService) {
+    this.form = this.fb.group({
+      empId: ['', [Validators.required, Validators.pattern('^[0-9]{4}$')]],
+      name: ['', [Validators.required, Validators.pattern('^[A-Za-z\ \- ]+$')]],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      gender: ['', [Validators.required]],
+      role: ['', [Validators.required, Validators.pattern('^[A-Za-z\ \- ]+$')]],
+      password: ['', Validators.required],
+      confirm_password: ['', Validators.required],
+      tAddress1: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9 ,./\'\:\(\)\-;]+$')]],
+      tAddress2: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9 ,./\'\:\(\)\-;]+$')]],
+      tState: ['', [Validators.required, Validators.pattern('^[A-Za-z\ \- ]+$')]],
+      tCity: ['', [Validators.required, Validators.pattern('^[A-Za-z\ \- ]+$')]],
+      tPincode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
+      pAddress1: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9 ,./\'\:\(\)\-;]+$')]],
+      pAddress2: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9 ,./\'\:\(\)\-;]+$')]],
+      pState: ['', [Validators.required, Validators.pattern('^[A-Za-z \- ]+$')]],
+      pCity: ['', [Validators.required, Validators.pattern('^[A-Za-z\ \- ]+$')]],
+      pPincode: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
+      photoUpload: ['', [Validators.required, this.sizeValidator]],
+    },
+      { validator: this.passwordsMatchValidator }
     );
   }
 
-  validatePincode(event: any): void {
-    let inputValue = event.target.value;
-    inputValue = inputValue.replace(/[^0-9]/g, '');
-    if (inputValue.length > 6) {
-      inputValue = inputValue.slice(0, 6);
+  passwordsMatchValidator(formGroup: FormGroup): { [key: string]: boolean } | null {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirm_password')?.value;
+
+    if (password !== confirmPassword) {
+      return { 'passwordMismatch': true };
     }
-    event.target.value = inputValue;
+    return null;
   }
 
-  fileToUpload: File | null = null;  // To store the uploaded file
+  onSubmit() {
+    if (this.form.valid && this.selectedFile) {
+      const formData = new FormData();
+
+      formData.append('employee', JSON.stringify(this.form.value));
+      formData.append('file', this.selectedFile);
+
+      this.addEmpService.postEmployee(formData)
+        .subscribe(
+          response => {
+            console.log('Employee added successfully!', response);
+            alert("तुमची माहिती योग्य आहे. झाल रे... !!!🕺🕺🕺🕺🕺");
+          },
+          error => {
+            console.error('Error adding employee:', error);
+            this.errorMessage = 'There was an error adding the employee. Please try again later.';
+          }
+        );
+    } else {
+      alert('Please fill out the form correctly and upload a photo.');
+    }
+  }
+
+  passwordVisible: boolean = false;
+  confirmPasswordVisible: boolean = false;
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
+  }
+
+  copyAddress(event: Event) {
+    if ((event.target as HTMLInputElement).checked) {
+      this.form.patchValue({
+        pAddress1: this.form.get('tAddress1')?.value,
+        pAddress2: this.form.get('tAddress2')?.value,
+        pState: this.form.get('tState')?.value,
+        pCity: this.form.get('tCity')?.value,
+        pPincode: this.form.get('tPincode')?.value,
+      });
+    } else {
+      this.form.patchValue({
+        pAddress1: '',
+        pAddress2: '',
+        pState: '',
+        pCity: '',
+        pPincode: '',
+      });
+    }
+  }
 
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      this.fileToUpload = file;  // Assign the file to the fileToUpload variable
-      console.log('Selected file:', file);
-    } else {
-      this.fileToUpload = null;  // If no file selected, reset the fileToUpload
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+      };
+
+      this.selectedFile = file;
+
+      if (file.size > 500 * 1024) {
+        this.form.get('photoUpload')?.setErrors({ sizeExceed: true });
+      } else {
+        this.form.get('photoUpload')?.setErrors(null);
+      }
+    }
+  }
+
+  sizeValidator(control: any) {
+    const file = control?.value;
+    if (file && file.size > 500 * 1024) {
+      return { sizeExceed: true };
+    }
+    return null;
+  }
+
+  reset() {
+    if (confirm('पुसू का रे ...? ')) {
+      // window.location.reload();
+      this.form.patchValue({
+        empId: '',
+        name: '',
+        email: '',
+        gender: '',
+        password: '',
+        tAddress1: '',
+        tAddress2: '',
+        tState: '',
+        tCity: '',
+        tPincode: '',
+        pAddress1: '',
+        pAddress2: '',
+        pState: '',
+        pCity: '',
+        pPincode: '',
+        photoUpload: '',
+        confirm_password: '',
+        role: '',
+        mobile: ''
+      });
     }
   }
 }

@@ -48,11 +48,11 @@ export class EmployeeListComponent {
   confirmPasswordVisible: boolean = false;
 
   togglePasswordVisibility() {
-      this.passwordVisible = !this.passwordVisible;
+    this.passwordVisible = !this.passwordVisible;
   }
 
   toggleConfirmPasswordVisibility() {
-      this.confirmPasswordVisible = !this.confirmPasswordVisible;
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
 
   // Function to submit the password change
@@ -64,45 +64,49 @@ export class EmployeeListComponent {
     }
 
     const employee = {
-      passward: this.newPassword, // Pass the new password here
-      confirm_Passward: this.confirmPassword
+      password: this.newPassword, // Pass the new password here
+      confirm_password: this.confirmPassword
     };
 
-    this.addEmpService.updateEmpDetails(this.employeeId, employee).subscribe(
-      response => {
-        // Handle successful response
-        console.log('Password updated successfully!', response);
-        this.successMessage = 'Password updated successfully!';
-        this.newPassword = '';
-        this.confirmPassword = '';
-        this.errorMessage = '';
-        // Close the modal here if needed
-      },
-      error => {
-        // Handle error response
-        console.error('Error updating password', error);
-        this.errorMessage = 'An error occurred while updating the password.';
-      }
-    );
+    if (this.newPassword !== '' && this.confirmPassword !== '') {
+      this.addEmpService.updateEmpPassword(this.employeeId, employee).subscribe(
+        response => {
+          // Handle successful response
+          console.log('Password updated successfully!', response);
+          this.successMessage = 'Password updated successfully!';
+          this.newPassword = '';
+          this.confirmPassword = '';
+          this.errorMessage = '';
+          // Close the modal here if needed
+        },
+        error => {
+          // Handle error response
+          console.error('Error updating password', error);
+          this.errorMessage = 'An error occurred while updating the password.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Enter Password and Confirm Password'
+    }
   }
 
   // Toggle employee status between ACTIVE and INACTIVE
   toggledStatus(employee: any): void {
-    if(confirm("You want to upadate Status")){
+    if (confirm("You want to upadate Status")) {
       const updatedEmployee = { ...employee }; // Create a copy of the employee object
-    updatedEmployee.status = updatedEmployee.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE'; // Toggle the status
-    // Call the update service to update the status on the backend
-    this.addEmpService.updateEmpDetails(updatedEmployee.id, updatedEmployee).subscribe(
-      response => {
-        console.log('Status updated successfully', response);
-        this.getAllEmployee(); 
-        // Optionally, update the UI with the new status if needed
-      },
-      error => {
-        console.error('Error updating status', error);
-        // Handle error, maybe show an alert
-      }
-    );
+      updatedEmployee.status = updatedEmployee.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE'; // Toggle the status
+      // Call the update service to update the status on the backend
+      this.addEmpService.updateEmpStatus(updatedEmployee.id, updatedEmployee).subscribe(
+        response => {
+          console.log('Status updated successfully', response);
+          this.getAllEmployee();
+          // Optionally, update the UI with the new status if needed
+        },
+        error => {
+          console.error('Error updating status', error);
+          // Handle error, maybe show an alert
+        }
+      );
     }
   }
 

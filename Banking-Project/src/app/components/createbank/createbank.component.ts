@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BankPayoutService } from '../../Service/BankPayout/bank-payout.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-createbank',
@@ -8,37 +10,60 @@ import { Component } from '@angular/core';
 export class CreatebankComponent {
   bankName: string = '';
   payout: string = '';
-  file: File | null = null;
+  file: File | null = null;  // Store the selected file
   formSubmitted: boolean = false;
   formFailed: boolean = false;
+  // fileInputControl!: NgModel;
+
+  constructor(private bankService: BankPayoutService) {}
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];  // Get the first file from the input
+    if (file) {
+      this.file = file;  // Store the selected file in the component property
+    }
+  }
 
   onSubmit(form: any) {
-    // Reset flags
     this.formSubmitted = false;
     this.formFailed = false;
 
-    // Check if the form is valid
-    if (form.valid) {
-      // If valid, show success message and reset form
-      this.formSubmitted = true;
-      this.resetForm(form);
-      this.showSuccessAlert();
+    if (form.valid && this.file) {
+      const formData = new FormData();
+      
+      const bankDetails = {
+        bankName: this.bankName,
+        payout: this.payout
+      };
 
+      formData.append('bank', JSON.stringify(bankDetails));  // Add bank details as JSON
+      formData.append('file', this.file, this.file.name);  // Append the selected file
+
+      // Call the service to submit the form
+      this.bankService.postBankPayout(formData).subscribe(
+        (response) => {
+          console.log('Form submitted successfully', response);
+          this.formSubmitted = true;
+          this.resetForm(form);
+          this.showSuccessAlert();
+        },
+        (error) => {
+          console.error('Form submission failed', error);
+          this.formFailed = true;
+          this.showErrorAlert();
+        }
+      );
     } else {
-      // If invalid, show error message
       this.formFailed = true;
       this.showErrorAlert();
-
-
     }
   }
+
   showSuccessAlert() {
-    // Display a success alert pop-up
     alert('Form submitted successfully!');
   }
 
   showErrorAlert() {
-    // Display an error alert pop-up
     alert('Please fill out all required fields.');
   }
 
@@ -46,13 +71,7 @@ export class CreatebankComponent {
     this.bankName = '';
     this.payout = '';
     this.file = null;
-
-    // Reset form control states (touch and validity)
     form.resetForm();
-
-    // Optionally clear error messages by resetting the form controls
-    form.controls['BankName'].markAsUntouched();
-    form.controls['personalLoan'].markAsUntouched();
-    form.controls['fileInput'].markAsUntouched();
   }
 }
+

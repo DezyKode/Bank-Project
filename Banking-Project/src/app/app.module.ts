@@ -251,7 +251,7 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
       ApplicationDetailsComponent,
       BankComponents,
       ReceiptsComponent,
-      EmployeeDetailsComponent
+      EmployeeDetailsComponent,
 
 
       AddDisbursementComponent,
@@ -299,13 +299,12 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
 
   BrowserModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     // NgChartsModule,
     CommonModule,
-    FormsModule, // If using forms
+    
    
   ],
   providers: [

@@ -10,10 +10,7 @@ const BASIC_URL = "http://localhost:8080";
 export class AddEmpService {
   constructor(private http: HttpClient) { }
 
-  postEmployee(employee: any, file: File): Observable<any> {
-    const formData = new FormData();
-    formData.append('employee', JSON.stringify(employee));
-    formData.append('file', file);
+  postEmployee(formData: FormData): Observable<any> {
     return this.http.post(`${BASIC_URL}/addemployee/post`, formData);
   }
 
@@ -25,7 +22,11 @@ export class AddEmpService {
     return this.http.get<any>(`${BASIC_URL}/addemployee/get/${id}`);
   }
 
-  updateEmpDetails(id: number, employee:any): Observable<any>{
-    return this.http.put(`${BASIC_URL}/addemployee/update/${id}`,employee);
+  updateEmpPassword(id: number, employee:any): Observable<any>{
+    return this.http.put(`${BASIC_URL}/addemployee/updatepass/${id}`,employee);
+  }
+
+  updateEmpStatus(id: number, employee:any): Observable<any>{
+    return this.http.put(`${BASIC_URL}/addemployee/updatestatus/${id}`,employee);
   }
 }
