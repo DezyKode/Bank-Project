@@ -1,5 +1,6 @@
 
-<form action="" id="isFormValid " #loanForm="ngForm" >
+<form action="" id="isFormValid " #loanForm="ngForm"  
+class="needs-validation bg-white" (ngSubmit)="submitForm(loanForm)" >
   <div class="container bg-light mt-10 mb-10" >
     <h2 class="text-start  py-2">Check Eligibility</h2>
     <!-- Type of Loan -->

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as Papa from 'papaparse';
+// import * as Papa from 'papaparse';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
@@ -89,50 +89,50 @@ export class MISReportComponent {
         };
       });
     }
-  exportToCSV() {
-    const headers = [
-      "Sr No", "Member", "To Be Login Count", "To Be Login Amount", "Login Count", "Login Amount", "To Be Sanction Count", 
-      "To Be Sanction Amount", "Sanction Count", "Sanction Amount", "To Be Disbursed Count", "To Be Disbursed Amount", 
-      "Disbursement Count", "Disbursement Amount", "Disbursed Count", "Disbursed Amount", "Rejected Count", "Rejected Amount"
-    ];
+  // exportToCSV() {
+  //   const headers = [
+  //     "Sr No", "Member", "To Be Login Count", "To Be Login Amount", "Login Count", "Login Amount", "To Be Sanction Count", 
+  //     "To Be Sanction Amount", "Sanction Count", "Sanction Amount", "To Be Disbursed Count", "To Be Disbursed Amount", 
+  //     "Disbursement Count", "Disbursement Amount", "Disbursed Count", "Disbursed Amount", "Rejected Count", "Rejected Amount"
+  //   ];
 
-    const data = this.filteredMIS().map(bank => [
-      bank.id, bank.menmber, bank.toBeLoginCount, bank.toBeLoginAmount, bank.loginCount, bank.loginAmount, 
-      bank.toBeSanctionCount, bank.toBeSanctionAmount, bank.sanctionCount, bank.sanctionAmount, 
-      bank.toBeDisbursedCount, bank.toBeDisbursedAmount, bank.disbursedmentCount, bank.disbursedmentAmount, 
-      bank.disbursedCount, bank.disbursedAmount, bank.rejectedCount, bank.rejectedAmount
-    ]);
+  //   const data = this.filteredMIS().map(bank => [
+  //     bank.id, bank.menmber, bank.toBeLoginCount, bank.toBeLoginAmount, bank.loginCount, bank.loginAmount, 
+  //     bank.toBeSanctionCount, bank.toBeSanctionAmount, bank.sanctionCount, bank.sanctionAmount, 
+  //     bank.toBeDisbursedCount, bank.toBeDisbursedAmount, bank.disbursedmentCount, bank.disbursedmentAmount, 
+  //     bank.disbursedCount, bank.disbursedAmount, bank.rejectedCount, bank.rejectedAmount
+  //   ]);
 
-    const csv = Papa.unparse({
-      fields: headers,
-      data: data
-    });
+  //   const csv = Papa.unparse({
+  //     fields: headers,
+  //     data: data
+  //   });
 
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'MIS_Report.csv';
-    link.click();
-  }
+  //   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  //   const link = document.createElement('a');
+  //   link.href = URL.createObjectURL(blob);
+  //   link.download = 'MIS_Report.csv';
+  //   link.click();
+  // }
 
-  exportToPDF() {
-    const doc = new jsPDF();
+  // exportToPDF() {
+  //   const doc = new jsPDF();
     
-    const headers = [
-      "Label", "Sum of Amount in Lakh", "Count"
-    ];
+  //   const headers = [
+  //     "Label", "Sum of Amount in Lakh", "Count"
+  //   ];
 
-    const data = this.getAggregatedData().map(aggregate => [
-      aggregate.label, aggregate.sumAmount, aggregate.count
-    ]);
+  //   const data = this.getAggregatedData().map(aggregate => [
+  //     aggregate.label, aggregate.sumAmount, aggregate.count
+  //   ]);
 
-    // doc.autoTable({
-    //   head: [headers],
-    //   body: data,
-    // });
+  //   // doc.autoTable({
+  //   //   head: [headers],
+  //   //   body: data,
+  //   // });
 
-    doc.save('MIS_Report.pdf');
-  }
+  //   doc.save('MIS_Report.pdf');
+  // }
 
    // Pagination logic
    get paginatedLoans() {

@@ -5,8 +5,28 @@
     <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="p-2">
       <div class="row">
         <div class="col-md-4">
-          <div class="form-group position-relative">
+          <div class="form-group position-relative icon-field">
             <label class="form-label" for="bank">Bank Name <span style="color: red">*</span></label>
+            <div class="form-group position-relative">
+              <span class="icon">
+                <i class="fa fa-save"></i>
+              </span>
+            <input
+              type="text"
+              placeholder="enter bank name"
+              id="BankName"
+              class="form-control"
+              name="BankName"
+              [(ngModel)]="bankName"
+              #bankNameInput="ngModel"
+              required
+              [ngClass]="{
+                'is-invalid': bankNameInput.invalid && bankNameInput.touched,
+                'is-valid': bankNameInput.valid && bankNameInput.touched
+              }"
+            />
+            </div>
+
             <input type="text" id="BankName" class="form-control" name="BankName" [(ngModel)]="bankName"
               #bankNameInput="ngModel" required [ngClass]="{
                 'is-invalid': bankNameInput.invalid && bankNameInput.touched,
@@ -21,7 +41,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="form-group position-relative">
+          <div class="form-group position-relative ">
             <label for="personalLoan" class="form-label">Payout Type <span style="color: red">*</span></label>
             <select id="personalLoan" class="form-control form-select" aria-label="Type Of Loan" required
               [(ngModel)]="payout" name="personalLoan" #personalLoanInput="ngModel" [ngClass]="{
@@ -67,7 +87,7 @@
       <!-- Submit Button -->
       <div class="row py-5">
         <div class="col-md-12 text-end">
-          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Create</button>
         </div>
       </div>
     </form>

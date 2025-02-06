@@ -9,6 +9,7 @@ export class LoanComponent {
   selectedOption: string = ''; // Initially no option selected
 isOfferDivVisible = false;
 isOtherDivHide = true;
+coAppselectedOption:string= '';
 
 toggleOffersDiv(){
 this.isOfferDivVisible=!this.isOfferDivVisible;

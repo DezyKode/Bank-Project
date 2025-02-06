@@ -164,7 +164,6 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
 
 @NgModule({
   declarations: [
-    
     AppComponent,
     LoginComponent,
     ManagerLoginComponent,
@@ -235,9 +234,6 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
       CreanewcaseApplicantDerailsComponent,
       CreateApplicantComponent,
 
-
-
-
       UsersComponent,
       BanksTableComponent,
       BankCriteriaComponent,
@@ -293,6 +289,7 @@ import { OverviewallComponent } from './components/Admin/LoansAll/overviewall/ov
 
       // ParentComponent,
   ],
+
   
   imports: [
 

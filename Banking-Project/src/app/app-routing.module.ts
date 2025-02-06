@@ -102,6 +102,7 @@ import {ApplicationRejectedComponent} from './components/Admin/LoanRejected/appl
 import { OverViewRejectedComponent } from './components/Admin/LoanRejected/over-view-rejected/over-view-rejected.component';
 import { BankRejectedComponent } from './components/Admin/LoanRejected/bank-rejected/bank-rejected.component';
 import { LoanDetailsRejectedComponent } from './components/Admin/LoanRejected/loan-details-rejected/loan-details-rejected.component';
+import { MISReportComponent } from './components/mis-report/mis-report.component';
 import { LoanOffersRejectedComponent } from './components/Admin/LoanRejected/loan-offers-rejected/loan-offers-rejected.component';
 import {LoansallComponent} from'./components/Admin/LoansAll/loansall/loansall.component'
 import {OverviewallComponent} from './components/Admin/LoansAll/overviewall/overviewall.component'

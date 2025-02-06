@@ -1,2 +1,42 @@
+/* icon field css start */
+.icon-field {
+    position: relative;
+  }
+   
+  .icon-field .icon {
+    position: absolute;
+    top: 9px;
+    inset-inline-start: 0;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    color: var(--text-secondary-light);
+  }
+   
+  .icon-field .form-control {
+    padding-inline-start: 2.5rem;
+  }
+   
+  .icon-field .form-control.form-control-lg ~ .icon {
+    top: 18px;
+  }
+   
+  .icon-field .form-control.form-control-sm ~ .icon {
+    top: 10px;
+  }
+   /* Optional: Custom styling for the invalid border */
+.is-invalid {
+    border-color: red !important;
+  }
+  .is-valid {
+    border-color: green !important;
+  } 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: none !important;
+    color: transparent;
+  }
+  
 /* You can add global styles to this file, and also import other style files */
 

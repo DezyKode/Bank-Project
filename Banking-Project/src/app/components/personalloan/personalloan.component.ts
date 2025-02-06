@@ -253,8 +253,8 @@ toggleCoApplicantForm() {
     // Repeat for all other controls (e.g., mobileInput, empTypeInput, etc.)
   }
   // Submit the form to the backend
-  submitForm(): void {
-    if (this.isFormValid) {
+  submitForm(loanForm: NgForm): void  {
+    if (loanForm.valid) {
       const formData = {
         typeOfLoan: this.personalLoan,
         firstName: this.firstName,
@@ -288,7 +288,12 @@ toggleCoApplicantForm() {
       });
     } else {
       // console.error('Form is not valid');
-      alert("Form is not complete")
+      alert("Form is not complete");
+      // Manually mark all controls as touched
+      Object.values(loanForm.controls).forEach(control => {
+        control.markAsTouched();  // This will mark each control as touched
+      });
+
     } 
   }
 }

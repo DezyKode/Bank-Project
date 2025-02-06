@@ -9,7 +9,13 @@
           <form (ngSubmit)="addProject()" #projectForm="ngForm">
             <div class="row">
               <div class="col-md-4">
-                <div class="form-group ">
+
+                <div class="form-group  icon-field">
+                  <label for="tax">Project Name </label>
+                  <div class="form-group position-relative">
+                    <span class="icon">
+                      <i class="fa fa-save"></i>
+                    </span>
                   <input
                   type="text"
                   class="form-control mb-2"
@@ -18,8 +24,12 @@
                   name="projectName"
                   required
                   #projectName="ngModel"
-                  
+                  [ngClass]="{
+                      'is-valid': projectName.touched && projectName.valid,
+                      'is-invalid':projectName.touched && projectName.invalid
+                  }"
                 />
+                </div>
                 <div *ngIf="projectName.invalid && projectName.touched" class="text-danger form-text ">
                   Project Name is required.
                 </div>

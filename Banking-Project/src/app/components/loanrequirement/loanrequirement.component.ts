@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 export class LoanrequirementComponent {
 
-  personalLoan: any;
+  personalLoan: string='';
   monthSalary: string = '';
   tenure: string = '';
   idv: string = '';
